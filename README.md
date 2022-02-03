@@ -38,8 +38,7 @@ Several manuals on how to build/use/adjust the OpenScan devices, firmware and el
 
 Providing the update files for the firmware, where the two .json files give a short summary of what changed
 * update/
-    * beta.json
-    * main.json
+    * update.json
     * beta/
     * main/
     
