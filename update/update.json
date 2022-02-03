@@ -1,4 +1,6 @@
-{
-  'main':'todo',
-  'beta':'todo'
-}
+[
+  {
+    'main':'todo',
+    'beta':'todo'
+  }
+]
