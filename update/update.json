@@ -1,6 +1,90 @@
-[
-  {
-    "main":"todo",
-    "beta":"todo"
-  }
-]
+{
+    "main": {
+        "1": {
+            "src": "main/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "chksum": "c069e60406f739914c31a7a6bd617b6d",
+            "filesize": 3702
+        },
+        "2": {
+            "src": "main/Arducam.py",
+            "dst": "/usr/lib/python3/dist-packages/Arducam.py",
+            "chksum": "9f12b99f87c2549f76e34e6e1ad2b2c3",
+            "filesize": 6154
+        },
+        "3": {
+            "src": "main/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "chksum": "50b250885ae5a8c700f29b31f1a19f9e",
+            "filesize": 5864
+        },
+        "4": {
+            "src": "main/config.txt",
+            "dst": "/boot/config.txt",
+            "chksum": "71715a4493e813f6058a053bb0808e5b",
+            "filesize": 2345
+        },
+        "5": {
+            "src": "main/flows.json",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
+            "chksum": "acc3143abdea3c8065e670bb6efb8683",
+            "filesize": 301320
+        },
+        "6": {
+            "src": "main/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "chksum": "f8f083a8299f659b4e1c558fd417ac1e",
+            "filesize": 20321
+        },
+        "7": {
+            "src": "files/logo.jpg",
+            "dst": "/home/pi/OpenScan/files/logo.jpg",
+            "chksum": "d7d9a43ec85253979c58a9744df9b780",
+            "filesize": 477183
+        }
+    },
+    "beta": {
+        "1": {
+            "src": "beta/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "chksum": "c069e60406f739914c31a7a6bd617b6d",
+            "filesize": 3702
+        },
+        "2": {
+            "src": "beta/Arducam.py",
+            "dst": "/usr/lib/python3/dist-packages/Arducam.py",
+            "chksum": "9f12b99f87c2549f76e34e6e1ad2b2c3",
+            "filesize": 6154
+        },
+        "3": {
+            "src": "beta/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "chksum": "50b250885ae5a8c700f29b31f1a19f9e",
+            "filesize": 5864
+        },
+        "4": {
+            "src": "beta/config.txt",
+            "dst": "/boot/config.txt",
+            "chksum": "71715a4493e813f6058a053bb0808e5b",
+            "filesize": 2345
+        },
+        "5": {
+            "src": "beta/flows.json",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
+            "chksum": "acc3143abdea3c8065e670bb6efb8683",
+            "filesize": 301320
+        },
+        "6": {
+            "src": "beta/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "chksum": "f8f083a8299f659b4e1c558fd417ac1e",
+            "filesize": 20321
+        },
+        "7": {
+            "src": "files/logo.jpg",
+            "dst": "/home/pi/OpenScan/files/logo.jpg",
+            "chksum": "d7d9a43ec85253979c58a9744df9b780",
+            "filesize": 477183
+        }
+    }
+}
