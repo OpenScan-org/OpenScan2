@@ -71,8 +71,8 @@
         "5": {
             "src": "beta/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "chksum": "ecf0412cc16c5efc3a5ca7e5ec7b7961",
-            "filesize": 300471
+            "chksum": "5687af0b0b9f1d4deb7c2843f59df15e",
+            "filesize": 300491
         },
         "6": {
             "src": "beta/settings.js",
