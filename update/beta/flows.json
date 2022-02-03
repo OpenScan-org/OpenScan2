@@ -910,6 +910,128 @@
         ]
     },
     {
+        "id": "22d25e37eb1a6ffd",
+        "type": "debug",
+        "z": "829d803b6033a693",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "8d19796ea5f16db4",
+        "type": "python3-function",
+        "z": "829d803b6033a693",
+        "name": "create main update",
+        "func": "import json\n\nscope = 'beta'\n#scope = 'main'\n\nmsg= {}\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    chksum = os.popen('md5sum ' + filepath).read()\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['chksum'] = chksum[0:32]\n    msg[scope][i]['filesize'] = filesize\n\n\nwith open('/home/pi/OpenScan/updates/update_' + scope + '.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\n\nreturn msg\n\nma",
+        "outputs": 1,
+        "x": 470,
+        "y": 900,
+        "wires": [
+            [
+                "22d25e37eb1a6ffd"
+            ]
+        ]
+    },
+    {
+        "id": "838d030fdbcf1844",
+        "type": "inject",
+        "z": "829d803b6033a693",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 900,
+        "wires": [
+            [
+                "8d19796ea5f16db4"
+            ]
+        ]
+    },
+    {
+        "id": "3531b9a2fa81da51",
+        "type": "inject",
+        "z": "829d803b6033a693",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 1000,
+        "wires": [
+            [
+                "0bb496d5a312f5a7"
+            ]
+        ]
+    },
+    {
+        "id": "0bb496d5a312f5a7",
+        "type": "python3-function",
+        "z": "829d803b6033a693",
+        "name": "load update",
+        "func": "import json\nimport requests\nimport shutil\n\nscope = 'main'\n#scope = 'beta'\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\n# check update.json\nif os.path.isfile(updatepath_old):\n    with open(updatepath_old, 'r') as file:\n        msg2 = json.load(file)\n    if msg == msg2:\n        msg['status'] = 'already up to date'\n        return msg\n\n# check and load destination files\ncounter = 0\ncounter2 = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        chksum = os.popen('md5sum ' + temp).read()[0:32]\n        msg[scope][i]['chksum2']= chksum\n        msg[scope][i]['filesize2'] = filesize\n        if chksum == msg[scope][i]['chksum'] and filesize == msg[scope][i]['filesize']:\n            counter2 += 1\n            continue\n        \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    #todo move to final directory\n    counter += 1\n\nmsg['status'] = 'Success! updated: '+ str(counter) + ' and already up to date: ' + str(counter2)\n\nshutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
+        "outputs": 1,
+        "x": 450,
+        "y": 1000,
+        "wires": [
+            [
+                "cf56b9fd05dbe50d"
+            ]
+        ]
+    },
+    {
+        "id": "cf56b9fd05dbe50d",
+        "type": "debug",
+        "z": "829d803b6033a693",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 1000,
+        "wires": []
+    },
+    {
         "id": "828e5298.d2192",
         "type": "ui_button",
         "z": "1613373abaf77a2c",
