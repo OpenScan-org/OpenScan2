@@ -47,7 +47,7 @@
         "1": {
             "src": "beta/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "chksum": "b2df6605181c2d72ca7a7d918f069c54",
+            "chksum": "c069e60406f739914c31a7a6bd617b6d",
             "filesize": 3702
         },
         "2": {
@@ -71,8 +71,8 @@
         "5": {
             "src": "beta/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "chksum": "f6cc0f96d185abeb258043bd6a1fdce1",
-            "filesize": 294630
+            "chksum": "ecf0412cc16c5efc3a5ca7e5ec7b7961",
+            "filesize": 300471
         },
         "6": {
             "src": "beta/settings.js",
