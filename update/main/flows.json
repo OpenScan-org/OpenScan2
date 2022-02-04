@@ -330,8 +330,9 @@
         "tab": "d25e08b4.5b27e8",
         "order": 2,
         "disp": true,
-        "width": 16,
-        "collapse": false
+        "width": "16",
+        "collapse": false,
+        "className": ""
     },
     {
         "id": "d25e08b4.5b27e8",
@@ -738,20 +739,21 @@
         "mode": "link",
         "links": [
             "2f4c0f98.dee2",
-            "65145c939b6647e2",
-            "9b2bc9849aee310b",
-            "e5f38b4a07a5e278",
-            "6d1e12f51f9af0b6",
-            "a1e14624058e74cd",
-            "bd80ec228fb9a86d",
-            "65b38bfeb3fee710",
-            "d3fc91d87d5d5f62",
-            "cc9c4092edeb43cc",
-            "788fabff98c7973c",
             "397ab7f44b893c89",
-            "f0b355967b33dfee",
+            "65145c939b6647e2",
+            "65b38bfeb3fee710",
+            "6d1e12f51f9af0b6",
+            "788fabff98c7973c",
+            "9b2bc9849aee310b",
+            "a1e14624058e74cd",
+            "a67c18aaca2f5fa5",
+            "bd80ec228fb9a86d",
+            "cc9c4092edeb43cc",
+            "d3fc91d87d5d5f62",
             "d7c1fb4c028b21a5",
-            "a67c18aaca2f5fa5"
+            "e5f38b4a07a5e278",
+            "f0b355967b33dfee",
+            "d0104e0163745993"
         ],
         "x": 615,
         "y": 720,
@@ -822,7 +824,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "CREATE FACTORY DEFAULT",
-        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-40,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3600,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n}}\nreturn msg",
+        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-40,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3600,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'main',\n    'update_auto':true,\n}}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -872,8 +874,8 @@
         "name": "chk",
         "func": "with open('/etc/hostname', 'r') as file:\n    old_hostname = file.read().replace('\\n','')\nif old_hostname == 'raspberrypi':\n    msg['hostname'] = 'openscan'\n    msg['payload'] = 'OK'\nreturn msg",
         "outputs": 1,
-        "x": 570,
-        "y": 380,
+        "x": 1050,
+        "y": 400,
         "wires": [
             []
         ]
@@ -3159,23 +3161,6 @@
                 "c470fd0b15356206",
                 "9e30e33a1520fee0"
             ]
-        ]
-    },
-    {
-        "id": "104faf8b03f04c5a",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "msg",
-        "func": "msg.enabled = false\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 790,
-        "y": 940,
-        "wires": [
-            []
         ]
     },
     {
@@ -8720,7 +8705,8 @@
         "z": "017bd4e4a428bee5",
         "name": "reboot",
         "links": [
-            "16c76929f88df841"
+            "16c76929f88df841",
+            "fe3a855fee9e28c6"
         ],
         "x": 155,
         "y": 680,
@@ -9452,123 +9438,298 @@
         "wires": []
     },
     {
-        "id": "a3a12a62.452ab8",
+        "id": "949e5d63e6110bde",
+        "type": "debug",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1470,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "ceded879488bc933",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "create beta/main update",
+        "func": "import json\nimport shutil\n\n#scope = 'beta'\nscope = 'main'\n\nmsg= {}\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update_' + scope + '.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nreturn msg\n\nma",
+        "outputs": 1,
+        "x": 1290,
+        "y": 60,
+        "wires": [
+            [
+                "949e5d63e6110bde"
+            ]
+        ]
+    },
+    {
+        "id": "e8afd7afcd8ab92f",
+        "type": "inject",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1100,
+        "y": 60,
+        "wires": [
+            [
+                "ceded879488bc933"
+            ]
+        ]
+    },
+    {
+        "id": "da7232530db08085",
+        "type": "inject",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1120,
+        "y": 100,
+        "wires": [
+            [
+                "44983c101924474b"
+            ]
+        ]
+    },
+    {
+        "id": "44983c101924474b",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "load update",
+        "func": "import json\nimport requests\nimport shutil\n\nscope = 'main'\nscope = 'beta'\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\n# check update.json\nif os.path.isfile(updatepath_old):\n    with open(updatepath_old, 'r') as file:\n        msg2 = json.load(file)\n    if msg == msg2:\n        msg['status'] = 'already up to date'\n        return msg\n\n# check and load destination files\ncounter = 0\ncounter2 = 0\nmsg['update'] = ''\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            counter2 += 1\n            continue\n        \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    #shutil.move(temp, msg[scope][i]['dst'])\n\n    #todo move to final directory\n    counter += 1\n    msg['update']  = msg['update']  + os.path.basename(filepath) + ' / '\n\nmsg['status'] = 'Success! updated: '+ str(counter) + '(' + msg['update']  + ') and already up to date: ' + str(counter2)\n\nshutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
+        "outputs": 1,
+        "x": 1270,
+        "y": 100,
+        "wires": [
+            [
+                "d6fec1ffdb4f7e11"
+            ]
+        ]
+    },
+    {
+        "id": "d6fec1ffdb4f7e11",
+        "type": "debug",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1410,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "b0629875a30ae1d7",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "get update",
+        "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif not msg['payload']:\n    msg['status'] == '--READY--'\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = 'checking updates'\n\nreturn msg, msg",
+        "outputs": 2,
+        "x": 310,
+        "y": 240,
+        "wires": [
+            [
+                "1bbe2d769f42c313",
+                "c027f942f038e822"
+            ],
+            [
+                "fefe45404bdb19c4"
+            ]
+        ]
+    },
+    {
+        "id": "c7b6d05a62172432",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "ddbd496e.93a288",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Status:",
+        "format": "{{msg.status}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 170,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "fefe45404bdb19c4",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "check files",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter # new file counter\n\nreturn msg\n",
+        "outputs": 1,
+        "x": 470,
+        "y": 260,
+        "wires": [
+            [
+                "1bbe2d769f42c313",
+                "ae92a328af306ebb",
+                "850a37be2e644db9"
+            ]
+        ]
+    },
+    {
+        "id": "d0104e0163745993",
+        "type": "link in",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "links": [
+            "960912e90ba5b5bc"
+        ],
+        "x": 75,
+        "y": 140,
+        "wires": [
+            [
+                "ec30638407332e43",
+                "38cbf7965d1c1834",
+                "49f1ecb29a3f84f4"
+            ]
+        ]
+    },
+    {
+        "id": "ec30638407332e43",
+        "type": "function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "loadS",
+        "func": "var file = 'update_type'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = String(data.replace(/(\\r\\n|\\n|\\r)/gm,\"\"));\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "2852023f3aa8db10"
+            ]
+        ]
+    },
+    {
+        "id": "2852023f3aa8db10",
+        "type": "ui_dropdown",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "label": "",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "ddbd496e.93a288",
+        "order": 3,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "multiple": false,
+        "options": [
+            {
+                "label": "stable",
+                "value": "main",
+                "type": "str"
+            },
+            {
+                "label": "beta",
+                "value": "beta",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 300,
+        "y": 180,
+        "wires": [
+            [
+                "1e10b387ee30c486"
+            ]
+        ]
+    },
+    {
+        "id": "1e10b387ee30c486",
+        "type": "function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "write",
+        "func": "var file = 'update_type'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "274129c51b0b87ef",
         "type": "ui_text",
         "z": "c8e7ecb5849edb9a",
         "group": "ddbd496e.93a288",
         "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "update text",
-        "label": "",
-        "format": "<font color= {{msg.color}} > {{msg.payload}} </font>",
-        "layout": "row-center",
-        "x": 330,
-        "y": 560,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "Updatetype: ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 570,
+        "y": 180,
         "wires": []
     },
     {
-        "id": "db31530a.7735b",
-        "type": "ui_button",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "group": "ddbd496e.93a288",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Check for Updates",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "",
-        "x": 170,
-        "y": 240,
-        "wires": [
-            [
-                "7600f12d.cf32e"
-            ]
-        ]
-    },
-    {
-        "id": "51433c54.55af44",
-        "type": "link in",
-        "z": "c8e7ecb5849edb9a",
-        "name": "update",
-        "links": [
-            "c803000f.cec2e",
-            "babe2a6.c6c27d8",
-            "29352168.95ba2e",
-            "d33997e3.7b5128",
-            "1a32f672.50fafa",
-            "629556b9.c99758",
-            "e4b7a78b.af9278",
-            "b039b421.71ff38",
-            "d08d2313.3d81c",
-            "eb1b989b.411858",
-            "bac9b0cb.79a11",
-            "bb2e44d.554e4b8",
-            "130354ce.aee30b",
-            "946280a5.09db7",
-            "4c3f489f.1d5368",
-            "611f2d91.2c4414",
-            "51094d6d.4c8694",
-            "63a4fbc5.934a74"
-        ],
-        "x": 195,
-        "y": 560,
-        "wires": [
-            [
-                "a3a12a62.452ab8",
-                "5a50b653.49be68",
-                "7995fbed.e90774"
-            ]
-        ]
-    },
-    {
-        "id": "ebf60ed3.4c254",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "Compare Versions",
-        "func": "import os\n\n\nfile = '/home/pi/shared/ui/data/update.log'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan/master/update_universal.log'\ntry:\n    os.remove(file)\nexcept OSError:\n    pass\nos.system('wget -O'+file+' '+url+' >/dev/null 2>&1')\n\n\nwith open(\"/home/pi/shared/ui/data/update.log\", \"r\") as file:\n    versionserver=str(file.read())[:16]\nwith open(\"/home/pi/shared/log/currentversion.log\", \"r\") as file:\n    versionpi=str(file.read())[:16]\n\nmsg['payload']=\"you are up to date\"\n\nif versionpi!=versionserver and versionserver!=\"\":\n    file=\"/home/pi/.node-red/flows_raspberrypi_download.json\"\n    url=\"https://raw.githubusercontent.com/OpenScanEu/OpenScan/master/update_universal.json\"\n    try:\n        os.remove(file)\n    except OSError:\n        pass\n    os.system('wget -O'+file+' '+url+' >/dev/null 2>&1')\n\n    with open(\"/home/pi/shared/log/currentserverversion.log\", \"w\") as file:\n        file.write(versionserver)\n    os.rename(\"/home/pi/.node-red/flows_raspberrypi_download.json\",\"/home/pi/shared/ui/data/old_flows/\"+versionserver+\".json\")\n    msg['payload']=\"new updates available\"\n\nreturn msg",
-        "outputs": 1,
-        "x": 690,
-        "y": 240,
-        "wires": [
-            [
-                "d08d2313.3d81c",
-                "ccefcc90.280d9",
-                "da63f320.75bcc"
-            ]
-        ]
-    },
-    {
-        "id": "a068495.e7347b8",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "autoupdate checker",
-        "func": "\nwith open(\"/home/pi/shared/log/autoupdatestate.log\", \"r\") as file:\n    autoupdate=file.read()\nmsg['payload']=False\nif autoupdate==\"true\":\n    msg['payload']=True\nreturn msg",
-        "outputs": 1,
-        "x": 370,
-        "y": 80,
-        "wires": [
-            [
-                "4757554e.08088c"
-            ]
-        ]
-    },
-    {
-        "id": "4757554e.08088c",
+        "id": "51cd8c8643e6b46a",
         "type": "ui_switch",
         "z": "c8e7ecb5849edb9a",
         "name": "",
-        "label": "Auto-check for updates",
+        "label": "Auto-check update availability",
         "tooltip": "",
         "group": "ddbd496e.93a288",
-        "order": 1,
+        "order": 3,
         "width": 6,
         "height": 1,
         "passthru": true,
@@ -9584,410 +9745,54 @@
         "offvalueType": "bool",
         "officon": "",
         "offcolor": "",
-        "animate": true,
+        "animate": false,
         "className": "",
-        "x": 650,
-        "y": 80,
-        "wires": [
-            [
-                "8266379e.ed1bb8"
-            ]
-        ]
-    },
-    {
-        "id": "8266379e.ed1bb8",
-        "type": "file",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "filename": "/home/pi/shared/log/autoupdatestate.log",
-        "appendNewline": false,
-        "createDir": true,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 940,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "69253358.bf412c",
-        "type": "inject",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "10",
-        "topic": "",
-        "payload": "Started!",
-        "payloadType": "str",
-        "x": 160,
-        "y": 80,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "302f3bb7.a86654",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "update check on?",
-        "func": "\nwith open(\"/home/pi/shared/log/autoupdatestate.log\", \"r\") as file:\n    autoupdate=file.read()\nif autoupdate==\"true\":\n    msg['payload']=\"on\"\n    return msg\n",
-        "outputs": 1,
         "x": 370,
-        "y": 120,
+        "y": 140,
+        "wires": [
+            [
+                "1ab4c6b4b232a022"
+            ]
+        ]
+    },
+    {
+        "id": "38cbf7965d1c1834",
+        "type": "function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "loadB",
+        "func": "var file = 'update_auto'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "51cd8c8643e6b46a"
+            ]
+        ]
+    },
+    {
+        "id": "1ab4c6b4b232a022",
+        "type": "function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "write",
+        "func": "var file = 'update_auto'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 140,
         "wires": [
             []
         ]
     },
     {
-        "id": "d08d2313.3d81c",
-        "type": "link out",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "links": [
-            "51433c54.55af44"
-        ],
-        "x": 935,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "7600f12d.cf32e",
-        "type": "function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "msg",
-        "func": "msg.payload =\"checking for updates\"\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 350,
-        "y": 280,
-        "wires": [
-            [
-                "eb1b989b.411858"
-            ]
-        ]
-    },
-    {
-        "id": "eb1b989b.411858",
-        "type": "link out",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "links": [
-            "51433c54.55af44"
-        ],
-        "x": 475,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "ba6a944f.28fbf8",
-        "type": "ui_text",
-        "z": "c8e7ecb5849edb9a",
-        "group": "3ce32450.e0cffc",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "name": "Your version:",
-        "label": "Your version:",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 550,
-        "y": 340,
-        "wires": []
-    },
-    {
-        "id": "147a8c8b.02d703",
-        "type": "ui_text",
-        "z": "c8e7ecb5849edb9a",
-        "group": "3ce32450.e0cffc",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Most recent version:",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "x": 580,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "78fe77ae.637248",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "msg",
-        "func": "\nwith open(\"/home/pi/shared/log/currentversion.log\", \"r\") as file:\n    msg['payload']=file.read()\nreturn msg",
-        "outputs": 1,
-        "x": 330,
-        "y": 340,
-        "wires": [
-            [
-                "ba6a944f.28fbf8"
-            ]
-        ]
-    },
-    {
-        "id": "8f30cdc7.d8d0a",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "msg",
-        "func": "\nwith open(\"/home/pi/shared/log/currentserverversion.log\", \"r\") as file:\n    msg['payload']=file.read()\nreturn msg",
-        "outputs": 1,
-        "x": 330,
-        "y": 380,
-        "wires": [
-            [
-                "147a8c8b.02d703"
-            ]
-        ]
-    },
-    {
-        "id": "53d30b48.e7c2b4",
-        "type": "function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "msg",
-        "func": "msg.payload =\"installing new version\"\nreturn msg\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 950,
-        "y": 640,
-        "wires": [
-            [
-                "bb2e44d.554e4b8"
-            ]
-        ]
-    },
-    {
-        "id": "7e517945.e751d8",
-        "type": "exec",
-        "z": "c8e7ecb5849edb9a",
-        "command": "",
-        "addpay": true,
-        "append": "",
-        "useSpawn": "false",
-        "timer": "",
-        "oldrc": false,
-        "name": "install update",
-        "x": 970,
-        "y": 540,
-        "wires": [
-            [
-                "c7dea90b.5b6478"
-            ],
-            [],
-            []
-        ]
-    },
-    {
-        "id": "bb2e44d.554e4b8",
-        "type": "link out",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "links": [
-            "51433c54.55af44"
-        ],
-        "x": 1115,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "130354ce.aee30b",
-        "type": "link out",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "links": [
-            "51433c54.55af44"
-        ],
-        "x": 1115,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "59489284.99141c",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "msg",
-        "func": "from time import sleep\nwith open(\"/home/pi/shared/log/currentversion.log\", \"w\") as file:\n    file.write(msg['payload2'])\n\nsleep(2)\nmsg['payload']=\"rebooting...\"\nreturn msg",
-        "outputs": 1,
-        "x": 950,
-        "y": 600,
-        "wires": [
-            [
-                "130354ce.aee30b",
-                "fdbb71b7.ca9b4"
-            ]
-        ]
-    },
-    {
-        "id": "da63f320.75bcc",
-        "type": "link out",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "links": [
-            "fdb965c8.f9e728",
-            "e5e35ad0.2dbfd8",
-            "e0e065cb.b8d888",
-            "e6ce1ce5.31d35",
-            "88b5807b.a0959",
-            "8745d44c.1a61c8"
-        ],
-        "x": 935,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "7aae1e89.08d37",
-        "type": "function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "t/f",
-        "func": "if (msg.payload === true){\n    msg.payload=true\n    return [msg,null]\n}\nmsg.payload=\"no internet connection\"\nreturn [null,msg]\n",
-        "outputs": 2,
-        "noerr": 0,
-        "x": 510,
-        "y": 240,
-        "wires": [
-            [
-                "ebf60ed3.4c254"
-            ],
-            [
-                "eb1b989b.411858",
-                "ff2b5fe1.2d803"
-            ]
-        ]
-    },
-    {
-        "id": "f1bbe902.de5cd8",
-        "type": "link in",
-        "z": "c8e7ecb5849edb9a",
-        "name": "Version",
-        "links": [
-            "ccefcc90.280d9",
-            "954bf550.aa5088",
-            "fdbb71b7.ca9b4"
-        ],
-        "x": 195,
-        "y": 340,
-        "wires": [
-            [
-                "78fe77ae.637248",
-                "8f30cdc7.d8d0a",
-                "f1199151.89ef6",
-                "7995fbed.e90774"
-            ]
-        ]
-    },
-    {
-        "id": "ccefcc90.280d9",
-        "type": "link out",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "links": [
-            "f1bbe902.de5cd8",
-            "3a8b7430.734eec",
-            "d3eaeac4.a1c968"
-        ],
-        "x": 935,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "954bf550.aa5088",
-        "type": "link out",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "links": [
-            "f1bbe902.de5cd8",
-            "3a8b7430.734eec",
-            "d3eaeac4.a1c968"
-        ],
-        "x": 295,
-        "y": 160,
-        "wires": []
-    },
-    {
-        "id": "f1199151.89ef6",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "display changelog",
-        "func": "with open(\"/home/pi/shared/ui/data/update.log\", \"r\") as file:\n    text=file.read()\nmsg['payload']=text\nreturn msg",
-        "outputs": 1,
-        "x": 370,
-        "y": 420,
-        "wires": [
-            [
-                "e084eb09.ccf548"
-            ]
-        ]
-    },
-    {
-        "id": "e084eb09.ccf548",
-        "type": "ui_template",
-        "z": "c8e7ecb5849edb9a",
-        "group": "3ce32450.e0cffc",
-        "name": "changelog",
-        "order": 3,
-        "width": 16,
-        "height": 7,
-        "format": "<style>\n    #mylog {\n        min-height: 100px;\n        padding: 0;\n        white-space: pre;\n    }\n</style>\n\n<div id=\"mylog\" ng-bind=\"msg.payload\">\n    <!-- file contents will go here -->\n</div>",
-        "storeOutMessages": true,
-        "fwdInMessages": true,
-        "templateScope": "local",
-        "x": 550,
-        "y": 420,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c8844641.814568",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "init exec",
-        "func": "if msg['payload']!=\"Yes\":\n    return\npayload=msg['file']\n\nif payload==\"saved.json\":\n    msg['payload']=\"sudo \\cp /home/pi/shared/ui/data/old_flows/\"+payload+\" /home/pi/.node-red/flows_raspberrypi.json\"\nelse:\n    msg['payload']=\"sudo \\cp /home/pi/.node-red/flows_raspberrypi.json  /home/pi/shared/ui/data/old_flows/saved.json && sudo \\cp /home/pi/shared/ui/data/old_flows/\"+payload+\" /home/pi/.node-red/flows_raspberrypi.json\"\n\nmsg['payload2']=payload[:16]\nreturn msg\n\n",
-        "outputs": 1,
-        "x": 800,
-        "y": 600,
-        "wires": [
-            [
-                "7e517945.e751d8",
-                "59489284.99141c",
-                "53d30b48.e7c2b4"
-            ]
-        ]
-    },
-    {
-        "id": "fdbb71b7.ca9b4",
-        "type": "link out",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "links": [
-            "f1bbe902.de5cd8",
-            "3a8b7430.734eec",
-            "d3eaeac4.a1c968"
-        ],
-        "x": 1115,
-        "y": 560,
-        "wires": []
-    },
-    {
-        "id": "5a50b653.49be68",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "PopUp new Version",
-        "func": "from time import sleep\nsleep (1)\n\nif msg['payload']==\"new updates available\":\n    msg['payload']=\"-- New Updates Available --- Install & reboot now?\"\n    return msg",
-        "outputs": 1,
-        "x": 350,
-        "y": 600,
-        "wires": [
-            [
-                "f8c24f06.ee9ec"
-            ]
-        ]
-    },
-    {
-        "id": "f8c24f06.ee9ec",
+        "id": "ae92a328af306ebb",
         "type": "ui_toast",
         "z": "c8e7ecb5849edb9a",
         "position": "dialog",
@@ -9995,317 +9800,191 @@
         "highlight": "",
         "sendall": true,
         "outputs": 1,
-        "ok": "No",
-        "cancel": "Yes",
+        "ok": "NO",
+        "cancel": "YES",
         "raw": false,
         "className": "",
         "topic": "",
         "name": "",
-        "x": 530,
-        "y": 600,
+        "x": 630,
+        "y": 260,
         "wires": [
             [
-                "fc87e670.3212f8"
+                "2de63e8e3ae5fb0c",
+                "929281fef53e09f8"
             ]
         ]
     },
     {
-        "id": "fc87e670.3212f8",
-        "type": "python3-function",
+        "id": "cbd0afc4aa7b302a",
+        "type": "link in",
         "z": "c8e7ecb5849edb9a",
-        "name": "msg",
-        "func": "import os\n\nif msg['payload']!=\"Yes\":\n    return\nwith open(\"/home/pi/shared/log/currentserverversion.log\", \"r\") as file:\n    msg['file']=file.read()+\".json\"\n\nif os.stat(\"/home/pi/shared/ui/data/old_flows/\"+msg['file']).st_size==0:\n    return\n\nreturn msg",
-        "outputs": 1,
-        "x": 670,
-        "y": 600,
+        "name": "update status",
+        "links": [
+            "1bbe2d769f42c313",
+            "42061b28cff81f99"
+        ],
+        "x": 75,
+        "y": 100,
         "wires": [
             [
-                "c8844641.814568"
+                "c7b6d05a62172432"
             ]
         ]
     },
     {
-        "id": "c7dea90b.5b6478",
+        "id": "1bbe2d769f42c313",
         "type": "link out",
         "z": "c8e7ecb5849edb9a",
         "name": "",
+        "mode": "link",
         "links": [
-            "118a6113.30ceef"
+            "cbd0afc4aa7b302a"
         ],
-        "x": 1115,
-        "y": 520,
+        "x": 575,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "b9a7fb02.25c808",
-        "type": "ui_template",
-        "z": "c8e7ecb5849edb9a",
-        "group": "ddbd496e.93a288",
-        "name": "Syslog",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "format": "<md-button ng-disabled=\"msg.disable\" style=\"background-color:{{msg.backgroundcolor}};color:{{msg.color}};width:100%; height:100%;\"   target=\"_blank\" ng-href=\"/ui/data/syslog.txt\">\n <div class=\"center\" style=\"position: relative;\n    top: 30%;\">\n  Download Syslog\n</div></md-button>\n",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": false,
-        "templateScope": "local",
-        "className": "",
-        "x": 630,
-        "y": 740,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "19c289e1.e54d16",
-        "type": "ui_switch",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "label": "Open Syslog",
-        "tooltip": "",
-        "group": "ddbd496e.93a288",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "",
-        "topicType": "str",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": true,
-        "className": "",
-        "x": 310,
-        "y": 740,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "873c1379.6273d",
-        "type": "inject",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "",
-        "topic": "",
-        "payload": "false",
-        "payloadType": "bool",
-        "x": 110,
-        "y": 740,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "214099a2.0c28c6",
+        "id": "7cf60615d93e696b",
         "type": "ui_button",
         "z": "c8e7ecb5849edb9a",
         "name": "",
         "group": "ddbd496e.93a288",
         "order": 4,
-        "width": 0,
-        "height": 0,
+        "width": "3",
+        "height": "1",
         "passthru": false,
-        "label": "Install Update",
+        "label": "Update",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
+        "className": "",
         "icon": "",
-        "payload": "Install & reboot now?",
+        "payload": "",
         "payloadType": "str",
-        "topic": "",
-        "x": 700,
-        "y": 520,
-        "wires": [
-            [
-                "f8c24f06.ee9ec"
-            ]
-        ]
-    },
-    {
-        "id": "7995fbed.e90774",
-        "type": "change",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "rules": [
-            {
-                "t": "set",
-                "p": "update",
-                "pt": "global",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 370,
-        "y": 520,
-        "wires": [
-            [
-                "7525ccbe.ddc104"
-            ]
-        ]
-    },
-    {
-        "id": "7525ccbe.ddc104",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "disable",
-        "func": "msg['enabled']=False\nif msg['payload']==\"new updates available\":\n    msg[\"enabled\"]=True\nreturn msg",
-        "outputs": 1,
-        "x": 540,
-        "y": 520,
-        "wires": [
-            [
-                "214099a2.0c28c6"
-            ]
-        ]
-    },
-    {
-        "id": "9f479470.8e19d8",
-        "type": "inject",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": "0",
-        "topic": "",
-        "payload": "Started!",
-        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
         "x": 160,
-        "y": 520,
+        "y": 260,
         "wires": [
-            []
+            [
+                "b0629875a30ae1d7"
+            ]
         ]
     },
     {
-        "id": "ff2b5fe1.2d803",
-        "type": "delay",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "30",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "outputs": 1,
-        "x": 500,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "88d06ec7e9e58ec5",
+        "id": "2de63e8e3ae5fb0c",
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
-        "name": "create syslog",
-        "func": "from time import sleep\n\ntry:\n    with open('/var/log/syslog.1', 'r') as file:\n        syslog = syslog + file.read()\nexcept:\n    pass\n\nwith open('/var/log/syslog', 'r') as file:\n    syslog = file.read()\n\n\n\nwith open('/home/pi/shared/ui/data/syslog.txt', 'w+') as file:\n    file.write(syslog)\n\nif msg['payload'] == True:\n    msg['color'] = 'white'\n    msg['backgroundcolor'] = ' default'\n    msg['disable'] = False\n    sleep(0.5)\n    return msg\n\nmsg['color'] = 'transparent'\nmsg['backgroundcolor'] = ' transparent'\nmsg['disable'] = True\nreturn msg\n\n",
+        "name": "download files",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.move(temp, msg[scope][i]['dst'])\n\n    #todo move to final directory\n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
         "outputs": 1,
-        "x": 490,
-        "y": 740,
+        "x": 800,
+        "y": 260,
         "wires": [
             [
-                "b9a7fb02.25c808"
+                "42061b28cff81f99",
+                "fe3a855fee9e28c6"
             ]
         ]
     },
     {
-        "id": "721a91db171f8d43",
-        "type": "link in",
+        "id": "929281fef53e09f8",
+        "type": "function",
         "z": "c8e7ecb5849edb9a",
-        "name": "disable",
+        "name": "msg",
+        "func": "if (msg.payload == 'YES'){\n    msg.status = 'Installing updates'\n    return msg}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 220,
+        "wires": [
+            [
+                "42061b28cff81f99"
+            ]
+        ]
+    },
+    {
+        "id": "42061b28cff81f99",
+        "type": "link out",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "mode": "link",
         "links": [
-            "05762fd6277a4e0a",
-            "0295b7fad0351b47"
+            "cbd0afc4aa7b302a"
         ],
-        "x": 95,
-        "y": 180,
+        "x": 915,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "49f1ecb29a3f84f4",
+        "type": "function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "loadB",
+        "func": "var file = 'update_auto'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\n\nmsg.payload = data\n\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 220,
         "wires": [
             [
-                "db31530a.7735b"
+                "b0629875a30ae1d7"
             ]
         ]
     },
     {
-        "id": "49d7b659b4539a03",
-        "type": "link in",
+        "id": "fe3a855fee9e28c6",
+        "type": "link out",
         "z": "c8e7ecb5849edb9a",
-        "name": "disable",
+        "name": "",
+        "mode": "link",
         "links": [
-            "05762fd6277a4e0a",
-            "0295b7fad0351b47"
+            "9bb0adbd716ce347"
         ],
-        "x": 555,
-        "y": 120,
-        "wires": [
-            [
-                "4757554e.08088c"
-            ]
-        ]
+        "x": 915,
+        "y": 260,
+        "wires": []
     },
     {
-        "id": "67175b14817bbd0e",
-        "type": "link in",
+        "id": "850a37be2e644db9",
+        "type": "debug",
         "z": "c8e7ecb5849edb9a",
-        "name": "disable",
-        "links": [
-            "05762fd6277a4e0a",
-            "0295b7fad0351b47"
-        ],
-        "x": 595,
-        "y": 480,
-        "wires": [
-            [
-                "214099a2.0c28c6"
-            ]
-        ]
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 300,
+        "wires": []
     },
     {
-        "id": "1faa9c29a34277f0",
-        "type": "link in",
+        "id": "c027f942f038e822",
+        "type": "debug",
         "z": "c8e7ecb5849edb9a",
-        "name": "disable",
-        "links": [
-            "05762fd6277a4e0a",
-            "0295b7fad0351b47"
-        ],
-        "x": 215,
-        "y": 700,
-        "wires": [
-            [
-                "19c289e1.e54d16"
-            ]
-        ]
-    },
-    {
-        "id": "c8e7790ea95b011b",
-        "type": "comment",
-        "z": "c8e7ecb5849edb9a",
-        "name": "is online",
-        "info": "",
-        "x": 350,
-        "y": 240,
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 300,
         "wires": []
     }
 ]
