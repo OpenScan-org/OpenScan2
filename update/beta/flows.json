@@ -9459,7 +9459,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "create beta/main update",
-        "func": "import json\nimport shutil\n\nscope = 'beta'\n#scope = 'main'\n\nmsg= {}\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif not os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update_' + scope + '.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nreturn msg\n\nma",
+        "func": "import json\nimport shutil\n\nscope = 'beta'\n#scope = 'main'\n\nmsg= {}\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update_' + scope + '.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nreturn msg\n\nma",
         "outputs": 1,
         "x": 1290,
         "y": 60,
@@ -9949,8 +9949,8 @@
         "links": [
             "9bb0adbd716ce347"
         ],
-        "x": 1235,
-        "y": 420,
+        "x": 915,
+        "y": 260,
         "wires": []
     },
     {
