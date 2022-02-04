@@ -9564,13 +9564,14 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "get update",
-        "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif not msg['payload']:\n    msg['status'] == '--READY--'\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = 'checking updates'\n\nreturn msg, msg",
+        "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif not msg['payload']:\n    msg['status'] == '--READY--'\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = 'checking updates'\n\nreturn msg, msg",
         "outputs": 2,
         "x": 310,
         "y": 240,
         "wires": [
             [
-                "1bbe2d769f42c313"
+                "1bbe2d769f42c313",
+                "c027f942f038e822"
             ],
             [
                 "fefe45404bdb19c4"
@@ -9599,14 +9600,15 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "check files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\nif msg['status'] != '--READY--':\n    return msg\n\n# check and load destination files\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n#    r = requests.get(url + msg[scope][i]['src'])\n#    if r.status_code != 200:\n#        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n#        return msg\n#    with open(temp, 'wb+') as file:\n#        file.write(r.content)\n    #shutil.move(temp, msg[scope][i]['dst'])\n\n    #todo move to final directory\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter # new file counter\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter # new file counter\n\nreturn msg\n",
         "outputs": 1,
         "x": 470,
         "y": 260,
         "wires": [
             [
                 "1bbe2d769f42c313",
-                "ae92a328af306ebb"
+                "ae92a328af306ebb",
+                "850a37be2e644db9"
             ]
         ]
     },
@@ -9876,7 +9878,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "download files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\n# check and load destination files\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.move(temp, msg[scope][i]['dst'])\n\n    #todo move to final directory\n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.move(temp, msg[scope][i]['dst'])\n\n    #todo move to final directory\n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
         "outputs": 1,
         "x": 800,
         "y": 260,
@@ -9947,8 +9949,42 @@
         "links": [
             "9bb0adbd716ce347"
         ],
-        "x": 935,
-        "y": 260,
+        "x": 1235,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "850a37be2e644db9",
+        "type": "debug",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "c027f942f038e822",
+        "type": "debug",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 300,
         "wires": []
     }
 ]
