@@ -9567,7 +9567,7 @@
         "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif 'status' in msg:\n    return msg\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = '--READY--'\n\nreturn msg, msg",
         "outputs": 2,
         "x": 310,
-        "y": 220,
+        "y": 240,
         "wires": [
             [
                 "1bbe2d769f42c313"
@@ -9876,14 +9876,14 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "download files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\n# check and load destination files\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    #shutil.move(temp, msg[scope][i]['dst'])\n\n    #todo move to final directory\n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\n# check and load destination files\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.move(temp, msg[scope][i]['dst'])\n\n    #todo move to final directory\n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
         "outputs": 1,
         "x": 800,
         "y": 260,
         "wires": [
             [
                 "42061b28cff81f99",
-                "37e6ed3d9defeabd"
+                "fe3a855fee9e28c6"
             ]
         ]
     },
@@ -9939,29 +9939,6 @@
         ]
     },
     {
-        "id": "37e6ed3d9defeabd",
-        "type": "delay",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "2",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 960,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "fe3a855fee9e28c6",
         "type": "link out",
         "z": "c8e7ecb5849edb9a",
@@ -9970,7 +9947,7 @@
         "links": [
             "9bb0adbd716ce347"
         ],
-        "x": 1055,
+        "x": 915,
         "y": 260,
         "wires": []
     }
