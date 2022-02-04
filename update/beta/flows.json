@@ -9564,7 +9564,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "get update",
-        "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif 'status' in msg:\n    return msg\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = '--READY--'\n\nreturn msg, msg",
+        "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif not msg['payload']:\n    msg['status'] == '--READY--'\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = 'checking updates'\n\nreturn msg, msg",
         "outputs": 2,
         "x": 310,
         "y": 240,
@@ -9924,7 +9924,7 @@
         "type": "function",
         "z": "c8e7ecb5849edb9a",
         "name": "loadB",
-        "func": "var file = 'update_auto'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\n\nmsg.status = '--READY--'\nif (data == true){\n    msg.status = 'checking updates'\n}\nreturn msg",
+        "func": "var file = 'update_auto'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\n\nmsg.payload = data\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -9947,7 +9947,7 @@
         "links": [
             "9bb0adbd716ce347"
         ],
-        "x": 915,
+        "x": 935,
         "y": 260,
         "wires": []
     }
