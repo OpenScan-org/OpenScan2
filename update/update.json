@@ -67,7 +67,7 @@
         "5": {
             "src": "beta/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 290816
+            "filesize": 290465
         },
         "6": {
             "src": "beta/settings.js",
