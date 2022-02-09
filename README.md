@@ -64,7 +64,7 @@ Save and reboot now (or later ;)
 
 Create directories
 
-``` mkdir /home/pi/OpenScan/scans /home/pi/OpenScan/files /home/pi/OpenScan/settings /home/pi/OpenScan/tmp /home/pi/OpenScan/updates ```
+``` mkdir /home/pi/OpenScan/ /home/pi/OpenScan/scans /home/pi/OpenScan/files /home/pi/OpenScan/settings /home/pi/OpenScan/tmp /home/pi/OpenScan/updates ```
 
 ### WLAN settings
 
@@ -186,7 +186,7 @@ httpStatic: '/home/pi/OpenScan/',
 ui: { path: "" },
 
 functionGlobalContext: { // enables and pre-populates the context.global variable
-    os:require(‘os’),
+    os:require('os'),
     path:require('path'),
     fs:require('fs')
     }
@@ -224,4 +224,52 @@ Download all necessary files
 
 ```./install_pivariety_pkgs.sh -p imx519_kernel_driver```
 
+### Install OpenScan Firmware
 
+Custom node red flows (browser interface):
+
+```sudo wget https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/main/flows.json -O /home/pi/OpenScan/settings/.node-red/flows.json```
+
+Some Python functions used by the firmware:
+
+```sudo wget https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/main/OpenScan.py -O /usr/lib/python3/dist-packages/OpenScan.py```
+
+A local server providing several functions (flask):
+
+```sudo wget https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/main/fla.py -O /home/pi/OpenScan/files/fla.py```
+
+Custom config.txt file, which is needed to use different camera moduls (especially IMX519):
+
+```sudo wget https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/main/config.txt -O /boot/config.txt```
+
+Arducam's camera focus script for the IMX519 sensor:
+
+```sudo wget https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/main/Arducam.py -O /usr/lib/python3/dist-packages/Arducam.py```
+
+And the OpenScan Logo to have a nice background:
+
+```sudo wget https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/files/logo.jpg -O /home/pi/OpenScan/files/logo.jpg```
+
+### Enable Flask local server:
+
+create and open the service file:
+```sudo nano /lib/systemd/system/flask.service```
+
+with the following content:
+```
+[Unit]
+Description=photo service
+After=multi-user.target
+[Service]
+ExecStart=/usr/bin/python3 /home/pi/OpenScan/files/fla.py
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+[Install]
+WantedBy=multi-user.target
+```
+
+Enable and start the service:
+
+```sudo systemctl daemon-reload && sudo systemctl enable flask.service && sudo systemctl start flask.service```
