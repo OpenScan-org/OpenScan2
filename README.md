@@ -4,7 +4,7 @@ The Raspberry Pi + OpenScan Pi Shield can be used to control two independent ste
 After sticking to my [original code](https://github.com/OpenScanEu/OpenScan) for way to long, I have spent a lot of time rewriting and re-organizing the whole code/structure/documentation and started this new repository. This should make it much easier to collaborate, implement future updates and continue exploring the wonderful world of 3d scanning :)
 
 
-# IMPORTANT: THIS GUIDE IS NOT READY YET AND STILL NEEDS SOME TESTING, SO PLEASE USE THE PROVIDED RASPBIAN IMAGE INSTEAD.
+# IMPORTANT: The following setup works for the adjustable focus camera Arducam IMX519, supported DSLR cameras and external cameras (via Gpio triggering). IT SOMEHOW DOES NOT WORK WITH THE STANDARD PI CAMERAS V1.3 V2.1 and HQ!
 
 ## Main Features:
 * use your Raspberry Pi to take very consistent image sets for photogrammetry (other use cases should be possible to ;)
