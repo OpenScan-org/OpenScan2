@@ -265,6 +265,7 @@ ExecStart=/usr/bin/python3 /home/pi/OpenScan/files/fla.py
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
+RestartSec=5
 User=root
 [Install]
 WantedBy=multi-user.target
