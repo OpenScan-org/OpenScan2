@@ -148,7 +148,14 @@ Open node-red daemon file:
 
 ```sudo nano /lib/systemd/system/nodered.service```
 
-and change the following lines to run nodered as root:
+add to the section [Unit]
+
+```
+Wants=network.target flask.service
+After=flask.service
+```
+
+and change the following lines under [Service] to run nodered as root:
 
 ```
 User = root
@@ -189,7 +196,7 @@ functionGlobalContext: { // enables and pre-populates the context.global variabl
     os:require('os'),
     path:require('path'),
     fs:require('fs')
-    }
+    },
 ```
 
 Enable nodered daemon and restart the device:
@@ -224,7 +231,7 @@ Download all necessary files
 
 ```./install_pivariety_pkgs.sh -p imx519_kernel_driver```
 
-### Install OpenScan Firmware
+### Download OpenScan Firmware
 
 Custom node red flows (browser interface):
 
@@ -261,6 +268,7 @@ with the following content:
 Description=photo service
 After=multi-user.target
 [Service]
+#ExecStartPre=/bin/sleep 5
 ExecStart=/usr/bin/python3 /home/pi/OpenScan/files/fla.py
 StandardOutput=inherit
 StandardError=inherit
@@ -274,3 +282,9 @@ WantedBy=multi-user.target
 Enable and start the service:
 
 ```sudo systemctl daemon-reload && sudo systemctl enable flask.service && sudo systemctl start flask.service```
+
+### others
+
+add to /boot/config.txt to disable display which causes some issues --> WHY???
+
+```hdmi_blanking=2```
