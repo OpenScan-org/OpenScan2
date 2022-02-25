@@ -55,12 +55,12 @@
         "4": {
             "src": "beta/config.txt",
             "dst": "/boot/config.txt",
-            "filesize": 2178
+            "filesize": 2179
         },
         "5": {
             "src": "beta/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 294264
+            "filesize": 294266
         },
         "6": {
             "src": "beta/settings.js",
