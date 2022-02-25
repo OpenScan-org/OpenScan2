@@ -9744,7 +9744,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "download files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.copy(temp, msg[scope][i]['dst'])\n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.copy(temp, msg[scope][i]['dst'])\n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
         "outputs": 1,
         "x": 800,
         "y": 260,
@@ -10092,8 +10092,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 1120,
-        "y": 100,
+        "x": 1040,
+        "y": 380,
         "wires": [
             [
                 "4c7fa5b5b27b83a5"
