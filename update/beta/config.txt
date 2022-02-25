@@ -4,6 +4,7 @@
 
 # uncomment if you get no picture on HDMI for a default "safe" mode
 #hdmi_safe=1
+hdmi_blanking=2
 
 # uncomment the following to adjust overscan. Use positive numbers if console
 # goes off screen, and negative if there is too much border
@@ -53,13 +54,13 @@
 dtparam=audio=on
 
 # Automatically load overlays for detected cameras
-camera_auto_detect=1
+camera_auto_detect=0
 
 # Automatically load overlays for detected DSI displays
 display_auto_detect=1
 
 # Enable DRM VC4 V3D driver
-dtoverlay=vc4-kms-v3d
+#dtoverlay=vc4-kms-v3d
 max_framebuffers=2
 
 # Disable compensation for displays with overscan
@@ -71,22 +72,13 @@ disable_overscan=1
 # (e.g. for USB device mode) or if USB support is not required.
 otg_mode=1
 
-[all]
-
 [pi4]
 # Run as fast as firmware / board allows
 arm_boost=1
 
 [all]
+
+camera_auto_detect=0
 gpu_mem=256
 dtoverlay=vc4-fkms-v3d
-dtoverlay=imx519
-#dtoverlay=imx219
-#dtoverlay=ov5647
-#dtoverlay=imx477
-#dtoverlay=imx290,clock-frequency=74250000
-#dtoverlay=imx290,clock-frequency=74250000
-#dtoverlay=imx378
-#dtoverlay=ov9281
-###dtoverlay=external
-###dtoverlay=gphoto
+dtoverlay=imx519,media-controller=0

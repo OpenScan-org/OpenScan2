@@ -330,7 +330,7 @@
         "tab": "d25e08b4.5b27e8",
         "order": 2,
         "disp": true,
-        "width": "16",
+        "width": "8",
         "collapse": false,
         "className": ""
     },
@@ -753,7 +753,8 @@
             "d7c1fb4c028b21a5",
             "e5f38b4a07a5e278",
             "f0b355967b33dfee",
-            "d0104e0163745993"
+            "d0104e0163745993",
+            "5e7d5e4335d37794"
         ],
         "x": 615,
         "y": 720,
@@ -865,19 +866,6 @@
             [
                 "544d20f02215011a"
             ]
-        ]
-    },
-    {
-        "id": "99d43b66fab43915",
-        "type": "python3-function",
-        "z": "829d803b6033a693",
-        "name": "chk",
-        "func": "with open('/etc/hostname', 'r') as file:\n    old_hostname = file.read().replace('\\n','')\nif old_hostname == 'raspberrypi':\n    msg['hostname'] = 'openscan'\n    msg['payload'] = 'OK'\nreturn msg",
-        "outputs": 1,
-        "x": 1050,
-        "y": 400,
-        "wires": [
-            []
         ]
     },
     {
@@ -1303,7 +1291,7 @@
         "topic": "",
         "topicType": "str",
         "min": "1",
-        "max": "300",
+        "max": "700",
         "step": "1",
         "className": "",
         "x": 310,
@@ -1619,7 +1607,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "LED",
-        "func": "from OpenScan import ringlight\nval = msg['payload']\n\nif val == 0:\n    ringlight(1,False)\n    ringlight(2,False)\nelif val == 1:\n    ringlight(1,False)\n    ringlight(2,True)\nelif val == 2:\n    ringlight(1,True)\n    ringlight(2,True)\n",
+        "func": "from OpenScan import ringlight\nval = msg['payload']\n\nif val == 0:\n    ringlight(1,False)\n    ringlight(2,False)\nelif val == 1:\n    ringlight(1,False)\n    ringlight(2,True)\nelif val == 2:\n    ringlight(1,True)\n    ringlight(2,False)\n",
         "outputs": 1,
         "x": 510,
         "y": 700,
@@ -1672,8 +1660,7 @@
             [
                 "431f917c2541ae48",
                 "33d94a04b96a2de0",
-                "6d15f717d5a11002",
-                "e9b13dfd9f8d3711"
+                "6d15f717d5a11002"
             ]
         ]
     },
@@ -1697,7 +1684,7 @@
         "payloadType": "global",
         "topic": "",
         "topicType": "str",
-        "x": 450,
+        "x": 490,
         "y": 920,
         "wires": [
             [
@@ -1711,14 +1698,13 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Routine",
-        "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\nsleep(2)\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nzip = ZipFile(zippath, \"w\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if abs(tt_angle) > 180:\n        tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2))\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            zip.write(temppath, projectname + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n        msg['cropx'] = load_int('cam_cropx')\n        msg['cropy'] = load_int('cam_cropy')\n        msg['rotation'] = load_int('cam_rotation')\n        msg['filepath_in'] = 'tmp/tmp.jpg'\n        msg['filepath_out'] = 'tmp/tmp.jpg'\n        msg['filepath'] = 'tmp/tmp.jpg'\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n\n    position_last = position\n\nzip.close()\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['enable'] = False\nreturn msg\n\n",
+        "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\nsleep(2)\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nzip = ZipFile(zippath, \"w\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if abs(tt_angle) > 180:\n        tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2))\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            camera('/crop',msg)\n            zip.write(temppath, projectname + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n\n    position_last = position\n\nzip.close()\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['enabled'] = False\nreturn msg\n\n",
         "outputs": 1,
         "x": 300,
         "y": 880,
         "wires": [
             [
                 "579f2211199fd6ab",
-                "96bdb9417e38810f",
                 "1daf9e3a5bd5ab48"
             ]
         ]
@@ -1743,11 +1729,10 @@
         "name": "",
         "mode": "link",
         "links": [
-            "2f4c0f98.dee2",
-            "b33d604c.5f1a6",
-            "8367cfa0bf5bc5df"
+            "8367cfa0bf5bc5df",
+            "b33d604c.5f1a6"
         ],
-        "x": 255,
+        "x": 395,
         "y": 840,
         "wires": []
     },
@@ -1854,7 +1839,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 290,
+        "x": 330,
         "y": 960,
         "wires": [
             [
@@ -1891,10 +1876,11 @@
         "name": "",
         "mode": "link",
         "links": [
-            "b33d604c.5f1a6",
-            "8367cfa0bf5bc5df"
+            "2f4c0f98.dee2",
+            "8367cfa0bf5bc5df",
+            "b33d604c.5f1a6"
         ],
-        "x": 535,
+        "x": 575,
         "y": 880,
         "wires": []
     },
@@ -2078,27 +2064,6 @@
         ]
     },
     {
-        "id": "96bdb9417e38810f",
-        "type": "link out",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "links": [
-            "970cd91c.64af38",
-            "56bfaded.24c964",
-            "d43a7558.561ff8",
-            "bfd6a454.75ff08",
-            "9fe48cec.1f81f",
-            "8ee1b3bb.7b0b3",
-            "2f4c0f98.dee2",
-            "52d7b84f.51dd18",
-            "d5246b3cc796afc6",
-            "8367cfa0bf5bc5df"
-        ],
-        "x": 415,
-        "y": 840,
-        "wires": []
-    },
-    {
         "id": "991b587d406d0d91",
         "type": "ui_template",
         "z": "1613373abaf77a2c",
@@ -2107,7 +2072,7 @@
         "order": 1,
         "width": 12,
         "height": 12,
-        "format": "<div align=\"center\" >\n<img ng-src= {{msg.payload}} style=\"width: auto; height: auto;max-width: 606px;max-height: 606px\"</img>\n<a src=\"/tmp/preview.jpg\" </a>\n</div>\n",
+        "format": "<div align=\"center\" >\n<img ng-src= {{msg.payload}} style=\"width: auto; height: auto;max-width: 606px;max-height: 606px\"/>\n\n</div>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
@@ -2157,8 +2122,8 @@
         "id": "33d94a04b96a2de0",
         "type": "function",
         "z": "1613373abaf77a2c",
-        "name": "msg",
-        "func": "global.set('flag', false)\n\nvar file = 'status_internal_cam'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\n\n\nif (data === 'no camera found' || data.substring(0,5) === 'Featu'){\n    return\n}\n\n\n\nmsg.enabled = true\nreturn msg\n\nreturn msg\n",
+        "name": "enable",
+        "func": "global.set('flag', false)\n\nvar file = 'status_internal_cam'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\n\n\nif (data === 'no camera found' || data.substring(0,5) === 'Featu'){\n    return\n}\n\nmsg.enabled = true\nreturn msg\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2183,7 +2148,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
+        "x": 490,
         "y": 960,
         "wires": [
             [
@@ -2210,7 +2175,7 @@
         "order": 2,
         "width": 10,
         "height": 12,
-        "format": "<div align=\"center\" >\n<img ng-src= {{msg.payload}} style=\"width: auto; height: auto;max-width: 502px;max-height: 606px\"</img>\n<a src=\"/tmp/preview.jpg\" </a>\n</div>\n",
+        "format": "<div align=\"center\" >\n<img ng-src= {{msg.payload}} style=\"width: auto; height: auto;max-width: 502px;max-height: 606px\"/>\n</div>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
@@ -2227,7 +2192,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "focus",
-        "func": "from Arducam import Focuser\nif msg['focuser'] == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    focuser.write(msg['focus'])\n    return msg",
+        "func": "from OpenScan import load_str\n\nif load_str('camera') != 'imx519':\n    return\n\nfrom Arducam import Focuser\n\n\nif msg['focuser'] == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    focuser.write(msg['focus'])\n    return msg",
         "outputs": 1,
         "x": 1110,
         "y": 1460,
@@ -2650,7 +2615,8 @@
         "mode": "link",
         "links": [
             "a1d29e56599da0bd",
-            "8367cfa0bf5bc5df"
+            "8367cfa0bf5bc5df",
+            "149e2e46b9623a2d"
         ],
         "x": 835,
         "y": 1560,
@@ -2920,35 +2886,6 @@
         ]
     },
     {
-        "id": "cfb214f9d2652237",
-        "type": "inject",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 80,
-        "y": 1260,
-        "wires": [
-            [
-                "95439678bb2df2a2"
-            ]
-        ]
-    },
-    {
         "id": "4cfada2de1c5bb74",
         "type": "function",
         "z": "1613373abaf77a2c",
@@ -2974,7 +2911,8 @@
         "name": "",
         "mode": "link",
         "links": [
-            "8367cfa0bf5bc5df"
+            "8367cfa0bf5bc5df",
+            "149e2e46b9623a2d"
         ],
         "x": 675,
         "y": 1660,
@@ -3170,23 +3108,6 @@
         ]
     },
     {
-        "id": "67a69127acd44b46",
-        "type": "debug",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 620,
-        "y": 760,
-        "wires": []
-    },
-    {
         "id": "1daf9e3a5bd5ab48",
         "type": "function",
         "z": "1613373abaf77a2c",
@@ -3197,7 +3118,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
+        "x": 490,
         "y": 880,
         "wires": [
             [
@@ -3209,19 +3130,36 @@
         "id": "6d15f717d5a11002",
         "type": "function",
         "z": "1613373abaf77a2c",
-        "name": "msg",
+        "name": "disable",
         "func": "msg.enabled = false\nreturn msg\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 150,
-        "y": 920,
+        "x": 300,
+        "y": 840,
         "wires": [
             [
-                "7dd287f40385922f"
+                "e9b13dfd9f8d3711"
             ]
+        ]
+    },
+    {
+        "id": "9613e5549d7395cc",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "msg",
+        "func": "msg.enabled = true\nreturn msg\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 840,
+        "wires": [
+            []
         ]
     },
     {
@@ -3229,10 +3167,10 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "get dirs",
-        "func": "from glob import glob\nimport os\nfrom zipfile import ZipFile\n\ndef set_stats(stat):\n    try:\n        with open(directory+set[:-4]+\"/\"+stat,\"r\") as file:\n            stat=file.read()\n    except:\n        stat=\"\"\n    return stat\n\ntable=[]\ndirectory=\"/home/pi/OpenScan/scans/\"\n\nfor d in glob(directory+\"*.zip\"):\n    set=os.path.basename(d)\n\n    with ZipFile(d, 'r') as f:\n        photos = len(f.namelist())\n\n    size = float(int(float(os.path.getsize(d))/100000))/10\n    size_full= os.path.getsize(d)\n    status=set_stats(\"status\")\n    expiration=set_stats(\"expiration\")\n    download=set_stats(\"download\")\n\n    if len(download)!=0:\n        table.append({\n            \"Set\":set,\n            \"Photos\":photos,\n            \"Size\":str(size)+\"MB\",\n            \"Date\":set[:16],\n            \"Name\":(set[20:-4]),\n            \"Status\":status,\n            \"Download\":\"<a href=\"+download+\">RESULT</a>\",\n            \"Size_full\":size_full,\n\n            })\n    else:\n        table.append({\n            \"Set\":set,\n            \"Photos\":photos,\n            \"Size\":str(size)+\"MB\",\n            \"Date\":set[:16],\n            \"Name\":(set[20:-4]),\n            \"Status\":status,\n            \"Size_full\":size_full,\n\n            })\n\n\nmsg['payload']=table\nmsg['topic']=\"\"\nreturn msg",
+        "func": "from glob import glob\nimport os\nfrom zipfile import ZipFile\n\ndef set_stats(stat):\n    try:\n        with open(directory+set[:-4]+\"/\"+stat,\"r\") as file:\n            stat=file.read()\n    except:\n        stat=\"\"\n    return stat\n\ntable=[]\ndirectory=\"/home/pi/OpenScan/scans/\"\n\nfor d in glob(directory+\"*.zip\"):\n    set=os.path.basename(d)\n\n    try:\n        with ZipFile(d, 'r') as f:\n            photos = len(f.namelist())\n\n        size = float(int(float(os.path.getsize(d))/100000))/10\n        size_full= os.path.getsize(d)\n        status=set_stats(\"status\")\n        expiration=set_stats(\"expiration\")\n        download=set_stats(\"download\")\n    \n        if len(download)!=0:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Download\":\"<a href=\"+download+\">RESULT</a>\",\n                \"Size_full\":size_full,\n    \n                })\n        else:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Size_full\":size_full,\n    \n                })\n    except:\n        pass\n\nmsg['payload']=table\nmsg['topic']=\"\"\nreturn msg",
         "outputs": 1,
         "x": 480,
-        "y": 160,
+        "y": 180,
         "wires": [
             [
                 "b9a3a0f9.bcbea"
@@ -3246,13 +3184,12 @@
         "name": "filelist",
         "links": [
             "960912e90ba5b5bc",
-            "96bdb9417e38810f",
             "a4f09e25.02569",
-            "e9b13dfd9f8d3711",
-            "ed35109311335099"
+            "ed35109311335099",
+            "fb13752beddee9f2"
         ],
         "x": 355,
-        "y": 120,
+        "y": 140,
         "wires": [
             [
                 "ea54fcc2.cfcc2"
@@ -3498,9 +3435,9 @@
         "links": [
             "4082b136.dae18",
             "8689e938.dd9e38",
+            "e9b13dfd9f8d3711",
             "f20f2dbc.0f123",
-            "fb13752beddee9f2",
-            "e9b13dfd9f8d3711"
+            "fb13752beddee9f2"
         ],
         "x": 35,
         "y": 340,
@@ -3558,7 +3495,8 @@
         "mode": "link",
         "links": [
             "8367cfa0bf5bc5df",
-            "b33d604c.5f1a6"
+            "b33d604c.5f1a6",
+            "149e2e46b9623a2d"
         ],
         "x": 515,
         "y": 460,
@@ -3572,9 +3510,10 @@
         "mode": "link",
         "links": [
             "8367cfa0bf5bc5df",
-            "b33d604c.5f1a6"
+            "b33d604c.5f1a6",
+            "149e2e46b9623a2d"
         ],
-        "x": 895,
+        "x": 875,
         "y": 420,
         "wires": []
     },
@@ -3784,7 +3723,7 @@
         "topic": "",
         "name": "Terms",
         "x": 470,
-        "y": 200,
+        "y": 220,
         "wires": [
             []
         ]
@@ -3895,9 +3834,7 @@
         "x": 900,
         "y": 260,
         "wires": [
-            [
-                "491b3a5f0d22f970"
-            ]
+            []
         ]
     },
     {
@@ -3915,8 +3852,7 @@
         "y": 260,
         "wires": [
             [
-                "e8e488a6dd5d0b33",
-                "07f912fcf1bd45b1"
+                "e8e488a6dd5d0b33"
             ]
         ]
     },
@@ -4180,41 +4116,7 @@
             "397ab7f44b893c89"
         ],
         "x": 435,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "07f912fcf1bd45b1",
-        "type": "debug",
-        "z": "4981d84ef1a366d1",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 890,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "491b3a5f0d22f970",
-        "type": "debug",
-        "z": "4981d84ef1a366d1",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1090,
-        "y": 240,
+        "y": 140,
         "wires": []
     },
     {
@@ -4244,7 +4146,7 @@
         "animate": false,
         "className": "",
         "x": 390,
-        "y": 440,
+        "y": 340,
         "wires": [
             [
                 "dc354c54078ca607"
@@ -4278,7 +4180,7 @@
         "animate": false,
         "className": "",
         "x": 400,
-        "y": 480,
+        "y": 380,
         "wires": [
             [
                 "b0aa8ffae5a3578a"
@@ -4293,7 +4195,7 @@
         "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('ssh'):\n    save('ssh', state)\n\nif state == True:\n    os.system('sudo /etc/init.d/ssh start')\nelse:\n    os.system('sudo /etc/init.d/ssh stop')",
         "outputs": 1,
         "x": 530,
-        "y": 440,
+        "y": 340,
         "wires": [
             []
         ]
@@ -4319,7 +4221,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 120,
-        "y": 380,
+        "y": 300,
         "wires": [
             [
                 "f99ec8781a33ec7d"
@@ -4368,7 +4270,7 @@
         "topic": "",
         "name": "",
         "x": 410,
-        "y": 380,
+        "y": 300,
         "wires": [
             [
                 "5f849178998d9082"
@@ -4435,7 +4337,7 @@
         "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('smb'):\n    save('smb', state)\nif state == True:\n    os.system('sudo /etc/init.d/smbd start')\nelse:\n    os.system('sudo /etc/init.d/smbd stop')\n\n\n",
         "outputs": 1,
         "x": 530,
-        "y": 480,
+        "y": 380,
         "wires": [
             []
         ]
@@ -4550,8 +4452,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 810,
-        "y": 560,
+        "x": 670,
+        "y": 600,
         "wires": []
     },
     {
@@ -4567,8 +4469,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 680,
-        "y": 600,
+        "x": 840,
+        "y": 420,
         "wires": []
     },
     {
@@ -4685,7 +4587,7 @@
         "topicType": "msg",
         "className": "",
         "x": 400,
-        "y": 560,
+        "y": 420,
         "wires": [
             [
                 "4058a31e942e8f95",
@@ -4713,8 +4615,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 250,
-        "y": 240,
+        "x": 930,
+        "y": 120,
         "wires": [
             []
         ]
@@ -4739,8 +4641,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 260,
-        "y": 280,
+        "x": 940,
+        "y": 160,
         "wires": [
             []
         ]
@@ -4752,7 +4654,7 @@
         "name": "General Settings",
         "info": "",
         "x": 120,
-        "y": 340,
+        "y": 260,
         "wires": []
     },
     {
@@ -4783,13 +4685,13 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "camera",
-        "func": "from OpenScan import load_str, save\nfrom json import load\nstate = msg['payload']\nstate_old = load_str('camera')\n\ndef dtoverlay_create(state):\n    dt = ''\n    if state in ('imx519', 'imx219', 'ov5647', 'imx477', 'imx378', 'ov9281', 'imx290a', 'imx290b'):\n        if state == 'imx290a':\n            dt = 'dtoverlay=imx290,clock-frequency=37125000'\n        elif state == 'imx290b':\n            dt = 'dtoverlay=imx290,clock-frequency=74250000'\n        else:\n            dt = 'dtoverlay='+state\n    return dt\n    \n\ndef dtoverlay_set(dt_new, dt_old):\n    if dt_new == '' or dt_old == '':\n        return\n    \n    with open('/boot/config.txt', 'r') as file:\n        temp = file.read()\n        temp = temp.replace(dt_old, '#' + dt_old)\n        temp = temp.replace('#' + dt_new, dt_new)\n    with open('/boot/config.txt', 'w') as file:\n        file.write(temp)\n    return\n\nif state != state_old:\n    dt_old = dtoverlay_create(state_old)    \n    dt_new = dtoverlay_create(state)\n    dtoverlay_set(dt_new,dt_old)\n    save('camera', state)\n    msg['topic'] = 'Restart required'\n    msg['payload'] = 'To activate the changes, please restart the device.'\n    return msg",
+        "func": "from OpenScan import load_str, save\nfrom json import load\nstate = msg['payload']\nstate_old = load_str('camera')\n\nif state_old != state:\n    save('camera',state)\n    return msg",
         "outputs": 1,
         "x": 540,
-        "y": 560,
+        "y": 500,
         "wires": [
             [
-                "4cf2c9953f7ee511"
+                "34b685aff2080d31"
             ]
         ]
     },
@@ -5262,8 +5164,8 @@
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 250,
-        "y": 320,
+        "x": 930,
+        "y": 200,
         "wires": [
             []
         ]
@@ -5628,13 +5530,14 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "msg",
-        "func": "import requests\nimport os\nfrom OpenScan import OpenScanCloud\n\nif msg['payload'] == 'Cancel':\n    return\n\nmsg['lastname'] = msg['payload']\n\nmsg2 = {}\n\nfor i in ['forename','lastname','mail']:\n    msg2[i] = msg[i]\n\nstatus = OpenScanCloud('requestToken',msg2)\n\nmsg['topic'] = 'OpenScanCloud Registration - Success'\nmsg['payload'] = 'registration done, you will get an email with your token within the next one or two days :)'\n\nif status != 200:\n    msg['topic'] = 'OpenScanCloud Registration - Failed'\n    msg['payload'] = 'Registration failed, please try again.'\n\nreturn msg",
+        "func": "import requests\nimport os\nfrom OpenScan import OpenScanCloud\n\nif msg['payload'] == 'Cancel':\n    return\n\nmsg['lastname'] = msg['payload']\n\nmsg2 = {}\n\nfor i in ['forename','lastname','mail']:\n    msg2[i] = msg[i]\n\nr = OpenScanCloud('requestToken',msg2)\n\nstatus = r.status_code\n\nmsg['topic'] = 'OpenScanCloud Registration - Success'\nmsg['payload'] = 'registration done, you will get an email with your token within the next one or two days :)'\n\nif status != 200:\n    msg['topic'] = 'OpenScanCloud Registration - Failed'\n    msg['payload'] = 'Registration failed, please try again.'\n\nmsg['status'] = status\n\nreturn msg",
         "outputs": 1,
         "x": 950,
         "y": 1520,
         "wires": [
             [
-                "bbad1ab5f8f63fb7"
+                "bbad1ab5f8f63fb7",
+                "b53c3038b7cb62b0"
             ]
         ]
     },
@@ -8474,7 +8377,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 440,
+        "y": 340,
         "wires": [
             [
                 "40dee936a9abac0d"
@@ -8493,7 +8396,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 480,
+        "y": 380,
         "wires": [
             [
                 "4fd9bb53fdb51a25"
@@ -8531,7 +8434,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 560,
+        "y": 420,
         "wires": [
             [
                 "a2c1dba3e67be015"
@@ -8569,7 +8472,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 380,
+        "y": 300,
         "wires": [
             [
                 "7dc39bd847d16ded"
@@ -8588,7 +8491,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 380,
+        "y": 300,
         "wires": [
             []
         ]
@@ -9160,35 +9063,14 @@
         ]
     },
     {
-        "id": "4cf2c9953f7ee511",
-        "type": "ui_toast",
-        "z": "017bd4e4a428bee5",
-        "position": "dialog",
-        "displayTime": "3",
-        "highlight": "",
-        "sendall": true,
-        "outputs": 1,
-        "ok": "OK",
-        "cancel": "",
-        "raw": true,
-        "className": "",
-        "topic": "",
-        "name": "confirm",
-        "x": 680,
-        "y": 560,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "6d68cccec646e0a0",
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "enable routine",
         "func": "msg_enable = {}\nmsg_disable = {}\n\nmsg_enable['enabled'] = True\nmsg_disable['enabled'] = False\n\nif msg['payload'] == 'external':\n    return msg_enable, msg_disable\nif msg['payload'] == 'gphoto':\n    return msg_enable, msg_enable, msg_disable\n\nreturn msg_enable",
         "outputs": 3,
-        "x": 700,
-        "y": 500,
+        "x": 560,
+        "y": 440,
         "wires": [
             [
                 "a0ba1aa77c5c8b7c"
@@ -9213,8 +9095,8 @@
             "65cef204b16f8741",
             "917a194be245384a"
         ],
-        "x": 835,
-        "y": 440,
+        "x": 675,
+        "y": 420,
         "wires": []
     },
     {
@@ -9229,8 +9111,8 @@
             "65cef204b16f8741",
             "917a194be245384a"
         ],
-        "x": 835,
-        "y": 480,
+        "x": 715,
+        "y": 440,
         "wires": []
     },
     {
@@ -9242,8 +9124,8 @@
         "links": [
             "65cef204b16f8741"
         ],
-        "x": 835,
-        "y": 520,
+        "x": 675,
+        "y": 460,
         "wires": []
     },
     {
@@ -9255,7 +9137,7 @@
             "960912e90ba5b5bc"
         ],
         "x": 135,
-        "y": 440,
+        "y": 340,
         "wires": [
             [
                 "78351089ee9ebeaf",
@@ -9417,7 +9299,7 @@
         "topic": "Restore default settings?",
         "topicType": "str",
         "x": 1050,
-        "y": 380,
+        "y": 300,
         "wires": [
             [
                 "e4be21c38b57f560"
@@ -9440,7 +9322,7 @@
         "topic": "",
         "name": "",
         "x": 1210,
-        "y": 380,
+        "y": 300,
         "wires": [
             [
                 "9f30de04ced693d3"
@@ -9459,7 +9341,7 @@
         "finalize": "",
         "libs": [],
         "x": 1350,
-        "y": 380,
+        "y": 300,
         "wires": [
             [
                 "80bccc884b0be297"
@@ -9476,13 +9358,49 @@
             "38783aea9cc317a6"
         ],
         "x": 1435,
-        "y": 380,
+        "y": 300,
         "wires": []
     },
     {
-        "id": "949e5d63e6110bde",
+        "id": "34b685aff2080d31",
+        "type": "python3-function",
+        "z": "017bd4e4a428bee5",
+        "name": "boot-cam",
+        "func": "import subprocess\nfrom OpenScan import load_str\n\ncamera_modules = ('imx519', 'imx219', 'ov5647', 'imx477', 'imx378', 'ov9281', 'imx290a', 'imx290b')\n\npt1 = \"[all]\\n\\ncamera_auto_detect=0\\ngpu_mem=256\\ndtoverlay=vc4-fkms-v3d\\ndtoverlay=\"\npt3 = \",media-controller=0\\n\"\n\nwith open('/boot/config.txt', 'r') as file:\n    config = file.read()\n\ncamera = load_str('camera')\nif camera not in camera_modules:\n    msg['payload'] = 'no changes'\n    return\n\nif camera == 'imx290a':\n    camera = 'imx290,clock-frequency=37125000'\nelif camera == 'imx290b':\n    camera = 'imx290,clock-frequency=74250000'\n\nconfig_keep = config.split('[all]\\n')[0]\nconfig_new = config_keep + pt1 + camera + pt3\n\nwith open('/boot/config.txt', 'w') as file:\n    file.write(config_new)\n\nmsg['topic'] = 'Camera configuration changed'\nmsg['payload'] = 'Please restart the device'\n\nreturn msg",
+        "outputs": 1,
+        "x": 680,
+        "y": 500,
+        "wires": [
+            [
+                "68cba0c530c6def6"
+            ]
+        ]
+    },
+    {
+        "id": "68cba0c530c6def6",
+        "type": "ui_toast",
+        "z": "017bd4e4a428bee5",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 830,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b53c3038b7cb62b0",
         "type": "debug",
-        "z": "c8e7ecb5849edb9a",
+        "z": "017bd4e4a428bee5",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -9492,8 +9410,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1470,
-        "y": 60,
+        "x": 1130,
+        "y": 1440,
         "wires": []
     },
     {
@@ -9506,100 +9424,8 @@
         "x": 1290,
         "y": 60,
         "wires": [
-            [
-                "949e5d63e6110bde"
-            ]
+            []
         ]
-    },
-    {
-        "id": "e8afd7afcd8ab92f",
-        "type": "inject",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1100,
-        "y": 60,
-        "wires": [
-            [
-                "ceded879488bc933"
-            ]
-        ]
-    },
-    {
-        "id": "da7232530db08085",
-        "type": "inject",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 1120,
-        "y": 100,
-        "wires": [
-            [
-                "44983c101924474b"
-            ]
-        ]
-    },
-    {
-        "id": "44983c101924474b",
-        "type": "python3-function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "load update",
-        "func": "import json\nimport requests\nimport shutil\n\nscope = 'main'\nscope = 'beta'\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\n# check update.json\nif os.path.isfile(updatepath_old):\n    with open(updatepath_old, 'r') as file:\n        msg2 = json.load(file)\n    if msg == msg2:\n        msg['status'] = 'already up to date'\n        return msg\n\n# check and load destination files\ncounter = 0\ncounter2 = 0\nmsg['update'] = ''\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            counter2 += 1\n            continue\n        \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    #shutil.move(temp, msg[scope][i]['dst'])\n\n    #todo move to final directory\n    counter += 1\n    msg['update']  = msg['update']  + os.path.basename(filepath) + ' / '\n\nmsg['status'] = 'Success! updated: '+ str(counter) + '(' + msg['update']  + ') and already up to date: ' + str(counter2)\n\nshutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
-        "outputs": 1,
-        "x": 1270,
-        "y": 100,
-        "wires": [
-            [
-                "d6fec1ffdb4f7e11"
-            ]
-        ]
-    },
-    {
-        "id": "d6fec1ffdb4f7e11",
-        "type": "debug",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1410,
-        "y": 100,
-        "wires": []
     },
     {
         "id": "b0629875a30ae1d7",
@@ -9769,7 +9595,7 @@
         "label": "Auto-check update availability",
         "tooltip": "",
         "group": "ddbd496e.93a288",
-        "order": 3,
+        "order": 4,
         "width": 6,
         "height": 1,
         "passthru": true,
@@ -9891,9 +9717,9 @@
         "z": "c8e7ecb5849edb9a",
         "name": "",
         "group": "ddbd496e.93a288",
-        "order": 4,
-        "width": "6",
-        "height": "1",
+        "order": 5,
+        "width": 6,
+        "height": 1,
         "passthru": false,
         "label": "Check Updates",
         "tooltip": "",
@@ -9992,5 +9818,286 @@
         "x": 915,
         "y": 260,
         "wires": []
+    },
+    {
+        "id": "5e7d5e4335d37794",
+        "type": "link in",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "links": [
+            "960912e90ba5b5bc"
+        ],
+        "x": 75,
+        "y": 380,
+        "wires": [
+            [
+                "2bb5fe78e09fec8a"
+            ]
+        ]
+    },
+    {
+        "id": "2bb5fe78e09fec8a",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "msg",
+        "func": "import subprocess\nmsg['raspbian'] = subprocess.getoutput(\"cat /etc/os-release | grep -i 'PRETTY_NAME'\")[13:-1]\nmsg['device'] = subprocess.getoutput(\"cat /proc/device-tree/model\")\nmsg['flask'] = subprocess.getoutput(\"systemctl status flask |grep -i 'Active:'\").split(' ')[6]\nreturn msg",
+        "outputs": 1,
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "dbc77052ac950624",
+                "d97c3068ef5fef96",
+                "73a3b828f862312b"
+            ]
+        ]
+    },
+    {
+        "id": "01f248ee52dab4f4",
+        "type": "inject",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 320,
+        "wires": [
+            [
+                "2bb5fe78e09fec8a"
+            ]
+        ]
+    },
+    {
+        "id": "2c635c11608b9a82",
+        "type": "ui_toast",
+        "z": "c8e7ecb5849edb9a",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": true,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 430,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7efaef1ae14b3cbb",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "msg",
+        "func": "import subprocess\nmsg['payload'] = subprocess.getoutput(\"dmesg\").replace('\\n','<br>')\nreturn msg",
+        "outputs": 1,
+        "x": 270,
+        "y": 500,
+        "wires": [
+            [
+                "2c635c11608b9a82"
+            ]
+        ]
+    },
+    {
+        "id": "fddb6b854fe949e3",
+        "type": "ui_button",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "group": "3ce32450.e0cffc",
+        "order": 4,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "LOG - start",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 130,
+        "y": 500,
+        "wires": [
+            [
+                "7efaef1ae14b3cbb"
+            ]
+        ]
+    },
+    {
+        "id": "be0747adb448ea38",
+        "type": "ui_button",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "group": "3ce32450.e0cffc",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "LOG - sys",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 120,
+        "y": 540,
+        "wires": [
+            [
+                "4189e16bfa666253"
+            ]
+        ]
+    },
+    {
+        "id": "4189e16bfa666253",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "msg",
+        "func": "import subprocess\nmsg['payload'] = subprocess.getoutput(\"tail -1000 /var/log/syslog\").replace('\\n','<br>')\nreturn msg",
+        "outputs": 1,
+        "x": 270,
+        "y": 540,
+        "wires": [
+            [
+                "2c635c11608b9a82"
+            ]
+        ]
+    },
+    {
+        "id": "d97c3068ef5fef96",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "OS:",
+        "format": "{{msg.raspbian}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 310,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "73a3b828f862312b",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Flask:",
+        "format": "{{msg.flask}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 310,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "dbc77052ac950624",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Device:",
+        "format": "{{msg.device}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 320,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "4c7fa5b5b27b83a5",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "create beta new",
+        "func": "import json\nimport requests\nimport shutil\n\n#scope = 'main'\nscope = 'beta'\n\nupdatepath = '/home/pi/OpenScan/tmp/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nmsg = {}\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg2 = msg.copy()\ndel msg[scope]\n\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nmsg['payload'] = 'created with scope: ' + scope\n\nreturn msg",
+        "outputs": 1,
+        "x": 1300,
+        "y": 100,
+        "wires": [
+            [
+                "a5a9f7f08d272914"
+            ]
+        ]
+    },
+    {
+        "id": "a5a9f7f08d272914",
+        "type": "debug",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1470,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "80175eb8dc6ad009",
+        "type": "inject",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1120,
+        "y": 100,
+        "wires": [
+            [
+                "4c7fa5b5b27b83a5"
+            ]
+        ]
     }
 ]
