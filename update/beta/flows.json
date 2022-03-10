@@ -349,7 +349,7 @@
         "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "7aaf184330605300",
-        "order": 21,
+        "order": 22,
         "width": 1,
         "height": 1
     },
@@ -359,7 +359,7 @@
         "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "7aaf184330605300",
-        "order": 24,
+        "order": 25,
         "width": 1,
         "height": 1
     },
@@ -369,7 +369,7 @@
         "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "7aaf184330605300",
-        "order": 25,
+        "order": 26,
         "width": 1,
         "height": 1
     },
@@ -379,7 +379,7 @@
         "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "7aaf184330605300",
-        "order": 28,
+        "order": 29,
         "width": 1,
         "height": 1
     },
@@ -797,7 +797,8 @@
         "mode": "link",
         "links": [
             "61990987acd0f263",
-            "2415272f42ce468c"
+            "2415272f42ce468c",
+            "40fcd859005250c3"
         ],
         "x": 195,
         "y": 640,
@@ -1201,7 +1202,7 @@
         "label": "",
         "tooltip": "",
         "group": "7aaf184330605300",
-        "order": 14,
+        "order": 15,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -1283,7 +1284,7 @@
         "label": " ",
         "tooltip": "",
         "group": "7aaf184330605300",
-        "order": 16,
+        "order": 17,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -1324,7 +1325,7 @@
         "type": "ui_text",
         "z": "1613373abaf77a2c",
         "group": "7aaf184330605300",
-        "order": 13,
+        "order": 14,
         "width": 3,
         "height": 1,
         "name": "photocount",
@@ -1341,7 +1342,7 @@
         "type": "ui_text",
         "z": "1613373abaf77a2c",
         "group": "7aaf184330605300",
-        "order": 15,
+        "order": 16,
         "width": 3,
         "height": 1,
         "name": "shutter",
@@ -1361,7 +1362,7 @@
         "label": " ",
         "tooltip": "",
         "group": "7aaf184330605300",
-        "order": 18,
+        "order": 19,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -1388,7 +1389,7 @@
         "label": " ",
         "tooltip": "",
         "group": "7aaf184330605300",
-        "order": 20,
+        "order": 21,
         "width": 3,
         "height": 1,
         "passthru": true,
@@ -1484,7 +1485,7 @@
         "type": "ui_text",
         "z": "1613373abaf77a2c",
         "group": "7aaf184330605300",
-        "order": 17,
+        "order": 18,
         "width": 3,
         "height": 1,
         "name": "cropx",
@@ -1501,7 +1502,7 @@
         "type": "ui_text",
         "z": "1613373abaf77a2c",
         "group": "7aaf184330605300",
-        "order": 19,
+        "order": 20,
         "width": 3,
         "height": 1,
         "name": "cropy",
@@ -1591,14 +1592,14 @@
         "topic": "",
         "topicType": "str",
         "min": 0,
-        "max": "2",
+        "max": "3",
         "step": 1,
         "className": "",
         "x": 320,
         "y": 700,
         "wires": [
             [
-                "873dace18a23fdf2"
+                "50d94e9385cd4845"
             ]
         ]
     },
@@ -1607,12 +1608,14 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "LED",
-        "func": "from OpenScan import ringlight\nval = msg['payload']\n\nif val == 0:\n    ringlight(1,False)\n    ringlight(2,False)\nelif val == 1:\n    ringlight(1,False)\n    ringlight(2,True)\nelif val == 2:\n    ringlight(1,True)\n    ringlight(2,False)\n",
+        "func": "from OpenScan import ringlight\nval = msg['payload']\n\nif val == 0:\n    ringlight(1,False)\n    ringlight(2,False)\nelif val == 1:\n    ringlight(1,False)\n    ringlight(2,True)\nelif val == 2:\n    ringlight(1,True)\n    ringlight(2,False)\nelif val == 3:\n    ringlight(1,True)\n    ringlight(2,True)\n",
         "outputs": 1,
-        "x": 510,
-        "y": 700,
+        "x": 390,
+        "y": 980,
         "wires": [
-            []
+            [
+                "82c8ad50ecfbc755"
+            ]
         ]
     },
     {
@@ -1640,7 +1643,7 @@
         "z": "1613373abaf77a2c",
         "name": "start ",
         "group": "7aaf184330605300",
-        "order": 22,
+        "order": 23,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -1654,8 +1657,8 @@
         "payloadType": "date",
         "topic": "enabled",
         "topicType": "str",
-        "x": 150,
-        "y": 880,
+        "x": 230,
+        "y": 1100,
         "wires": [
             [
                 "431f917c2541ae48",
@@ -1670,7 +1673,7 @@
         "z": "1613373abaf77a2c",
         "name": "stop",
         "group": "7aaf184330605300",
-        "order": 23,
+        "order": 24,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -1684,8 +1687,8 @@
         "payloadType": "global",
         "topic": "",
         "topicType": "str",
-        "x": 490,
-        "y": 920,
+        "x": 570,
+        "y": 1140,
         "wires": [
             [
                 "1787f08ed7070ddd",
@@ -1700,8 +1703,8 @@
         "name": "Routine",
         "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\nsleep(2)\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nzip = ZipFile(zippath, \"w\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if abs(tt_angle) > 180:\n        tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2))\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            camera('/crop',msg)\n            zip.write(temppath, projectname + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n\n    position_last = position\n\nzip.close()\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['enabled'] = False\nreturn msg\n\n",
         "outputs": 1,
-        "x": 300,
-        "y": 880,
+        "x": 380,
+        "y": 1100,
         "wires": [
             [
                 "579f2211199fd6ab",
@@ -1716,8 +1719,8 @@
         "name": "stop",
         "func": "from OpenScan import load_str, save\n\nstatus = load_str('status_internal_cam')\n\nif status == 'no camera found' or status[:5]=='Featu' or status =='--READY--':\n    return\n\nsave('status_internal_cam', 'Routine-stopping')",
         "outputs": 1,
-        "x": 610,
-        "y": 920,
+        "x": 690,
+        "y": 1140,
         "wires": [
             []
         ]
@@ -1732,8 +1735,8 @@
             "8367cfa0bf5bc5df",
             "b33d604c.5f1a6"
         ],
-        "x": 395,
-        "y": 840,
+        "x": 475,
+        "y": 1060,
         "wires": []
     },
     {
@@ -1742,7 +1745,7 @@
         "z": "1613373abaf77a2c",
         "name": "reboot",
         "group": "7aaf184330605300",
-        "order": 26,
+        "order": 27,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -1756,8 +1759,8 @@
         "payloadType": "date",
         "topic": "",
         "topicType": "str",
-        "x": 90,
-        "y": 1000,
+        "x": 170,
+        "y": 1220,
         "wires": [
             [
                 "16c76929f88df841"
@@ -1770,7 +1773,7 @@
         "z": "1613373abaf77a2c",
         "name": "shutdown",
         "group": "7aaf184330605300",
-        "order": 27,
+        "order": 28,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -1784,8 +1787,8 @@
         "payloadType": "date",
         "topic": "",
         "topicType": "str",
-        "x": 100,
-        "y": 1040,
+        "x": 180,
+        "y": 1260,
         "wires": [
             [
                 "597bfb653e8cddbf"
@@ -1801,8 +1804,8 @@
         "links": [
             "9bb0adbd716ce347"
         ],
-        "x": 215,
-        "y": 1000,
+        "x": 295,
+        "y": 1220,
         "wires": []
     },
     {
@@ -1814,8 +1817,8 @@
         "links": [
             "fc9abb94c35eec56"
         ],
-        "x": 215,
-        "y": 1040,
+        "x": 295,
+        "y": 1260,
         "wires": []
     },
     {
@@ -1839,8 +1842,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 330,
-        "y": 960,
+        "x": 370,
+        "y": 1180,
         "wires": [
             [
                 "c1c044f3c2139f68"
@@ -1861,8 +1864,8 @@
             "96bdb9417e38810f",
             "fb13752beddee9f2"
         ],
-        "x": 55,
-        "y": 880,
+        "x": 135,
+        "y": 1100,
         "wires": [
             [
                 "7dd287f40385922f"
@@ -1880,8 +1883,8 @@
             "8367cfa0bf5bc5df",
             "b33d604c.5f1a6"
         ],
-        "x": 575,
-        "y": 880,
+        "x": 655,
+        "y": 1100,
         "wires": []
     },
     {
@@ -1895,8 +1898,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 230,
-        "y": 1220,
+        "x": 310,
+        "y": 1440,
         "wires": [
             [
                 "04cc2467807d2d6b",
@@ -1923,8 +1926,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 610,
-        "y": 1260,
+        "x": 690,
+        "y": 1480,
         "wires": [
             []
         ]
@@ -1948,8 +1951,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 390,
-        "y": 1260,
+        "x": 470,
+        "y": 1480,
         "wires": [
             []
         ]
@@ -2013,8 +2016,8 @@
         "z": "1613373abaf77a2c",
         "name": "preview internal cam",
         "info": "",
-        "x": 110,
-        "y": 1120,
+        "x": 190,
+        "y": 1340,
         "wires": []
     },
     {
@@ -2038,8 +2041,8 @@
         "topic": "Repeat",
         "payload": "0.2",
         "payloadType": "str",
-        "x": 80,
-        "y": 1220,
+        "x": 160,
+        "y": 1440,
         "wires": [
             [
                 "95439678bb2df2a2"
@@ -2053,8 +2056,8 @@
         "name": "Take Preview Shot",
         "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nsleep(0.5)\n\n\nstatus = load_str('status_internal_cam')\ncam=load_str('camera')\n\n\nif msg['flag'] == False and not 'Routine' in status:\n    return\n\nif cam == 'external':\n    return\n\nmsg['payload']=\"/tmp/preview.jpg?ts=\"+str(int(time()*10))\n\nif cam == 'gphoto' and status == 'no camera found':\n    if camera('/gphoto_init') == 200:\n        save('status_internal_cam','--READY--')\n\nif status!=\"--READY--\":\n    return msg\n\nmsg['cropx'] = load_int('cam_cropx')\nmsg['cropy'] = load_int('cam_cropy')\nmsg['rotation'] = load_int('cam_rotation')\nmsg['filepath_in'] = 'tmp/tmp.jpg'\nmsg['filepath_out'] = 'tmp/preview.jpg'\nmsg['filepath'] = 'tmp/tmp.jpg'\n\nif cam == 'gphoto':\n    if camera('/gphoto_test', msg) != 200:\n        save('status_internal_cam','no camera found')\n        return msg\n    camera('/gphoto_preview', msg)\n\nif cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n    take_photo('tmp/tmp.jpg')\n\ncamera('/crop',msg)\n\nreturn msg\n",
         "outputs": 1,
-        "x": 410,
-        "y": 1220,
+        "x": 490,
+        "y": 1440,
         "wires": [
             [
                 "948a3ae4444685f2",
@@ -2078,8 +2081,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 620,
-        "y": 1220,
+        "x": 700,
+        "y": 1440,
         "wires": [
             []
         ]
@@ -2114,8 +2117,8 @@
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 680,
-        "y": 700,
+        "x": 560,
+        "y": 980,
         "wires": []
     },
     {
@@ -2129,8 +2132,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 920,
+        "x": 370,
+        "y": 1140,
         "wires": [
             [
                 "579f2211199fd6ab"
@@ -2148,8 +2151,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 960,
+        "x": 570,
+        "y": 1180,
         "wires": [
             [
                 "579f2211199fd6ab"
@@ -2162,8 +2165,8 @@
         "z": "1613373abaf77a2c",
         "name": "preview arducam with focus",
         "info": "",
-        "x": 140,
-        "y": 1360,
+        "x": 220,
+        "y": 1580,
         "wires": []
     },
     {
@@ -2181,8 +2184,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 650,
-        "y": 1300,
+        "x": 730,
+        "y": 1520,
         "wires": [
             []
         ]
@@ -2194,8 +2197,8 @@
         "name": "focus",
         "func": "from OpenScan import load_str\n\nif load_str('camera') != 'imx519':\n    return\n\nfrom Arducam import Focuser\n\n\nif msg['focuser'] == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    focuser.write(msg['focus'])\n    return msg",
         "outputs": 1,
-        "x": 1110,
-        "y": 1460,
+        "x": 1190,
+        "y": 1680,
         "wires": [
             []
         ]
@@ -2226,8 +2229,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 150,
-        "y": 1400,
+        "x": 230,
+        "y": 1620,
         "wires": [
             [
                 "f017f67a8d4a3750"
@@ -2245,8 +2248,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
-        "y": 1400,
+        "x": 350,
+        "y": 1620,
         "wires": [
             [
                 "5c39bd09.702d84",
@@ -2265,8 +2268,8 @@
         "links": [
             "960912e90ba5b5bc"
         ],
-        "x": 55,
-        "y": 1400,
+        "x": 135,
+        "y": 1620,
         "wires": [
             [
                 "64b16ef47ab6d859"
@@ -2290,8 +2293,8 @@
         "bytopic": "all",
         "topic": "topic",
         "outputs": 1,
-        "x": 730,
-        "y": 1440,
+        "x": 810,
+        "y": 1660,
         "wires": [
             [
                 "fd93843e238cc9ce"
@@ -2313,8 +2316,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 410,
-        "y": 1400,
+        "x": 490,
+        "y": 1620,
         "wires": [
             [
                 "dcfb5cce.0431a"
@@ -2348,8 +2351,8 @@
         "checkall": "true",
         "repair": false,
         "outputs": 3,
-        "x": 550,
-        "y": 1420,
+        "x": 630,
+        "y": 1640,
         "wires": [
             [
                 "5ea18678.975138",
@@ -2383,8 +2386,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 560,
-        "y": 1480,
+        "x": 640,
+        "y": 1700,
         "wires": [
             [
                 "5ea18678.975138",
@@ -2407,8 +2410,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 410,
-        "y": 1440,
+        "x": 490,
+        "y": 1660,
         "wires": [
             [
                 "dcfb5cce.0431a"
@@ -2428,8 +2431,8 @@
         "format": "",
         "layout": "col-center",
         "className": "",
-        "x": 1110,
-        "y": 1420,
+        "x": 1190,
+        "y": 1640,
         "wires": []
     },
     {
@@ -2443,8 +2446,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 970,
-        "y": 1440,
+        "x": 1050,
+        "y": 1660,
         "wires": [
             [
                 "7219f62c9fdc6753",
@@ -2472,8 +2475,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 740,
-        "y": 1400,
+        "x": 820,
+        "y": 1620,
         "wires": [
             []
         ]
@@ -2497,8 +2500,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 740,
-        "y": 1480,
+        "x": 820,
+        "y": 1700,
         "wires": [
             []
         ]
@@ -2520,8 +2523,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 850,
-        "y": 1440,
+        "x": 930,
+        "y": 1660,
         "wires": [
             [
                 "b70e8c24ee011258"
@@ -2543,8 +2546,8 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 570,
-        "y": 1540,
+        "x": 650,
+        "y": 1760,
         "wires": [
             [
                 "95e1d239988b29e0"
@@ -2562,8 +2565,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 710,
-        "y": 1560,
+        "x": 790,
+        "y": 1780,
         "wires": [
             [
                 "7889245e91ddea4b",
@@ -2584,8 +2587,8 @@
         "format": "{{msg.distance2}}",
         "layout": "col-center",
         "className": "",
-        "x": 830,
-        "y": 1600,
+        "x": 910,
+        "y": 1820,
         "wires": []
     },
     {
@@ -2598,8 +2601,8 @@
             "2dd2503d7ab0214b",
             "6b94bf2295b1b31d"
         ],
-        "x": 175,
-        "y": 1760,
+        "x": 255,
+        "y": 1980,
         "wires": [
             [
                 "06504f47ee1744d7",
@@ -2618,8 +2621,8 @@
             "8367cfa0bf5bc5df",
             "149e2e46b9623a2d"
         ],
-        "x": 835,
-        "y": 1560,
+        "x": 915,
+        "y": 1780,
         "wires": []
     },
     {
@@ -2648,8 +2651,8 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 290,
-        "y": 1600,
+        "x": 370,
+        "y": 1820,
         "wires": [
             [
                 "2d66216fee29250c"
@@ -2667,8 +2670,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 410,
-        "y": 1560,
+        "x": 490,
+        "y": 1780,
         "wires": [
             [
                 "25c4138bddb77b6b",
@@ -2689,8 +2692,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 1600,
+        "x": 510,
+        "y": 1820,
         "wires": [
             [
                 "25c4138bddb77b6b",
@@ -2711,8 +2714,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 150,
-        "y": 1560,
+        "x": 230,
+        "y": 1780,
         "wires": [
             [
                 "b6f37e23f2491639",
@@ -2733,8 +2736,8 @@
         "format": "{{msg.stacksize}}",
         "layout": "row-center",
         "className": "",
-        "x": 710,
-        "y": 1760,
+        "x": 790,
+        "y": 1980,
         "wires": []
     },
     {
@@ -2746,8 +2749,8 @@
         "links": [
             "a1d29e56599da0bd"
         ],
-        "x": 535,
-        "y": 1620,
+        "x": 615,
+        "y": 1840,
         "wires": []
     },
     {
@@ -2761,8 +2764,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 550,
-        "y": 1720,
+        "x": 630,
+        "y": 1940,
         "wires": [
             [
                 "06504f47ee1744d7",
@@ -2790,8 +2793,8 @@
         "max": "20",
         "step": "1",
         "className": "",
-        "x": 400,
-        "y": 1720,
+        "x": 480,
+        "y": 1940,
         "wires": [
             [
                 "21306d6402225553"
@@ -2811,8 +2814,8 @@
         "format": "",
         "layout": "col-center",
         "className": "",
-        "x": 290,
-        "y": 1560,
+        "x": 370,
+        "y": 1780,
         "wires": []
     },
     {
@@ -2828,8 +2831,8 @@
         "format": "",
         "layout": "col-center",
         "className": "",
-        "x": 150,
-        "y": 1440,
+        "x": 230,
+        "y": 1660,
         "wires": []
     },
     {
@@ -2843,8 +2846,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 690,
-        "y": 1720,
+        "x": 770,
+        "y": 1940,
         "wires": [
             []
         ]
@@ -2860,8 +2863,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1110,
-        "y": 1500,
+        "x": 1190,
+        "y": 1720,
         "wires": [
             []
         ]
@@ -2877,8 +2880,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 270,
-        "y": 1720,
+        "x": 350,
+        "y": 1940,
         "wires": [
             [
                 "e2f8fdd47bdd1b66"
@@ -2896,8 +2899,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 570,
-        "y": 1660,
+        "x": 650,
+        "y": 1880,
         "wires": [
             [
                 "84608db962fd9932"
@@ -2914,8 +2917,8 @@
             "8367cfa0bf5bc5df",
             "149e2e46b9623a2d"
         ],
-        "x": 675,
-        "y": 1660,
+        "x": 755,
+        "y": 1880,
         "wires": []
     },
     {
@@ -3066,7 +3069,8 @@
         "y": 160,
         "wires": [
             [
-                "8ebd1dcb5db156ed"
+                "8ebd1dcb5db156ed",
+                "b87aecd9dc7f94b1"
             ]
         ]
     },
@@ -3118,8 +3122,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 880,
+        "x": 570,
+        "y": 1100,
         "wires": [
             [
                 "fb13752beddee9f2"
@@ -3137,8 +3141,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 300,
-        "y": 840,
+        "x": 380,
+        "y": 1060,
         "wires": [
             [
                 "e9b13dfd9f8d3711"
@@ -3156,10 +3160,324 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 150,
-        "y": 840,
+        "x": 230,
+        "y": 1060,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "0ad3d8cfcb22472b",
+        "type": "ui_switch",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "label": "Ringlight test",
+        "tooltip": "",
+        "group": "7aaf184330605300",
+        "order": 13,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 770,
+        "y": 260,
+        "wires": [
+            [
+                "863f97875fd752de"
+            ]
+        ]
+    },
+    {
+        "id": "b87aecd9dc7f94b1",
+        "type": "switch",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "--READY--",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "--READY--",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 290,
+        "y": 200,
+        "wires": [
+            [
+                "8c130831504887e3"
+            ],
+            [
+                "21cdfb2315d39b6c",
+                "a6b9dba90e2abab7"
+            ]
+        ]
+    },
+    {
+        "id": "21cdfb2315d39b6c",
+        "type": "change",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ringlight",
+                "pt": "flow",
+                "to": "ringlightSlider",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b125677901d305ae",
+        "type": "change",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "ringlight",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 220,
+        "y": 980,
+        "wires": [
+            [
+                "873dace18a23fdf2"
+            ]
+        ]
+    },
+    {
+        "id": "50d94e9385cd4845",
+        "type": "change",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ringlightSlider",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "40fcd859005250c3",
+        "type": "link in",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "links": [
+            "6c6ef2255a7d39e5"
+        ],
+        "x": 55,
+        "y": 860,
+        "wires": [
+            [
+                "b125677901d305ae",
+                "06d1ca69026e150f"
+            ]
+        ]
+    },
+    {
+        "id": "8c130831504887e3",
+        "type": "change",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ringlight",
+                "pt": "flow",
+                "to": "ringlightSliderTest",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 560,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "863f97875fd752de",
+        "type": "change",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ringlightSwitch",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06d1ca69026e150f",
+        "type": "switch",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "property": "ringlightSwitch",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 190,
+        "y": 900,
+        "wires": [
+            [
+                "5bfe68da10f3ed2c"
+            ],
+            [
+                "f793d4b16397a53d"
+            ]
+        ]
+    },
+    {
+        "id": "5bfe68da10f3ed2c",
+        "type": "change",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ringlightSliderTest",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 860,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f793d4b16397a53d",
+        "type": "change",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "ringlightSliderTest",
+                "pt": "flow",
+                "to": "ringlightSlider",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 390,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a6b9dba90e2abab7",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "func": "msg.payload = 0\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 260,
+        "wires": [
+            [
+                "0ad3d8cfcb22472b"
+            ]
         ]
     },
     {
@@ -3545,7 +3863,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "del",
-        "func": "import os\nimport shutil\n\ndir=\"/home/pi/OpenScan/scans/\"\n\nif msg['payload']==\"No\":\n    return\n\ntry:\n    os.remove(dir+msg['Set'])\n    shutil.rmtree(dir+msg['Set'][:-4])\nexcept:\n    pass\nreturn msg",
+        "func": "import os\nimport shutil\n\ndir=\"/home/pi/OpenScan/scans/\"\n\nif msg['payload']==\"No\":\n    return\n\"\"\"\ntry:\n    node.warn('\"'+dir+msg['Date']+\"-\"+msg['Set']+'.zip\"')\n    os.remove('\"'+dir+msg['Date']+\"-\"+msg['Set']+'.zip\"')\n    node.warn(\"os.remove done\")\n    node.warn(dir+msg['Date']+\"-\"+msg['Set'])\n    shutil.rmtree(dir+msg['Date']+\"-\"+msg['Set'])\nexcept:\n    node.warn(\"failed\")\n    pass\n    \"\"\"\n\nfor i in os.listdir(dir):\n    if msg['Date'] in i and msg['Set'] in i:\n        if os.path.isdir(dir + i):\n            shutil.rmtree(dir + i)\n        else:\n            os.remove(dir + i)\nreturn msg",
         "outputs": 1,
         "x": 690,
         "y": 380,
@@ -3592,7 +3910,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "refresh",
-        "func": "from time import sleep\nimport os\nfrom OpenScan import load_str, OpenScanCloud, save, load_bool\n\nbasepath = '/home/pi/OpenScan/scans/'\n\nif load_bool(\"terms\")==False:\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic']='OpenScanCloud - Terms of Use'\n    return None,msg\n\nsave('status_cloud','refreshing')\ntoken = load_str('token')\n\ntest = OpenScanCloud('getTokenInfo',{'token':token})\nif test.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    return None,msg\nelif test.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nstats = test.json()\nfor i in stats:\n    save('osc_'+i, stats[i])\n    pass\n\nmsg={}\nprojects = []\nfor i in os.listdir(basepath):\n    if os.path.isdir(basepath + i):\n        if os.path.isfile(basepath + i + '/status'):\n            with open(basepath + i + '/status', 'r') as file:\n                status = file.read().strip('\\n')\n                if status in ['expired', 'processing done', 'processing failed']:\n                    continue\n        projects.append(i)\n\nfor p in projects:\n    r = OpenScanCloud('getProjectInfo',{'token':token, 'project':p+'.zip'})\n    if r.status_code == 200:\n        answer = r.json()\n        if answer == {}:\n            os.system('sudo rm -r ' + basepath + p)\n        else:\n            with open(basepath + p + '/status', 'w+') as file:\n                file.write(answer['status'])\n            with open(basepath + p + '/download', 'w+') as file:\n                file.write(answer['dlink'])\n\nmsg['list'] = projects\nsleep(0.5)\nsave('status_cloud','ready')\nreturn msg, None\n",
+        "func": "from time import sleep\nimport os\nfrom OpenScan import load_str, OpenScanCloud, save, load_bool\n\nbasepath = '/home/pi/OpenScan/scans/'\n\nif load_bool(\"terms\")==False:\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic']='OpenScanCloud - Terms of Use'\n    return None,msg\n\nsave('status_cloud','refreshing')\ntoken = load_str('token')\n\ntest = OpenScanCloud('getTokenInfo',{'token':token})\nif test.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    return None,msg\nelif test.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nstats = test.json()\nfor i in stats:\n    save('osc_'+i, stats[i])\n    pass\n\nmsg={}\nprojects = []\nfor i in os.listdir(basepath):\n    if os.path.isdir(basepath + i):\n        if os.path.isfile(basepath + i + '/status'):\n            with open(basepath + i + '/status', 'r') as file:\n                status = file.read().strip('\\n')\n                if status in ['expired', 'processing done', 'processing failed']:\n                    continue\n        projects.append(i)\nnode.warn(projects)\n\nfor p in projects:\n    r = OpenScanCloud('getProjectInfo',{'token':token, 'project':p+'.zip'})\n    if r.status_code == 200:\n        answer = r.json()\n        if answer == {}:\n            os.system('sudo rm -r ' + basepath + p)\n        else:\n            with open(basepath + p + '/status', 'w+') as file:\n                file.write(answer['status'])\n            with open(basepath + p + '/download', 'w+') as file:\n                file.write(answer['dlink'])\n\nmsg['list'] = projects\nsleep(0.5)\nsave('status_cloud','ready')\nreturn msg, None\n",
         "outputs": 2,
         "x": 320,
         "y": 180,
@@ -3786,7 +4104,7 @@
         "type": "function",
         "z": "4981d84ef1a366d1",
         "name": "msg",
-        "func": "msg.Set=global.get('set').Name\nmsg.payload = 'Are you sure to delete and ALL associated files: ' + msg.Set + '?'\nreturn msg",
+        "func": "msg.Set=global.get('set').Name\nmsg.Date=global.get('set').Date\nmsg.payload = 'Are you sure to delete and ALL associated files: ' + msg.Set + '?'\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
