@@ -379,7 +379,7 @@
         "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "7aaf184330605300",
-        "order": 29,
+        "order": 32,
         "width": 1,
         "height": 1
     },
@@ -471,6 +471,26 @@
         "group": "3b4bd36726be16d5",
         "order": 8,
         "width": 2,
+        "height": 1
+    },
+    {
+        "id": "ecb6284604d24845",
+        "type": "ui_spacer",
+        "z": "1613373abaf77a2c",
+        "name": "spacer",
+        "group": "7aaf184330605300",
+        "order": 29,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "2e38678c1d151fc6",
+        "type": "ui_spacer",
+        "z": "1613373abaf77a2c",
+        "name": "spacer",
+        "group": "7aaf184330605300",
+        "order": 28,
+        "width": 1,
         "height": 1
     },
     {
@@ -1686,7 +1706,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Routine",
-        "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\nsleep(2)\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nzip = ZipFile(zippath, \"w\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if abs(tt_angle) > 180:\n        tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2))\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            camera('/crop',msg)\n            zip.write(temppath, projectname + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n\n    position_last = position\n\nzip.close()\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['enabled'] = False\nreturn msg\n\n",
+        "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\nsleep(2)\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nzip = ZipFile(zippath, \"w\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    while load_str('status_internal_cam') == \"PAUSED\":\n        sleep(1)\n\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if abs(tt_angle) > 180:\n        tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2))\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            camera('/crop',msg)\n            zip.write(temppath, projectname + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n\n    position_last = position\n\nzip.close()\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['enabled'] = False\nreturn msg\n\n",
         "outputs": 1,
         "x": 280,
         "y": 1280,
@@ -1730,7 +1750,7 @@
         "z": "1613373abaf77a2c",
         "name": "reboot",
         "group": "7aaf184330605300",
-        "order": 27,
+        "order": 30,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -1758,7 +1778,7 @@
         "z": "1613373abaf77a2c",
         "name": "shutdown",
         "group": "7aaf184330605300",
-        "order": 28,
+        "order": 31,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -1828,7 +1848,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 310,
-        "y": 1360,
+        "y": 1380,
         "wires": [
             [
                 "c1c044f3c2139f68"
@@ -2104,7 +2124,8 @@
         "y": 1320,
         "wires": [
             [
-                "579f2211199fd6ab"
+                "579f2211199fd6ab",
+                "70e59042ca7c4455"
             ]
         ]
     },
@@ -2120,10 +2141,11 @@
         "finalize": "",
         "libs": [],
         "x": 470,
-        "y": 1360,
+        "y": 1380,
         "wires": [
             [
-                "579f2211199fd6ab"
+                "579f2211199fd6ab",
+                "70e59042ca7c4455"
             ]
         ]
     },
@@ -3478,6 +3500,140 @@
         "y": 860,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "2315704a2f3ba373",
+        "type": "file in",
+        "z": "1613373abaf77a2c",
+        "name": "read status",
+        "filename": "/home/pi/OpenScan/settings/status_internal_cam",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 470,
+        "y": 1460,
+        "wires": [
+            [
+                "7be623536d108880"
+            ]
+        ]
+    },
+    {
+        "id": "7be623536d108880",
+        "type": "switch",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "PAUSED",
+                "vt": "str"
+            },
+            {
+                "t": "neq",
+                "v": "PAUSED",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 670,
+        "y": 1460,
+        "wires": [
+            [
+                "bb2c27b2ba52fa60"
+            ],
+            [
+                "9fbcc55645bf3673"
+            ]
+        ]
+    },
+    {
+        "id": "70e59042ca7c4455",
+        "type": "ui_button",
+        "z": "1613373abaf77a2c",
+        "name": "pause",
+        "group": "7aaf184330605300",
+        "order": 27,
+        "width": "4",
+        "height": "1",
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "fa-pause",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 1460,
+        "wires": [
+            [
+                "2315704a2f3ba373"
+            ]
+        ]
+    },
+    {
+        "id": "3da955ba25219537",
+        "type": "file",
+        "z": "1613373abaf77a2c",
+        "name": "write_status",
+        "filename": "/home/pi/OpenScan/settings/status_internal_cam",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 990,
+        "y": 1460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bb2c27b2ba52fa60",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "func": "msg.payload = \"RESUMING\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 1420,
+        "wires": [
+            [
+                "3da955ba25219537"
+            ]
+        ]
+    },
+    {
+        "id": "9fbcc55645bf3673",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "func": "msg.payload = \"PAUSED\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 1500,
+        "wires": [
+            [
+                "3da955ba25219537"
+            ]
         ]
     },
     {
