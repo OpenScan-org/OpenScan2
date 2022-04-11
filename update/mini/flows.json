@@ -241,26 +241,6 @@
         "hidden": false
     },
     {
-        "id": "02120f3db809bbd8",
-        "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
-        "name": "spacer",
-        "group": "3b4bd36726be16d5",
-        "order": 8,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "57168c4edd4c4df7",
-        "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
-        "name": "spacer",
-        "group": "3b4bd36726be16d5",
-        "order": 15,
-        "width": 6,
-        "height": 1
-    },
-    {
         "id": "d9b28c5fbfd37509",
         "type": "ui_spacer",
         "z": "1613373abaf77a2c",
@@ -318,6 +298,36 @@
         "group": "90223f7ddc082321",
         "order": 7,
         "width": 2,
+        "height": 1
+    },
+    {
+        "id": "b4a5e295cee59760",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "3b4bd36726be16d5",
+        "order": 8,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "8345a8728d7482e6",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "3b4bd36726be16d5",
+        "order": 15,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "7af5ef4993233030",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "3b4bd36726be16d5",
+        "order": 22,
+        "width": 6,
         "height": 1
     },
     {
@@ -648,7 +658,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "CREATE FACTORY DEFAULT",
-        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-40,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'main',\n    'update_auto':true,\n}}\nreturn msg",
+        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-40,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'main',\n    'update_auto':true,\n    'turntable_mode':true,\n}}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1534,14 +1544,15 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Routine",
-        "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nstatus = load_str(\"status_internal_cam\")\n\nif status == \"no camera found\":\n    return\n\nif not status == \"Routine-stopping\":\n    save('status_internal_cam','Routine-preparing')\nsleep(1)\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nzip = ZipFile(zippath, \"w\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    #if abs(tt_angle) > 180:\n    #    tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n    if load_str('status_internal_cam') != \"Routine-stopping\":\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n    take_photo('tmp/tmp.jpg')\n    camera('/crop',msg)\n        \n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n    system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n\n    position_last = position\n\nzip.close()\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['enabled'] = False\nreturn msg\n\n",
+        "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nstatus = load_str(\"status_internal_cam\")\n\nif status == \"no camera found\":\n    return\n\nif not status == \"Routine-stopping\":\n    save('status_internal_cam','Routine-preparing')\nsleep(1)\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\ntt_mode = load_bool('turntable_mode')\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nzip = ZipFile(zippath, \"w\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    #if abs(tt_angle) > 180:\n    #    tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n    if load_str('status_internal_cam') != \"Routine-stopping\":\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n    take_photo('tmp/tmp.jpg')\n    camera('/crop',msg)\n        \n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n    system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n\n    position_last = position\n\nzip.close()\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['enabled'] = False\nreturn msg\n\n",
         "outputs": 1,
         "x": 300,
         "y": 880,
         "wires": [
             [
                 "579f2211199fd6ab",
-                "1daf9e3a5bd5ab48"
+                "1daf9e3a5bd5ab48",
+                "f1cb1415e67fedd8"
             ]
         ]
     },
@@ -1859,7 +1870,7 @@
         "repeat": "0.5",
         "crontab": "",
         "once": true,
-        "onceDelay": "4",
+        "onceDelay": "10",
         "topic": "Repeat",
         "payload": "0.2",
         "payloadType": "str",
@@ -2575,6 +2586,22 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "f1cb1415e67fedd8",
+        "type": "debug",
+        "z": "1613373abaf77a2c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 780,
+        "wires": []
     },
     {
         "id": "ea54fcc2.cfcc2",
@@ -3539,7 +3566,7 @@
         "z": "017bd4e4a428bee5",
         "name": "",
         "group": "3b4bd36726be16d5",
-        "order": 5,
+        "order": 4,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -4127,7 +4154,7 @@
         "z": "017bd4e4a428bee5",
         "name": "Register",
         "group": "3b4bd36726be16d5",
-        "order": 3,
+        "order": 5,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -4565,7 +4592,7 @@
         "z": "017bd4e4a428bee5",
         "name": "Enter Tk",
         "group": "3b4bd36726be16d5",
-        "order": 4,
+        "order": 3,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -4773,7 +4800,8 @@
         "wires": [
             [
                 "e447af84ecc540ad",
-                "72ca6c281c43acd7"
+                "72ca6c281c43acd7",
+                "dadf823225aa34c4"
             ]
         ]
     },
@@ -5251,5 +5279,118 @@
                 "f304680180a23479"
             ]
         ]
+    },
+    {
+        "id": "dadf823225aa34c4",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "loadB",
+        "func": "var file = 'turntable_mode'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 1620,
+        "wires": [
+            [
+                "60f6ee795446200d"
+            ]
+        ]
+    },
+    {
+        "id": "60f6ee795446200d",
+        "type": "ui_switch",
+        "z": "017bd4e4a428bee5",
+        "name": "",
+        "label": "Turntable Mode",
+        "tooltip": "",
+        "group": "3b4bd36726be16d5",
+        "order": 25,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 320,
+        "y": 1620,
+        "wires": [
+            [
+                "227d89d897a8bdf5"
+            ]
+        ]
+    },
+    {
+        "id": "227d89d897a8bdf5",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "write",
+        "func": "var file = 'turntable_mode'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 1620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8b317478e9d905b8",
+        "type": "ui_button",
+        "z": "017bd4e4a428bee5",
+        "name": "Other Settings",
+        "group": "3b4bd36726be16d5",
+        "order": 24,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "transparent",
+        "className": "",
+        "icon": "fa-question-circle",
+        "payload": "<h1 style=\"text-align: left;\">Network Settings</h1> <p><strong>Hostname</strong></p> <p style=\"margin-left: 20px;\">The device can be accessed through any browser in the same network. Therefore, you can either enter the device&apos;s IP address or the given hostname. The standard name is &apos;openscan&apos; but it is highly recommended to change the name, when using multiple devices (e.g. &apos;openscan1&apos;, &apos;openscan2&apos; ...)</p> <p><strong>Select Wifi</strong></p> <p style=\"margin-left: 20px;\">After booting, the device will automatically search for available wireless networks and create a list. You can connect to a given network by entering the wifi password and country code. To find the right two-character country code, see the following list: <a href=\"https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\" rel=\"noopener noreferrer\" target=\"_blank\">ISO 3166 Country Code on Wikipedia</a></p> <p><strong>Search Wifi</strong></p> <p style=\"margin-left: 20px;\">You can manually refresh the list of available networks by pressing this button.</p> <p><strong>Reset Wifi</strong></p> <p style=\"margin-left: 20px;\">Delete the list of known wireless networks (and passwords) and reset the default. After this step, you will either need to use Ethernet or a modified wpa_supplicant.conf file. (see <a href=\"https://www.glennklockwood.com/sysadmin-howtos/rpi-headless-boot.html\" rel=\"noopener noreferrer\" target=\"_blank\">glennklockwood.com</a> for more details about the wpa_supplicant.conf file, which has to be manually created and placed into the /boot/ directory of the sd-card)</p>",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 280,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "814eaca62debe694",
+        "type": "ui_text",
+        "z": "017bd4e4a428bee5",
+        "group": "3b4bd36726be16d5",
+        "order": 23,
+        "width": 4,
+        "height": 1,
+        "name": "",
+        "label": "",
+        "format": "OTHER SETTINGS",
+        "layout": "col-center",
+        "className": "",
+        "x": 170,
+        "y": 1580,
+        "wires": []
     }
 ]

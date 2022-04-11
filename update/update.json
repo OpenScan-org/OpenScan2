@@ -97,7 +97,7 @@
         "5": {
             "src": "mini/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 171667
+            "filesize": 177265
         },
         "6": {
             "src": "mini/settings.js",
