@@ -1437,7 +1437,7 @@
         "topic": "",
         "topicType": "str",
         "min": 0,
-        "max": "2",
+        "max": "3",
         "step": 1,
         "className": "",
         "x": 320,
@@ -1453,7 +1453,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "LED",
-        "func": "from OpenScan import ringlight\nval = msg['payload']\n\nif val == 0:\n    ringlight(1,False)\n    ringlight(2,False)\nelif val == 1:\n    ringlight(1,True)\n    ringlight(2,False)\nelif val == 2:\n    ringlight(1,True)\n    ringlight(2,True)\n",
+        "func": "from OpenScan import ringlight\nval = msg['payload']\n\nif val == 0:\n    ringlight(1,False)\n    ringlight(2,False)\nelif val == 1:\n    ringlight(1,True)\n    ringlight(2,False)\nelif val == 2:\n    ringlight(1,False)\n    ringlight(2,True)\nelif val == 3:\n    ringlight(1,True)\n    ringlight(2,True)\n",
         "outputs": 1,
         "x": 510,
         "y": 700,
@@ -1530,7 +1530,7 @@
         "payloadType": "global",
         "topic": "",
         "topicType": "str",
-        "x": 470,
+        "x": 750,
         "y": 920,
         "wires": [
             [
@@ -1544,15 +1544,13 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Routine",
-        "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nstatus = load_str(\"status_internal_cam\")\n\nif status == \"no camera found\":\n    return\n\nif not status == \"Routine-stopping\":\n    save('status_internal_cam','Routine-preparing')\nsleep(1)\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\ntt_mode = load_bool('turntable_mode')\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nzip = ZipFile(zippath, \"w\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    #if abs(tt_angle) > 180:\n    #    tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n    if load_str('status_internal_cam') != \"Routine-stopping\":\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n    take_photo('tmp/tmp.jpg')\n    camera('/crop',msg)\n        \n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n    system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n\n    position_last = position\n\nzip.close()\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['enabled'] = False\nreturn msg\n\n",
+        "func": "from OpenScan import load_str, load_int, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nstatus = load_str(\"status_internal_cam\")\n\nif status == \"no camera found\":\n    return\n\nif not status == \"Routine-stopping\":\n    save('status_internal_cam','Routine-preparing')\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif not 'projectcode' in msg:\n    projectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n    msg['projectcode'] = projectcode\n    msg['counter'] = -1\n    if isfile(zippath):\n        system('rm ' + zippath)\n    sleep(1)\n\nprojectcode = msg['projectcode']\nmsg['counter'] += 1\n\ntt_mode = load_bool('turntable_mode')\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    #if abs(tt_angle) > 180:\n    #    tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n        \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n\n\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n    if load_str('status_internal_cam') != \"Routine-stopping\":\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n    take_photo('tmp/tmp.jpg')\n    camera('/crop',msg)\n\n\n        \n    zip.write(temppath, projectname + '_' + str(counter + msg['counter']*photocount) + \".jpg\")\n    system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n\n    position_last = position\n\n\nzip.close()\n\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['topic'] = 'Scan done'\nmsg['payload'] = 'Do you want to continue scanning or finish this project?'\nmsg['enabled'] = False\nreturn msg\n\n",
         "outputs": 1,
         "x": 300,
-        "y": 880,
+        "y": 840,
         "wires": [
             [
-                "579f2211199fd6ab",
-                "1daf9e3a5bd5ab48",
-                "f1cb1415e67fedd8"
+                "db7eea74d3bf892b"
             ]
         ]
     },
@@ -1563,7 +1561,7 @@
         "name": "stop",
         "func": "from OpenScan import load_str, save\n\nstatus = load_str('status_internal_cam')\n\nif status == 'no camera found' or status[:5]=='Featu' or status =='--READY--':\n    return\n\nsave('status_internal_cam', 'Routine-stopping')",
         "outputs": 1,
-        "x": 630,
+        "x": 930,
         "y": 920,
         "wires": [
             []
@@ -1580,7 +1578,7 @@
             "b33d604c.5f1a6"
         ],
         "x": 395,
-        "y": 840,
+        "y": 800,
         "wires": []
     },
     {
@@ -1686,7 +1684,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 290,
+        "x": 110,
         "y": 960,
         "wires": [
             [
@@ -1728,7 +1726,7 @@
             "8367cfa0bf5bc5df",
             "b33d604c.5f1a6"
         ],
-        "x": 745,
+        "x": 865,
         "y": 880,
         "wires": []
     },
@@ -1962,7 +1960,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 470,
+        "x": 750,
         "y": 960,
         "wires": [
             [
@@ -2543,7 +2541,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 630,
+        "x": 750,
         "y": 880,
         "wires": [
             [
@@ -2563,7 +2561,7 @@
         "finalize": "",
         "libs": [],
         "x": 300,
-        "y": 840,
+        "y": 800,
         "wires": [
             [
                 "e9b13dfd9f8d3711"
@@ -2571,37 +2569,46 @@
         ]
     },
     {
-        "id": "9613e5549d7395cc",
-        "type": "function",
+        "id": "db7eea74d3bf892b",
+        "type": "ui_toast",
         "z": "1613373abaf77a2c",
-        "name": "msg",
-        "func": "msg.enabled = true\nreturn msg\n",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
         "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 150,
+        "ok": "Finish",
+        "cancel": "Continue",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 450,
         "y": 840,
         "wires": [
-            []
+            [
+                "0b8661103366f834"
+            ]
         ]
     },
     {
-        "id": "f1cb1415e67fedd8",
-        "type": "debug",
+        "id": "0b8661103366f834",
+        "type": "python3-function",
         "z": "1613373abaf77a2c",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 710,
-        "y": 780,
-        "wires": []
+        "name": "continue",
+        "func": "from os import system\nfrom os.path import isfile\n\nif msg['payload'] == 'Continue':\n    return msg,None\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\nprojectcode = msg['projectcode']\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nreturn None, msg",
+        "outputs": 2,
+        "x": 600,
+        "y": 880,
+        "wires": [
+            [
+                "431f917c2541ae48"
+            ],
+            [
+                "1daf9e3a5bd5ab48",
+                "579f2211199fd6ab"
+            ]
+        ]
     },
     {
         "id": "ea54fcc2.cfcc2",
