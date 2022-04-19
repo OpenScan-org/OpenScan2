@@ -301,7 +301,17 @@
         "height": 1
     },
     {
-        "id": "b4a5e295cee59760",
+        "id": "2cc829a5.610f36",
+        "type": "ui_group",
+        "name": "group-test",
+        "tab": "",
+        "order": 3,
+        "disp": false,
+        "width": 3,
+        "collapse": false
+    },
+    {
+        "id": "65285822f24120f4",
         "type": "ui_spacer",
         "z": "017bd4e4a428bee5",
         "name": "spacer",
@@ -311,7 +321,7 @@
         "height": 1
     },
     {
-        "id": "8345a8728d7482e6",
+        "id": "90d444dfdfccf138",
         "type": "ui_spacer",
         "z": "017bd4e4a428bee5",
         "name": "spacer",
@@ -321,7 +331,7 @@
         "height": 1
     },
     {
-        "id": "7af5ef4993233030",
+        "id": "c9dbf6219837d6d7",
         "type": "ui_spacer",
         "z": "017bd4e4a428bee5",
         "name": "spacer",
@@ -339,11 +349,11 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n  background-position: center;\n\n    }\n    #Home_Home {\n        background-color: #cccccc00 !important;\n        border-color: #cccccc00 !important;\n    }\n\n    \n</style>",
+        "format": "<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n\n    }\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n</style>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
-        "templateScope": "local",
+        "templateScope": "global",
         "className": "",
         "x": 110,
         "y": 40,
@@ -413,7 +423,7 @@
         "z": "829d803b6033a693",
         "name": "",
         "events": "all",
-        "x": 280,
+        "x": 300,
         "y": 100,
         "wires": [
             []
@@ -587,7 +597,8 @@
             "d0104e0163745993",
             "5e7d5e4335d37794",
             "e0965e490d53617f",
-            "612a7556ab11cf7d"
+            "612a7556ab11cf7d",
+            "482bc06e02eec5b9"
         ],
         "x": 615,
         "y": 720,
@@ -1724,7 +1735,8 @@
         "links": [
             "2f4c0f98.dee2",
             "8367cfa0bf5bc5df",
-            "b33d604c.5f1a6"
+            "b33d604c.5f1a6",
+            "482bc06e02eec5b9"
         ],
         "x": 865,
         "y": 880,
@@ -2596,17 +2608,35 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "continue",
-        "func": "from os import system\nfrom os.path import isfile\n\nif msg['payload'] == 'Continue':\n    return msg,None\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\nprojectcode = msg['projectcode']\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nreturn None, msg",
+        "func": "from os import system\nfrom os.path import isfile\n\nif msg['payload'] == 'Continue':\n    msg['enabled'] = True\n    return msg,None\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\nprojectcode = msg['projectcode']\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nreturn None, msg",
         "outputs": 2,
         "x": 600,
         "y": 880,
         "wires": [
             [
-                "431f917c2541ae48"
+                "431f917c2541ae48",
+                "579f2211199fd6ab"
             ],
             [
                 "1daf9e3a5bd5ab48",
                 "579f2211199fd6ab"
+            ]
+        ]
+    },
+    {
+        "id": "482bc06e02eec5b9",
+        "type": "link in",
+        "z": "1613373abaf77a2c",
+        "name": "preview",
+        "links": [
+            "960912e90ba5b5bc",
+            "fb13752beddee9f2"
+        ],
+        "x": 55,
+        "y": 1200,
+        "wires": [
+            [
+                "95439678bb2df2a2"
             ]
         ]
     },
@@ -3742,7 +3772,7 @@
         "z": "017bd4e4a428bee5",
         "name": "search",
         "group": "3b4bd36726be16d5",
-        "order": 13,
+        "order": 11,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -3774,7 +3804,7 @@
         "tooltip": "",
         "place": "Select Wifi",
         "group": "3b4bd36726be16d5",
-        "order": 12,
+        "order": 14,
         "width": 6,
         "height": 1,
         "passthru": true,
@@ -3798,7 +3828,7 @@
         "z": "017bd4e4a428bee5",
         "name": "Reset Wifi",
         "group": "3b4bd36726be16d5",
-        "order": 14,
+        "order": 12,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -4282,7 +4312,7 @@
         "label": "Hostname",
         "tooltip": "",
         "group": "3b4bd36726be16d5",
-        "order": 11,
+        "order": 13,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -4731,19 +4761,6 @@
         ]
     },
     {
-        "id": "45c34d15d7ea07eb",
-        "type": "python3-function",
-        "z": "017bd4e4a428bee5",
-        "name": "create beta/main update",
-        "func": "import json\nimport shutil\n\nscope = 'beta'\n#scope = 'main'\n\nmsg= {}\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update_' + scope + '.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nreturn msg\n\nma",
-        "outputs": 1,
-        "x": 310,
-        "y": 1740,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "36b3b36c399ac7db",
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
@@ -4766,7 +4783,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "3b4bd36726be16d5",
-        "order": 18,
+        "order": 20,
         "width": 0,
         "height": 0,
         "name": "",
@@ -4808,7 +4825,8 @@
             [
                 "e447af84ecc540ad",
                 "72ca6c281c43acd7",
-                "dadf823225aa34c4"
+                "dadf823225aa34c4",
+                "9df2481a03f24d0a"
             ]
         ]
     },
@@ -5032,7 +5050,7 @@
         "label": "Auto-check update availability",
         "tooltip": "",
         "group": "3b4bd36726be16d5",
-        "order": 19,
+        "order": 21,
         "width": 6,
         "height": 1,
         "passthru": true,
@@ -5159,7 +5177,7 @@
         "height": 1,
         "name": "",
         "label": "",
-        "format": "UPDATES&LOG",
+        "format": "UPDATES",
         "layout": "col-center",
         "className": "",
         "x": 270,
@@ -5200,7 +5218,7 @@
         "z": "017bd4e4a428bee5",
         "group": "3b4bd36726be16d5",
         "name": "Download LOG",
-        "order": 21,
+        "order": 25,
         "width": 6,
         "height": 1,
         "format": "<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\"   target=\"_blank\" ng-href='tmp/log.txt'>\n <div class=\"center\" style=\"position: relative; top: 30%;\">Download error log\n</div></md-button>\n",
@@ -5221,7 +5239,7 @@
         "z": "017bd4e4a428bee5",
         "group": "3b4bd36726be16d5",
         "name": "Check Updates",
-        "order": 20,
+        "order": 18,
         "width": 6,
         "height": 1,
         "format": "<md-button class=\"button save\" style=\"padding:0 0; margin:0 ;width:100%; height:100%;\"ng-click=\"send({payload:'1'})\">Check updates</md-button></md-button>",
@@ -5314,7 +5332,7 @@
         "label": "Turntable Mode",
         "tooltip": "",
         "group": "3b4bd36726be16d5",
-        "order": 25,
+        "order": 26,
         "width": 6,
         "height": 1,
         "passthru": true,
@@ -5399,5 +5417,84 @@
         "x": 170,
         "y": 1580,
         "wires": []
+    },
+    {
+        "id": "9df2481a03f24d0a",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "loadS",
+        "func": "var file = 'update_type'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\n\nmsg.payload = String(data.replace(/(\\r\\n|\\n|\\r)/gm,\"\"));\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 170,
+        "y": 1660,
+        "wires": [
+            [
+                "ecba1ecce99e3968"
+            ]
+        ]
+    },
+    {
+        "id": "f1de798f2a68e76e",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "write",
+        "func": "var file = 'update_type'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 1660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ecba1ecce99e3968",
+        "type": "ui_dropdown",
+        "z": "017bd4e4a428bee5",
+        "name": "Update_select",
+        "label": "",
+        "tooltip": "",
+        "place": "Select version",
+        "group": "3b4bd36726be16d5",
+        "order": 19,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Mini_simplified",
+                "value": "mini",
+                "type": "str"
+            },
+            {
+                "label": "Advanced",
+                "value": "main",
+                "type": "str"
+            },
+            {
+                "label": "Beta",
+                "value": "beta",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 320,
+        "y": 1660,
+        "wires": [
+            [
+                "f1de798f2a68e76e"
+            ]
+        ]
     }
 ]

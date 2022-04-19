@@ -57,7 +57,7 @@ def crop():
     cropy = int(request.args.get('cropy'))/200
     rotation = int(request.args.get('rotation'))
     preview = str(request.args.get('preview'))
-    
+ 
     with Image.open(filepath_in) as img:
         w,h = img.size
         if cropx != 0 or cropy != 0:
@@ -96,5 +96,5 @@ def external_capture():
 
 
 if __name__ == '__main__':
-#    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
-    app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)
+    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
+#    app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)

@@ -77,7 +77,7 @@
         "1": {
             "src": "mini/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 3913
+            "filesize": 3910
         },
         "2": {
             "src": "mini/Arducam.py",
@@ -97,7 +97,7 @@
         "5": {
             "src": "mini/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 177985
+            "filesize": 178895
         },
         "6": {
             "src": "mini/settings.js",
@@ -107,7 +107,7 @@
         "7": {
             "src": "files/logo.jpg",
             "dst": "/home/pi/OpenScan/files/logo.jpg",
-            "filesize": 477183
+            "filesize": 582519
         }
     }
 }
