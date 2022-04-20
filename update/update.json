@@ -36,43 +36,6 @@
             "filesize": 477183
         }
     },
-    "beta": {
-        "1": {
-            "src": "beta/fla.py",
-            "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 3702
-        },
-        "2": {
-            "src": "beta/Arducam.py",
-            "dst": "/usr/lib/python3/dist-packages/Arducam.py",
-            "filesize": 6154
-        },
-        "3": {
-            "src": "beta/OpenScan.py",
-            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 5864
-        },
-        "4": {
-            "src": "beta/config.txt",
-            "dst": "/boot/config.txt",
-            "filesize": 2179
-        },
-        "5": {
-            "src": "beta/flows.json",
-            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 294266
-        },
-        "6": {
-            "src": "beta/settings.js",
-            "dst": "/root/.node-red/settings.js",
-            "filesize": 20321
-        },
-        "7": {
-            "src": "files/logo.jpg",
-            "dst": "/home/pi/OpenScan/files/logo.jpg",
-            "filesize": 477183
-        }
-    },
     "mini": {
         "1": {
             "src": "mini/fla.py",
@@ -106,6 +69,43 @@
         },
         "7": {
             "src": "files/logo2.jpg",
+            "dst": "/home/pi/OpenScan/files/logo.jpg",
+            "filesize": 582519
+        }
+    },
+    "beta": {
+        "1": {
+            "src": "beta/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "filesize": 4299
+        },
+        "2": {
+            "src": "beta/Arducam.py",
+            "dst": "/usr/lib/python3/dist-packages/Arducam.py",
+            "filesize": 6154
+        },
+        "3": {
+            "src": "beta/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "filesize": 5963
+        },
+        "4": {
+            "src": "beta/config.txt",
+            "dst": "/boot/config.txt",
+            "filesize": 2179
+        },
+        "5": {
+            "src": "beta/flows.json",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
+            "filesize": 315477
+        },
+        "6": {
+            "src": "beta/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "filesize": 20321
+        },
+        "7": {
+            "src": "files/logo.jpg",
             "dst": "/home/pi/OpenScan/files/logo.jpg",
             "filesize": 582519
         }

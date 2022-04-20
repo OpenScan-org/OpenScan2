@@ -1,7 +1,7 @@
 from flask import Flask, make_response, jsonify, request, abort
 from PIL import Image
 import gphoto2 as gp
-from time import sleep
+from time import sleep, time
 import shutil
 from OpenScan import load_int, load_float, load_bool
 import RPi.GPIO as GPIO
@@ -12,7 +12,17 @@ GPIO.setmode(GPIO.BCM)
 app = Flask(__name__)
 
 basedir = '/home/pi/OpenScan/'
+timer = time()
 
+###################################################################################################################
+@app.route('/ping', methods=['get'])
+def ping():
+    global timer
+    cmd = str(request.args.get('cmd'))
+    if cmd == 'set':
+        timer = time()
+    inactive = time() - timer
+    return ({'inactive':inactive}, 200)
 ###################################################################################################################
 @app.route('/gphoto_init', methods=['get'])
 def gphoto_init():
@@ -50,25 +60,33 @@ def gphoto_exit():
 ###################################################################################################################
 @app.route('/crop', methods=['get'])
 def crop():
+    
+    downscale_threshold = load_int('downscale_threshold')
     filepath_in = basedir + str(request.args.get('filepath_in'))
     filepath_out = basedir + str(request.args.get('filepath_out'))
     cropx = int(request.args.get('cropx'))/200
     cropy = int(request.args.get('cropy'))/200
     rotation = int(request.args.get('rotation'))
-    if cropx == 0 and cropy == 0 and rotation ==  0:
-        shutil.copy(filepath_in, filepath_out)
-    else:
-        with Image.open(filepath_in) as img:
-            w, h = img.size
-            if cropx != 0 or cropy != 0:
-                img = img.crop((w*cropx, h*cropy, w * (1-cropx), h * (1-cropy)))
-            if rotation == 90:
-                img  = img.transpose(Image.ROTATE_90)
-            elif rotation == 180:
-                img= img.transpose(Image.ROTATE_180)
-            elif rotation == 270:
-                img= img.transpose(Image.ROTATE_270)
-            img.save(filepath_out, quality=95, subsampling=0)
+    preview = str(request.args.get('preview'))
+
+
+    with Image.open(filepath_in) as img:
+        w,h = img.size
+        if cropx != 0 or cropy != 0:
+            img = img.crop((w*cropx, h*cropy, w * (1-cropx), h * (1-cropy)))
+        if rotation == 90:
+            img  = img.transpose(Image.ROTATE_90)
+        elif rotation == 180:
+            img= img.transpose(Image.ROTATE_180)
+        elif rotation == 270:
+            img= img.transpose(Image.ROTATE_270)
+        if preview == "True":
+            w,h = img.size
+            if w > downscale_threshold or h > downscale_threshold:
+                downscale = max(w/downscale_threshold,h/downscale_threshold)
+            img = img.resize((int(w/downscale),int(h/downscale)),Image.ANTIALIAS)
+        img.save(filepath_out, quality=95, subsampling=0)
+
     return ({}, 200)
 
 ###################################################################################################################
@@ -91,5 +109,5 @@ def external_capture():
 
 
 if __name__ == '__main__':
-#    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
-    app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)
+    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
+#    app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)
