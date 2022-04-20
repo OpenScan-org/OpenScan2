@@ -65,6 +65,9 @@ def motorrun(motor,angle):
     import RPi.GPIO as GPIO
     from time import sleep
     from math import cos
+    msg = {'cmd':'set'}
+    camera('/ping', msg)
+
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
 
@@ -101,6 +104,8 @@ def motorrun(motor,angle):
 
 def ringlight(number,state):
     import RPi.GPIO as GPIO
+    msg = {'cmd':'set'}
+    camera('/ping', msg)
     pin = load_int('pin_ringlight' + str(number))
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
