@@ -6,6 +6,12 @@ After sticking to my [original code](https://github.com/OpenScanEu/OpenScan) for
 ### I have pre-compiled a working Raspbian Image (2022-04-22), that can be downloaded from [Google Drive (1.5GB)](https://drive.google.com/file/d/1wppbey1Fpqb-MpgHfnHXEZbjoDHfc8P4/view?usp=sharing) (working flawlessly on Raspberry Pi 3b+. Need to re-install the camera drivers on Raspberry Pi 4!)
 
 ## Changelog
+### 2022-04-21
+* added: timer (ETA) until a routine is done
+* added: showing progress, while files are being split (before uploading to OpenScanCloud)
+* added: infotexts (FINALLY :)
+* added: several stats/device information
+* fixed: combining two sets did not delete the smaller set
 ### 2022-04-20
 * !fixed: pi cameras (v1.3, v2.1 and HQ) finally work and can be simply selected in the settings menu
 * !fixed: Raspberry Pi 3B+ and 4 work! (the main limiting factor now is the RAM, where at least 1GB RAM is needed)
