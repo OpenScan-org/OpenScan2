@@ -326,11 +326,11 @@
     {
         "id": "3ce32450.e0cffc",
         "type": "ui_group",
-        "name": "Changelog",
+        "name": "System & Stats",
         "tab": "d25e08b4.5b27e8",
         "order": 2,
         "disp": true,
-        "width": "8",
+        "width": "6",
         "collapse": false,
         "className": ""
     },
@@ -404,66 +404,6 @@
         "height": 1
     },
     {
-        "id": "16f753db0fbbf233",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "4fe6b4c0ade0938a",
-        "order": 6,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "50350f11a5cdac07",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "4fe6b4c0ade0938a",
-        "order": 11,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "717a0b96f38892a5",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "4fe6b4c0ade0938a",
-        "order": 14,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "025273faa2025118",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "4fe6b4c0ade0938a",
-        "order": 16,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "2d5014065e626639",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "3b4bd36726be16d5",
-        "order": 6,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "6da39f0deb7dba46",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "3b4bd36726be16d5",
-        "order": 8,
-        "width": 2,
-        "height": 1
-    },
-    {
         "id": "1f7f7e1e24f5ad9b",
         "type": "ui_group",
         "name": "Initialize",
@@ -494,6 +434,66 @@
         "width": "6",
         "collapse": false,
         "className": ""
+    },
+    {
+        "id": "09cdd0da29f18565",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "4fe6b4c0ade0938a",
+        "order": 6,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "4ea32af9e36ba219",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "4fe6b4c0ade0938a",
+        "order": 11,
+        "width": 6,
+        "height": 1
+    },
+    {
+        "id": "b991247fc93f36d2",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "4fe6b4c0ade0938a",
+        "order": 14,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "0451a2d15e0edb93",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "4fe6b4c0ade0938a",
+        "order": 16,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "269480d45e14821f",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "3b4bd36726be16d5",
+        "order": 6,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "7989968a1d745730",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "3b4bd36726be16d5",
+        "order": 8,
+        "width": 2,
+        "height": 1
     },
     {
         "id": "3fe52603e2ac73b6",
@@ -967,7 +967,7 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 280,
+        "x": 300,
         "y": 40,
         "wires": [
             []
@@ -1813,7 +1813,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Routine",
-        "func": "from OpenScan import load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\ntt_mode = load_bool('turntable_mode')\ncam_delay_after = load_float('cam_delay_after')\ncam_delay_before = load_float('cam_delay_before')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif not 'projectcode' in msg:\n    projectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n    msg['projectcode'] = projectcode\n    msg['counter'] = -1\n    if isfile(zippath):\n        system('rm ' + zippath)\n    sleep(1)\n\nprojectcode = msg['projectcode']\nmsg['counter'] += 1\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    while load_str('status_internal_cam') == 'Routine-paused':\n        sleep(0.2)\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if abs(tt_angle) > 180:\n        tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    while load_str('status_internal_cam') == 'Routine-paused':\n        sleep(0.2)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            while load_str('status_internal_cam') == 'Routine-paused':\n                sleep(0.2)\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2))\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            camera('/crop',msg)\n            zip.write(temppath, projectname + '_' + str(msg['counter']) + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(msg['counter']) + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n\n    position_last = position\n\nzip.close()\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['topic'] = 'Scan done'\nmsg['payload'] = 'Do you want to run another pass or finish this project?'\nmsg['enabled'] = False\nreturn msg\n\n",
+        "func": "from OpenScan import load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime, time\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\ntt_mode = load_bool('turntable_mode')\ncam_delay_after = load_float('cam_delay_after')\ncam_delay_before = load_float('cam_delay_before')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif not 'projectcode' in msg:\n    projectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n    msg['projectcode'] = projectcode\n    msg['counter'] = -1\n    if isfile(zippath):\n        system('rm ' + zippath)\n    sleep(1)\n\nprojectcode = msg['projectcode']\nmsg['counter'] += 1\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nstarttime = time()\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    while load_str('status_internal_cam') == 'Routine-paused':\n        sleep(0.2)\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if abs(tt_angle) > 180:\n        tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    while load_str('status_internal_cam') == 'Routine-paused':\n        sleep(0.2)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n\n    if counter < 6:\n        ETA = ''\n    \n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            while load_str('status_internal_cam') == 'Routine-paused':\n                sleep(0.2)\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2) + ETA)\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            camera('/crop',msg)\n            zip.write(temppath, projectname + '_' + str(msg['counter']) + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(msg['counter']) + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n    ETA = '-ETA:'+str(int((photocount/counter - 1)*(time() - starttime)))+'/'+str(int(photocount/counter*(time() - starttime)))+'s'\n\n\n    position_last = position\n\nzip.close()\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['topic'] = 'Scan done'\nmsg['payload'] = 'Do you want to run another pass or finish this project?'\nmsg['enabled'] = False\nreturn msg\n\n",
         "outputs": 1,
         "x": 300,
         "y": 880,
@@ -1993,8 +1993,7 @@
         "links": [
             "2f4c0f98.dee2",
             "8367cfa0bf5bc5df",
-            "b33d604c.5f1a6",
-            "d14bbbb446d45e39"
+            "b33d604c.5f1a6"
         ],
         "x": 835,
         "y": 920,
@@ -2167,7 +2166,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Take Preview Shot",
-        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nsleep(0.5)\n\n\nstatus = load_str('status_internal_cam')\ncam=load_str('camera')\n\n\nif msg['flag'] == False and not 'Routine' in status:\n    return\n\nif cam == 'external':\n    return\n\nmsg['payload']=\"/tmp/preview.jpg?ts=\"+str(int(time()*10))\n\nif cam == 'gphoto' and status == 'no camera found':\n    if camera('/gphoto_init') == 200:\n        save('status_internal_cam','--READY--')\n\nif status!=\"--READY--\":\n    return msg\n\nmsg['cropx'] = load_int('cam_cropx')\nmsg['cropy'] = load_int('cam_cropy')\nmsg['rotation'] = load_int('cam_rotation')\nmsg['filepath_in'] = 'tmp/tmp.jpg'\nmsg['filepath_out'] = 'tmp/preview.jpg'\nmsg['filepath'] = 'tmp/tmp.jpg'\nmsg['preview'] = True\n\nif cam == 'gphoto':\n    if camera('/gphoto_test', msg) != 200:\n        save('status_internal_cam','no camera found')\n        return msg\n    camera('/gphoto_preview', msg)\n\nif cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n    take_photo('tmp/tmp.jpg')\n\ncamera('/crop',msg)\n\nreturn msg\n",
+        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nsleep(0.5)\n\n\nstatus = load_str('status_internal_cam')\ncam=load_str('camera')\n\n\nif msg['flag'] == False and not 'Routine' in status:\n    return msg\n\nif cam == 'external':\n    return\n\nmsg['payload']=\"/tmp/preview.jpg?ts=\"+str(int(time()*10))\n\nif cam == 'gphoto' and status == 'no camera found':\n    if camera('/gphoto_init') == 200:\n        save('status_internal_cam','--READY--')\n\nif status!=\"--READY--\":\n    return msg\n\nmsg['cropx'] = load_int('cam_cropx')\nmsg['cropy'] = load_int('cam_cropy')\nmsg['rotation'] = load_int('cam_rotation')\nmsg['filepath_in'] = 'tmp/tmp.jpg'\nmsg['filepath_out'] = 'tmp/preview.jpg'\nmsg['filepath'] = 'tmp/tmp.jpg'\nmsg['preview'] = True\n\nif cam == 'gphoto':\n    if camera('/gphoto_test', msg) != 200:\n        save('status_internal_cam','no camera found')\n        return msg\n    camera('/gphoto_preview', msg)\n\nif cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n    take_photo('tmp/tmp.jpg')\n\ncamera('/crop',msg)\n\nreturn msg\n",
         "outputs": 1,
         "x": 410,
         "y": 1220,
@@ -2299,7 +2298,7 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 650,
+        "x": 630,
         "y": 1300,
         "wires": [
             []
@@ -2546,7 +2545,7 @@
         "format": "",
         "layout": "col-center",
         "className": "",
-        "x": 1110,
+        "x": 1130,
         "y": 1420,
         "wires": []
     },
@@ -3046,26 +3045,8 @@
         "x": 490,
         "y": 100,
         "wires": [
-            [
-                "b5722c9a250aeb3d"
-            ]
+            []
         ]
-    },
-    {
-        "id": "b5722c9a250aeb3d",
-        "type": "debug",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 100,
-        "wires": []
     },
     {
         "id": "917a194be245384a",
@@ -3270,8 +3251,7 @@
         "z": "1613373abaf77a2c",
         "name": "preview",
         "links": [
-            "f20da2fc4978b7bf",
-            "fb13752beddee9f2"
+            "f20da2fc4978b7bf"
         ],
         "x": 135,
         "y": 1260,
@@ -3842,7 +3822,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "refresh",
-        "func": "from time import sleep\nimport os\nfrom OpenScan import load_str, OpenScanCloud, save, load_bool\n\nbasepath = '/home/pi/OpenScan/scans/'\n\nif load_bool(\"terms\")==False:\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic']='OpenScanCloud - Terms of Use'\n    return None,msg\n\nsave('status_cloud','refreshing')\ntoken = load_str('token')\n\ntest = OpenScanCloud('getTokenInfo',{'token':token})\nif test.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    return None,msg\nelif test.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nstats = test.json()\nfor i in stats:\n    save('osc_'+i, stats[i])\n    pass\n\nmsg={}\nprojects = []\nfor i in os.listdir(basepath):\n    if os.path.isdir(basepath + i):\n        if os.path.isfile(basepath + i + '/status'):\n            with open(basepath + i + '/status', 'r') as file:\n                status = file.read().strip('\\n')\n                if status in ['expired', 'processing done', 'processing failed']:\n                    continue\n        projects.append(i)\n\nfor p in projects:\n    r = OpenScanCloud('getProjectInfo',{'token':token, 'project':p+'.zip'})\n    if r.status_code == 200:\n        answer = r.json()\n        if answer == {}:\n            os.system('sudo rm -r ' + basepath + p)\n        else:\n            with open(basepath + p + '/status', 'w+') as file:\n                file.write(answer['status'])\n            with open(basepath + p + '/download', 'w+') as file:\n                file.write(answer['dlink'])\n\nmsg['list'] = projects\nsleep(0.5)\nsave('status_cloud','ready')\nreturn msg, None\n",
+        "func": "from time import sleep\nimport os\nfrom OpenScan import load_str, OpenScanCloud, save, load_bool\n\nbasepath = '/home/pi/OpenScan/scans/'\n\nif load_bool(\"terms\")==False:\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic']='OpenScanCloud - Terms of Use'\n    return None,msg\n\nsave('status_cloud','refreshing')\ntoken = load_str('token')\n\ntest = OpenScanCloud('getTokenInfo',{'token':token})\nif test.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    return None,msg\nelif test.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nstats = test.json()\nfor i in stats:\n    save('osc_'+i, stats[i])\n    pass\n\nmsg={}\nprojects = []\nfor i in os.listdir(basepath):\n    if os.path.isdir(basepath + i):\n        if os.path.isfile(basepath + i + '/status'):\n            with open(basepath + i + '/status', 'r') as file:\n                status = file.read().strip('\\n')\n                if status in ['expired', 'processing done', 'processing failed']:\n                    continue\n        projects.append(i)\n\nfor p in projects:\n    r = OpenScanCloud('getProjectInfo',{'token':token, 'project':p+'.zip'})\n    if r.status_code == 200:\n        answer = r.json()\n        if answer == {}:\n            os.system('rm -r ' + basepath + p)\n        else:\n            with open(basepath + p + '/status', 'w+') as file:\n                file.write(answer['status'])\n            with open(basepath + p + '/download', 'w+') as file:\n                file.write(answer['dlink'])\n\nmsg['list'] = projects\nsleep(0.5)\nsave('status_cloud','ready')\nreturn msg, None\n",
         "outputs": 2,
         "x": 320,
         "y": 180,
@@ -3994,25 +3974,6 @@
         ]
     },
     {
-        "id": "6d471a5210505276",
-        "type": "function",
-        "z": "4981d84ef1a366d1",
-        "name": "read",
-        "func": "var file = 'status_cloud'\nvar file2 = 'status_uploadprogress'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nstatus = String(data);\n\nif (status.substr(0,9) === 'uploading'){\n    data = fs.readFileSync(filepath+file2, 'utf8');\n    progress = data.substr(data.length - 6)\n        if (progress.substr(progress.length -1) === '%'){\n            status = status + ' (' + progress + ')'\n        }\n}\nmsg.status = status\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 130,
-        "y": 60,
-        "wires": [
-            [
-                "952ce286.4ffd4"
-            ]
-        ]
-    },
-    {
         "id": "f4e9a4bd79b4221f",
         "type": "function",
         "z": "4981d84ef1a366d1",
@@ -4058,11 +4019,11 @@
         "links": [
             "6c6ef2255a7d39e5"
         ],
-        "x": 35,
+        "x": 45,
         "y": 60,
         "wires": [
             [
-                "6d471a5210505276"
+                "51579603bce21e98"
             ]
         ]
     },
@@ -4280,7 +4241,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "combine",
-        "func": "from os.path import getsize\nfrom shutil import copy\nfrom os import rename, remove\nimport zipfile as z\nfrom OpenScan import save\n\nfrom time import sleep\n\nif msg['payload'] != 'OK':\n    return\n\nbasepath = '/home/pi/OpenScan/scans/'\ntmp1 = basepath + msg['set1']\ntmp2 = basepath + msg['set2']\n\nif getsize(tmp1) > getsize(tmp2):\n    set1 = tmp1\n    set2 = tmp2\nelse:\n    set1 = tmp2\n    set2 = tmp1\n\n#set 1 is larger and to be merged into\n\nzips = [set1, set2]\n\nwith z.ZipFile(set1, 'a') as z1:\n    z2 = z.ZipFile(set2, 'r')\n    i = 0\n    for n in z2.namelist():\n        i += 1\n        n2 = n\n        save('status_cloud','writing ' + str(i) + '/' + str(len(z2.namelist())))\n        while 'X'+n in z1.namelist():\n            n = 'X' + n\n        z1.writestr('X'+n, z2.open(n2).read())\nsave('status_cloud','ready')\n\nos.rename(set1, set1[:-4] + 'X.zip')\n\nreturn msg",
+        "func": "from os.path import getsize\nfrom shutil import copy\nfrom os import rename, remove\nimport zipfile as z\nfrom OpenScan import save\n\nfrom time import sleep\n\nif msg['payload'] != 'OK':\n    return\n\nbasepath = '/home/pi/OpenScan/scans/'\ntmp1 = basepath + msg['set1']\ntmp2 = basepath + msg['set2']\n\nif getsize(tmp1) > getsize(tmp2):\n    set1 = tmp1\n    set2 = tmp2\nelse:\n    set1 = tmp2\n    set2 = tmp1\n\nzips = [set1, set2]\n\nwith z.ZipFile(set1, 'a') as z1:\n    z2 = z.ZipFile(set2, 'r')\n    i = 0\n    for n in z2.namelist():\n        i += 1\n        n2 = n\n        save('status_cloud','writing ' + str(i) + '/' + str(len(z2.namelist())))\n        while 'X'+n in z1.namelist():\n            n = 'X' + n\n        z1.writestr('X'+n, z2.open(n2).read())\nsave('status_cloud','ready')\n\nos.rename(set1, set1[:-4] + 'X.zip')\nos.remove(set2)\n\nreturn msg",
         "outputs": 1,
         "x": 560,
         "y": 540,
@@ -4431,6 +4392,21 @@
         ]
     },
     {
+        "id": "51579603bce21e98",
+        "type": "python3-function",
+        "z": "4981d84ef1a366d1",
+        "name": "read",
+        "func": "from OpenScan import load_str\nfrom os import listdir, path\n\nstatus = load_str('status_cloud')\n\nif status[0:9] == 'uploading':\n    progress = load_str('status_uploadprogress')[-6:]\n    if progress[-1:] == '%':\n        status = status + ' (' + progress + ')'\n\nif status[0:7] == 'zipping':\n    path1 = '/home/pi/OpenScan/tmp/split/'\n    files = listdir(path1)\n    size1 = 0\n    for file in files:\n        size1 += path.getsize(path1+file)\n    size2 = path.getsize('/home/pi/OpenScan/scans/'+ files[0][:-2])\n    \n    status = 'zipping files (' + str(float(int(1000*size1/size2))/10) + '%)'\n\nmsg['status'] = status\nreturn msg\n",
+        "outputs": 1,
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "952ce286.4ffd4"
+            ]
+        ]
+    },
+    {
         "id": "40dee936a9abac0d",
         "type": "ui_switch",
         "z": "017bd4e4a428bee5",
@@ -4503,7 +4479,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "ssh",
-        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('ssh'):\n    save('ssh', state)\n\nif state == True:\n    os.system('sudo /etc/init.d/ssh start')\nelse:\n    os.system('sudo /etc/init.d/ssh stop')",
+        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('ssh'):\n    save('ssh', state)\n\nif state == True:\n    os.system('/etc/init.d/ssh start')\nelse:\n    os.system('/etc/init.d/ssh stop')",
         "outputs": 1,
         "x": 530,
         "y": 340,
@@ -4543,7 +4519,7 @@
         "id": "595153429adef33b",
         "type": "ui_button",
         "z": "017bd4e4a428bee5",
-        "name": "Network&Cloud",
+        "name": "Wifi",
         "group": "0fe66c9190b8a87c",
         "order": 1,
         "width": 6,
@@ -4555,14 +4531,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>Network Settings</h1> <p><strong>Hostname</strong></p> <p style=\"margin-left: 20px;\">The device can be accessed through any browser in the same network. Therefore, you can either enter the device&apos;s IP address or the given hostname. The standard name is &apos;openscan&apos; but it is highly recommended to change the name, when using multiple devices (e.g. &apos;openscan1&apos;, &apos;openscan2&apos; ...)</p> <p><strong>Select Wifi</strong></p> <p style=\"margin-left: 20px;\">After booting, the device will automatically search for available wireless networks and create a list. You can connect to a given network by entering the wifi password and country code. To find the right two-character country code, see the following list: <a href=\"%5C%22https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>ISO 3166 Country Code on Wikipedia</a></p> <p><strong>Search Wifi</strong></p> <p style=\"margin-left: 20px;\">You can manually refresh the list of available networks by pressing this button.</p> <p><strong>Reset Wifi</strong></p> <p style=\"margin-left: 20px;\">Delete the list of known wireless networks (and passwords) and reset the default. After this step, you will either need to use Ethernet or a modified wpa_supplicant.conf file. (see <a href=\"%5C%22https://www.glennklockwood.com/sysadmin-howtos/rpi-headless-boot.html%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>glennklockwood.com</a> for more details about the wpa_supplicant.conf file, which has to be manually created and placed into the /boot/ directory of the sd-card)</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 280,
-        "y": 160,
+        "x": 590,
+        "y": 120,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4604,14 +4582,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>General Settings</h1> <p><strong>Terms Of Use</strong></p> <p style=\"margin-left: 20px;\">In order to use the OpenScanCloud, please read the terms of use as files will be transmitted from your device to the OpenScan Servers.</p> <p><strong>SSH</strong></p> <p style=\"margin-left: 20px;\">SSH can be used to access the Raspberry Pi and modify core files of the operating system. Please deactivate, if you do not want to use this feature.</p> <p style=\"margin-left: 20px;\">If you want to use it, the default user is <strong>pi</strong>, password: <strong>raspberry. Please change the password&nbsp;</strong><strong>immediately.</strong>&nbsp;</p> <p><strong>Samba</strong></p> <p style=\"margin-left: 20px;\">Samba s a network local file sharing server, which allows accessing the Raspberry Pi&apos;s file system through the explorer (and other programs like FileZilla). You can use it to transfer custom photo sets to the device in order to use the OpenScanCloud. Therefore, you need to transfer the zip file containing your photos to the following folder /OpenScan/scans/</p> <p style=\"margin-left: 20px;\">You can access the Raspberry Pis file system by inserting the following line into your Windows explorer:&nbsp;</p> <p style=\"margin-left: 20px;\">\\\\OpenScan/PiShare/OpenScan/scans/</p> <p style=\"margin-left: 20px;\">username: pi, password: raspberry</p> <p style=\"margin-left: 20px;\"><strong>Please deactivate the local file sharing if you do not intend to use it</strong></p> <p><strong>Advanced Settings</strong></p> <p style=\"margin-left: 20px;\">Enable a ton of additional settings, which should be changed only if you know what you are doing ;)</p> <p><strong>Model</strong></p> <p style=\"margin-left: 20px;\">Device model you are using: OpenScan Mini or OpenScan Classic. Setting the device affects the settings of the motor (gear ratio, acceleration, speed). You can change those values manually in the advanced settings.</p> <p><strong>Camera</strong></p> <p style=\"margin-left: 20px;\">A wide range of camera modules is supported (Pi camera v1.3, v2.1, HQ, Arducam IMX519, IMX290, IMX378, OV9281). If you encounter any issues with those models, please check the orientation of the camera ribbon cable and its connectors.</p> <p style=\"margin-left: 20px;\"><u>DSLR (gphoto)</u> - connect a wide range of DSLR cameras to the device through USB. See <a href=\"http://www.gphoto.org/proj/libgphoto2/support.php\" rel=\"noopener noreferrer\" target=\"_blank\">GPhoto</a> for a full list of supported devices.</p> <p style=\"margin-left: 20px;\"><u>External camera</u> - triggering any camera through an isolated GPIO signal on the front side of the pi shield.</p> <p><strong>Shutdown/Reboot</strong></p> <p style=\"margin-left: 20px;\">Always use the shutdown button before you power off your Raspberry Pi.</p> <p><strong>Restore Default Settings</strong></p> <p style=\"margin-left: 20px;\">In case you want to restore the default settings</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 260,
-        "y": 120,
+        "x": 740,
+        "y": 240,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4630,14 +4610,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1><span style=\"color: rgb(226, 80, 65);\">Pinout</span></h1> <p><span style=\"color: rgb(226, 80, 65);\"><strong><span style=\"font-size: 19px;\">ONLY CHANGE THE PINOUT IF YOU ARE ABSOLUTELY SURE! CHANGES CAN DAMAGE THE RASPBERRY PI AND ANY PERIPHERALS!</span></strong></span></p> <p><br></p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 250,
+        "x": 430,
         "y": 200,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4645,7 +4627,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "smb",
-        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('smb'):\n    save('smb', state)\nif state == True:\n    os.system('sudo /etc/init.d/smbd start')\nelse:\n    os.system('sudo /etc/init.d/smbd stop')\n\n\n",
+        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('smb'):\n    save('smb', state)\nif state == True:\n    os.system('/etc/init.d/smbd start')\nelse:\n    os.system('/etc/init.d/smbd stop')\n\n\n",
         "outputs": 1,
         "x": 530,
         "y": 380,
@@ -4729,7 +4711,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "reboot",
-        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('sudo reboot')\n",
+        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('reboot -h')\n",
         "outputs": 1,
         "x": 270,
         "y": 720,
@@ -4742,7 +4724,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "shutdown",
-        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('sudo shutdown -h now')",
+        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('shutdown -h now')",
         "outputs": 1,
         "x": 280,
         "y": 800,
@@ -4755,7 +4737,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "4fe6b4c0ade0938a",
-        "order": 8,
+        "order": 7,
         "width": 2,
         "height": 1,
         "name": "",
@@ -4772,7 +4754,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "4fe6b4c0ade0938a",
-        "order": 10,
+        "order": 9,
         "width": 2,
         "height": 1,
         "name": "",
@@ -4793,7 +4775,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "4fe6b4c0ade0938a",
-        "order": 7,
+        "order": 8,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -4836,7 +4818,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "4fe6b4c0ade0938a",
-        "order": 9,
+        "order": 10,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -4922,14 +4904,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>Motor Settings</h1> <p><strong>Turntable Mode</strong></p> <p style=\"margin-left: 20px;\">Activate turntable mode in order to deactivate the rotor. The routine will only move the turntable and take a given number of photos.</p> <p><strong>Rotor - Start Angle, Min and Max Angle</strong></p> <p style=\"margin-left: 20px;\">Since this version of OpenScan does not have an endstop (yet), it is necessary to tell the device its position when the routine is being started. 0&deg; corresponds to the horizontal (natural) orientation.</p> <p style=\"margin-left: 20px;\">After that, the device will equally space the image positions between angle min and angle max.</p> <p><strong>Rotor/Turntable</strong></p> <p style=\"margin-left: 20px;\"><u>Steps per rotation</u> - &nbsp;defines the number of steps it takes to move the axis 360&deg;. It is defined by A*B*C, where A is the number of steps for one revolution of the given stepper motor (normally 200), B is the microstepping used (normally 16), and C the gear ratio (1 for the turntable and 15 or 5,33 for the OpenScan Mini and Classic respectively)</p> <p style=\"margin-left: 20px;\"><u>Delay</u> - time in microseconds between each step of the motor. Lower this value if the movement is too fast</p> <p style=\"margin-left: 20px;\"><u>Acceleration</u> - a factor defining how fast the delay time between each step is being changed during acceleration and deceleration phases. Lower this value in order to make the movement smoother.</p> <p style=\"margin-left: 20px;\"><u>Acceleration ramp</u> - the number of steps allowed for the acceleration processes. Increase this value, if you want smoother movement.</p> <p style=\"margin-left: 20px;\"><u>Manual Angle</u> - Defines the degree value for the manual movement through the arrow buttons in the scan menu</p> <p style=\"margin-left: 20px;\"><u>Direction</u> - If needed, reverse the movement (in case the arrow buttons and movement do not correspond). Alternatively, you can flip the motor cable 180&deg; (BUT MAKE SURE TO POWER OFF THE DEVICE!)</p> <p style=\"margin-left: 20px;\"><a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\"></a></p> <p><br></p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 870,
+        "x": 430,
         "y": 120,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4948,14 +4932,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>Camera Settings</h1> <p><strong>Jpeg quality</strong></p> <p style=\"margin-left: 20px;\">Value in percent, which usually does not need to be changed.</p> <p><strong>Downscale Preview</strong></p> <p style=\"margin-left: 20px;\">The preview image has to be scaled down depending on your network speed. If you want to have a higher quality preview image, you can increase this value, which defines the maximal width/height value. If the value is too high, the preview window might not update</p> <p><strong>Image Rotation</strong></p> <p style=\"margin-left: 20px;\">Change the image rotation, if needed.</p> <p><strong>Timeout</strong></p> <p style=\"margin-left: 20px;\">Defines the time in seconds, when the libcamera command (used for the camera modules) will timeout. Increase this value, if the camera does not get triggered in each position.</p> <p><strong>Delay Before/After</strong></p> <p style=\"margin-left: 20px;\">A fixed delay in seconds before and/or after a photo is taken. Increase this value when the photos have visual motion blur.</p> <p><strong>AWBG, Gain, Contrast, Saturation</strong></p> <p style=\"margin-left: 20px;\">Under most circumstances, you do not need to touch these values.</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 880,
+        "x": 420,
         "y": 160,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -5195,7 +5181,7 @@
         "id": "27c6b221c90ed9e1",
         "type": "exec",
         "z": "017bd4e4a428bee5",
-        "command": "sudo iwlist wlan0 scan | grep ESSID | sed 's/ESSID://g;s/\"//g;s/^ *//;s/ *$//'",
+        "command": "iwlist wlan0 scan | grep ESSID | sed 's/ESSID://g;s/\"//g;s/^ *//;s/ *$//'",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
@@ -5320,7 +5306,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "Reset Wifi",
-        "func": "from time import sleep\n\nif msg['payload']!=\"Yes\":\n    return\n\ntemp_dir = '/home/pi/OpenScan/tmp/wpa_empty.log'\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\nwith open(temp_dir, 'w+') as file:\n    file.write('update_config=1\\nctrl_interface=DIR=/var/run/wpa_supplicant\\ncountry=de\\n\\n')\nos.system('sudo mv '+ temp_dir + ' ' + wpa_dir)\nos.system('sudo wpa_cli -i wlan0 reconfigure')\nsleep(3)\nos.system('sudo systemctl restart nodered')\nreturn msg",
+        "func": "from time import sleep\n\nif msg['payload']!=\"Yes\":\n    return\n\ntemp_dir = '/home/pi/OpenScan/tmp/wpa_empty.log'\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\nwith open(temp_dir, 'w+') as file:\n    file.write('update_config=1\\nctrl_interface=DIR=/var/run/wpa_supplicant\\ncountry=de\\n\\n')\nos.system('mv '+ temp_dir + ' ' + wpa_dir)\nos.system('wpa_cli -i wlan0 reconfigure')\nsleep(3)\nos.system('systemctl restart nodered')\nreturn msg",
         "outputs": 1,
         "x": 440,
         "y": 1140,
@@ -5356,7 +5342,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "add Wifi",
-        "func": "from time import sleep\nsleep(0.1)\n\nos.system('sudo wpa_cli -i wlan0 reconfigure')\n\nreturn msg",
+        "func": "from time import sleep\nsleep(0.1)\n\nos.system('wpa_cli -i wlan0 reconfigure')\n\nreturn msg",
         "outputs": 1,
         "x": 1320,
         "y": 1000,
@@ -5430,7 +5416,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "modWPA",
-        "func": "if msg['payload'] == 'Cancel':\n    return\n\nif len(msg['payload'])!=2:\n    msg['payload'] = 'invalid country code'\n    return msg,None\n\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\ntemp_dir = '/home/pi/OpenScan/tmp/wpa'\n\ncode = msg['payload'].upper()\nssid = msg['ssid']\npassword = msg['password']\n\nif len(code) != 2:\n    msg['topic'] = 'ERROR'\n    msg['payload'] = 'invalid country code (see  ISO 3166-1 alpha-2)'\n    return msg\n\nwith open(wpa_dir, 'r') as file:\n    for i in file.readlines():\n        if 'country=' in i:\n            code_old=i.split('country=')[1][0:2]\n            break\n\nwith open(wpa_dir, 'r') as file:\n    wpa = file.read()\n    if ssid in wpa:\n        msg['topic'] = 'ERROR'\n        msg['payload'] = 'Network already exists! If you have trouble connecting, please consider resetting the saved Wifi connections.'\n        return msg\n    wpa=wpa.replace('country=' + code_old, 'country=' + code)\n    wpa=wpa + '\\nnetwork={\\n priority=10\\n ssid=\"'+ssid+'\"\\n psk=\"'+password+'\"\\n}\\n'\n\nwith open(temp_dir,'w+') as file:\n    file.write(wpa)\nos.system('sudo mv '+temp_dir + ' ' + wpa_dir)\n\nmsg['topic'] = 'Updating Wifi'\nmsg['payload'] = 'reconnecting might take a moment'\nreturn msg,msg\n",
+        "func": "if msg['payload'] == 'Cancel':\n    return\n\nif len(msg['payload'])!=2:\n    msg['payload'] = 'invalid country code'\n    return msg,None\n\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\ntemp_dir = '/home/pi/OpenScan/tmp/wpa'\n\ncode = msg['payload'].upper()\nssid = msg['ssid']\npassword = msg['password']\n\nif len(code) != 2:\n    msg['topic'] = 'ERROR'\n    msg['payload'] = 'invalid country code (see  ISO 3166-1 alpha-2)'\n    return msg\n\nwith open(wpa_dir, 'r') as file:\n    for i in file.readlines():\n        if 'country=' in i:\n            code_old=i.split('country=')[1][0:2]\n            break\n\nwith open(wpa_dir, 'r') as file:\n    wpa = file.read()\n    if ssid in wpa:\n        msg['topic'] = 'ERROR'\n        msg['payload'] = 'Network already exists! If you have trouble connecting, please consider resetting the saved Wifi connections.'\n        return msg\n    wpa=wpa.replace('country=' + code_old, 'country=' + code)\n    wpa=wpa + '\\nnetwork={\\n priority=10\\n ssid=\"'+ssid+'\"\\n psk=\"'+password+'\"\\n}\\n'\n\nwith open(temp_dir,'w+') as file:\n    file.write(wpa)\nos.system('mv '+temp_dir + ' ' + wpa_dir)\n\nmsg['topic'] = 'Updating Wifi'\nmsg['payload'] = 'reconnecting might take a moment'\nreturn msg,msg\n",
         "outputs": 2,
         "x": 1180,
         "y": 980,
@@ -5468,7 +5454,7 @@
         "id": "e97d17c6590138e2",
         "type": "ui_button",
         "z": "017bd4e4a428bee5",
-        "name": "Cloud",
+        "name": "Cloud-settings",
         "group": "3b4bd36726be16d5",
         "order": 1,
         "width": 6,
@@ -5480,14 +5466,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>OpenScanCloud</h1> <p style=\"margin-left: 20px;\">OpenScanCloud is a free/donation-based cloud processing service, which will convert your photos into 3d models using latest photogrammetry technology. Feel free to support the project with a small donation at <a href=\"%5C%22https://www.buymeacoffee.com/OpenScan%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>BuyMeACoffee</a>.</p> <p style=\"margin-left: 20px;\">The only requirement to use this service is a one-time, free-of-charge registration (which is solely an anti-spam measure). By filling out the registration form, you will receive an individual access token.</p> <p><strong>Register</strong></p> <p style=\"margin-left: 20px;\">In order to use the OpenScanCloud, you will have to enter your name and email. It might take 1-3 days to create the access token, which will be sent to your mail address. Please check your spam folder.</p> <p><strong>Enter Token</strong></p> <p style=\"margin-left: 20px;\">Please enter your individual token here in order to activate the cloud functionality. The token will be verified immediately. In case of any problems, please contact <a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\">cloud@openscan.eu</a></p> <p><strong>Token</strong></p> <p style=\"margin-left: 20px;\">A shorted version of your token will be displayed here. Please include a copy of this shorted token in any support requests <a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\">cloud@openscan.eu</a></p> <p><strong>Credit (GB)</strong></p> <p style=\"margin-left: 20px;\">Each token comes with a given amount of &apos;credit&apos; which is another measure against spam. The given number in Gigabyte indicates the amount of data, that you can process on the servers.&nbsp;</p> <p style=\"margin-left: 20px;\">IMPORTANT: The credit can be increased at any time by sending a (nice) mail to <a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\">cloud@openscan.eu</a></p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 870,
-        "y": 200,
+        "x": 620,
+        "y": 160,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -5856,8 +5844,7 @@
         "y": 1520,
         "wires": [
             [
-                "bbad1ab5f8f63fb7",
-                "b53c3038b7cb62b0"
+                "bbad1ab5f8f63fb7"
             ]
         ]
     },
@@ -8906,7 +8893,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "chk/change hostname",
-        "func": "from OpenScan import save\n\nif msg['payload'] != 'OK':\n    pass\n\nwith open('/etc/hostname', 'r') as file:\n    old_hostname = file.read().replace('\\n','')\n\nhostname = msg['hostname']\nif len(hostname) < 4 :\n    msg['payload'] = ' '\n    msg['topic'] = 'ERROR - Hostname NOT changed'\n    return msg\n    \n\nwith open('/etc/hostname', 'w+') as file:\n    file.write(hostname)\nos.system('echo ' + hostname + ' | sudo tee /etc/hostname')\nwith open('/etc/hosts', 'r') as file:\n    temp = file.read()\ntemp = temp.replace(old_hostname,hostname)\nwith open('/etc/hosts', 'w') as file:\n    file.write(temp)\nos.system('sudo hostnamectl set-hostname ' + hostname)\nos.system('sudo systemctl restart avahi-daemon')\nsave('hostname',hostname)\nmsg['payload'] = hostname\nmsg['topic'] = 'Success - Hostname changed'\nreturn msg\n",
+        "func": "from OpenScan import save\n\nif msg['payload'] != 'OK':\n    pass\n\nwith open('/etc/hostname', 'r') as file:\n    old_hostname = file.read().replace('\\n','')\n\nhostname = msg['hostname']\nif len(hostname) < 4 :\n    msg['payload'] = ' '\n    msg['topic'] = 'ERROR - Hostname NOT changed'\n    return msg\n    \n\nwith open('/etc/hostname', 'w+') as file:\n    file.write(hostname)\nos.system('echo ' + hostname + ' | tee /etc/hostname')\nwith open('/etc/hosts', 'r') as file:\n    temp = file.read()\ntemp = temp.replace(old_hostname,hostname)\nwith open('/etc/hosts', 'w') as file:\n    file.write(temp)\nos.system('hostnamectl set-hostname ' + hostname)\nos.system('systemctl restart avahi-daemon')\nsave('hostname',hostname)\nmsg['payload'] = hostname\nmsg['topic'] = 'Success - Hostname changed'\nreturn msg\n",
         "outputs": 1,
         "x": 1140,
         "y": 940,
@@ -9036,14 +9023,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>Files&amp;Cloud</h1> <p><strong>Refresh</strong></p> <p style=\"margin-left: 20px;\">You can refresh the status of the processing of your files in the OpenScanCloud. Make sure to read and agree the terms of use (in settings menu) before using the OpenScanCloud. Do not spam this button, as this might lead to temporary/permanent suspension of your IP address.</p> <p style=\"margin-left: 20px;\">The status (in the table) of the individual sets in the file list will be updated to one of the following:</p> <p style=\"margin-left: 20px;\"><u>Created&nbsp;</u>- you started the upload of your image set. If you are stuck on this status, please try to restart the upload.</p> <p style=\"margin-left: 20px;\"><u>Initialized&nbsp;</u>- all files have been uploaded and processing will start as soon as possible</p> <p style=\"margin-left: 20px;\"><u>File approved&nbsp;</u>- the server received and verified your files</p> <p style=\"margin-left: 20px;\"><u>Processing started</u> - your files are currently being processed</p> <p style=\"margin-left: 20px;\"><u>Processing failed</u> - there are various reasons why processing might fail. Please check the email for more details or contact me at <a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\">cloud@openscan.eu</a></p> <p style=\"margin-left: 20px;\">processing done - check your email, where you should find a link to the 3d model :)</p> <p><strong>Status (on the right column)</strong></p> <p style=\"margin-left: 20px;\">Indicates, what the device is currently up to.</p> <p style=\"margin-left: 20px;\"><u>Refreshing&nbsp;</u>- updating all image set&apos;s status</p> <p style=\"margin-left: 20px;\"><u>Uploading&nbsp;</u>- while transferring the image set to the OpenScanCloud servers. If the upload freezes, be patient. If nothing happens, reboot the device and restart the upload.</p> <p style=\"margin-left: 20px;\"><u>Project started</u> - when the upload of a set was successful</p> <p style=\"margin-left: 20px;\"><u>Zipping&nbsp;</u>- files larger then 200mb have to be split and re-zipped before uploading to the OpenScanCloud, the process might take a while depending on the filesize.</p> <p style=\"margin-left: 20px;\"><u>Combining</u> - two sets into one might take up to a minute. </p> <p><strong>Set</strong></p> <p style=\"margin-left: 20px;\">select a set from the file list by clicking on a row in the table</p> <p><strong>Download</strong></p> <p style=\"margin-left: 20px;\">Download the selected set from the OpenScan device to your computer/mobile/tablet</p> <p><strong>Upload</strong></p> <p style=\"margin-left: 20px;\">Upload the selected file to the OpenScanCloud</p> <p><strong>Combine</strong></p> <p style=\"margin-left: 20px;\">In order to combine two sets, select one set. Click the combine button and select the second set. A pop-up will appear, and you can confirm the operation. All images from the two sets will be merged into one set. The original image sets will be deleted!</p> <p><strong>Delete Set/All</strong></p> <p style=\"margin-left: 20px;\">Please keep in mind, that the memory of the SD card is relatively small, and thus you will have to delete individual or all photo sets from time to time.</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 610,
-        "y": 120,
+        "x": 590,
+        "y": 200,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -9062,11 +9051,11 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "<h1 style=\"text-align: left;\">Files&amp;Cloud</h1> <p><strong>Current Status</strong></p> <p style=\"margin-left: 20px;\"><u>--READY--&nbsp;</u>- everything is okay and ready to go :)</p> <p style=\"margin-left: 20px;\"><u>Routine-preparing</u> - before starting the routine some time might pass depending on the number of photos</p> <p style=\"margin-left: 20px;\"><u>Routine-stopping</u> - manually ending the routine by pressing the stop button</p> <p style=\"margin-left: 20px;\"><u>Routine-Photo X/Y</u> - Showing the progress of the routine</p> <p style=\"margin-left: 20px;\"><u>No Camera Found</u> - please check the camera ribbon cable</p> <p style=\"margin-left: 20px;\"><u>Error: XXX</u> - Please contact <a href=\"mailto:info@openscan.eu\">info@openscan.eu</a> or post an issue on <a href=\"https://github.com/OpenScanEu/OpenScan2\" rel=\"noopener noreferrer\" target=\"_blank\">Github.com</a></p> <p><strong>Projectname</strong></p> <p style=\"margin-left: 20px;\">Each photo set will be saved using the following pattern &nbsp;YYYY-MM-DD_hh-mm-ss_projectname.zip (e.g. 2022-04-05_12.12.12_toysoldier.zip). Keep your files organized by giving each set a new projectname. If not specified &apos;default&apos; will be used.</p> <p><strong>Rotor</strong></p> <p style=\"margin-left: 20px;\">Moving the rotor by increments of 5&deg;. Please make sure to start the routine with the camera in the horizontal position.</p> <p><strong>Turntable</strong></p> <p style=\"margin-left: 20px;\">Moving the turntable by increments of 15&deg;.</p> <p><strong>Ringlight</strong></p> <p style=\"margin-left: 20px;\">Use the ring light for shadow-free illumination. It is highly recommended to use the polarizer in order to avoid reflections. Note, that the polarizer will absorb 75% of the light, so you might need to use both ring lights.</p> <p><strong>Photos</strong></p> <p style=\"margin-left: 20px;\">Set the number of photos for the current set. 60-120 photos should be more than enough for most objects. <u><strong>If the reconstruction fails or is very bad with 60 photos, increasing the number of photos will not help!</strong></u></p> <p><strong>Shutter</strong></p> <p style=\"margin-left: 20px;\">Again: <strong><u>Less is more</u></strong>! If the value is too high, some areas might get overexposed and thus, the software will not be able to recognize the surface feature of the object. Here are some reference values:</p> <p style=\"margin-left: 20px;\">- no polarizer: 5-20ms</p> <p style=\"margin-left: 20px;\">- mostly white object, &nbsp;with polarizer + one ringlight: 50-200ms</p> <p><strong>Crop X/Y</strong></p> <p style=\"margin-left: 20px;\">Make sure to use the right object holder to place the object in the middle of the screen. Try to crop as many unnecessary areas as possible. This will greatly lower the file size and resulting transfer and reconstruction times!</p> <p><strong>Start/Stop</strong></p> <p style=\"margin-left: 20px;\">Use the buttons to start/stop the routine</p> <p><strong>Reboot/Shutdown</strong></p> <p style=\"margin-left: 20px;\">In case of an error, try to restart the device. Always use the shutdown button before powering-off the device!</p> <p><strong>MF - Manual Focus</strong></p> <p style=\"margin-left: 20px;\">By default, the switch is &apos;off&apos;, which means that autofocus is active. For small objects, it might be necessary to use manual focus: activate the switch and set the focus by pressing + and - accordingly. The distance is measured between the camera lens and the focal plane (which should be in the center or slightly in front of the center of the object).</p>",
+        "payload": "<h1 style=\"text-align: left;\">Scan Settings</h1> <p><strong>Current Status</strong></p> <p style=\"margin-left: 20px;\"><u>--READY--&nbsp;</u>- everything is okay and ready to go :)</p> <p style=\"margin-left: 20px;\"><u>Routine-preparing</u> - before starting the routine some time might pass depending on the number of photos</p> <p style=\"margin-left: 20px;\"><u>Routine-stopping</u> - manually ending the routine by pressing the stop button</p> <p style=\"margin-left: 20px;\"><u>Routine-Photo X/Y</u> - Showing the progress of the routine</p> <p style=\"margin-left: 20px;\"><u>No Camera Found</u> - please check the camera ribbon cable</p> <p style=\"margin-left: 20px;\"><u>Error: XXX</u> - Please contact <a href=\"mailto:info@openscan.eu\">info@openscan.eu</a> or post an issue on <a href=\"https://github.com/OpenScanEu/OpenScan2\" rel=\"noopener noreferrer\" target=\"_blank\">Github.com</a></p> <p><strong>Projectname</strong></p> <p style=\"margin-left: 20px;\">Each photo set will be saved using the following pattern &nbsp;YYYY-MM-DD_hh-mm-ss_projectname.zip (e.g. 2022-04-05_12.12.12_toysoldier.zip). Keep your files organized by giving each set a new projectname. If not specified &apos;default&apos; will be used.</p> <p><strong>Rotor</strong></p> <p style=\"margin-left: 20px;\">Moving the rotor by increments of 5&deg;. Please make sure to start the routine with the camera in the horizontal position.</p> <p><strong>Turntable</strong></p> <p style=\"margin-left: 20px;\">Moving the turntable by increments of 15&deg;.</p> <p><strong>Ringlight</strong></p> <p style=\"margin-left: 20px;\">Use the ring light for shadow-free illumination. It is highly recommended to use the polarizer in order to avoid reflections. Note, that the polarizer will absorb 75% of the light, so you might need to use both ring lights.</p> <p><strong>Photos</strong></p> <p style=\"margin-left: 20px;\">Set the number of photos for the current set. 60-120 photos should be more than enough for most objects. <u><strong>If the reconstruction fails or is very bad with 60 photos, increasing the number of photos will not help!</strong></u></p> <p><strong>Shutter</strong></p> <p style=\"margin-left: 20px;\">Again: <strong><u>Less is more</u></strong>! If the value is too high, some areas might get overexposed and thus, the software will not be able to recognize the surface feature of the object. Here are some reference values:</p> <p style=\"margin-left: 20px;\">- no polarizer: 5-20ms</p> <p style=\"margin-left: 20px;\">- mostly white object, &nbsp;with polarizer + one ringlight: 50-200ms</p> <p><strong>Crop X/Y</strong></p> <p style=\"margin-left: 20px;\">Make sure to use the right object holder to place the object in the middle of the screen. Try to crop as many unnecessary areas as possible. This will greatly lower the file size and resulting transfer and reconstruction times!</p> <p><strong>Start/Stop</strong></p> <p style=\"margin-left: 20px;\">Use the buttons to start/stop the routine</p> <p><strong>Reboot/Shutdown</strong></p> <p style=\"margin-left: 20px;\">In case of an error, try to restart the device. Always use the shutdown button before powering-off the device!</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 1100,
+        "x": 760,
         "y": 120,
         "wires": [
             [
@@ -9079,7 +9068,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "Reset rfkill",
-        "func": "from os import system\nif \"Interface doesn't support scanning\" in msg['payload']:\n    system('rfkill unblock all')\n    system('sudo ifconfig wlan0 up')\n    return msg",
+        "func": "from os import system\nif \"Interface doesn't support scanning\" in msg['payload']:\n    system('rfkill unblock all')\n    system('ifconfig wlan0 up')\n    return msg",
         "outputs": 1,
         "x": 390,
         "y": 1100,
@@ -9376,14 +9365,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1 style=\"text-align: left;\">Focus Settings</h1> <p><strong>MF - Manual Focus</strong></p> <p style=\"margin-left: 20px;\">By default, the switch is &apos;off&apos;, which means that autofocus is active. For small objects, it might be necessary to use manual focus: activate the switch and set the focus by pressing + and - accordingly. The distance is measured between the camera lens and the focal plane (which should be in the center or slightly in front of the center of the object). Be aware, that the distance value is only a rough estimate (mm)</p> <p><strong>ST - Stacking</strong></p> <p style=\"margin-left: 20px;\">Stacking is disabled by default. Once activated, you will be able to set the following:</p> <p style=\"margin-left: 20px;\"><u>Stacksize</u> - defines the number of photos between the minimal and the maximal focal distance</p> <p style=\"margin-left: 20px;\"><u>SET</u> press this button to set the maximal/minimal focal distance. Pressing the button a third time will re-set the values.</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 640,
-        "y": 200,
+        "x": 760,
+        "y": 160,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -9624,7 +9615,7 @@
         "payloadType": "str",
         "topic": "Restore default settings?",
         "topicType": "str",
-        "x": 1050,
+        "x": 930,
         "y": 300,
         "wires": [
             [
@@ -9647,7 +9638,7 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 1210,
+        "x": 1090,
         "y": 300,
         "wires": [
             [
@@ -9666,7 +9657,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1350,
+        "x": 1230,
         "y": 300,
         "wires": [
             [
@@ -9683,7 +9674,7 @@
         "links": [
             "38783aea9cc317a6"
         ],
-        "x": 1435,
+        "x": 1325,
         "y": 300,
         "wires": []
     },
@@ -9724,23 +9715,6 @@
         ]
     },
     {
-        "id": "b53c3038b7cb62b0",
-        "type": "debug",
-        "z": "017bd4e4a428bee5",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1130,
-        "y": 1440,
-        "wires": []
-    },
-    {
         "id": "f304680180a23479",
         "type": "ui_toast",
         "z": "017bd4e4a428bee5",
@@ -9755,7 +9729,7 @@
         "className": "",
         "topic": "",
         "name": "Info",
-        "x": 1250,
+        "x": 1010,
         "y": 120,
         "wires": [
             []
@@ -10068,6 +10042,34 @@
         "wires": []
     },
     {
+        "id": "a4b7eea9a9736b0a",
+        "type": "ui_button",
+        "z": "017bd4e4a428bee5",
+        "name": "Update&Info",
+        "group": "ddbd496e.93a288",
+        "order": 1,
+        "width": 2,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "transparent",
+        "className": "",
+        "icon": "fa-question-circle",
+        "payload": "<h1>Update&amp;Log</h1> <p><strong>Status</strong></p> <p>See whether new updates are available. It is highly recommended to use the latest firmware version. See OpenScan2 on <a href=\"%5C%22https://github.com/OpenScanEu/OpenScan2%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>Github.com</a> for details and the source code.</p> <p><strong>Updatetype</strong></p> <p>- stable: latest well-tested and mostly bug-free version for the OpenScanMini or Classic and various cameras</p> <p>- beta: stable version + some experimental and new features, which might bring joy and some new bugs as well</p> <p>- mini: very simplified firmware for the OpenScanMini + Arducam IMX519</p> <p><strong>Auto-Check update availability</strong></p> <p>Perform an automated update-check after each start of the device. If the device is connected to the internet, it will get the latest files from OpenScan2 on <a href=\"%5C%22https://github.com/OpenScanEu/OpenScan2%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>Github.com</a></p> <p>This option is activated by default.</p> <p><strong>Check Updates</strong></p> <p>Alternatively, you can check for updates manually at any time by pressing this button.</p> <p><strong>Download Error Log</strong></p> <p>In case you encounter any errors with your device, please download the error log text and send a copy to <a href=\"%5C%22mailto:info@openscan.eu%5C%22\">info@openscan.eu</a> or create an issue on <a href=\"%5C%22https://github.com/OpenScanEu/OpenScan2%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>Github.com</a></p>",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 750,
+        "y": 200,
+        "wires": [
+            [
+                "f304680180a23479"
+            ]
+        ]
+    },
+    {
         "id": "b0629875a30ae1d7",
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
@@ -10107,7 +10109,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "check files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter # new file counter\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter\n\nreturn msg\n",
         "outputs": 1,
         "x": 510,
         "y": 260,
@@ -10469,7 +10471,7 @@
             "960912e90ba5b5bc"
         ],
         "x": 75,
-        "y": 420,
+        "y": 400,
         "wires": [
             [
                 "2bb5fe78e09fec8a"
@@ -10481,15 +10483,21 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "msg",
-        "func": "import subprocess\nmsg['raspbian'] = subprocess.getoutput(\"cat /etc/os-release | grep -i 'PRETTY_NAME'\")[13:-1]\nmsg['device'] = subprocess.getoutput(\"cat /proc/device-tree/model\")\nmsg['flask'] = subprocess.getoutput(\"systemctl status flask |grep -i 'Active:'\").split(' ')[6]\nreturn msg",
+        "func": "from subprocess import getoutput\n\nmsg['raspbian'] = getoutput(\"cat /etc/os-release | grep -i 'PRETTY_NAME'\")[13:-1]\nmsg['device'] = getoutput(\"cat /proc/device-tree/model\")\nmsg['flask'] = getoutput(\"systemctl status flask |grep -i 'Active:'\").split(' ')[6]\nmsg['firmware'] = getoutput(\"vcgencmd version\").split('\\n')[0]\nmsg['temp'] = getoutput(\"vcgencmd measure_temp\").split('=')[1]\ncpu_total = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $2}'\")\ncpu_used = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $3}'\")\nswap_total = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $2}'\")\nswap_used = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $3}'\")\ndiskspace_used = getoutput(\"df -h / | tail -n1 |awk '{print $3}'\")\ndiskspace_total = getoutput(\"df -h / | tail -n1 |awk '{print $2}'\")\n\nmsg['cpu'] = cpu_used + '/' + cpu_total + 'MB'\nmsg['swap'] = swap_used + '/' + swap_total + 'MB'\nmsg['diskspace'] =diskspace_used + '/' + diskspace_total\n\nreturn msg",
         "outputs": 1,
         "x": 170,
-        "y": 420,
+        "y": 400,
         "wires": [
             [
                 "dbc77052ac950624",
                 "d97c3068ef5fef96",
-                "73a3b828f862312b"
+                "73a3b828f862312b",
+                "901e31453b2bdff8",
+                "f983854748ee4763",
+                "5347c7c517f5e8c7",
+                "3a5016f7003cd72c",
+                "6d720c4a4ecd9475",
+                "6438b7d060a70d81"
             ]
         ]
     },
@@ -10506,8 +10514,8 @@
         "format": "{{msg.raspbian}}",
         "layout": "row-spread",
         "className": "",
-        "x": 310,
-        "y": 460,
+        "x": 450,
+        "y": 440,
         "wires": []
     },
     {
@@ -10515,7 +10523,7 @@
         "type": "ui_text",
         "z": "c8e7ecb5849edb9a",
         "group": "3ce32450.e0cffc",
-        "order": 3,
+        "order": 8,
         "width": 0,
         "height": 0,
         "name": "",
@@ -10523,8 +10531,8 @@
         "format": "{{msg.flask}}",
         "layout": "row-spread",
         "className": "",
-        "x": 310,
-        "y": 500,
+        "x": 450,
+        "y": 480,
         "wires": []
     },
     {
@@ -10540,8 +10548,8 @@
         "format": "{{msg.device}}",
         "layout": "row-spread",
         "className": "",
-        "x": 320,
-        "y": 420,
+        "x": 460,
+        "y": 400,
         "wires": []
     },
     {
@@ -10552,7 +10560,7 @@
         "func": "import json\nimport requests\nimport shutil\n\n#scope = 'main'\nscope = 'beta'\n\nupdatepath = '/home/pi/OpenScan/tmp/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nmsg = {}\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg2 = msg.copy()\ndel msg[scope]\n\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nmsg['payload'] = 'created with scope: ' + scope\n\nreturn msg",
         "outputs": 1,
         "x": 300,
-        "y": 680,
+        "y": 760,
         "wires": [
             [
                 "a5a9f7f08d272914"
@@ -10573,7 +10581,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 450,
-        "y": 680,
+        "y": 760,
         "wires": []
     },
     {
@@ -10598,7 +10606,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 680,
+        "y": 760,
         "wires": [
             [
                 "4c7fa5b5b27b83a5"
@@ -10611,7 +10619,7 @@
         "z": "c8e7ecb5849edb9a",
         "group": "3ce32450.e0cffc",
         "name": "Download LOG",
-        "order": 25,
+        "order": 9,
         "width": 6,
         "height": 1,
         "format": "<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\"   target=\"_blank\" ng-href='tmp/log.txt'>\n <div class=\"center\" style=\"position: relative; top: 30%;\">Download error log\n</div></md-button>\n",
@@ -10621,7 +10629,7 @@
         "templateScope": "local",
         "className": "",
         "x": 140,
-        "y": 540,
+        "y": 700,
         "wires": [
             []
         ]
@@ -10654,5 +10662,115 @@
                 "b0629875a30ae1d7"
             ]
         ]
+    },
+    {
+        "id": "901e31453b2bdff8",
+        "type": "delay",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 180,
+        "y": 440,
+        "wires": [
+            [
+                "2bb5fe78e09fec8a"
+            ]
+        ]
+    },
+    {
+        "id": "f983854748ee4763",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Firmware:",
+        "format": "{{msg.firmware}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 460,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "5347c7c517f5e8c7",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "CPU temp:",
+        "format": "{{msg.temp}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 470,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "3a5016f7003cd72c",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "CPU memory:",
+        "format": "{{msg.cpu}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 480,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "6d720c4a4ecd9475",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Swap memory:",
+        "format": "{{msg.swap}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 480,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "6438b7d060a70d81",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Diskspace:",
+        "format": "{{msg.diskspace}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 470,
+        "y": 680,
+        "wires": []
     }
 ]
