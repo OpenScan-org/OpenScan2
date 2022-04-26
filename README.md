@@ -3,7 +3,7 @@
 The Raspberry Pi + OpenScan Pi Shield can be used to control two independent stepper motors and a variety of different cameras (Pi Camera, various Arducams, DSLR - via GPhoto and external Cameras like Smartphone and others). The mechanism can be used in various forms (see for example [OpenScan Classic](https://www.thingiverse.com/thing:3050437) or [OpenScan Mini](https://www.thingiverse.com/thing:4562060) and it could be easily adapted to be used as a camera slider or in other mechanisms.
 After sticking to my [original code](https://github.com/OpenScanEu/OpenScan) for way to long, I have spent a lot of time rewriting and re-organizing the whole code/structure/documentation and started this new repository. This should make it much easier to collaborate, implement future updates and continue exploring the wonderful world of 3d scanning :)
 
-### I have pre-compiled a working Raspbian Image (2022-04-22), that can be downloaded from [Google Drive (1.5GB)](https://drive.google.com/file/d/1wppbey1Fpqb-MpgHfnHXEZbjoDHfc8P4/view?usp=sharing) (working flawlessly on Raspberry Pi 3b+. Need to re-install the camera drivers on Raspberry Pi 4!)
+### I have pre-compiled a working Raspbian Image (2022-04-20), that can be downloaded from [Google Drive (1.5GB)](https://drive.google.com/file/d/1wppbey1Fpqb-MpgHfnHXEZbjoDHfc8P4/view?usp=sharing) (working flawlessly on Raspberry Pi 3b+ and 4)
 
 
 ## Changelog
