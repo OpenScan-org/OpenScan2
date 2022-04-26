@@ -42,7 +42,9 @@ Note: It is highly recommended (but not necessary) to allow internet access in o
 
 The scanner will automatically check, if new updates are available. Before continuing, make sure to **install updates** by clicking the button. The device will reboot.
 
-Add the scanner's model from the dropdown menu:
+### Select camera and scanner model
+
+Select the scanner's model from the dropdown menu:
 
 - [OpenScan Classic](https://en.openscan.eu/openscan-classic)
 
@@ -56,11 +58,43 @@ Select the camera from the dropdown menu:
 
 - External Camera - Can be used to connect your camera trigger to the GPIO pins on the front of the pi shield. This can be used with any (modified) remote shutter release, and thus it is possible to use Smartphones, DSLR and compact cameras
 
-### Initial Software Setup
+After selecting camera and model, you should restart the device on final time ;)
 
-(model, camera, cloud)
-disable ssh, samba, change password
 
+![image](https://user-images.githubusercontent.com/57842400/165325652-c8b6da72-5322-4a2b-a5d2-dcd8beaac39e.png)
+
+Now, the shown start screen will appear in its full glory showing all available sub-menus. You can navigate the menu by expanding the navigation bar on the top left:
+
+You are ready to start scanning :)
+
+But before you do so, please open the settings menu in order to customize the device to your needs and use its full potential!
+
+## Settings Menu
+
+![image](https://user-images.githubusercontent.com/57842400/165332037-27323913-a45e-40cc-9d10-f277fd25489c.png)
+
+Note that there are small **Info** buttons in every column, which will open a pop-up window with additional information
+
+### SSH
+**If you do not intend to access the device by terminal, please deactivate ssh.**
+If you want to use ssh, please use the following credentials to login and change the password immediately! (default user: pi, password: raspberry)
+
+### Samba
+Samba is a local filesharing server, which allows accessing the files on the device directly from your computer. This can be used to manage the image sets in your file browser. Additionally, you can upload zip files containing image sets from your computer to the Raspberry Pi in order to use the OpenScanCloud processing pipeline. **If you do not intend to use this feature, please deactivate samba.**
+
+Please change the default password by running the following command (default user: pi, password: raspberry): 
+
+```sudo smbpasswd -a pi```
+
+Copy the following address to your file browser in order to access the local files: ```\\openscan\PiShare\OpenScan\scans```
+
+### OpenScanCloud
+In order to use the free/donation-based OpenScanCloud, you first have to read & agree to the Terms of use. The only requirement is an individual token, which is a 32-digit individual key, which you can easily get through the user interface. In order to get such a token you need to hit **register** and enter your e-mail address, first and family name. The token will be sent to the given mail within one or two days. Please check your spam folder!
+
+As soon as you enter a token, it will be verified and you can see your individual "limits"
+![image](https://user-images.githubusercontent.com/57842400/165333684-83cccd65-15a2-4e87-85e0-a314714d97d8.png)
+
+Each token comes with a given amount of 'credit' which is another measure against spam. The given number in Gigabyte indicates the amount of data, that you can process on the servers. IMPORTANT: The credit can be increased at any time by sending a mail to cloud@openscan.eu
 
 ## Quickstart
 a summarized version, how to get your first scan
