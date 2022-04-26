@@ -58,7 +58,7 @@ Select the camera from the dropdown menu:
 
 - External Camera - Can be used to connect your camera trigger to the GPIO pins on the front of the pi shield. This can be used with any (modified) remote shutter release, and thus it is possible to use Smartphones, DSLR and compact cameras
 
-After selecting camera and model, you should restart the device on final time ;)
+After selecting camera and model, you should restart the device one final time ;)
 
 
 ![image](https://user-images.githubusercontent.com/57842400/165325652-c8b6da72-5322-4a2b-a5d2-dcd8beaac39e.png)
@@ -110,23 +110,55 @@ There are a ton of additional settings, which you can modify. Note, that for the
 Finally! Time to start scanning :)
 
 - set the projectname
-- Place the object on the turntable (make sure to place it at the center)
+- Place the **prepared** object on the turntable (**please follow *how to get good scanning results*, to properly prepare your object  and setup and avoid disappointing results :)**)
 - Turn on the ring light
 - when using the OpenScan Classic: move the camera close to the object
 - adjust the shutter speed, so that there are no over- or underexposed areas
 - crop the image, so that the amount of visible background is minimal
-- with almost all objects 70 - 100 photos is more than enough. If the result is bad, 200 photos won't improve it significantly ;)
+- 70 - 100 photos are more than enough for almost all objects. If the result is bad, 200 photos won't improve it significantly ;)
 - Start the routine
-- Pause and unpause or stop the routine if you need to
-- After the scan is done, you can choose, whether you want to do a second pass or finish the scan. Once finished, the image set can be accessed in the **Files&Cloud** menu.
+- Pause, unpause or stop the routine if you need to
+- After the scan is done, you can choose, whether you want to do a second pass, with a different object orientation or finish the scan. Once finished, the image set can be accessed in the **Files&Cloud** menu.
+
+## HOW TO GET GOOD SCANNING RESULTS
+
+Whether a scanning result will be good or bad is fully determined before even starting the scan. Especially metal and plastic parts will need some kind of preparation (i.e. chalk or scanning spray). Please read the following guide and understand the basic principles depicted here [Openscan.eu/photogrammetry](https://en.openscan.eu/photogrammetrie)
 
 ![DecisionTree](https://user-images.githubusercontent.com/57842400/165338465-a8296dba-f05b-4db1-908f-e1f7d921e373.png)
 
+## Troubleshooting
+
+### What is the starting position for the rotor
+Please understand the coordinate-system used here. The following image shows the 0°-position
+
+![image](https://user-images.githubusercontent.com/57842400/165343581-94caf3bb-97cd-4892-a441-9cd95ee834e7.png)
+
+and you can set the starting position of the rotor in the settings menu/motor tab (advanced settings)
+### The motor moves to fast
+- lower the acceleration in the settings menu/motor tab (advanced settings)
+- increase the motor delay (advanced settings)
+### The images are out of focus
+- in case of Arducam: use manual focus mode
+- in case of Pi Camera: re-focus the camera using the focus adjustment tool
+### The scanner does not cover the whole object
+- change the min/max angle in the motor rotor settings (advanced settings)
+### when pressing up, the rotor is moving down
+- invert the motor by either flipping the motor cable's connector 180° (after powering off the device!!) or change the motor's direction in the motor settings menu (advanced settings)
+### I do not want the fancy scan routine and instead use the turntable only
+- activate the turntable mode in the motor settings (advanced settings), which will deactivate the rotor
 
 
 ## FILES & CLOUD
+
+![image](https://user-images.githubusercontent.com/57842400/165345009-1bf5bb61-5df6-4521-8723-8d120ad18df0.png)
+
 ## UPDATE & INFO
+
+![image](https://user-images.githubusercontent.com/57842400/165345299-9269ae69-4bdd-43bd-a57d-b1624d37c534.png)
+
 
 ### Backend (node-red)
 You can access the backend/programming interface Node-red through the following link [http://openscan/editor](http://openscan/editor)
+
+![image](https://user-images.githubusercontent.com/57842400/165345589-58a6f50c-ee0b-4812-b96f-74448c83f21e.png)
 
