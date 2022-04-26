@@ -30,7 +30,7 @@ Seriously! ;)
 
 Save the file and unmount the Micro-SD card from your computer.
 
-### Accessing the device
+### Accessing the user-interface
 
 Insert the Micro-SD card into the Raspberry Pi and power up the device. The first boot will take 2-3 minutes. The LED ring light will blink several times after successfully starting the scanner.
 
@@ -92,17 +92,41 @@ Copy the following address to your file browser in order to access the local fil
 In order to use the free/donation-based OpenScanCloud, you first have to read & agree to the Terms of use. The only requirement is an individual token, which is a 32-digit individual key, which you can easily get through the user interface. In order to get such a token you need to hit **register** and enter your e-mail address, first and family name. The token will be sent to the given mail within one or two days. Please check your spam folder!
 
 As soon as you enter a token, it will be verified and you can see your individual "limits"
+
 ![image](https://user-images.githubusercontent.com/57842400/165333684-83cccd65-15a2-4e87-85e0-a314714d97d8.png)
 
 Each token comes with a given amount of 'credit' which is another measure against spam. The given number in Gigabyte indicates the amount of data, that you can process on the servers. IMPORTANT: The credit can be increased at any time by sending a mail to cloud@openscan.eu
 
-## Quickstart
-a summarized version, how to get your first scan
+### Network - Hostname
+If you use multiple OpenScan devices in the same network, it is quite useful to give every scanner its individual name ;)
 
-## Detailed description - Frontend
-### SCAN
-### FILES & CLOUD
-### SETTINGS
-### UPDATE & INFO
+### Advanced settings
+There are a ton of additional settings, which you can modify. Note, that for the OpenScan Classic & Mini, you do not need to touch any of those settings.
 
-### Detailed description - Backend (node-red)
+## SCAN
+
+![image](https://user-images.githubusercontent.com/57842400/165336866-0aac79ff-6b4f-41d8-87fd-ed793c3f9f02.png)
+
+Finally! Time to start scanning :)
+
+- set the projectname
+- Place the object on the turntable (make sure to place it at the center)
+- Turn on the ring light
+- when using the OpenScan Classic: move the camera close to the object
+- adjust the shutter speed, so that there are no over- or underexposed areas
+- crop the image, so that the amount of visible background is minimal
+- with almost all objects 70 - 100 photos is more than enough. If the result is bad, 200 photos won't improve it significantly ;)
+- Start the routine
+- Pause and unpause or stop the routine if you need to
+- After the scan is done, you can choose, whether you want to do a second pass or finish the scan. Once finished, the image set can be accessed in the **Files&Cloud** menu.
+
+![DecisionTree](https://user-images.githubusercontent.com/57842400/165338465-a8296dba-f05b-4db1-908f-e1f7d921e373.png)
+
+
+
+## FILES & CLOUD
+## UPDATE & INFO
+
+### Backend (node-red)
+You can access the backend/programming interface Node-red through the following link [http://openscan/editor](http://openscan/editor)
+
