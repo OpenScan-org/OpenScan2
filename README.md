@@ -5,6 +5,13 @@ After sticking to my [original code](https://github.com/OpenScanEu/OpenScan) for
 
 ### I have pre-compiled a working Raspbian Image (2022-04-22), that can be downloaded from [Google Drive (1.5GB)](https://drive.google.com/file/d/1wppbey1Fpqb-MpgHfnHXEZbjoDHfc8P4/view?usp=sharing) (working flawlessly on Raspberry Pi 3b+. Need to re-install the camera drivers on Raspberry Pi 4!)
 
+### 2022-04-26
+* added: donation button ;)
+* fixed: the wonderful camera position algorithm was faulty and a bit inefficient
+* fixed: downscaling the preview image caused the preview to disappear (when crop value was to high)
+* fixed: delay_before and delay_after are now properly applied, so that you can set a delay before/after taking a photo
+* fixed: updates might crash the selected camera --> it is now necessary to re-select the camera after certain updates
+
 ## Changelog
 ### 2022-04-21
 * added: timer (ETA) until a routine is done
