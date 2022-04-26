@@ -68,7 +68,7 @@ def crop():
     cropy = int(request.args.get('cropy'))/200
     rotation = int(request.args.get('rotation'))
     preview = str(request.args.get('preview'))
-
+    downscale = 1
 
     with Image.open(filepath_in) as img:
         w,h = img.size
