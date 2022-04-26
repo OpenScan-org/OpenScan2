@@ -16,8 +16,13 @@
 
 (model, camera, cloud)
 
-## Summary of the different menus and settings
-(short version in order to get you started quickly)
+## Quickstart
+a summarized version, how to get your first scan
 
-### Start Page
-### 
+## Detailed description - Frontend
+### SCAN
+### FILES & CLOUD
+### SETTINGS
+### UPDATE & INFO
+
+### Detailed description - Backend (node-red)
