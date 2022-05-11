@@ -7,19 +7,25 @@ After sticking to my [original code](https://github.com/OpenScanEu/OpenScan) for
 
 
 ## Changelog
-### 2022-04-26
+### 2022-05-11 beta
+* added: changelog and version (finally ;)
+* added: create an update using the node-red-backend inject node ("create beta" and "prepare image creation" in "update" tab)
+* fixed: Error handling in flask (when no preview is taken)
+* fixed: Error when upload failed + node red restarted (multiple instances of curl)
+* fixed: When closing the browser session/missing the popup after the routine, the data set got lost (if this happens, just restart the device and it will be moved to the right location)
+### 2022-04-26 beta 
 * added: donation button ;)
 * fixed: the wonderful camera position algorithm was faulty and a bit inefficient
 * fixed: downscaling the preview image caused the preview to disappear (when crop value was to high)
 * fixed: delay_before and delay_after are now properly applied, so that you can set a delay before/after taking a photo
 * fixed: updates might crash the selected camera --> it is now necessary to re-select the camera after certain updates
-### 2022-04-21
+### 2022-04-21 beta
 * added: timer (ETA) until a routine is done
 * added: showing progress, while files are being split (before uploading to OpenScanCloud)
 * added: infotexts (FINALLY :)
 * added: several stats/device information
 * fixed: combining two sets did not delete the smaller set
-### 2022-04-20
+### 2022-04-20 beta & main
 * !fixed: pi cameras (v1.3, v2.1 and HQ) finally work and can be simply selected in the settings menu
 * !fixed: Raspberry Pi 3B+ and 4 work! (the main limiting factor now is the RAM, where at least 1GB RAM is needed)
 * fixed: live preview sometimes did not work. This has been a network speed issue and has been solved by downscaling the image (resolution can be set)
