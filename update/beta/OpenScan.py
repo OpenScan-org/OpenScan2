@@ -58,8 +58,11 @@ def OpenScanCloud(cmd, msg):
 def camera(cmd, msg = {}):
     from requests import get
     flask = 'http://127.0.0.1:1312/'
-    r = get(flask + cmd, params=msg)
-    return r.status_code
+    try:
+        r = get(flask + cmd, params=msg)
+        return r.status_code
+    except:
+        return 400
 
 def motorrun(motor,angle):
     import RPi.GPIO as GPIO

@@ -408,27 +408,6 @@
         "type": "ui_group",
         "name": "Initialize",
         "tab": "b3150b13e34b1fe8",
-        "order": 2,
-        "disp": false,
-        "width": "6",
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "5c0fc1e2358d9d86",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "1f7f7e1e24f5ad9b",
-        "order": 2,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "5b3e5aca21140e9a",
-        "type": "ui_group",
-        "name": "Update",
-        "tab": "b3150b13e34b1fe8",
         "order": 3,
         "disp": false,
         "width": "6",
@@ -436,9 +415,20 @@
         "className": ""
     },
     {
-        "id": "09cdd0da29f18565",
+        "id": "5b3e5aca21140e9a",
+        "type": "ui_group",
+        "name": "Update",
+        "tab": "b3150b13e34b1fe8",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "48c48be2b829a8f8",
         "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
+        "z": "c8e7ecb5849edb9a",
         "name": "spacer",
         "group": "4fe6b4c0ade0938a",
         "order": 6,
@@ -446,9 +436,9 @@
         "height": 1
     },
     {
-        "id": "4ea32af9e36ba219",
+        "id": "7ce9482a0910ae3a",
         "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
+        "z": "c8e7ecb5849edb9a",
         "name": "spacer",
         "group": "4fe6b4c0ade0938a",
         "order": 11,
@@ -456,29 +446,9 @@
         "height": 1
     },
     {
-        "id": "b991247fc93f36d2",
+        "id": "0fd8dc5ff7b3298f",
         "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
-        "name": "spacer",
-        "group": "4fe6b4c0ade0938a",
-        "order": 14,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "0451a2d15e0edb93",
-        "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
-        "name": "spacer",
-        "group": "4fe6b4c0ade0938a",
-        "order": 16,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "269480d45e14821f",
-        "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
+        "z": "c8e7ecb5849edb9a",
         "name": "spacer",
         "group": "3b4bd36726be16d5",
         "order": 6,
@@ -486,9 +456,9 @@
         "height": 1
     },
     {
-        "id": "7989968a1d745730",
+        "id": "96e0e6f3e7e8b540",
         "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
+        "z": "c8e7ecb5849edb9a",
         "name": "spacer",
         "group": "3b4bd36726be16d5",
         "order": 8,
@@ -496,23 +466,24 @@
         "height": 1
     },
     {
-        "id": "7e7553c4.54cefc",
-        "type": "ui_group",
-        "name": "hidden_group",
-        "tab": "b6423f8f.0c387",
-        "order": 1,
-        "disp": false,
-        "width": "6",
-        "collapse": false
+        "id": "700f47327133ab68",
+        "type": "ui_spacer",
+        "z": "829d803b6033a693",
+        "name": "spacer",
+        "group": "729f9ea6e3513c9b",
+        "order": 6,
+        "width": 1,
+        "height": 1
     },
     {
-        "id": "b6423f8f.0c387",
-        "type": "ui_tab",
-        "name": "Zooland Sys",
-        "icon": "home",
-        "order": 1,
-        "disabled": false,
-        "hidden": false
+        "id": "ebf828f29201a53b",
+        "type": "ui_spacer",
+        "z": "829d803b6033a693",
+        "name": "spacer",
+        "group": "729f9ea6e3513c9b",
+        "order": 8,
+        "width": 1,
+        "height": 1
     },
     {
         "id": "3fe52603e2ac73b6",
@@ -523,7 +494,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n\n    }\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n</style>",
+        "format": "<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n\n    }\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n    background-color: transparent !important;\n    }\n\n    \n    \n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n</style>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
@@ -688,7 +659,9 @@
                 "83c2b5ea51f0fec3",
                 "88fde4ab78c965d7",
                 "bee62d2a99cbc63b",
-                "8e39e4a037487ecd"
+                "8e39e4a037487ecd",
+                "bb84b9e5c7d8e21f",
+                "7113d7b25a851151"
             ]
         ]
     },
@@ -871,7 +844,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "CREATE FACTORY DEFAULT",
-        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-40,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'main',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n}}\nreturn msg",
+        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n}}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -935,7 +908,8 @@
         "z": "829d803b6033a693",
         "name": "factory reset",
         "links": [
-            "80bccc884b0be297"
+            "80bccc884b0be297",
+            "beacc3dc5398fa79"
         ],
         "x": 135,
         "y": 840,
@@ -998,9 +972,9 @@
         "z": "829d803b6033a693",
         "name": "",
         "group": "5b3e5aca21140e9a",
-        "order": 4,
-        "width": 3,
-        "height": 2,
+        "order": 1,
+        "width": 6,
+        "height": 3,
         "passthru": false,
         "label": "Install Updates",
         "tooltip": "",
@@ -1037,7 +1011,7 @@
         "id": "43840dd3705bc206",
         "type": "ui_template",
         "z": "829d803b6033a693",
-        "group": "7e7553c4.54cefc",
+        "group": "",
         "name": "donate",
         "order": 2,
         "width": "0",
@@ -1053,6 +1027,73 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "bb84b9e5c7d8e21f",
+        "type": "python3-function",
+        "z": "829d803b6033a693",
+        "name": "rescue incomplete project",
+        "func": "#if project has not been done properly, this is a way to rescue the file\n\nfrom os import system\nfrom os.path import isfile\nfrom time import strftime\nfrom OpenScan import load_str\n\nbasepath = '/home/pi/OpenScan/'\nzippath = basepath + 'tmp/tmp.zip'\nprojectname=load_str(\"routine_projectname\")\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')",
+        "outputs": 1,
+        "x": 290,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a291fc98e4269c1b",
+        "type": "ui_text",
+        "z": "829d803b6033a693",
+        "group": "729f9ea6e3513c9b",
+        "order": 7,
+        "width": 4,
+        "height": 1,
+        "name": "version",
+        "label": "Version:",
+        "format": "{{msg.firmware}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 460,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7113d7b25a851151",
+        "type": "function",
+        "z": "829d803b6033a693",
+        "name": "FIRMWARE VERSION",
+        "func": "msg.firmware = '2022-05-11'\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [
+                "a291fc98e4269c1b",
+                "ec5cefa70ff535f7"
+            ]
+        ]
+    },
+    {
+        "id": "ec5cefa70ff535f7",
+        "type": "ui_text",
+        "z": "829d803b6033a693",
+        "group": "ddbd496e.93a288",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "current version",
+        "label": "Current version:",
+        "format": "{{msg.firmware}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 480,
+        "y": 320,
+        "wires": []
     },
     {
         "id": "828e5298.d2192",
@@ -3571,10 +3612,10 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "upload",
-        "func": "import os\nfrom OpenScan import OpenScanCloud, load_str, load_int, save\n\nbasedir = '/home/pi/OpenScan/'\n\nif load_str(\"feedback_terms\")==\"False\":\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic'] = 'OpenScanCloud - Terms of Use'\n    return None,msg\n\nmsg = msg['payload']\n\ndef upload(filelist, ulinks):\n    i = 0\n    for file in filelist:\n        link = ulinks[i]\n        save('status_cloud', 'uploading ' + str(i+1) + '/' + str(len(filelist)))\n        cmd = 'curl -# -X POST ' + link + ' --header Content-Type:application/octet-stream --data-binary @\"' + file + '\" 2>&1 | tee /home/pi/OpenScan/settings/status_uploadprogress'\n        i = i+1\n        os.system(cmd)\n\n########\nif not os.path.isfile(basedir + 'settings/token'):\n    msg['flag'] = True\n    save('status_cloud', 'please enter token first')\n    return msg\nwith open(basedir + 'settings/token', 'r') as file:\n    token = file.read().strip('\\n')\n\n########\nr = OpenScanCloud('getTokenInfo', {'token':token})\n\nif r.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    save('status_cloud', 'invalid/missing token')\n    return None,msg\nelif r.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nmsg1 = r.json()\n\n########\nif msg['Photos'] > msg1['limit_photos'] or msg['Size_full'] > msg1['limit_filesize']:\n    msg['flag'] = True\n    save('status_cloud', 'limit(s) exceeded')\n    return msg\n\n########\ntemp =  OpenScanCloud('getProjectInfo', {'token':token, 'project':msg['Set']})\nif temp.status_code not in (200,401):\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nif temp.status_code != 401:\n    temp = temp.json()\n    if 'status' in temp:\n        if temp['status'] != 'created':\n            save('status_cloud','already exists')\n            with open(basedir + 'scans/' + msg['Set'][:-4] + '/status', 'w') as file:\n                file.write(temp['status'])\n            return msg\n#####\n\nmsg2={}\nmsg2['token'] = token\nmsg2['parts'] = 1\nmsg['partslist']=[]\n\n#######\nsize_to_split = load_int('osc_splitsize')\n\nif msg['Size_full'] > size_to_split:\n    tempdir = basedir + 'tmp/split/'\n    if os.path.isdir(tempdir):\n        os.system('rm -r ' + tempdir)\n    os.mkdir(tempdir)\n    save('status_cloud', 'zipping files, please wait ...')\n    cmd = 'split -b ' + str(size_to_split) + ' ' + basedir + 'scans/' + msg['Set'] + ' ' + tempdir + msg['Set']\n    os.system(cmd)\n    save('status_cloud', 'zip done')\n    list = os.listdir(tempdir)\n    for l in list:\n        msg['partslist'].append(tempdir + l)\n        msg['partslist'].sort()\n    msg2['parts']=len(msg['partslist'])\nelse:\n    msg['partslist'] = [basedir + 'scans/' +msg['Set']]\n\n#######\nmsg2['photos'] = msg['Photos']\nmsg2['filesize'] = msg['Size_full']\nmsg2['project'] = msg['Set']\n\nr = OpenScanCloud('createProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nmsg1 = r.json()\n\nif not os.path.isdir(basedir+ 'scans/' + msg['Set'][:-4]):\n    os.mkdir(basedir+ 'scans/' + msg['Set'][:-4])\nwith open(basedir+ 'scans/' + msg['Set'][:-4]+'/status', 'w+') as file:\n    file.write('prepared')\n\nsave('status_cloud', 'uploading')\nupload(msg['partslist'], msg1['ulink'])\n\nr = OpenScanCloud('startProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Upload failed'\n    msg['payload'] = 'please try again'\n    save('status_cloud', 'upload failed')\n    return None,msg\n\nsave('status_cloud', 'uploaded')\n\nsave('status_cloud', 'project started')\n\ntry:\n    os.system('rm -r ' + tempdir)\nexcept:\n    pass\n\nreturn msg",
+        "func": "import os\nfrom OpenScan import OpenScanCloud, load_str, load_int, save\nfrom subprocess import getoutput\n\nbasedir = '/home/pi/OpenScan/'\n\nif load_str(\"feedback_terms\")==\"False\":\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic'] = 'OpenScanCloud - Terms of Use'\n    return None,msg\n\nmsg = msg['payload']\n\ndef upload(filelist, ulinks):\n    pid = getoutput('pidof curl')\n    if pid != \"\":\n        os.system('kill ' + pid)\n\n    i = 0\n    for file in filelist:\n        link = ulinks[i]\n        save('status_cloud', 'uploading ' + str(i+1) + '/' + str(len(filelist)))\n        cmd = 'curl -# -X POST ' + link + ' --header Content-Type:application/octet-stream --data-binary @\"' + file + '\" 2>&1 | tee /home/pi/OpenScan/settings/status_uploadprogress'\n        i = i+1\n        os.system(cmd)\n\n########\nif not os.path.isfile(basedir + 'settings/token'):\n    msg['flag'] = True\n    save('status_cloud', 'please enter token first')\n    return msg\nwith open(basedir + 'settings/token', 'r') as file:\n    token = file.read().strip('\\n')\n\n########\nr = OpenScanCloud('getTokenInfo', {'token':token})\n\nif r.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    save('status_cloud', 'invalid/missing token')\n    return None,msg\nelif r.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nmsg1 = r.json()\n\n########\nif msg['Photos'] > msg1['limit_photos'] or msg['Size_full'] > msg1['limit_filesize']:\n    msg['flag'] = True\n    save('status_cloud', 'limit(s) exceeded')\n    return msg\n\n########\ntemp =  OpenScanCloud('getProjectInfo', {'token':token, 'project':msg['Set']})\nif temp.status_code not in (200,401):\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nif temp.status_code != 401:\n    temp = temp.json()\n    if 'status' in temp:\n        if temp['status'] != 'created':\n            save('status_cloud','already exists')\n            with open(basedir + 'scans/' + msg['Set'][:-4] + '/status', 'w') as file:\n                file.write(temp['status'])\n            return msg\n#####\n\nmsg2={}\nmsg2['token'] = token\nmsg2['parts'] = 1\nmsg['partslist']=[]\n\n#######\nsize_to_split = load_int('osc_splitsize')\n\nif msg['Size_full'] > size_to_split:\n    tempdir = basedir + 'tmp/split/'\n    if os.path.isdir(tempdir):\n        os.system('rm -r ' + tempdir)\n    os.mkdir(tempdir)\n    save('status_cloud', 'zipping files, please wait ...')\n    cmd = 'split -b ' + str(size_to_split) + ' ' + basedir + 'scans/' + msg['Set'] + ' ' + tempdir + msg['Set']\n    os.system(cmd)\n    save('status_cloud', 'zip done')\n    list = os.listdir(tempdir)\n    for l in list:\n        msg['partslist'].append(tempdir + l)\n        msg['partslist'].sort()\n    msg2['parts']=len(msg['partslist'])\nelse:\n    msg['partslist'] = [basedir + 'scans/' +msg['Set']]\n\n#######\nmsg2['photos'] = msg['Photos']\nmsg2['filesize'] = msg['Size_full']\nmsg2['project'] = msg['Set']\n\nr = OpenScanCloud('createProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nmsg1 = r.json()\n\nif not os.path.isdir(basedir+ 'scans/' + msg['Set'][:-4]):\n    os.mkdir(basedir+ 'scans/' + msg['Set'][:-4])\nwith open(basedir+ 'scans/' + msg['Set'][:-4]+'/status', 'w+') as file:\n    file.write('prepared')\n\nsave('status_cloud', 'uploading')\nupload(msg['partslist'], msg1['ulink'])\n\nr = OpenScanCloud('startProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Upload failed'\n    msg['payload'] = 'please try again'\n    save('status_cloud', 'upload failed')\n    return None,msg\n\nsave('status_cloud', 'uploaded')\n\nsave('status_cloud', 'project started')\n\ntry:\n    os.system('rm -r ' + tempdir)\nexcept:\n    pass\n\nreturn msg",
         "outputs": 2,
         "x": 530,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "9a132ab1.b21658"
@@ -3649,7 +3690,7 @@
         "to": "",
         "reg": false,
         "x": 780,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "8689e938.dd9e38"
@@ -3699,7 +3740,7 @@
         "to": "",
         "reg": false,
         "x": 420,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
                 "f20f2dbc.0f123"
@@ -3747,7 +3788,7 @@
         "to": "",
         "reg": false,
         "x": 410,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "d4383424.7807c8"
@@ -3779,7 +3820,7 @@
             "149e2e46b9623a2d"
         ],
         "x": 515,
-        "y": 460,
+        "y": 500,
         "wires": []
     },
     {
@@ -3794,7 +3835,7 @@
             "149e2e46b9623a2d"
         ],
         "x": 875,
-        "y": 420,
+        "y": 460,
         "wires": []
     },
     {
@@ -3864,7 +3905,7 @@
             "92c98e6ce7cd25f9"
         ],
         "x": 235,
-        "y": 460,
+        "y": 500,
         "wires": []
     },
     {
@@ -3982,7 +4023,7 @@
         "topic": "",
         "name": "Terms",
         "x": 770,
-        "y": 460,
+        "y": 500,
         "wires": [
             []
         ]
@@ -4149,7 +4190,7 @@
         "templateScope": "local",
         "className": "",
         "x": 280,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "f6bd1a04.470838",
@@ -4243,7 +4284,7 @@
         "templateScope": "local",
         "className": "",
         "x": 280,
-        "y": 500,
+        "y": 540,
         "wires": [
             [
                 "51bfd0fb7b1d292e"
@@ -4262,7 +4303,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "1493398979a63775"
@@ -4281,7 +4322,7 @@
         "finalize": "",
         "libs": [],
         "x": 420,
-        "y": 500,
+        "y": 540,
         "wires": [
             []
         ]
@@ -4294,7 +4335,7 @@
         "func": "from os.path import getsize\nfrom shutil import copy\nfrom os import rename, remove\nimport zipfile as z\nfrom OpenScan import save\n\nfrom time import sleep\n\nif msg['payload'] != 'OK':\n    return\n\nbasepath = '/home/pi/OpenScan/scans/'\ntmp1 = basepath + msg['set1']\ntmp2 = basepath + msg['set2']\n\nif getsize(tmp1) > getsize(tmp2):\n    set1 = tmp1\n    set2 = tmp2\nelse:\n    set1 = tmp2\n    set2 = tmp1\n\nzips = [set1, set2]\n\nwith z.ZipFile(set1, 'a') as z1:\n    z2 = z.ZipFile(set2, 'r')\n    i = 0\n    for n in z2.namelist():\n        i += 1\n        n2 = n\n        save('status_cloud','writing ' + str(i) + '/' + str(len(z2.namelist())))\n        while 'X'+n in z1.namelist():\n            n = 'X' + n\n        z1.writestr('X'+n, z2.open(n2).read())\nsave('status_cloud','ready')\n\nos.rename(set1, set1[:-4] + 'X.zip')\nos.remove(set2)\n\nreturn msg",
         "outputs": 1,
         "x": 560,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "ed35109311335099"
@@ -4312,7 +4353,7 @@
             "2f4c0f98.dee2"
         ],
         "x": 655,
-        "y": 540,
+        "y": 580,
         "wires": []
     },
     {
@@ -4331,7 +4372,7 @@
         "topic": "",
         "name": "Combine",
         "x": 420,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "da325be8e74179be"
@@ -4360,7 +4401,7 @@
             "ada1b6f7cccc9344"
         ],
         "x": 175,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "189c1eed09624a7b"
@@ -5019,7 +5060,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "model",
-        "func": "from OpenScan import load_str, save\n\nstate = msg['payload']\nmsg['state'] = state\n\nif state != load_str('model'):\n    save('model', state)\n    if state == 'OSMini':\n        save('rotor_stepsperrotation',48000)\n        save('cam_rotation',90)\n\n    if state == 'OSClassic':\n        save('rotor_stepsperrotation',17067)\n        save('cam_rotation',0)",
+        "func": "from OpenScan import load_str, save\n\nstate = msg['payload']\nmsg['state'] = state\n\nif state != load_str('model'):\n    save('model', state)\n    if state == 'OSMini':\n        save('rotor_stepsperrotation',48000)\n        save('cam_rotation',90)\n        save('rotor_anglemin',-70)\n        save('rotor_anglemax',20)\n        \n\n    if state == 'OSClassic':\n        save('rotor_stepsperrotation',17067)\n        save('cam_rotation',0)\n        save('rotor_anglemin',-30)\n        save('rotor_anglemax',30)",
         "outputs": 1,
         "x": 530,
         "y": 620,
@@ -9651,8 +9692,8 @@
         "z": "017bd4e4a428bee5",
         "name": "Reset default",
         "group": "4fe6b4c0ade0938a",
-        "order": 15,
-        "width": 4,
+        "order": 14,
+        "width": 6,
         "height": 1,
         "passthru": false,
         "label": "Restore default settings",
@@ -9944,7 +9985,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "1f7f7e1e24f5ad9b",
-        "order": 6,
+        "order": 5,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -10023,7 +10064,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "1f7f7e1e24f5ad9b",
-        "order": 4,
+        "order": 3,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -10062,7 +10103,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "1f7f7e1e24f5ad9b",
-        "order": 5,
+        "order": 4,
         "width": 2,
         "height": 1,
         "name": "",
@@ -10079,7 +10120,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "1f7f7e1e24f5ad9b",
-        "order": 3,
+        "order": 2,
         "width": 2,
         "height": 1,
         "name": "",
@@ -10098,7 +10139,7 @@
         "name": "Update&Info",
         "group": "ddbd496e.93a288",
         "order": 1,
-        "width": 2,
+        "width": 6,
         "height": 1,
         "passthru": false,
         "label": "",
@@ -10118,22 +10159,6 @@
                 "f304680180a23479"
             ]
         ]
-    },
-    {
-        "id": "173ebd72b59e4cc8",
-        "type": "debug",
-        "z": "017bd4e4a428bee5",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1110,
-        "y": 500,
-        "wires": []
     },
     {
         "id": "b0629875a30ae1d7",
@@ -10158,7 +10183,7 @@
         "type": "ui_text",
         "z": "c8e7ecb5849edb9a",
         "group": "ddbd496e.93a288",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "",
@@ -10232,7 +10257,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "ddbd496e.93a288",
-        "order": 3,
+        "order": 5,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -10283,7 +10308,7 @@
         "type": "ui_text",
         "z": "c8e7ecb5849edb9a",
         "group": "ddbd496e.93a288",
-        "order": 2,
+        "order": 4,
         "width": 4,
         "height": 1,
         "name": "",
@@ -10303,7 +10328,7 @@
         "label": "Auto-check update availability",
         "tooltip": "",
         "group": "ddbd496e.93a288",
-        "order": 4,
+        "order": 6,
         "width": 6,
         "height": 1,
         "passthru": true,
@@ -10426,7 +10451,7 @@
         "z": "c8e7ecb5849edb9a",
         "name": "",
         "group": "ddbd496e.93a288",
-        "order": 5,
+        "order": 7,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -10536,7 +10561,7 @@
         "links": [
             "960912e90ba5b5bc"
         ],
-        "x": 75,
+        "x": 55,
         "y": 400,
         "wires": [
             [
@@ -10549,7 +10574,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "msg",
-        "func": "from subprocess import getoutput\n\nmsg['raspbian'] = getoutput(\"cat /etc/os-release | grep -i 'PRETTY_NAME'\")[13:-1]\nmsg['device'] = getoutput(\"cat /proc/device-tree/model\")\nmsg['flask'] = getoutput(\"systemctl status flask |grep -i 'Active:'\").split(' ')[6]\nmsg['firmware'] = getoutput(\"vcgencmd version\").split('\\n')[0]\nmsg['temp'] = getoutput(\"vcgencmd measure_temp\").split('=')[1]\ncpu_total = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $2}'\")\ncpu_used = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $3}'\")\nswap_total = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $2}'\")\nswap_used = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $3}'\")\ndiskspace_used = getoutput(\"df -h / | tail -n1 |awk '{print $3}'\")\ndiskspace_total = getoutput(\"df -h / | tail -n1 |awk '{print $2}'\")\n\nmsg['cpu'] = cpu_used + '/' + cpu_total + 'MB'\nmsg['swap'] = swap_used + '/' + swap_total + 'MB'\nmsg['diskspace'] =diskspace_used + '/' + diskspace_total\n\nreturn msg",
+        "func": "\nfrom subprocess import getoutput\nimport os\n\nmsg['os'] = getoutput(\"cat /etc/os-release | grep -i 'PRETTY_NAME'\")[13:-1]\nmsg['device'] = getoutput(\"cat /proc/device-tree/model\")\nmsg['flask'] = getoutput(\"systemctl status flask |grep -i 'Active:'\").split(' ')[6]\nmsg['osdate'] = getoutput(\"vcgencmd version\").split('\\n')[0]\nmsg['temp'] = getoutput(\"vcgencmd measure_temp\").split('=')[1]\ncpu_total = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $2}'\")\ncpu_used = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $3}'\")\nswap_total = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $2}'\")\nswap_used = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $3}'\")\ndiskspace_used = getoutput(\"df -h / | tail -n1 |awk '{print $3}'\")\ndiskspace_total = getoutput(\"df -h / | tail -n1 |awk '{print $2}'\")\n\nmsg['cpu'] = cpu_used + '/' + cpu_total + 'MB'\nmsg['swap'] = swap_used + '/' + swap_total + 'MB'\nmsg['diskspace'] =diskspace_used + '/' + diskspace_total\n\nif msg['flask'] == 'inactive':\n    os.system('systemctl restart flask')\n\nreturn msg",
         "outputs": 1,
         "x": 170,
         "y": 400,
@@ -10577,7 +10602,7 @@
         "height": 0,
         "name": "",
         "label": "OS:",
-        "format": "{{msg.raspbian}}",
+        "format": "{{msg.os}}",
         "layout": "row-spread",
         "className": "",
         "x": 450,
@@ -10626,7 +10651,7 @@
         "func": "import json\nimport requests\nimport shutil\n\n#scope = 'main'\nscope = 'beta'\n\nupdatepath = '/home/pi/OpenScan/tmp/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nmsg = {}\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg2 = msg.copy()\ndel msg[scope]\n\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nmsg['payload'] = 'created with scope: ' + scope\n\nreturn msg",
         "outputs": 1,
         "x": 300,
-        "y": 760,
+        "y": 820,
         "wires": [
             [
                 "a5a9f7f08d272914"
@@ -10647,7 +10672,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 450,
-        "y": 760,
+        "y": 820,
         "wires": []
     },
     {
@@ -10672,7 +10697,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 760,
+        "y": 820,
         "wires": [
             [
                 "4c7fa5b5b27b83a5"
@@ -10695,7 +10720,7 @@
         "templateScope": "local",
         "className": "",
         "x": 140,
-        "y": 700,
+        "y": 760,
         "wires": [
             []
         ]
@@ -10735,7 +10760,7 @@
         "z": "c8e7ecb5849edb9a",
         "name": "",
         "pauseType": "delay",
-        "timeout": "5",
+        "timeout": "10",
         "timeoutUnits": "seconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -10763,11 +10788,11 @@
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Firmware:",
-        "format": "{{msg.firmware}}",
+        "label": "",
+        "format": "{{msg.osdate}}",
         "layout": "row-spread",
         "className": "",
-        "x": 460,
+        "x": 450,
         "y": 520,
         "wires": []
     },
@@ -10838,5 +10863,125 @@
         "x": 470,
         "y": 680,
         "wires": []
+    },
+    {
+        "id": "d7362e6e0ec7bdaa",
+        "type": "inject",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "props": [
+            {
+                "p": "overwrite",
+                "v": "true",
+                "vt": "bool"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 900,
+        "wires": [
+            [
+                "4ce127c61c3c5966",
+                "beacc3dc5398fa79"
+            ]
+        ]
+    },
+    {
+        "id": "4ce127c61c3c5966",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "prepare image creation",
+        "func": "import os\n\n#factory reset, reset wpa, create wpa in boot, rm files\n#should be done before creating a new raspbian image\n\nbasepath = '/home/pi/OpenScan/'\n\n#remove files\n\ndir = basepath + 'scans/'\nfor i in os.listdir(dir):\n    if os.path.isdir(dir + i):\n        shutil.rmtree(dir + i)\n    else:\n        os.remove(dir + i)\n\n#delete wifi\ntemp_dir = '/home/pi/OpenScan/tmp/wpa_empty.log'\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\nwith open(temp_dir, 'w+') as file:\n    file.write('update_config=1\\nctrl_interface=DIR=/var/run/wpa_supplicant\\ncountry=de\\n\\n')\nos.system('mv '+ temp_dir + ' ' + wpa_dir)\nos.system('wpa_cli -i wlan0 reconfigure')\n\n#create new wpa_supplicant.conf\nwith open('/boot/wpa_supplicant.conf','w+') as file:\n    file.write('country=de\\nupdate_config=1\\nctrl_interface=/var/run/wpa_supplicant\\n\\nnetwork={\\n scan_ssid=1\\n ssid=\"wlan name\"\\n psk=\"xxxx\"\\n}')\n\n#rm tmp dir\n\n\n#stop photos:\nos.system('systemctl stop flask')\nos.system('rm -r ' + basepath + 'tmp')\nos.system('mkdir ' + basepath + 'tmp')\n\nos.system('systemctl stop nodered')\n\n#reset factory\n\n",
+        "outputs": 1,
+        "x": 330,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "beacc3dc5398fa79",
+        "type": "link out",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "38783aea9cc317a6"
+        ],
+        "x": 235,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "8d012912f302be85",
+        "type": "ui_button",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "group": "ddbd496e.93a288",
+        "order": 8,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Show Details/Changelog",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "5242607a723cc628"
+            ]
+        ]
+    },
+    {
+        "id": "5242607a723cc628",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "Changelog",
+        "func": "import requests\n\ntempfile = '/home/pi/OpenScan/tmp/changelog'\n\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/README.md'\nr = requests.get(url, allow_redirects=False)\n\n\nwith open(tempfile,'wb') as file:\n    file.write(r.content)\n    \nwith open(tempfile, 'r') as file:\n    text = file.read()\n    \ntext = text.split('## Changelog')[1].split('## Main Features:')[0].replace('\\n','<br>').replace('*', '&emsp; - ')\nmsg['payload'] = text\n\nreturn msg",
+        "outputs": 1,
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "573722197b15bf84"
+            ]
+        ]
+    },
+    {
+        "id": "573722197b15bf84",
+        "type": "ui_toast",
+        "z": "c8e7ecb5849edb9a",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": true,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 570,
+        "y": 340,
+        "wires": [
+            []
+        ]
     }
 ]
