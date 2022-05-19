@@ -1,12 +1,12 @@
 # Firmware - Setup
 
-### Prerequisites
-
 ## Overview
 
-It is necessary to use a **Raspberry Pi with at least 1GB of RAM** to run the firmware. So far, the firmware has been tested on Raspberry Pi 3B+ and 4B variants. (but it might work on other versions)
-The easiest way is to download the latest Raspbian image and flash your micro sd card as described [here](#Flashing-the-SD-Card-using-the-Raspberry-Pi-imager). Alternatively you can set-up the firmware manually by following [this guide](#Manually-installing-and-setting-up-your-raspberry-pi).
-[Plastic Miniature]
+It is necessary to use a **Raspberry Pi with at least 1GB of RAM** to run the firmware. So far, the firmware has been tested on Raspberry Pi 3B+ and 4B variants. (but it might work on other versions) 
+
+The easiest way is to download the latest Raspbian image and flash your micro sd card as described [here](firmware_setup.md#Flashing-the-SD-Card-using-the-Raspberry-Pi-imager). 
+
+Alternatively you can set-up the firmware manually by following [this guide](firmware_setup.md#Manually-installing-and-setting-up-your-raspberry-pi) .
 
 ## Flashing the SD Card using the Raspberry Pi Imager
 # TODO
