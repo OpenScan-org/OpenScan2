@@ -9,10 +9,10 @@ The easiest way is to download the latest Raspbian image and flash your micro sd
 Alternatively you can set-up the firmware manually by following [this guide](firmware_setup.md#Manually-installing-and-setting-up-your-raspberry-pi) .
 
 ## Flashing the SD Card using the Raspberry Pi Imager
-# TODO
-from google drive and flash it to your Micro SD Card using the [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 
+I have pre-compiled a working Raspbian Image (2022-04-20), that can be downloaded from [Google Drive (1.5GB)](https://drive.google.com/file/d/1wppbey1Fpqb-MpgHfnHXEZbjoDHfc8P4/view?usp=sharing) (working flawlessly on Raspberry Pi 3b+ and 4)
 
+Download and flash the Raspbian Image to your Micro SD Card using the [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 
 ## Manually installing and setting up your Raspberry Pi
 The firmware and following installation guide is optimized for **Raspbian Bullseye with Desktop** environment, but can also be used headless (Note, that the desktop version comes with some libraries that you will otherwise need to install manually). 
