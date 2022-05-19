@@ -1,1 +1,1 @@
-
+The Raspberry Pi + OpenScan Pi Shield can be used to control two independent stepper motors and a variety of different cameras (Pi Camera, various Arducams, DSLR - via GPhoto and external Cameras like Smartphone and others). The mechanism can be used in various forms (see for example [OpenScan Classic](https://www.thingiverse.com/thing:3050437) or [OpenScan Mini](https://www.thingiverse.com/thing:4562060) and it could be easily adapted to be used as a camera slider or in other mechanisms.
