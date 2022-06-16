@@ -9,8 +9,8 @@ Here you can find everything you need to know in order to build your own 3D Scan
 
 This repository contains the OpenScan firmware (see [folder](update)) for the 3D Scanner as well as several manuals:
 
-* [TODO Build Instructions - Pi Shield & Ringlight - Soldering the electronics](build_PCBs.md)
-* [TODO Build Instructions - OpenScan Mini - 3D Printing and Assembly](build_OpenScanMini.md)
+* [TODO Build Instructions - Soldering the Pi Shield & Ringlight](build_PCBs.md)
+* [Build Instructions - OpenScan Mini - 3D Printing and Assembly](build_OpenScanMini.md)
 * [TODO Build Instructions - OpenScan Classic - 3D Printing and Assembly](build_OpenScanClassic.md)
 * [Firmware - Setup - Prepare/compile the SD Card](firmware_setup.md)
 * [Firmware - Usage - First Start + Understanding the User Interface](firmware_usage.md)
