@@ -7,6 +7,29 @@
 The OpenScan Mini is a compact desktop 3D scanner capable of scanning objects up to ~8-10 cm with an accuracy of up to 0.02 mm. The frame can be fully 3d printed, and all other components are off-the-shelf parts. You should be able to source all parts locally, or chose to support the OpenScan project by ordering (some) parts through [Openscan.eu/shop](https://www.openscan.eu/shop). Currently, the following cameras can be used without any additional modifications: Arducam IMX519 16mp & autofocus, Pi Camera v2 8mp and Pi Camera v1.3 5mp, where the Arducam IMX519 has to be considered the gold standard (for now :)
 
 ## Bill of material (BOM)
+* 24x M3x8 screws
+* 1x M3x12 screw
+* 1x [Pi Shield](https://en.openscan.eu/product-page/raspberry-pi-shield)
+* 1x Nema 17 (>40Ncm)
+* 1x Nema 17 (>13Ncm)
+* 1x Raspberry Pi 3B+ or 4 (any)
+* 1x Micro SD Card (>16GB)
+* 1x Camera Ribbon Cable 50cm
+* 1x [Ringlight](https://en.openscan.eu/product-page/pi-camera-ringlicht)
+* 1x Camera Module IMX519 (alternatively Pi Camera V2 or V1.3)
+* 2x M2x6 Nylon Screw
+* 2x M2x6 Nylon Standoff
+* 2x M2 Nuts
+* (2x M2x12 Nylon Screw if you use the Pi Camera module)
+* 1x Polarizer module
+
+3d printed parts:
+* Frontplate
+* Base
+* Rotor
+* small gear
+* backplate
+* object holders (4 sizes)
 
 ## 3D Printing
 Get the printable .stl (and design) files [here](https://github.com/OpenScanEu/OpenScan-Design/tree/main/OpenScanMini).
@@ -172,7 +195,7 @@ Connect the stepper motor cables to the Pi Shield and the corresponding stepper 
 ### Mounting the Frontplate
 * 1x M3x12 screw
 * 1x frontplate with Pi Shield
-* 1x base/ring
+* 1x base/rotor
 
 Mount the frontplate to the base. **Make sure that the pin headers of the Raspberry Pi and the Pi shield are properly aligned. (Yellow circle):**
 
@@ -184,7 +207,7 @@ Use the M3 screw to connect the frontplate to the base_
 
 ### Mounting the Backplate
 * 4x M3x8 screws
-* base/ring
+* base/rotor
 * backplate (3d print)
 
 Make sure, that the ringlight cable is sitting in the guide slot. (yellow circle)
