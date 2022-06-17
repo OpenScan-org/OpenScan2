@@ -52,17 +52,18 @@ See the sequence of the parts:
 Control Module:
 ![cm1](https://user-images.githubusercontent.com/57842400/174266033-a81330d0-3ee6-4003-9ea8-c61052450e82.jpg)
 
-Use 8x M3x8 screws to mount the ringlight module and the Pi Shield
+Use 8x M3x8 screws to mount the ringlight module and the Pi Shield:
 ![cm2](https://user-images.githubusercontent.com/57842400/174266045-947d8560-28cf-4865-a757-6b2b86a89879.jpg)
 
-Connect the ringlight module and the pi shield with the 50cm ringlight cable, connect the motor cables
+Connect the ringlight module and the pi shield with the 50cm ringlight cable, connect the motor cables:
 ![cm3](https://user-images.githubusercontent.com/57842400/174266161-1997a631-11e5-42b6-9b2c-18bf01383317.jpg)
 
-Use the 15cm camera ribbon cable to connect the Raspberry Pi and the camera. Make sure that the ribbon cables side with the metal pins is facing away from the USB ports of the Raspberry Pi.
+Use the 15cm camera ribbon cable to connect the Raspberry Pi and the camera. Make sure that the ribbon cables side with the metal pins is facing away from the USB ports of the Raspberry Pi.:
 ![cm3a](https://user-images.githubusercontent.com/57842400/174270185-d77f9e4e-0d06-4ced-bae6-abc95f301ba8.jpg)
 
-Make sure to properly align the Raspberry Pi with the Pin headers on the Pi Shield. **Misalignment might destroy both the Raspberry Pi and the Pi Shield!**
-
+Make sure to properly align the Raspberry Pi with the Pin headers on the Pi Shield. **Misalignment might destroy both the Raspberry Pi and the Pi Shield!**:
 ![cm5](https://user-images.githubusercontent.com/57842400/174270550-4c2011cf-f341-496f-865f-2ff76aa30541.jpg)
 
+Your control module is ready to use and should look something like:
+![cm6](https://user-images.githubusercontent.com/57842400/174271651-d889a7b1-677b-444f-bfb7-48d45ed78e58.jpg)
 
