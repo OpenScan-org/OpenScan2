@@ -1,5 +1,8 @@
 # OpenScan Mini with Polarizer Module
 
+![OS_mini](https://user-images.githubusercontent.com/57842400/174252972-7d1f8ca2-e316-400d-b8b6-607e3f5f5140.jpg)
+
+
 ## Overview
 The OpenScan Mini is a compact desktop 3D scanner capable of scanning objects up to ~8-10 cm with an accuracy of up to 0.02 mm. The frame can be fully 3d printed, and all other components are off-the-shelf parts. You should be able to source all parts locally, or chose to support the OpenScan project by ordering (some) parts through [Openscan.eu/shop](https://www.openscan.eu/shop). Currently, the following cameras can be used without any additional modifications: Arducam IMX519 16mp & autofocus, Pi Camera v2 8mp and Pi Camera v1.3 5mp, where the Arducam IMX519 has to be considered the gold standard (for now :)
 
@@ -196,4 +199,8 @@ There are two pieces of linear polarizer foil. The smaller piece (15x11mm) was i
 The Polarizer module can be easily mounted by clicking it onto the rotor:
 ![image](https://user-images.githubusercontent.com/57842400/174101063-19a57087-fed6-4942-9bfe-185390ca3e7c.png)
 
+### Starting the device for the first time
 
+Plug in a 12V (min. 2A power supply) and start the device. 
+
+Continue with [this guide, which shows the initial setup of the firmware and some general tips & tricks](https://github.com/OpenScanEu/OpenScan2/blob/main/firmware_usage.md)
