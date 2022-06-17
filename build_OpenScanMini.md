@@ -32,7 +32,7 @@ Get the printable .stl (and design) files [here](https://github.com/OpenScanEu/O
 
 ### Frontplate + Pi-Shield
 
-* 1x Frontplate
+* 1x Frontplate (3d print)
 * 1x Pi Shield
 * 4x M3x8
 
@@ -43,6 +43,9 @@ Mount the Pi Shield to the front plate using four M3x8mm screws
 ![image](https://user-images.githubusercontent.com/57842400/174010869-10b5b811-ec70-494f-9561-13c06db15225.png)
 
 ### Base + Rotor
+* 1x Base (3d print)
+* 1x Rotor (3d print)
+* lubricant and/or sandpaper (optional)
 
 ![image](https://user-images.githubusercontent.com/57842400/174011199-4c490f54-23da-428f-b591-879528749ccf.png)
 
@@ -54,7 +57,7 @@ Insert the rotor into the base and make sure, that the rotor can slide freely! (
 
 * 1x Base + Rotor
 * 1x Nema17 small
-* 4x M3x8
+* 4x M3x8 screws
 
 Make sure to mount the small stepper motor (Turntable) first. The motor connector should face to the left.
 
@@ -62,9 +65,9 @@ Make sure to mount the small stepper motor (Turntable) first. The motor connecto
 
 ### Mounting the Rotor Motor
 
-* 1x small gear
+* 1x small gear (3d print)
 * 1x Nema17 large
-* 4x M3x8
+* 4x M3x8 screw
 
 Press the small gear onto the shaft of the larger stepper motor.
 
@@ -78,7 +81,7 @@ Mount the stepper motor with four M3x8 screws like shown below. Move the large r
 
 * 1x Raspberry Pi
 * 1x Micro SD Card with OpenScan Image. See [Firmware - Setup - Prepare/compile the SD Card](firmware_setup.md). (Alternatively you can use a recent Raspbian version, if you intend to build the firmware yourself.)
-* 4x M3x8
+* 4x M3x8 screws
 
 Insert the Micro SD card into the slot of the Raspberry Pi.
 
@@ -108,7 +111,7 @@ Insert the camera ribbon cable into the socket. The metal plating should be faci
 ** IMPORTANT: Make sure to follow the right setup for your camera module:
 
 #### Arducam IMX519 16mp with Autofocus
-* 1x Ringlight
+* 1x Ringlight PCB
 * 1x Arducam IMX519 16mp camera module 
 * 2x M2x6 screws
 * 2x M2x6 standoffs
@@ -125,11 +128,11 @@ See the sequence of the parts:
 
 #### Pi Camera v2.1 or v1.3
 
-* 1x Ringlight
+* 1x Ringlight PCB
 * Pi Camera v2.1 or v1.3 module 
 * 2x M2x12 screws
-* 2x M2 nuts
 * 2x spacer
+* 2x M2 nuts
 
 See the sequence of the parts: 
 
@@ -139,7 +142,8 @@ See the sequence of the parts:
 
 ### Mounting and connecting the Ringlight Module 
 * 1x Ringlight Module
-* 4x M3x8
+* 1x 50cm ringlight power cable (3P JST XH)
+* 4x M3x8 screws
 
 Mount the ringlight module using 4 M3x8mm bolts as indicated by the red arrows:
 ![image](https://user-images.githubusercontent.com/57842400/174088696-c2679271-221a-4d9e-8668-62ab5f7b548f.png)
@@ -179,9 +183,9 @@ Use the M3 screw to connect the frontplate to the base_
 ![image](https://user-images.githubusercontent.com/57842400/174091474-c69e5b4e-965c-44b3-a53d-5347741ceaaa.png)
 
 ### Mounting the Backplate
-* 4x M3x8
+* 4x M3x8 screws
 * base/ring
-* backplate
+* backplate (3d print)
 
 Make sure, that the ringlight cable is sitting in the guide slot. (yellow circle)
 Use the 4 M3x8 screws to mount the backplate (red arrows):
@@ -192,12 +196,12 @@ Use the 4 M3x8 screws to mount the backplate (red arrows):
 * OpenScan Mini
 * Polarizer Module
 
+The Polarizer module can be easily mounted by clicking it onto the rotor:
+![image](https://user-images.githubusercontent.com/57842400/174101063-19a57087-fed6-4942-9bfe-185390ca3e7c.png)
+
 The polarizer module consists of two printed parts. It is very important that the smaller printed part (yellow circle) is not translucent in order to block all light. 
 There are two pieces of linear polarizer foil. The smaller piece (15x11mm) was inserted into the slot (red arrow). The larger piece (75x66mm) is covering the whole front area except for the middle (red arrow). It is absolutely crucial that those two pieces are oriented perpendicularly against each other. The polarizer will greatly improve the results by filtering allmost all direct reflections.
 ![image](https://user-images.githubusercontent.com/57842400/174097472-3fcbf9ff-4506-4d25-a7c9-11e51c692b21.png)
-
-The Polarizer module can be easily mounted by clicking it onto the rotor:
-![image](https://user-images.githubusercontent.com/57842400/174101063-19a57087-fed6-4942-9bfe-185390ca3e7c.png)
 
 ### Starting the device for the first time
 
