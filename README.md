@@ -11,7 +11,7 @@ This repository contains the OpenScan firmware (see [folder](update)) for the 3D
 
 * [TODO Build Instructions - Soldering the Pi Shield & Ringlight](build_PCBs.md)
 * [Build Instructions - OpenScan Mini - 3D Printing and Assembly](build_OpenScanMini.md)
-* [TODO Build Instructions - OpenScan Classic - 3D Printing and Assembly](build_OpenScanClassic.md)
+* [WIP Build Instructions - OpenScan Classic - 3D Printing and Assembly](build_OpenScanClassic.md)
 * [Firmware - Setup - Prepare/compile the SD Card](firmware_setup.md)
 * [Firmware - Usage - First Start + Understanding the User Interface](firmware_usage.md)
 * [Photogrammetry - Basics - A detailed guide to successful 3d model creation](photogrammetry_basics.md)
