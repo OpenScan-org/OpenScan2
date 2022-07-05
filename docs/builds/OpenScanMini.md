@@ -103,7 +103,7 @@ Mount the stepper motor with four M3x8 screws like shown below. Move the large r
 ### Mounting the Raspberry Pi
 
 * 1x Raspberry Pi
-* 1x Micro SD Card with OpenScan Image. See [Firmware - Setup - Prepare/compile the SD Card](firmware_setup.md). (Alternatively you can use a recent Raspbian version, if you intend to build the firmware yourself.)
+* 1x Micro SD Card with OpenScan Image. See [Firmware - Setup - Prepare/compile the SD Card](../firmware/setup.md). (Alternatively you can use a recent Raspbian version, if you intend to build the firmware yourself.)
 * 4x M3x8 screws
 
 Insert the Micro SD card into the slot of the Raspberry Pi.
@@ -230,4 +230,4 @@ There are two pieces of linear polarizer foil. The smaller piece (15x11mm) was i
 
 Plug in a 12V (min. 2A power supply) and start the device. 
 
-Continue with [this guide, which shows the initial setup of the firmware and some general tips & tricks](https://github.com/OpenScanEu/OpenScan2/blob/main/firmware_usage.md)
+Continue with [this guide, which shows the initial setup of the firmware and some general tips & tricks](../firmware/usage.md)

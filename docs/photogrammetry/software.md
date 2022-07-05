@@ -2,7 +2,7 @@
 
 ## Desktop Software
 
-### Commercial:
+### Commercial
 
 * Reality Capture
 * Agisoft Metashape
@@ -10,7 +10,7 @@
 * Bentley Context Capture
 * ...
 
-### Open-Source and/or free:
+### Open-Source and/or free
 
 * Alicevision Meshroom
 * VisualSFM

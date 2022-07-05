@@ -1,0 +1,53 @@
+site_name: OpenScan
+plugins:
+  - autolinks
+  - search:
+      lang:
+        - en
+theme:
+  name: material
+  language: en
+  palette:
+    primary: teal
+    accent: indigo
+  features:
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+nav:
+  - Introduction: "index.md"
+  - Builds:
+    - Classic: "builds/OpenScanClassic.md"
+    - Mini: "builds/OpenScanMini.md"
+    - PCB: "builds/PCBs.md"
+  - Firmware:
+    - Setup: "firmware/setup.md"
+    - Usage: "firmware/usage.md"
+  - Photogrammetry:
+    - Basics: "photogrammetry/basics.md"
+    - Software: "photogrammetry/software.md"
+  - Changelog: "changelog.md"
