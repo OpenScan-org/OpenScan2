@@ -77,7 +77,7 @@
         "1": {
             "src": "beta/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 4316
+            "filesize": 4624
         },
         "2": {
             "src": "beta/Arducam.py",
@@ -97,7 +97,7 @@
         "5": {
             "src": "beta/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 343682
+            "filesize": 353022
         },
         "6": {
             "src": "beta/settings.js",

@@ -5,6 +5,8 @@ from time import sleep, time
 import shutil
 from OpenScan import load_int, load_float, load_bool
 import RPi.GPIO as GPIO
+from math import sqrt
+
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -60,8 +62,9 @@ def gphoto_exit():
 ###################################################################################################################
 @app.route('/crop', methods=['get'])
 def crop():
-    
-    downscale_threshold = load_int('downscale_threshold')
+    output_downscale = load_bool('cam_output_downscale')
+    output_resolution = load_int('cam_output_resolution')
+    preview_resolution = load_int('cam_preview_resolution')
     filepath_in = basedir + str(request.args.get('filepath_in'))
     filepath_out = basedir + str(request.args.get('filepath_out'))
     cropx = int(request.args.get('cropx'))/200
@@ -80,11 +83,19 @@ def crop():
             img= img.transpose(Image.ROTATE_180)
         elif rotation == 270:
             img= img.transpose(Image.ROTATE_270)
+
         if preview == "True":
             w,h = img.size
-            if w > downscale_threshold or h > downscale_threshold:
-                downscale = max(w/downscale_threshold,h/downscale_threshold)
-            img = img.resize((int(w/downscale),int(h/downscale)),Image.ANTIALIAS)
+            factor = (w*h)/preview_resolution
+            if factor > 1:
+                img = img.resize((int(w/sqrt(factor)),int(h/sqrt(factor))),Image.ANTIALIAS)
+
+        elif output_downscale == True:
+            w,h = img.size
+            factor = (w*h)/output_resolution
+            if factor > 1:
+                img = img.resize((int(w/sqrt(factor)),int(h/sqrt(factor))),Image.ANTIALIAS) 
+
         img.save(filepath_out, quality=95, subsampling=0)
 
     return ({}, 200)
