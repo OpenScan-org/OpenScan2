@@ -82,4 +82,4 @@ arm_boost=1
 camera_auto_detect=0
 gpu_mem=256
 dtoverlay=vc4-fkms-v3d
-dtoverlay=imx519,media-controller=1
+dtoverlay=imx519,media-controller=0

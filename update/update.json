@@ -87,7 +87,7 @@
         "3": {
             "src": "beta/OpenScan.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 6011
+            "filesize": 6161
         },
         "4": {
             "src": "beta/config.txt",
@@ -97,7 +97,7 @@
         "5": {
             "src": "beta/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 343381
+            "filesize": 343682
         },
         "6": {
             "src": "beta/settings.js",
