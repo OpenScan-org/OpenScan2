@@ -3667,7 +3667,6 @@
         "wires": [
             [
                 "ada1b6f7cccc9344",
-                "de8b30e3dbbb598f",
                 "85839a17fb7b58b9"
             ]
         ]
@@ -3932,7 +3931,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "refresh",
-        "func": "from time import sleep\nimport os\nfrom OpenScan import load_str, OpenScanCloud, save, load_bool\n\nbasepath = '/home/pi/OpenScan/scans/'\n\nif load_bool(\"terms\")==False:\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic']='OpenScanCloud - Terms of Use'\n    return None,msg\n\nsave('status_cloud','refreshing')\ntoken = load_str('token')\n\ntest = OpenScanCloud('getTokenInfo',{'token':token})\nif test.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    return None,msg\nelif test.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nstats = test.json()\nfor i in stats:\n    save('osc_'+i, stats[i])\n    pass\n\nmsg={}\nprojects = []\nfor i in os.listdir(basepath):\n    if os.path.isdir(basepath + i):\n        if os.path.isfile(basepath + i + '/status'):\n            with open(basepath + i + '/status', 'r') as file:\n                status = file.read().strip('\\n')\n                if status in ['expired', 'processing done', 'processing failed']:\n                    continue\n        projects.append(i)\n\nfor p in projects:\n    r = OpenScanCloud('getProjectInfo',{'token':token, 'project':p+'.zip'})\n    if r.status_code == 200:\n        answer = r.json()\n        if answer == {}:\n            os.system('rm -r ' + basepath + p)\n        else:\n            with open(basepath + p + '/status', 'w+') as file:\n                file.write(answer['status'])\n            with open(basepath + p + '/download', 'w+') as file:\n                file.write(answer['dlink'])\n\nmsg['list'] = projects\nsleep(0.5)\nsave('status_cloud','ready')\nreturn msg, None\n",
+        "func": "from time import sleep\nimport os\nfrom OpenScan import load_str, OpenScanCloud, save, load_bool\n\nbasepath = '/home/pi/OpenScan/scans/'\n\nif load_bool(\"terms\")==False:\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic']='OpenScanCloud - Terms of Use'\n    return None,msg\n\nsave('status_cloud','refreshing')\ntoken = load_str('token')\n\ntest = OpenScanCloud('getTokenInfo',{'token':token})\nif test.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    return None,msg\nelif test.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nstats = test.json()\nfor i in stats:\n    save('osc_'+i, stats[i])\n    pass\n\nmsg={}\nprojects = []\nfor i in os.listdir(basepath):\n    if i == 'preview':\n        continue\n    if os.path.isdir(basepath + i):\n        if os.path.isfile(basepath + i + '/status'):\n            with open(basepath + i + '/status', 'r') as file:\n                status = file.read().strip('\\n')\n                if status in ['expired', 'processing done', 'processing failed']:\n                    continue\n        projects.append(i)\n\nfor p in projects:\n    r = OpenScanCloud('getProjectInfo',{'token':token, 'project':p+'.zip'})\n    if r.status_code == 200:\n        answer = r.json()\n        if answer == {}:\n            os.system('rm -r ' + basepath + p)\n        else:\n            with open(basepath + p + '/status', 'w+') as file:\n                file.write(answer['status'])\n            with open(basepath + p + '/download', 'w+') as file:\n                file.write(answer['dlink'])\n\nmsg['list'] = projects\nsleep(0.5)\nsave('status_cloud','ready')\nreturn msg, None\n",
         "outputs": 2,
         "x": 320,
         "y": 180,
@@ -4152,7 +4151,7 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 900,
+        "x": 880,
         "y": 260,
         "wires": [
             []
@@ -4532,37 +4531,20 @@
         "templateScope": "local",
         "className": "",
         "x": 1020,
-        "y": 200,
+        "y": 220,
         "wires": [
             []
         ]
     },
     {
-        "id": "de8b30e3dbbb598f",
-        "type": "debug",
-        "z": "4981d84ef1a366d1",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 950,
-        "y": 160,
-        "wires": []
-    },
-    {
         "id": "85839a17fb7b58b9",
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
-        "name": "get dirs",
-        "func": "from time import time\nimport os\n\npath = '/home/pi/OpenScan/scans/preview/'\nimage = os.path.basename(msg['payload']['Set'])[:-4] +'.jpg'\n\n#if os.path.isfile(path + image):\nmsg['payload']=\"/scans/preview/\" + image +\"?ts=\"+str(int(time()*10))\nreturn msg",
+        "name": "preview",
+        "func": "from time import time\nimport os\n\npath = '/home/pi/OpenScan/scans/preview/'\nimage = os.path.basename(msg['payload']['Set'])[:-4] +'.jpg'\n\nmsg['payload']=\"/scans/preview/\" + image +\"?ts=\"+str(int(time()*10))\nreturn msg",
         "outputs": 1,
-        "x": 980,
-        "y": 320,
+        "x": 880,
+        "y": 220,
         "wires": [
             [
                 "9a5baae623355f9d"
