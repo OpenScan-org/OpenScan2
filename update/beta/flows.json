@@ -3493,7 +3493,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "get dirs",
-        "func": "from glob import glob\nimport os\nfrom zipfile import ZipFile\nfrom datetime import datetime\nfrom PIL import Image\n\ndef set_stats(stat):\n    try:\n        with open(directory+set[:-4]+\"/\"+stat,\"r\") as file:\n            stat=file.read()\n    except:\n        stat=\"\"\n    return stat\n\ntable=[]\ndirectory=\"/home/pi/OpenScan/scans/\"\n\nfor d in glob(directory+\"*.zip\"):\n    set=os.path.basename(d)\n\n    #try:\n    with ZipFile(d, 'r') as f:\n        photos = len(f.namelist())\n        \n        if not os.path.isfile(directory + 'preview/' + os.path.basename(d)[:-4]+'.jpg'):\n            image = f.open(f.namelist()[int(photos/2)])\n            img = Image.open(image)\n            width, height = img.size\n            width_factor = width/300\n            height_factor = height/295\n            if height_factor>=width_factor and height_factor > 1:\n                new_size=(int(width/height_factor), int(height/height_factor))\n                img = img.resize(new_size)\n            elif height_factor<width_factor and width_factor > 1:\n                new_size=(int(width/width_factor),int(height/width_factor))\n                img = img.resize(new_size)\n            img.save(directory + 'preview/' + os.path.basename(d)[:-4] +'.jpg')\n    try:        \n        list=[]\n        for fi in f.filelist:\n            list.append(f.getinfo(fi.filename).date_time)\n        \n        duration = str(datetime(*max(list)) - datetime(*min(list)))\n        \n        size = float(int(float(os.path.getsize(d))/100000))/10\n        size_full= os.path.getsize(d)\n        status=set_stats(\"status\")\n        expiration=set_stats(\"expiration\")\n        download=set_stats(\"download\")\n    \n        if len(download)!=0:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Download\":\"<a href=\"+download+\">RESULT</a>\",\n                \"Size_full\":size_full,\n                \"Duration\":duration,\n                })\n        else:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Size_full\":size_full,\n                \"Duration\":duration,\n\n                })\n    except:\n        pass\n\nmsg['payload']=table\nmsg['topic']=\"\"\nreturn msg",
+        "func": "from glob import glob\nimport os\nfrom zipfile import ZipFile\nfrom datetime import datetime\nfrom PIL import Image\n\ndef set_stats(stat):\n    try:\n        with open(directory+set[:-4]+\"/\"+stat,\"r\") as file:\n            stat=file.read()\n    except:\n        stat=\"\"\n    return stat\n\ntable=[]\ndirectory=\"/home/pi/OpenScan/scans/\"\n\nfor d in glob(directory+\"*.zip\"):\n    set=os.path.basename(d)\n\n    try:\n        with ZipFile(d, 'r') as f:\n            photos = len(f.namelist())\n        \n            if not os.path.isfile(directory + 'preview/' + os.path.basename(d)[:-4]+'.jpg'):\n                image = f.open(f.namelist()[int(photos/2)])\n                img = Image.open(image)\n                width, height = img.size\n                width_factor = width/300\n                height_factor = height/295\n                if height_factor>=width_factor and height_factor > 1:\n                    new_size=(int(width/height_factor), int(height/height_factor))\n                    img = img.resize(new_size)\n                elif height_factor<width_factor and width_factor > 1:\n                    new_size=(int(width/width_factor),int(height/width_factor))\n                    img = img.resize(new_size)\n                img.save(directory + 'preview/' + os.path.basename(d)[:-4] +'.jpg')\n        list=[]\n        for fi in f.filelist:\n            list.append(f.getinfo(fi.filename).date_time)\n        \n        duration = str(datetime(*max(list)) - datetime(*min(list)))\n        \n        size = float(int(float(os.path.getsize(d))/100000))/10\n        size_full= os.path.getsize(d)\n        status=set_stats(\"status\")\n        expiration=set_stats(\"expiration\")\n        download=set_stats(\"download\")\n    \n        if len(download)!=0:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Download\":\"<a href=\"+download+\">RESULT</a>\",\n                \"Size_full\":size_full,\n                \"Duration\":duration,\n                })\n        else:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Size_full\":size_full,\n                \"Duration\":duration,\n\n                })\n    except:\n        pass\n\nmsg['payload']=table\nmsg['topic']=\"\"\nreturn msg",
         "outputs": 1,
         "x": 480,
         "y": 180,
@@ -4549,6 +4549,33 @@
             [
                 "9a5baae623355f9d"
             ]
+        ]
+    },
+    {
+        "id": "45058bfcf047e8cc",
+        "type": "inject",
+        "z": "4981d84ef1a366d1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 120,
+        "wires": [
+            []
         ]
     },
     {
