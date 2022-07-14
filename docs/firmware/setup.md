@@ -10,7 +10,7 @@ Alternatively you can set-up the firmware manually by following [this guide](#ma
 
 ## Flashing the SD Card using the Raspberry Pi Imager
 
-I have pre-compiled a working Raspbian Image (2022-04-20), that can be downloaded from [Google Drive (1.5GB)](https://drive.google.com/file/d/1wppbey1Fpqb-MpgHfnHXEZbjoDHfc8P4/view?usp=sharing) (working flawlessly on Raspberry Pi 3b+ and 4)
+I have pre-compiled a working Raspbian Image (2022-07-08), that can be downloaded from [Google Drive (1.5GB)](https://drive.google.com/file/d/1XXfUd6JgxX0Ry0_AVzdS8D8w36e8Bed7/view?usp=sharing) (working flawlessly on Raspberry Pi 3b+ and 4)
 
 Download and flash the Raspbian Image to your Micro SD Card using the [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 
