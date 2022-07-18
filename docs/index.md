@@ -14,6 +14,7 @@ In order to keep the project organized, please follow this guideline [TODO](link
 
 ## Community
 Please join one of the following channels to engage with the wonderful OpenScan community.
+
 * [Discord - TODO]() find help with troubleshooting or join the current and future development of the project.
 * [Reddit - /r/openscan](https://www.reddit.com/r/openscan) 
 * [Facebook - Low Budget 3D Scan](https://www.facebook.com/groups/142108429832711) 
