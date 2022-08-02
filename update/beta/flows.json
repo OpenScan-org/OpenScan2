@@ -344,66 +344,6 @@
         "hidden": false
     },
     {
-        "id": "c8046a08530de773",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "7aaf184330605300",
-        "order": 24,
-        "width": 6,
-        "height": 1
-    },
-    {
-        "id": "172d056dd7d872d2",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "7aaf184330605300",
-        "order": 25,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "06ecf76ac104dd8b",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "7aaf184330605300",
-        "order": 28,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "2f0e2526e0b01999",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "90223f7ddc082321",
-        "order": 14,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "3f283ca1ba2bbac5",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "90223f7ddc082321",
-        "order": 15,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "19b60bb452aa2e12",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "90223f7ddc082321",
-        "order": 16,
-        "width": 2,
-        "height": 1
-    },
-    {
         "id": "1f7f7e1e24f5ad9b",
         "type": "ui_group",
         "name": "Initialize",
@@ -482,6 +422,46 @@
         "name": "spacer",
         "group": "3b4bd36726be16d5",
         "order": 8,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "cac67f0e.f01fa",
+        "type": "ui_group",
+        "name": "Button Top",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b73c392ffd8ca3f2",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "90223f7ddc082321",
+        "order": 14,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "89fe04171cd2f35b",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "90223f7ddc082321",
+        "order": 15,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "80c9c0059de08f02",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "90223f7ddc082321",
+        "order": 16,
         "width": 2,
         "height": 1
     },
@@ -1009,27 +989,6 @@
         "wires": []
     },
     {
-        "id": "43840dd3705bc206",
-        "type": "ui_template",
-        "z": "829d803b6033a693",
-        "group": "",
-        "name": "donate",
-        "order": 2,
-        "width": "0",
-        "height": "0",
-        "format": "\n<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        load();\n    }else setTimeout(load, 500)\n});\n\nfunction load(){\n    $('#bmac').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<div/ id=\"bmac\">');\n    \n    div.append(p);\n    div[0].style.margin = '0px 0px 0px auto';\n    toolbar.append(div);\n\n\n        p.append('<a class=\"md-button\" target=\"_blank\" href=\"https://www.patreon.com/bePatron?u=51974655\"><U><b>Become A Patron</b></U></a>');\n\n\n}\n\n</script>\n",
-        "storeOutMessages": false,
-        "fwdInMessages": false,
-        "resendOnRefresh": false,
-        "templateScope": "global",
-        "className": "",
-        "x": 530,
-        "y": 40,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "bb84b9e5c7d8e21f",
         "type": "python3-function",
         "z": "829d803b6033a693",
@@ -1064,7 +1023,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "FIRMWARE VERSION",
-        "func": "msg.firmware = '2022-07-08'\nreturn msg",
+        "func": "msg.firmware = '2022-08-02'\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1105,6 +1064,27 @@
         "outputs": 1,
         "x": 250,
         "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06d33bb8951ce668",
+        "type": "ui_template",
+        "z": "829d803b6033a693",
+        "group": "",
+        "name": "donate",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "format": "\n<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        load();\n    }else setTimeout(load, 500)\n});\n\nfunction load(){\n    $('#bmac').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<div/ id=\"bmac\">');\n    \n    div.append(p);\n    div[0].style.margin = '0px 0px 0px auto';\n    toolbar.append(div);\n\n\n    p.append('<a class=\"md-button\" target=\"_blank\" href=\"https://www.patreon.com/bePatron?u=51974655\"><U>DONATE</U></a>');\n    p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" href=\"http://openscan:1312/shutdown\"><i class=\"fa fa-power-off\" ></i></a>')\n    p.append('   ')\n    p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" href=\"http://openscan:1312/reboot\"><i class=\"fa fa-repeat\" ></i></a>')\n\n}\n\n</script>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "global",
+        "className": "",
+        "x": 450,
+        "y": 40,
         "wires": [
             []
         ]
@@ -1414,7 +1394,7 @@
         "order": 14,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "",
         "topicType": "str",
@@ -1496,7 +1476,7 @@
         "order": 16,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "",
         "topicType": "str",
@@ -1574,7 +1554,7 @@
         "order": 18,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "",
         "topicType": "str",
@@ -1601,7 +1581,7 @@
         "order": 20,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "",
         "topicType": "str",
@@ -1698,11 +1678,11 @@
         "width": 3,
         "height": 1,
         "name": "cropx",
-        "label": "Crop X (%)",
+        "label": "{{msg.crop1}}",
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 650,
+        "x": 690,
         "y": 620,
         "wires": []
     },
@@ -1715,11 +1695,11 @@
         "width": 3,
         "height": 1,
         "name": "cropy",
-        "label": "Crop Y (%)",
+        "label": "{{msg.crop2}}",
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 650,
+        "x": 690,
         "y": 660,
         "wires": []
     },
@@ -1946,88 +1926,6 @@
         ],
         "x": 395,
         "y": 840,
-        "wires": []
-    },
-    {
-        "id": "5ba05110851a5096",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "reboot",
-        "group": "7aaf184330605300",
-        "order": 26,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "reboot",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "fa-repeat",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "",
-        "topicType": "str",
-        "x": 90,
-        "y": 1040,
-        "wires": [
-            [
-                "16c76929f88df841"
-            ]
-        ]
-    },
-    {
-        "id": "152d402caa595189",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "shutdown",
-        "group": "7aaf184330605300",
-        "order": 27,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "shutdown",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "fa-power-off",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "",
-        "topicType": "str",
-        "x": 100,
-        "y": 1080,
-        "wires": [
-            [
-                "597bfb653e8cddbf"
-            ]
-        ]
-    },
-    {
-        "id": "16c76929f88df841",
-        "type": "link out",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "9bb0adbd716ce347"
-        ],
-        "x": 215,
-        "y": 1040,
-        "wires": []
-    },
-    {
-        "id": "597bfb653e8cddbf",
-        "type": "link out",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "fc9abb94c35eec56"
-        ],
-        "x": 215,
-        "y": 1080,
         "wires": []
     },
     {
@@ -3489,6 +3387,23 @@
         ]
     },
     {
+        "id": "44c598049cd533fd",
+        "type": "link in",
+        "z": "1613373abaf77a2c",
+        "name": "crop",
+        "links": [
+            "f358de1e64b491bb"
+        ],
+        "x": 595,
+        "y": 640,
+        "wires": [
+            [
+                "fecf5cff888bb570",
+                "0ee4950bd21498bd"
+            ]
+        ]
+    },
+    {
         "id": "ea54fcc2.cfcc2",
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
@@ -4808,64 +4723,6 @@
         ]
     },
     {
-        "id": "7b9d44c2b72c7558",
-        "type": "ui_button",
-        "z": "017bd4e4a428bee5",
-        "name": "reboot",
-        "group": "4fe6b4c0ade0938a",
-        "order": 13,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "restart",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "fa-repeat",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 90,
-        "y": 720,
-        "wires": [
-            [
-                "cc3cb10f2ea3f8b8",
-                "d114f4d4d7f31981"
-            ]
-        ]
-    },
-    {
-        "id": "b2f11720e95de6b7",
-        "type": "ui_button",
-        "z": "017bd4e4a428bee5",
-        "name": "shutdown",
-        "group": "4fe6b4c0ade0938a",
-        "order": 12,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "shutdown",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "fa-power-off",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 100,
-        "y": 800,
-        "wires": [
-            [
-                "cc3cb10f2ea3f8b8",
-                "f52d4d86b39aeb6b"
-            ]
-        ]
-    },
-    {
         "id": "cc3cb10f2ea3f8b8",
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
@@ -4892,19 +4749,6 @@
         ]
     },
     {
-        "id": "f52d4d86b39aeb6b",
-        "type": "python3-function",
-        "z": "017bd4e4a428bee5",
-        "name": "shutdown",
-        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('shutdown -h now')",
-        "outputs": 1,
-        "x": 280,
-        "y": 800,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "79181ad3b56d5c62",
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
@@ -4917,7 +4761,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 670,
+        "x": 730,
         "y": 620,
         "wires": []
     },
@@ -5146,12 +4990,14 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "model",
-        "func": "from OpenScan import load_str, save\n\nstate = msg['payload']\nmsg['state'] = state\n\nif state != load_str('model'):\n    save('model', state)\n    if state == 'OSMini':\n        save('rotor_stepsperrotation',48000)\n        save('cam_rotation',90)\n        save('rotor_anglemin',-70)\n        save('rotor_anglemax',20)\n        \n\n    if state == 'OSClassic':\n        save('rotor_stepsperrotation',17067)\n        save('cam_rotation',0)\n        save('rotor_anglemin',-30)\n        save('rotor_anglemax',30)",
+        "func": "from OpenScan import load_str, save\n\nstate = msg['payload']\nmsg['state'] = state\n\nif state != load_str('model'):\n    save('model', state)\n    if state == 'OSMini':\n        save('rotor_stepsperrotation',48000)\n        save('cam_rotation',90)\n        save('rotor_anglemin',-70)\n        save('rotor_anglemax',20)\n        \n\n    if state == 'OSClassic':\n        save('rotor_stepsperrotation',17067)\n        save('cam_rotation',0)\n        save('rotor_anglemin',-30)\n        save('rotor_anglemax',30)\n\nif state == \"OSMini\":\n    msg['crop2'] = 'Crop X (%)'\n    msg['crop1'] = 'Crop Y (%)'\nelif state == \"OSClassic\":\n    msg['crop1'] = 'Crop X (%)'\n    msg['crop2'] = 'Crop Y (%)'\n\nreturn msg",
         "outputs": 1,
         "x": 530,
         "y": 620,
         "wires": [
-            []
+            [
+                "f358de1e64b491bb"
+            ]
         ]
     },
     {
@@ -6405,7 +6251,7 @@
         "order": 25,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "mode": "number",
         "delay": "0",
         "topic": "topic",
@@ -9140,28 +8986,11 @@
             "fe3a855fee9e28c6"
         ],
         "x": 155,
-        "y": 680,
+        "y": 720,
         "wires": [
             [
                 "d114f4d4d7f31981",
                 "cc3cb10f2ea3f8b8"
-            ]
-        ]
-    },
-    {
-        "id": "fc9abb94c35eec56",
-        "type": "link in",
-        "z": "017bd4e4a428bee5",
-        "name": "shutdown",
-        "links": [
-            "597bfb653e8cddbf"
-        ],
-        "x": 155,
-        "y": 840,
-        "wires": [
-            [
-                "cc3cb10f2ea3f8b8",
-                "f52d4d86b39aeb6b"
             ]
         ]
     },
@@ -10221,7 +10050,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 670,
+        "x": 730,
         "y": 580,
         "wires": []
     },
@@ -10474,6 +10303,20 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "f358de1e64b491bb",
+        "type": "link out",
+        "z": "017bd4e4a428bee5",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "b30d918661392ab3",
+            "44c598049cd533fd"
+        ],
+        "x": 635,
+        "y": 620,
+        "wires": []
     },
     {
         "id": "b0629875a30ae1d7",
@@ -11249,7 +11092,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "Changelog",
-        "func": "import requests\n\ntempfile = '/home/pi/OpenScan/tmp/changelog'\n\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/README.md'\nr = requests.get(url, allow_redirects=False)\n\n\nwith open(tempfile,'wb') as file:\n    file.write(r.content)\n    \nwith open(tempfile, 'r') as file:\n    text = file.read()\n    \ntext = text.split('## Changelog')[1].split('## Main Features:')[0].replace('\\n','<br>').replace('*', '&emsp; - ')\nmsg['payload'] = text\n\nreturn msg",
+        "func": "import requests\n\ntempfile = '/home/pi/OpenScan/tmp/changelog'\n\nurl = 'https://raw.githubusercontent.com/OpenScan-org/OpenScan-Doc/main/docs/changelog.md'\nr = requests.get(url, allow_redirects=False)\n\nwith open(tempfile,'wb') as file:\n    file.write(r.content)\n    \nwith open(tempfile, 'r') as file:\n    text = file.read()\n    \ntext = text.replace('\\n','<br>').replace('*', '&emsp; - ')\nmsg['payload'] = text\n\nreturn msg",
         "outputs": 1,
         "x": 390,
         "y": 340,
