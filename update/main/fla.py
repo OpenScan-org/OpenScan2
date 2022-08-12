@@ -3,8 +3,10 @@ from PIL import Image
 import gphoto2 as gp
 from time import sleep, time
 import shutil
-from OpenScan import load_int, load_float, load_bool
+from OpenScan import load_int, load_float, load_bool, ringlight
 import RPi.GPIO as GPIO
+from math import sqrt
+import os 
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -14,6 +16,31 @@ app = Flask(__name__)
 basedir = '/home/pi/OpenScan/'
 timer = time()
 
+###################################################################################################################
+@app.route('/shutdown', methods=['get'])
+def shutdown():
+    delay = 0.1
+    ringlight(2,False)
+
+    for i in range (5):
+        ringlight(1,True)
+        sleep(delay)
+        ringlight(1,False)
+        sleep(delay)
+    os.system('shutdown -h now')
+###################################################################################################################
+@app.route('/reboot', methods=['get'])
+def reboot():
+    delay = 0.1
+    ringlight(2,False)
+
+    for i in range (5):
+        ringlight(1,True)
+        sleep(delay)
+        ringlight(1,False)
+        sleep(delay)
+
+    os.system('reboot -h')
 ###################################################################################################################
 @app.route('/ping', methods=['get'])
 def ping():
@@ -60,15 +87,16 @@ def gphoto_exit():
 ###################################################################################################################
 @app.route('/crop', methods=['get'])
 def crop():
-    
-    downscale_threshold = load_int('downscale_threshold')
+    output_downscale = load_bool('cam_output_downscale')
+    output_resolution = load_int('cam_output_resolution')
+    preview_resolution = load_int('cam_preview_resolution')
     filepath_in = basedir + str(request.args.get('filepath_in'))
     filepath_out = basedir + str(request.args.get('filepath_out'))
     cropx = int(request.args.get('cropx'))/200
     cropy = int(request.args.get('cropy'))/200
     rotation = int(request.args.get('rotation'))
     preview = str(request.args.get('preview'))
-
+    downscale = 1
 
     with Image.open(filepath_in) as img:
         w,h = img.size
@@ -80,11 +108,19 @@ def crop():
             img= img.transpose(Image.ROTATE_180)
         elif rotation == 270:
             img= img.transpose(Image.ROTATE_270)
+
         if preview == "True":
             w,h = img.size
-            if w > downscale_threshold or h > downscale_threshold:
-                downscale = max(w/downscale_threshold,h/downscale_threshold)
-            img = img.resize((int(w/downscale),int(h/downscale)),Image.ANTIALIAS)
+            factor = (w*h)/preview_resolution
+            if factor > 1:
+                img = img.resize((int(w/sqrt(factor)),int(h/sqrt(factor))),Image.ANTIALIAS)
+
+        elif output_downscale == True:
+            w,h = img.size
+            factor = (w*h)/output_resolution
+            if factor > 1:
+                img = img.resize((int(w/sqrt(factor)),int(h/sqrt(factor))),Image.ANTIALIAS) 
+
         img.save(filepath_out, quality=95, subsampling=0)
 
     return ({}, 200)
@@ -109,5 +145,5 @@ def external_capture():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
-#    app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)
+#    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
+    app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)

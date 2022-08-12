@@ -326,11 +326,11 @@
     {
         "id": "3ce32450.e0cffc",
         "type": "ui_group",
-        "name": "Changelog",
+        "name": "System & Stats",
         "tab": "d25e08b4.5b27e8",
         "order": 2,
         "disp": true,
-        "width": "8",
+        "width": "6",
         "collapse": false,
         "className": ""
     },
@@ -344,69 +344,51 @@
         "hidden": false
     },
     {
-        "id": "c8046a08530de773",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "7aaf184330605300",
-        "order": 24,
-        "width": 6,
-        "height": 1
+        "id": "1f7f7e1e24f5ad9b",
+        "type": "ui_group",
+        "name": "Initialize",
+        "tab": "b3150b13e34b1fe8",
+        "order": 3,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
-        "id": "172d056dd7d872d2",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "7aaf184330605300",
-        "order": 25,
-        "width": 1,
-        "height": 1
+        "id": "5b3e5aca21140e9a",
+        "type": "ui_group",
+        "name": "Update",
+        "tab": "b3150b13e34b1fe8",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
     },
     {
-        "id": "06ecf76ac104dd8b",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "7aaf184330605300",
-        "order": 28,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "2f0e2526e0b01999",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "90223f7ddc082321",
-        "order": 14,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "3f283ca1ba2bbac5",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "90223f7ddc082321",
-        "order": 15,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "19b60bb452aa2e12",
-        "type": "ui_spacer",
-        "z": "1613373abaf77a2c",
-        "name": "spacer",
-        "group": "90223f7ddc082321",
-        "order": 16,
-        "width": 2,
-        "height": 1
-    },
-    {
-        "id": "16f753db0fbbf233",
+        "id": "700f47327133ab68",
         "type": "ui_spacer",
         "z": "829d803b6033a693",
+        "name": "spacer",
+        "group": "729f9ea6e3513c9b",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "ebf828f29201a53b",
+        "type": "ui_spacer",
+        "z": "829d803b6033a693",
+        "name": "spacer",
+        "group": "729f9ea6e3513c9b",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "3b4961c4e72ff58a",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
         "name": "spacer",
         "group": "4fe6b4c0ade0938a",
         "order": 6,
@@ -414,9 +396,9 @@
         "height": 1
     },
     {
-        "id": "50350f11a5cdac07",
+        "id": "5ef40dca2c6c6aab",
         "type": "ui_spacer",
-        "z": "829d803b6033a693",
+        "z": "017bd4e4a428bee5",
         "name": "spacer",
         "group": "4fe6b4c0ade0938a",
         "order": 11,
@@ -424,29 +406,9 @@
         "height": 1
     },
     {
-        "id": "717a0b96f38892a5",
+        "id": "bdd26746cc1e1ba0",
         "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "4fe6b4c0ade0938a",
-        "order": 14,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "025273faa2025118",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "4fe6b4c0ade0938a",
-        "order": 16,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "2d5014065e626639",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
+        "z": "017bd4e4a428bee5",
         "name": "spacer",
         "group": "3b4bd36726be16d5",
         "order": 6,
@@ -454,9 +416,9 @@
         "height": 1
     },
     {
-        "id": "6da39f0deb7dba46",
+        "id": "3584b5ef2b7acb72",
         "type": "ui_spacer",
-        "z": "829d803b6033a693",
+        "z": "017bd4e4a428bee5",
         "name": "spacer",
         "group": "3b4bd36726be16d5",
         "order": 8,
@@ -464,36 +426,44 @@
         "height": 1
     },
     {
-        "id": "1f7f7e1e24f5ad9b",
+        "id": "cac67f0e.f01fa",
         "type": "ui_group",
-        "name": "Initialize",
-        "tab": "b3150b13e34b1fe8",
-        "order": 2,
-        "disp": false,
+        "name": "Button Top",
+        "tab": "",
+        "order": 1,
+        "disp": true,
         "width": "6",
-        "collapse": false,
-        "className": ""
+        "collapse": false
     },
     {
-        "id": "5c0fc1e2358d9d86",
+        "id": "b73c392ffd8ca3f2",
         "type": "ui_spacer",
-        "z": "829d803b6033a693",
+        "z": "017bd4e4a428bee5",
         "name": "spacer",
-        "group": "1f7f7e1e24f5ad9b",
-        "order": 2,
-        "width": 6,
+        "group": "90223f7ddc082321",
+        "order": 14,
+        "width": 2,
         "height": 1
     },
     {
-        "id": "5b3e5aca21140e9a",
-        "type": "ui_group",
-        "name": "Update",
-        "tab": "b3150b13e34b1fe8",
-        "order": 3,
-        "disp": false,
-        "width": "6",
-        "collapse": false,
-        "className": ""
+        "id": "89fe04171cd2f35b",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "90223f7ddc082321",
+        "order": 15,
+        "width": 2,
+        "height": 1
+    },
+    {
+        "id": "80c9c0059de08f02",
+        "type": "ui_spacer",
+        "z": "017bd4e4a428bee5",
+        "name": "spacer",
+        "group": "90223f7ddc082321",
+        "order": 16,
+        "width": 2,
+        "height": 1
     },
     {
         "id": "3fe52603e2ac73b6",
@@ -504,7 +474,7 @@
         "order": 1,
         "width": 0,
         "height": 0,
-        "format": "<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n\n    }\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n</style>",
+        "format": "<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n\n    }\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n    background-color: transparent !important;\n    }\n\n    \n    \n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n</style>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
@@ -669,7 +639,10 @@
                 "83c2b5ea51f0fec3",
                 "88fde4ab78c965d7",
                 "bee62d2a99cbc63b",
-                "8e39e4a037487ecd"
+                "8e39e4a037487ecd",
+                "bb84b9e5c7d8e21f",
+                "7113d7b25a851151",
+                "c4c1580c289fc7bd"
             ]
         ]
     },
@@ -782,7 +755,7 @@
             "5e7d5e4335d37794"
         ],
         "x": 615,
-        "y": 720,
+        "y": 800,
         "wires": []
     },
     {
@@ -807,7 +780,7 @@
         "payload": "",
         "payloadType": "str",
         "x": 100,
-        "y": 640,
+        "y": 720,
         "wires": [
             [
                 "6c6ef2255a7d39e5"
@@ -825,7 +798,7 @@
             "2415272f42ce468c"
         ],
         "x": 195,
-        "y": 640,
+        "y": 720,
         "wires": []
     },
     {
@@ -852,14 +825,14 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "CREATE FACTORY DEFAULT",
-        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-40,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'main',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n}}\nreturn msg",
+        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n}}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 310,
-        "y": 720,
+        "y": 800,
         "wires": [
             [
                 "c77552216a8bb781"
@@ -888,7 +861,7 @@
         "onceDelay": "0.1",
         "topic": "",
         "x": 90,
-        "y": 720,
+        "y": 800,
         "wires": [
             [
                 "544d20f02215011a"
@@ -903,7 +876,7 @@
         "func": "from os import listdir\n\nbasedir = '/home/pi/OpenScan/settings/'\n\nmsg['payload'] = ''\n\nfiles = listdir(basedir)\n\nfor i in msg['settings']:\n    if msg['overwrite'] != True:\n        if i not in files:\n            with open(basedir + i, 'w+') as file:\n                file.write(str(msg['settings'][i]))        \n    else:\n        with open(basedir + i, 'w+') as file:\n            file.write(str(msg['settings'][i])) \n\nmsg['payload'] = True\n\nreturn msg",
         "outputs": 1,
         "x": 520,
-        "y": 720,
+        "y": 800,
         "wires": [
             [
                 "960912e90ba5b5bc"
@@ -916,10 +889,11 @@
         "z": "829d803b6033a693",
         "name": "factory reset",
         "links": [
-            "80bccc884b0be297"
+            "80bccc884b0be297",
+            "beacc3dc5398fa79"
         ],
         "x": 135,
-        "y": 760,
+        "y": 840,
         "wires": [
             [
                 "544d20f02215011a"
@@ -979,9 +953,9 @@
         "z": "829d803b6033a693",
         "name": "",
         "group": "5b3e5aca21140e9a",
-        "order": 4,
-        "width": 3,
-        "height": 2,
+        "order": 1,
+        "width": 6,
+        "height": 3,
         "passthru": false,
         "label": "Install Updates",
         "tooltip": "",
@@ -1013,6 +987,107 @@
         "x": 245,
         "y": 280,
         "wires": []
+    },
+    {
+        "id": "bb84b9e5c7d8e21f",
+        "type": "python3-function",
+        "z": "829d803b6033a693",
+        "name": "rescue incomplete project",
+        "func": "#if project has not been done properly, this is a way to rescue the file\n\nfrom os import system\nfrom os.path import isfile\nfrom time import strftime\nfrom OpenScan import load_str\n\nbasepath = '/home/pi/OpenScan/'\nzippath = basepath + 'tmp/tmp.zip'\nprojectname=load_str(\"routine_projectname\")\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')",
+        "outputs": 1,
+        "x": 290,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a291fc98e4269c1b",
+        "type": "ui_text",
+        "z": "829d803b6033a693",
+        "group": "729f9ea6e3513c9b",
+        "order": 7,
+        "width": 4,
+        "height": 1,
+        "name": "version",
+        "label": "Version:",
+        "format": "{{msg.firmware}}",
+        "layout": "row-center",
+        "className": "",
+        "x": 460,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "7113d7b25a851151",
+        "type": "function",
+        "z": "829d803b6033a693",
+        "name": "FIRMWARE VERSION",
+        "func": "msg.firmware = '2022-08-02'\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 360,
+        "wires": [
+            [
+                "a291fc98e4269c1b",
+                "ec5cefa70ff535f7"
+            ]
+        ]
+    },
+    {
+        "id": "ec5cefa70ff535f7",
+        "type": "ui_text",
+        "z": "829d803b6033a693",
+        "group": "ddbd496e.93a288",
+        "order": 2,
+        "width": 6,
+        "height": 1,
+        "name": "current version",
+        "label": "Current version:",
+        "format": "{{msg.firmware}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 480,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "c4c1580c289fc7bd",
+        "type": "python3-function",
+        "z": "829d803b6033a693",
+        "name": "create path",
+        "func": "import os\n\npaths = ['/home/pi/OpenScan/scans/preview/']\n\n\nfor i in paths:\n    if not os.path.isdir(i):\n        os.mkdir(i)",
+        "outputs": 1,
+        "x": 250,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "06d33bb8951ce668",
+        "type": "ui_template",
+        "z": "829d803b6033a693",
+        "group": "",
+        "name": "donate",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "format": "\n<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        load();\n    }else setTimeout(load, 500)\n});\n\nfunction load(){\n    $('#bmac').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<div/ id=\"bmac\">');\n    \n    div.append(p);\n    div[0].style.margin = '0px 0px 0px auto';\n    toolbar.append(div);\n\n\n    p.append('<a class=\"md-button\" target=\"_blank\" href=\"https://www.patreon.com/bePatron?u=51974655\"><U>DONATE</U></a>');\n    p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" href=\"http://openscan:1312/shutdown\"><i class=\"fa fa-power-off\" ></i></a>')\n    p.append('   ')\n    p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" href=\"http://openscan:1312/reboot\"><i class=\"fa fa-repeat\" ></i></a>')\n\n}\n\n</script>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "global",
+        "className": "",
+        "x": 450,
+        "y": 40,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "828e5298.d2192",
@@ -1319,7 +1394,7 @@
         "order": 14,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "",
         "topicType": "str",
@@ -1401,7 +1476,7 @@
         "order": 16,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "",
         "topicType": "str",
@@ -1479,7 +1554,7 @@
         "order": 18,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "",
         "topicType": "str",
@@ -1506,7 +1581,7 @@
         "order": 20,
         "width": 3,
         "height": 1,
-        "passthru": true,
+        "passthru": false,
         "outs": "end",
         "topic": "",
         "topicType": "str",
@@ -1603,11 +1678,11 @@
         "width": 3,
         "height": 1,
         "name": "cropx",
-        "label": "Crop X (%)",
+        "label": "{{msg.crop1}}",
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 650,
+        "x": 690,
         "y": 620,
         "wires": []
     },
@@ -1620,11 +1695,11 @@
         "width": 3,
         "height": 1,
         "name": "cropy",
-        "label": "Crop Y (%)",
+        "label": "{{msg.crop2}}",
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 650,
+        "x": 690,
         "y": 660,
         "wires": []
     },
@@ -1799,7 +1874,7 @@
         "payloadType": "global",
         "topic": "",
         "topicType": "str",
-        "x": 750,
+        "x": 810,
         "y": 960,
         "wires": [
             [
@@ -1813,13 +1888,16 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Routine",
-        "func": "from OpenScan import load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\ntt_mode = load_bool('turntable_mode')\ncam_delay_after = load_float('cam_delay_after')\ncam_delay_before = load_float('cam_delay_before')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif not 'projectcode' in msg:\n    projectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n    msg['projectcode'] = projectcode\n    msg['counter'] = -1\n    if isfile(zippath):\n        system('rm ' + zippath)\n    sleep(1)\n\nprojectcode = msg['projectcode']\nmsg['counter'] += 1\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    while load_str('status_internal_cam') == 'Routine-paused':\n        sleep(0.2)\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if abs(tt_angle) > 180:\n        tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    while load_str('status_internal_cam') == 'Routine-paused':\n        sleep(0.2)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            while load_str('status_internal_cam') == 'Routine-paused':\n                sleep(0.2)\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2))\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            camera('/crop',msg)\n            zip.write(temppath, projectname + '_' + str(msg['counter']) + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount))\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(msg['counter']) + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n\n    position_last = position\n\nzip.close()\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nmsg['topic'] = 'Scan done'\nmsg['payload'] = 'Do you want to run another pass or finish this project?'\nmsg['enabled'] = False\nreturn msg\n\n",
-        "outputs": 1,
+        "func": "from OpenScan import load_bool, load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime, time\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\ncam = load_str('camera')\nSTmode = load_bool('cam_STmode')\ntt_mode = load_bool('turntable_mode')\ncam_delay_after = load_float('cam_delay_after')\ncam_delay_before = load_float('cam_delay_before')\n\nif cam == 'imx519' and STmode == True:\n    focuser = Focuser('/dev/v4l-subdev1')\n    stacksize = load_int('cam_stacksize')\n    focus1 = load_int('cam_focus1')\n    focus2 = load_int('cam_focus2')\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = load_int('cam_focus2') \n    focusstep = int((focus2-focus1)/(stacksize - 1))\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\n\nif not 'projectcode' in msg:\n    projectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n    msg['projectcode'] = projectcode\n    msg['counter'] = -1\n    if isfile(zippath):\n        system('rm ' + zippath)\n    sleep(1)\n\nprojectcode = msg['projectcode']\nmsg['counter'] += 1\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nstarttime = time()\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    while load_str('status_internal_cam') == 'Routine-paused':\n        sleep(0.2)\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n    #    tt_angle = -360 * tt_angle/abs(tt_angle) + tt_angle\n            \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    while load_str('status_internal_cam') == 'Routine-paused':\n        sleep(0.2)\n\n    msg['cropx'] = load_int('cam_cropx')\n    msg['cropy'] = load_int('cam_cropy')\n    msg['rotation'] = load_int('cam_rotation')\n    msg['filepath_in'] = 'tmp/tmp.jpg'\n    msg['filepath_out'] = 'tmp/tmp.jpg'\n    msg['filepath'] = 'tmp/tmp.jpg'\n\n    if counter < 6:\n        ETA = ''\n    sleep(cam_delay_before)\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            while load_str('status_internal_cam') == 'Routine-paused':\n                sleep(0.2)\n            counter2 += 1\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2) + ETA)\n            focuser.write(focus1 + focus * focusstep)\n            take_photo('tmp/tmp.jpg')\n            camera('/crop',msg)\n            zip.write(temppath, projectname + '_' + str(msg['counter']) + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n            system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam != 'external':\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n\n        if cam == 'gphoto':\n            camera('/gphoto_capture', msg)\n        if cam in ('usb_webcam','imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n            take_photo('tmp/tmp.jpg')\n        camera('/crop',msg)\n        \n        zip.write(temppath, projectname + '_' + str(msg['counter']) + '_' + str(counter) + \".jpg\")\n        system('cp ' + temppath + ' ' + basepath +'tmp/preview.jpg')\n    elif cam == 'external':\n        camera('external_capture')\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n\n    ETA = '-ETA:'+str(int((photocount/counter - 1)*(time() - starttime)))+'/'+str(int(photocount/counter*(time() - starttime)))+'s'\n    sleep(cam_delay_after)\n\n    position_last = position\n\nzip.close()\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nif load_bool('routine_secondpass')==True:\n    msg['topic'] = 'Scan done'\n    msg['payload'] = 'Do you want to run another pass or finish this project?'\n    msg['enabled'] = False\n    return msg,None\n\nreturn None,msg\n",
+        "outputs": 2,
         "x": 300,
         "y": 880,
         "wires": [
             [
                 "db7eea74d3bf892b"
+            ],
+            [
+                "0b8661103366f834"
             ]
         ]
     },
@@ -1830,7 +1908,7 @@
         "name": "stop",
         "func": "from OpenScan import load_str, save\n\nstatus = load_str('status_internal_cam')\n\nif status == 'no camera found' or status[:5]=='Featu' or status =='--READY--':\n    return\n\nsave('status_internal_cam', 'Routine-stopping')",
         "outputs": 1,
-        "x": 870,
+        "x": 930,
         "y": 960,
         "wires": [
             []
@@ -1848,88 +1926,6 @@
         ],
         "x": 395,
         "y": 840,
-        "wires": []
-    },
-    {
-        "id": "5ba05110851a5096",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "reboot",
-        "group": "7aaf184330605300",
-        "order": 26,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "reboot",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "fa-repeat",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "",
-        "topicType": "str",
-        "x": 90,
-        "y": 1040,
-        "wires": [
-            [
-                "16c76929f88df841"
-            ]
-        ]
-    },
-    {
-        "id": "152d402caa595189",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "shutdown",
-        "group": "7aaf184330605300",
-        "order": 27,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "shutdown",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "fa-power-off",
-        "payload": "",
-        "payloadType": "date",
-        "topic": "",
-        "topicType": "str",
-        "x": 100,
-        "y": 1080,
-        "wires": [
-            [
-                "597bfb653e8cddbf"
-            ]
-        ]
-    },
-    {
-        "id": "16c76929f88df841",
-        "type": "link out",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "9bb0adbd716ce347"
-        ],
-        "x": 215,
-        "y": 1040,
-        "wires": []
-    },
-    {
-        "id": "597bfb653e8cddbf",
-        "type": "link out",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "fc9abb94c35eec56"
-        ],
-        "x": 215,
-        "y": 1080,
         "wires": []
     },
     {
@@ -1993,10 +1989,9 @@
         "links": [
             "2f4c0f98.dee2",
             "8367cfa0bf5bc5df",
-            "b33d604c.5f1a6",
-            "d14bbbb446d45e39"
+            "b33d604c.5f1a6"
         ],
-        "x": 835,
+        "x": 895,
         "y": 920,
         "wires": []
     },
@@ -2167,7 +2162,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Take Preview Shot",
-        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nsleep(0.5)\n\n\nstatus = load_str('status_internal_cam')\ncam=load_str('camera')\n\n\nif msg['flag'] == False and not 'Routine' in status:\n    return\n\nif cam == 'external':\n    return\n\nmsg['payload']=\"/tmp/preview.jpg?ts=\"+str(int(time()*10))\n\nif cam == 'gphoto' and status == 'no camera found':\n    if camera('/gphoto_init') == 200:\n        save('status_internal_cam','--READY--')\n\nif status!=\"--READY--\":\n    return msg\n\nmsg['cropx'] = load_int('cam_cropx')\nmsg['cropy'] = load_int('cam_cropy')\nmsg['rotation'] = load_int('cam_rotation')\nmsg['filepath_in'] = 'tmp/tmp.jpg'\nmsg['filepath_out'] = 'tmp/preview.jpg'\nmsg['filepath'] = 'tmp/tmp.jpg'\nmsg['preview'] = True\n\nif cam == 'gphoto':\n    if camera('/gphoto_test', msg) != 200:\n        save('status_internal_cam','no camera found')\n        return msg\n    camera('/gphoto_preview', msg)\n\nif cam in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n    take_photo('tmp/tmp.jpg')\n\ncamera('/crop',msg)\n\nreturn msg\n",
+        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nsleep(0.5)\n\n\nstatus = load_str('status_internal_cam')\ncam=load_str('camera')\n\n\nif msg['flag'] == False and not 'Routine' in status:\n    return msg\n\nif cam == 'external':\n    return\n\nmsg['payload']=\"/tmp/preview.jpg?ts=\"+str(int(time()*10))\n\nif cam == 'gphoto' and status == 'no camera found':\n    if camera('/gphoto_init') == 200:\n        save('status_internal_cam','--READY--')\n\nif status!=\"--READY--\":\n    return msg\n\nmsg['cropx'] = load_int('cam_cropx')\nmsg['cropy'] = load_int('cam_cropy')\nmsg['rotation'] = load_int('cam_rotation')\nmsg['filepath_in'] = 'tmp/tmp.jpg'\nmsg['filepath_out'] = 'tmp/preview.jpg'\nmsg['filepath'] = 'tmp/tmp.jpg'\nmsg['preview'] = True\n\nif cam == 'gphoto':\n    if camera('/gphoto_test', msg) != 200:\n        save('status_internal_cam','no camera found')\n        return msg\n    camera('/gphoto_preview', msg)\n\nif cam in ('usb_webcam', 'imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n    take_photo('tmp/tmp.jpg')\n\ncamera('/crop',msg)\n\nreturn msg\n",
         "outputs": 1,
         "x": 410,
         "y": 1220,
@@ -2265,7 +2260,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
+        "x": 810,
         "y": 1000,
         "wires": [
             [
@@ -2299,7 +2294,7 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 650,
+        "x": 630,
         "y": 1300,
         "wires": [
             []
@@ -2546,7 +2541,7 @@
         "format": "",
         "layout": "col-center",
         "className": "",
-        "x": 1110,
+        "x": 1130,
         "y": 1420,
         "wires": []
     },
@@ -3041,31 +3036,13 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "gphoto",
-        "func": "\nfrom OpenScan import camera, save, load_str\n\nif load_str('camera') == 'gphoto':\n    if camera('/gphoto_init') == 200:\n        if camera('/gphoto_test') == 200:\n            save('status_internal_cam','--READY--')\n            return msg\n",
+        "func": "\nfrom OpenScan import camera, save, load_str\n\nif load_str('camera') == 'gphoto':\n    if camera('/gphoto_init') == 200:\n        if camera('/gphoto_test') == 200:\n            save('status_internal_cam','--READY--')\n            return msg\nif load_str('camera') == 'external':\n    save('status_internal_cam','--READY--')",
         "outputs": 1,
         "x": 490,
         "y": 100,
         "wires": [
-            [
-                "b5722c9a250aeb3d"
-            ]
+            []
         ]
-    },
-    {
-        "id": "b5722c9a250aeb3d",
-        "type": "debug",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 670,
-        "y": 100,
-        "wires": []
     },
     {
         "id": "917a194be245384a",
@@ -3237,7 +3214,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 750,
+        "x": 810,
         "y": 920,
         "wires": [
             [
@@ -3270,8 +3247,7 @@
         "z": "1613373abaf77a2c",
         "name": "preview",
         "links": [
-            "f20da2fc4978b7bf",
-            "fb13752beddee9f2"
+            "f20da2fc4978b7bf"
         ],
         "x": 135,
         "y": 1260,
@@ -3296,7 +3272,7 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 450,
+        "x": 510,
         "y": 880,
         "wires": [
             [
@@ -3309,9 +3285,9 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "continue",
-        "func": "from os import system\nfrom os.path import isfile\n\nif msg['payload'] == '2nd pass':\n    msg['enabled'] = True\n    return msg,None\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\nprojectcode = msg['projectcode']\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nreturn None, msg",
+        "func": "from os import system\nfrom os.path import isfile\n\n\nif msg['payload'] == '2nd pass':\n    msg['enabled'] = True\n    return msg,None\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp/tmp.jpg'\nzippath = basepath + 'tmp/tmp.zip'\nprojectcode = msg['projectcode']\n\nsystem('mv '+ zippath + ' ' + basepath + 'scans/' + projectcode + '.zip')\n\nmsg['path'] = basepath + 'scans/' + projectcode + '.zip'\n\nif isfile(zippath):\n    system('rm ' + zippath)\n\nreturn None, msg",
         "outputs": 2,
-        "x": 600,
+        "x": 660,
         "y": 920,
         "wires": [
             [
@@ -3389,7 +3365,7 @@
         "payloadType": "str",
         "topic": "Scan paused",
         "topicType": "str",
-        "x": 750,
+        "x": 810,
         "y": 1040,
         "wires": [
             [
@@ -3404,10 +3380,27 @@
         "name": "pause",
         "func": "from OpenScan import load_str, save\n\nstatus = load_str('status_internal_cam')\n\nif status == 'no camera found' or status[:5]=='Featu' or status =='--READY--':\n    return\n\nif status == 'Routine-paused':\n    save('status_internal_cam', 'Routine-continue')\nelse:\n    save('status_internal_cam', 'Routine-paused')",
         "outputs": 1,
-        "x": 870,
+        "x": 930,
         "y": 1040,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "44c598049cd533fd",
+        "type": "link in",
+        "z": "1613373abaf77a2c",
+        "name": "crop",
+        "links": [
+            "f358de1e64b491bb"
+        ],
+        "x": 595,
+        "y": 640,
+        "wires": [
+            [
+                "fecf5cff888bb570",
+                "0ee4950bd21498bd"
+            ]
         ]
     },
     {
@@ -3415,7 +3408,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "get dirs",
-        "func": "from glob import glob\nimport os\nfrom zipfile import ZipFile\n\ndef set_stats(stat):\n    try:\n        with open(directory+set[:-4]+\"/\"+stat,\"r\") as file:\n            stat=file.read()\n    except:\n        stat=\"\"\n    return stat\n\ntable=[]\ndirectory=\"/home/pi/OpenScan/scans/\"\n\nfor d in glob(directory+\"*.zip\"):\n    set=os.path.basename(d)\n\n    try:\n        with ZipFile(d, 'r') as f:\n            photos = len(f.namelist())\n\n        size = float(int(float(os.path.getsize(d))/100000))/10\n        size_full= os.path.getsize(d)\n        status=set_stats(\"status\")\n        expiration=set_stats(\"expiration\")\n        download=set_stats(\"download\")\n    \n        if len(download)!=0:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Download\":\"<a href=\"+download+\">RESULT</a>\",\n                \"Size_full\":size_full,\n    \n                })\n        else:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Size_full\":size_full,\n    \n                })\n    except:\n        pass\n\nmsg['payload']=table\nmsg['topic']=\"\"\nreturn msg",
+        "func": "from glob import glob\nimport os\nfrom zipfile import ZipFile\nfrom datetime import datetime\nfrom PIL import Image\n\ndef set_stats(stat):\n    try:\n        with open(directory+set[:-4]+\"/\"+stat,\"r\") as file:\n            stat=file.read()\n    except:\n        stat=\"\"\n    return stat\n\ntable=[]\ndirectory=\"/home/pi/OpenScan/scans/\"\n\nfor d in glob(directory+\"*.zip\"):\n    set=os.path.basename(d)\n\n    try:\n        with ZipFile(d, 'r') as f:\n            photos = len(f.namelist())\n        \n            if not os.path.isfile(directory + 'preview/' + os.path.basename(d)[:-4]+'.jpg'):\n                image = f.open(f.namelist()[int(photos/2)])\n                img = Image.open(image)\n                width, height = img.size\n                width_factor = width/300\n                height_factor = height/295\n                if height_factor>=width_factor and height_factor > 1:\n                    new_size=(int(width/height_factor), int(height/height_factor))\n                    img = img.resize(new_size)\n                elif height_factor<width_factor and width_factor > 1:\n                    new_size=(int(width/width_factor),int(height/width_factor))\n                    img = img.resize(new_size)\n                img.save(directory + 'preview/' + os.path.basename(d)[:-4] +'.jpg')\n        list=[]\n        for fi in f.filelist:\n            list.append(f.getinfo(fi.filename).date_time)\n        \n        duration = str(datetime(*max(list)) - datetime(*min(list)))\n        \n        size = float(int(float(os.path.getsize(d))/100000))/10\n        size_full= os.path.getsize(d)\n        status=set_stats(\"status\")\n        expiration=set_stats(\"expiration\")\n        download=set_stats(\"download\")\n    \n        if len(download)!=0:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Download\":\"<a href=\"+download+\">RESULT</a>\",\n                \"Size_full\":size_full,\n                \"Duration\":duration,\n                })\n        else:\n            table.append({\n                \"Set\":set,\n                \"Photos\":photos,\n                \"Size\":str(size)+\"MB\",\n                \"Date\":set[:16],\n                \"Name\":(set[20:-4]),\n                \"Status\":status,\n                \"Size_full\":size_full,\n                \"Duration\":duration,\n\n                })\n    except:\n        pass\n\nmsg['payload']=table\nmsg['topic']=\"\"\nreturn msg",
         "outputs": 1,
         "x": 480,
         "y": 180,
@@ -3468,7 +3461,7 @@
             {
                 "field": "Name",
                 "title": "Name",
-                "width": "210",
+                "width": "150",
                 "align": "center",
                 "formatter": "plaintext",
                 "formatterParams": {
@@ -3480,6 +3473,16 @@
                 "title": "Photos",
                 "width": "80",
                 "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Duration",
+                "title": "ΔT",
+                "width": "60",
+                "align": "left",
                 "formatter": "plaintext",
                 "formatterParams": {
                     "target": "_blank"
@@ -3541,10 +3544,10 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "upload",
-        "func": "import os\nfrom OpenScan import OpenScanCloud, load_str, load_int, save\n\nbasedir = '/home/pi/OpenScan/'\n\nif load_str(\"feedback_terms\")==\"False\":\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic'] = 'OpenScanCloud - Terms of Use'\n    return None,msg\n\nmsg = msg['payload']\n\ndef upload(filelist, ulinks):\n    i = 0\n    for file in filelist:\n        link = ulinks[i]\n        save('status_cloud', 'uploading ' + str(i+1) + '/' + str(len(filelist)))\n        cmd = 'curl -# -X POST ' + link + ' --header Content-Type:application/octet-stream --data-binary @\"' + file + '\" 2>&1 | tee /home/pi/OpenScan/settings/status_uploadprogress'\n        i = i+1\n        os.system(cmd)\n\n########\nif not os.path.isfile(basedir + 'settings/token'):\n    msg['flag'] = True\n    save('status_cloud', 'please enter token first')\n    return msg\nwith open(basedir + 'settings/token', 'r') as file:\n    token = file.read().strip('\\n')\n\n########\nr = OpenScanCloud('getTokenInfo', {'token':token})\n\nif r.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    save('status_cloud', 'invalid/missing token')\n    return None,msg\nelif r.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nmsg1 = r.json()\n\n########\nif msg['Photos'] > msg1['limit_photos'] or msg['Size_full'] > msg1['limit_filesize']:\n    msg['flag'] = True\n    save('status_cloud', 'limit(s) exceeded')\n    return msg\n\n########\ntemp =  OpenScanCloud('getProjectInfo', {'token':token, 'project':msg['Set']})\nif temp.status_code not in (200,401):\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nif temp.status_code != 401:\n    temp = temp.json()\n    if 'status' in temp:\n        if temp['status'] != 'created':\n            save('status_cloud','already exists')\n            with open(basedir + 'scans/' + msg['Set'][:-4] + '/status', 'w') as file:\n                file.write(temp['status'])\n            return msg\n#####\n\nmsg2={}\nmsg2['token'] = token\nmsg2['parts'] = 1\nmsg['partslist']=[]\n\n#######\nsize_to_split = load_int('osc_splitsize')\n\nif msg['Size_full'] > size_to_split:\n    tempdir = basedir + 'tmp/split/'\n    if os.path.isdir(tempdir):\n        os.system('rm -r ' + tempdir)\n    os.mkdir(tempdir)\n    save('status_cloud', 'zipping files, please wait ...')\n    cmd = 'split -b ' + str(size_to_split) + ' ' + basedir + 'scans/' + msg['Set'] + ' ' + tempdir + msg['Set']\n    os.system(cmd)\n    save('status_cloud', 'zip done')\n    list = os.listdir(tempdir)\n    for l in list:\n        msg['partslist'].append(tempdir + l)\n        msg['partslist'].sort()\n    msg2['parts']=len(msg['partslist'])\nelse:\n    msg['partslist'] = [basedir + 'scans/' +msg['Set']]\n\n#######\nmsg2['photos'] = msg['Photos']\nmsg2['filesize'] = msg['Size_full']\nmsg2['project'] = msg['Set']\n\nr = OpenScanCloud('createProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nmsg1 = r.json()\n\nif not os.path.isdir(basedir+ 'scans/' + msg['Set'][:-4]):\n    os.mkdir(basedir+ 'scans/' + msg['Set'][:-4])\nwith open(basedir+ 'scans/' + msg['Set'][:-4]+'/status', 'w+') as file:\n    file.write('prepared')\n\nsave('status_cloud', 'uploading')\nupload(msg['partslist'], msg1['ulink'])\n\nr = OpenScanCloud('startProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Upload failed'\n    msg['payload'] = 'please try again'\n    save('status_cloud', 'upload failed')\n    return None,msg\n\nsave('status_cloud', 'uploaded')\n\nsave('status_cloud', 'project started')\n\ntry:\n    os.system('rm -r ' + tempdir)\nexcept:\n    pass\n\nreturn msg",
+        "func": "import os\nfrom OpenScan import OpenScanCloud, load_str, load_int, save\nfrom subprocess import getoutput\n\nbasedir = '/home/pi/OpenScan/'\n\nif load_str(\"feedback_terms\")==\"False\":\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic'] = 'OpenScanCloud - Terms of Use'\n    return None,msg\n\nmsg = msg['payload']\n\ndef upload(filelist, ulinks):\n    pid = getoutput('pidof curl')\n    if pid != \"\":\n        os.system('kill ' + pid)\n\n    i = 0\n    for file in filelist:\n        link = ulinks[i]\n        save('status_cloud', 'uploading ' + str(i+1) + '/' + str(len(filelist)))\n        cmd = 'curl -# -X POST ' + link + ' --header Content-Type:application/octet-stream --data-binary @\"' + file + '\" 2>&1 | tee /home/pi/OpenScan/settings/status_uploadprogress'\n        i = i+1\n        os.system(cmd)\n\n########\nif not os.path.isfile(basedir + 'settings/token'):\n    msg['flag'] = True\n    save('status_cloud', 'please enter token first')\n    return msg\nwith open(basedir + 'settings/token', 'r') as file:\n    token = file.read().strip('\\n')\n\n########\nr = OpenScanCloud('getTokenInfo', {'token':token})\n\nif r.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    save('status_cloud', 'invalid/missing token')\n    return None,msg\nelif r.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nmsg1 = r.json()\n\n########\nif msg['Photos'] > msg1['limit_photos'] or msg['Size_full'] > msg1['limit_filesize']:\n    msg['flag'] = True\n    save('status_cloud', 'limit(s) exceeded')\n    return msg\n\n########\ntemp =  OpenScanCloud('getProjectInfo', {'token':token, 'project':msg['Set']})\nif temp.status_code not in (200,401):\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nif temp.status_code != 401:\n    temp = temp.json()\n    if 'status' in temp:\n        if temp['status'] != 'created':\n            save('status_cloud','already exists')\n            with open(basedir + 'scans/' + msg['Set'][:-4] + '/status', 'w') as file:\n                file.write(temp['status'])\n            return msg\n#####\n\nmsg2={}\nmsg2['token'] = token\nmsg2['parts'] = 1\nmsg['partslist']=[]\n\n#######\nsize_to_split = load_int('osc_splitsize')\n\nif msg['Size_full'] > size_to_split:\n    tempdir = basedir + 'tmp/split/'\n    if os.path.isdir(tempdir):\n        os.system('rm -r ' + tempdir)\n    os.mkdir(tempdir)\n    save('status_cloud', 'zipping files, please wait ...')\n    cmd = 'split -b ' + str(size_to_split) + ' ' + basedir + 'scans/' + msg['Set'] + ' ' + tempdir + msg['Set']\n    os.system(cmd)\n    save('status_cloud', 'zip done')\n    list = os.listdir(tempdir)\n    for l in list:\n        msg['partslist'].append(tempdir + l)\n        msg['partslist'].sort()\n    msg2['parts']=len(msg['partslist'])\nelse:\n    msg['partslist'] = [basedir + 'scans/' +msg['Set']]\n\n#######\nmsg2['photos'] = msg['Photos']\nmsg2['filesize'] = msg['Size_full']\nmsg2['project'] = msg['Set']\n\nr = OpenScanCloud('createProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nmsg1 = r.json()\n\nif not os.path.isdir(basedir+ 'scans/' + msg['Set'][:-4]):\n    os.mkdir(basedir+ 'scans/' + msg['Set'][:-4])\nwith open(basedir+ 'scans/' + msg['Set'][:-4]+'/status', 'w+') as file:\n    file.write('prepared')\n\nsave('status_cloud', 'uploading')\nupload(msg['partslist'], msg1['ulink'])\n\nr = OpenScanCloud('startProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Upload failed'\n    msg['payload'] = 'please try again'\n    save('status_cloud', 'upload failed')\n    return None,msg\n\nsave('status_cloud', 'uploaded')\n\nsave('status_cloud', 'project started')\n\ntry:\n    os.system('rm -r ' + tempdir)\nexcept:\n    pass\n\nreturn msg",
         "outputs": 2,
         "x": 530,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "9a132ab1.b21658"
@@ -3578,7 +3581,8 @@
         "y": 180,
         "wires": [
             [
-                "ada1b6f7cccc9344"
+                "ada1b6f7cccc9344",
+                "85839a17fb7b58b9"
             ]
         ]
     },
@@ -3619,7 +3623,7 @@
         "to": "",
         "reg": false,
         "x": 780,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "8689e938.dd9e38"
@@ -3669,7 +3673,7 @@
         "to": "",
         "reg": false,
         "x": 420,
-        "y": 460,
+        "y": 500,
         "wires": [
             [
                 "f20f2dbc.0f123"
@@ -3717,7 +3721,7 @@
         "to": "",
         "reg": false,
         "x": 410,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "d4383424.7807c8"
@@ -3749,7 +3753,7 @@
             "149e2e46b9623a2d"
         ],
         "x": 515,
-        "y": 460,
+        "y": 500,
         "wires": []
     },
     {
@@ -3764,7 +3768,7 @@
             "149e2e46b9623a2d"
         ],
         "x": 875,
-        "y": 420,
+        "y": 460,
         "wires": []
     },
     {
@@ -3834,7 +3838,7 @@
             "92c98e6ce7cd25f9"
         ],
         "x": 235,
-        "y": 460,
+        "y": 500,
         "wires": []
     },
     {
@@ -3842,7 +3846,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "refresh",
-        "func": "from time import sleep\nimport os\nfrom OpenScan import load_str, OpenScanCloud, save, load_bool\n\nbasepath = '/home/pi/OpenScan/scans/'\n\nif load_bool(\"terms\")==False:\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic']='OpenScanCloud - Terms of Use'\n    return None,msg\n\nsave('status_cloud','refreshing')\ntoken = load_str('token')\n\ntest = OpenScanCloud('getTokenInfo',{'token':token})\nif test.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    return None,msg\nelif test.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nstats = test.json()\nfor i in stats:\n    save('osc_'+i, stats[i])\n    pass\n\nmsg={}\nprojects = []\nfor i in os.listdir(basepath):\n    if os.path.isdir(basepath + i):\n        if os.path.isfile(basepath + i + '/status'):\n            with open(basepath + i + '/status', 'r') as file:\n                status = file.read().strip('\\n')\n                if status in ['expired', 'processing done', 'processing failed']:\n                    continue\n        projects.append(i)\n\nfor p in projects:\n    r = OpenScanCloud('getProjectInfo',{'token':token, 'project':p+'.zip'})\n    if r.status_code == 200:\n        answer = r.json()\n        if answer == {}:\n            os.system('sudo rm -r ' + basepath + p)\n        else:\n            with open(basepath + p + '/status', 'w+') as file:\n                file.write(answer['status'])\n            with open(basepath + p + '/download', 'w+') as file:\n                file.write(answer['dlink'])\n\nmsg['list'] = projects\nsleep(0.5)\nsave('status_cloud','ready')\nreturn msg, None\n",
+        "func": "from time import sleep\nimport os\nfrom OpenScan import load_str, OpenScanCloud, save, load_bool\n\nbasepath = '/home/pi/OpenScan/scans/'\n\nif load_bool(\"terms\")==False:\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic']='OpenScanCloud - Terms of Use'\n    return None,msg\n\nsave('status_cloud','refreshing')\ntoken = load_str('token')\n\ntest = OpenScanCloud('getTokenInfo',{'token':token})\nif test.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    return None,msg\nelif test.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nstats = test.json()\nfor i in stats:\n    save('osc_'+i, stats[i])\n    pass\n\nmsg={}\nprojects = []\nfor i in os.listdir(basepath):\n    if i == 'preview':\n        continue\n    if os.path.isdir(basepath + i):\n        if os.path.isfile(basepath + i + '/status'):\n            with open(basepath + i + '/status', 'r') as file:\n                status = file.read().strip('\\n')\n                if status in ['expired', 'processing done', 'processing failed']:\n                    continue\n        projects.append(i)\n\nfor p in projects:\n    r = OpenScanCloud('getProjectInfo',{'token':token, 'project':p+'.zip'})\n    if r.status_code == 200:\n        answer = r.json()\n        if answer == {}:\n            os.system('rm -r ' + basepath + p)\n        else:\n            with open(basepath + p + '/status', 'w+') as file:\n                file.write(answer['status'])\n            with open(basepath + p + '/download', 'w+') as file:\n                file.write(answer['dlink'])\n\nmsg['list'] = projects\nsleep(0.5)\nsave('status_cloud','ready')\nreturn msg, None\n",
         "outputs": 2,
         "x": 320,
         "y": 180,
@@ -3952,7 +3956,7 @@
         "topic": "",
         "name": "Terms",
         "x": 770,
-        "y": 460,
+        "y": 500,
         "wires": [
             []
         ]
@@ -3990,25 +3994,6 @@
         "wires": [
             [
                 "a4f09e25.02569"
-            ]
-        ]
-    },
-    {
-        "id": "6d471a5210505276",
-        "type": "function",
-        "z": "4981d84ef1a366d1",
-        "name": "read",
-        "func": "var file = 'status_cloud'\nvar file2 = 'status_uploadprogress'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nstatus = String(data);\n\nif (status.substr(0,9) === 'uploading'){\n    data = fs.readFileSync(filepath+file2, 'utf8');\n    progress = data.substr(data.length - 6)\n        if (progress.substr(progress.length -1) === '%'){\n            status = status + ' (' + progress + ')'\n        }\n}\nmsg.status = status\nreturn msg\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 130,
-        "y": 60,
-        "wires": [
-            [
-                "952ce286.4ffd4"
             ]
         ]
     },
@@ -4058,11 +4043,11 @@
         "links": [
             "6c6ef2255a7d39e5"
         ],
-        "x": 35,
+        "x": 45,
         "y": 60,
         "wires": [
             [
-                "6d471a5210505276"
+                "51579603bce21e98"
             ]
         ]
     },
@@ -4072,7 +4057,7 @@
         "z": "4981d84ef1a366d1",
         "group": "db43d646.2074c8",
         "name": "Download",
-        "order": 5,
+        "order": 6,
         "width": 3,
         "height": 1,
         "format": "<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\"   target=\"_blank\" ng-href={{msg.download}}>\n <div class=\"center\" style=\"position: relative; top: 30%;\">Download\n</div></md-button>\n",
@@ -4081,7 +4066,7 @@
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 900,
+        "x": 880,
         "y": 260,
         "wires": [
             []
@@ -4128,7 +4113,7 @@
         "z": "4981d84ef1a366d1",
         "group": "db43d646.2074c8",
         "name": "upload2",
-        "order": 6,
+        "order": 7,
         "width": 3,
         "height": 1,
         "format": "<md-button class=\"button save\" style=\"padding:0 0, margin:0 ;width:100%; height:100%;\"ng-click=\"send({payload:'1'})\">upload</md-button></md-button>",
@@ -4138,7 +4123,7 @@
         "templateScope": "local",
         "className": "",
         "x": 280,
-        "y": 420,
+        "y": 460,
         "wires": [
             [
                 "f6bd1a04.470838",
@@ -4176,7 +4161,7 @@
         "z": "4981d84ef1a366d1",
         "group": "db43d646.2074c8",
         "name": "del set",
-        "order": 8,
+        "order": 9,
         "width": 2,
         "height": 1,
         "format": "<md-button class=\"button save\" style=\"padding:0 0, margin:0 ;color:red; width:100%; height:100%;\"ng-click=\"send({payload:'1'})\">delete set</md-button></md-button>",
@@ -4199,7 +4184,7 @@
         "z": "4981d84ef1a366d1",
         "group": "db43d646.2074c8",
         "name": "del ",
-        "order": 9,
+        "order": 10,
         "width": 2,
         "height": 1,
         "format": "<md-button class=\"button save\" style=\"color:red; padding:0 0; margin:0 ;width:100%; height:100%;\"ng-click=\"send({payload:'1'})\">delete all</md-button></md-button>",
@@ -4222,7 +4207,7 @@
         "z": "4981d84ef1a366d1",
         "group": "db43d646.2074c8",
         "name": "combine",
-        "order": 7,
+        "order": 8,
         "width": 2,
         "height": 1,
         "format": "<md-button class=\"button save\" style=\"color:red; padding:0 0; margin:0 ;width:100%; height:100%;\"ng-click=\"send({payload:'1'})\">combine</md-button></md-button>",
@@ -4232,7 +4217,7 @@
         "templateScope": "local",
         "className": "",
         "x": 280,
-        "y": 500,
+        "y": 540,
         "wires": [
             [
                 "51bfd0fb7b1d292e"
@@ -4251,7 +4236,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "1493398979a63775"
@@ -4270,7 +4255,7 @@
         "finalize": "",
         "libs": [],
         "x": 420,
-        "y": 500,
+        "y": 540,
         "wires": [
             []
         ]
@@ -4280,10 +4265,10 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "combine",
-        "func": "from os.path import getsize\nfrom shutil import copy\nfrom os import rename, remove\nimport zipfile as z\nfrom OpenScan import save\n\nfrom time import sleep\n\nif msg['payload'] != 'OK':\n    return\n\nbasepath = '/home/pi/OpenScan/scans/'\ntmp1 = basepath + msg['set1']\ntmp2 = basepath + msg['set2']\n\nif getsize(tmp1) > getsize(tmp2):\n    set1 = tmp1\n    set2 = tmp2\nelse:\n    set1 = tmp2\n    set2 = tmp1\n\n#set 1 is larger and to be merged into\n\nzips = [set1, set2]\n\nwith z.ZipFile(set1, 'a') as z1:\n    z2 = z.ZipFile(set2, 'r')\n    i = 0\n    for n in z2.namelist():\n        i += 1\n        n2 = n\n        save('status_cloud','writing ' + str(i) + '/' + str(len(z2.namelist())))\n        while 'X'+n in z1.namelist():\n            n = 'X' + n\n        z1.writestr('X'+n, z2.open(n2).read())\nsave('status_cloud','ready')\n\nos.rename(set1, set1[:-4] + 'X.zip')\n\nreturn msg",
+        "func": "from os.path import getsize\nfrom shutil import copy\nfrom os import rename, remove\nimport zipfile as z\nfrom OpenScan import save\n\nfrom time import sleep\n\nif msg['payload'] != 'OK':\n    return\n\nbasepath = '/home/pi/OpenScan/scans/'\ntmp1 = basepath + msg['set1']\ntmp2 = basepath + msg['set2']\n\nif getsize(tmp1) > getsize(tmp2):\n    set1 = tmp1\n    set2 = tmp2\nelse:\n    set1 = tmp2\n    set2 = tmp1\n\nzips = [set1, set2]\n\nwith z.ZipFile(set1, 'a') as z1:\n    z2 = z.ZipFile(set2, 'r')\n    i = 0\n    for n in z2.namelist():\n        i += 1\n        n2 = n\n        save('status_cloud','writing ' + str(i) + '/' + str(len(z2.namelist())))\n        while 'X'+n in z1.namelist():\n            n = 'X' + n\n        z1.writestr('X'+n, z2.open(n2).read())\nsave('status_cloud','ready')\n\nos.rename(set1, set1[:-4] + 'X.zip')\nos.remove(set2)\n\nreturn msg",
         "outputs": 1,
         "x": 560,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "ed35109311335099"
@@ -4301,7 +4286,7 @@
             "2f4c0f98.dee2"
         ],
         "x": 655,
-        "y": 540,
+        "y": 580,
         "wires": []
     },
     {
@@ -4320,7 +4305,7 @@
         "topic": "",
         "name": "Combine",
         "x": 420,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "da325be8e74179be"
@@ -4349,7 +4334,7 @@
             "ada1b6f7cccc9344"
         ],
         "x": 175,
-        "y": 540,
+        "y": 580,
         "wires": [
             [
                 "189c1eed09624a7b"
@@ -4431,6 +4416,84 @@
         ]
     },
     {
+        "id": "51579603bce21e98",
+        "type": "python3-function",
+        "z": "4981d84ef1a366d1",
+        "name": "read",
+        "func": "from OpenScan import load_str\nfrom os import listdir, path\n\nstatus = load_str('status_cloud')\n\nif status[0:9] == 'uploading':\n    progress = load_str('status_uploadprogress')[-6:]\n    if progress[-1:] == '%':\n        status = status + ' (' + progress + ')'\n\nif status[0:7] == 'zipping':\n    path1 = '/home/pi/OpenScan/tmp/split/'\n    files = listdir(path1)\n    size1 = 0\n    for file in files:\n        size1 += path.getsize(path1+file)\n    size2 = path.getsize('/home/pi/OpenScan/scans/'+ files[0][:-2])\n    \n    status = 'zipping files (' + str(float(int(1000*size1/size2))/10) + '%)'\n\nmsg['status'] = status\nreturn msg\n",
+        "outputs": 1,
+        "x": 130,
+        "y": 60,
+        "wires": [
+            [
+                "952ce286.4ffd4"
+            ]
+        ]
+    },
+    {
+        "id": "9a5baae623355f9d",
+        "type": "ui_template",
+        "z": "4981d84ef1a366d1",
+        "group": "db43d646.2074c8",
+        "name": "preview",
+        "order": 5,
+        "width": 6,
+        "height": 6,
+        "format": "<div align=\"center\" >\n<img ng-src= {{msg.payload}} style=\"width: auto; height: auto;max-width: 301px;max-height: 301px\"/>\n\n</div>\n",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 1020,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "85839a17fb7b58b9",
+        "type": "python3-function",
+        "z": "4981d84ef1a366d1",
+        "name": "preview",
+        "func": "from time import time\nimport os\n\npath = '/home/pi/OpenScan/scans/preview/'\nimage = os.path.basename(msg['payload']['Set'])[:-4] +'.jpg'\n\nmsg['payload']=\"/scans/preview/\" + image +\"?ts=\"+str(int(time()*10))\nreturn msg",
+        "outputs": 1,
+        "x": 880,
+        "y": 220,
+        "wires": [
+            [
+                "9a5baae623355f9d"
+            ]
+        ]
+    },
+    {
+        "id": "45058bfcf047e8cc",
+        "type": "inject",
+        "z": "4981d84ef1a366d1",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "40dee936a9abac0d",
         "type": "ui_switch",
         "z": "017bd4e4a428bee5",
@@ -4503,7 +4566,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "ssh",
-        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('ssh'):\n    save('ssh', state)\n\nif state == True:\n    os.system('sudo /etc/init.d/ssh start')\nelse:\n    os.system('sudo /etc/init.d/ssh stop')",
+        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('ssh'):\n    save('ssh', state)\n\nif state == True:\n    os.system('/etc/init.d/ssh start')\nelse:\n    os.system('/etc/init.d/ssh stop')",
         "outputs": 1,
         "x": 530,
         "y": 340,
@@ -4543,7 +4606,7 @@
         "id": "595153429adef33b",
         "type": "ui_button",
         "z": "017bd4e4a428bee5",
-        "name": "Network&Cloud",
+        "name": "Wifi",
         "group": "0fe66c9190b8a87c",
         "order": 1,
         "width": 6,
@@ -4555,14 +4618,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>Network Settings</h1> <p><strong>Hostname</strong></p> <p style=\"margin-left: 20px;\">The device can be accessed through any browser in the same network. Therefore, you can either enter the device&apos;s IP address or the given hostname. The standard name is &apos;openscan&apos; but it is highly recommended to change the name, when using multiple devices (e.g. &apos;openscan1&apos;, &apos;openscan2&apos; ...)</p> <p><strong>Select Wifi</strong></p> <p style=\"margin-left: 20px;\">After booting, the device will automatically search for available wireless networks and create a list. You can connect to a given network by entering the wifi password and country code. To find the right two-character country code, see the following list: <a href=\"%5C%22https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>ISO 3166 Country Code on Wikipedia</a></p> <p><strong>Search Wifi</strong></p> <p style=\"margin-left: 20px;\">You can manually refresh the list of available networks by pressing this button.</p> <p><strong>Reset Wifi</strong></p> <p style=\"margin-left: 20px;\">Delete the list of known wireless networks (and passwords) and reset the default. After this step, you will either need to use Ethernet or a modified wpa_supplicant.conf file. (see <a href=\"%5C%22https://www.glennklockwood.com/sysadmin-howtos/rpi-headless-boot.html%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>glennklockwood.com</a> for more details about the wpa_supplicant.conf file, which has to be manually created and placed into the /boot/ directory of the sd-card)</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 280,
-        "y": 160,
+        "x": 590,
+        "y": 120,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4604,14 +4669,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>General Settings</h1> <p><strong>Terms Of Use</strong></p> <p style=\"margin-left: 20px;\">In order to use the OpenScanCloud, please read the terms of use as files will be transmitted from your device to the OpenScan Servers.</p> <p><strong>SSH</strong></p> <p style=\"margin-left: 20px;\">SSH can be used to access the Raspberry Pi and modify core files of the operating system. Please deactivate, if you do not want to use this feature.</p> <p style=\"margin-left: 20px;\">If you want to use it, the default user is <strong>pi</strong>, password: <strong>raspberry. Please change the password&nbsp;</strong><strong>immediately.</strong>&nbsp;</p> <p><strong>Samba</strong></p> <p style=\"margin-left: 20px;\">Samba s a network local file sharing server, which allows accessing the Raspberry Pi&apos;s file system through the explorer (and other programs like FileZilla). You can use it to transfer custom photo sets to the device in order to use the OpenScanCloud. Therefore, you need to transfer the zip file containing your photos to the following folder /OpenScan/scans/</p> <p style=\"margin-left: 20px;\">You can access the Raspberry Pis file system by inserting the following line into your Windows explorer:&nbsp;</p> <p style=\"margin-left: 20px;\">\\\\OpenScan/PiShare/OpenScan/scans/</p> <p style=\"margin-left: 20px;\">username: pi, password: raspberry</p> <p style=\"margin-left: 20px;\"><strong>Please deactivate the local file sharing if you do not intend to use it</strong></p> <p><strong>Advanced Settings</strong></p> <p style=\"margin-left: 20px;\">Enable a ton of additional settings, which should be changed only if you know what you are doing ;)</p> <p><strong>Model</strong></p> <p style=\"margin-left: 20px;\">Device model you are using: OpenScan Mini or OpenScan Classic. Setting the device affects the settings of the motor (gear ratio, acceleration, speed). You can change those values manually in the advanced settings.</p> <p><strong>Camera</strong></p> <p style=\"margin-left: 20px;\">A wide range of camera modules is supported (Pi camera v1.3, v2.1, HQ, Arducam IMX519, IMX290, IMX378, OV9281). If you encounter any issues with those models, please check the orientation of the camera ribbon cable and its connectors.</p> <p style=\"margin-left: 20px;\"><u>DSLR (gphoto)</u> - connect a wide range of DSLR cameras to the device through USB. See <a href=\"http://www.gphoto.org/proj/libgphoto2/support.php\" rel=\"noopener noreferrer\" target=\"_blank\">GPhoto</a> for a full list of supported devices.</p> <p style=\"margin-left: 20px;\"><u>External camera</u> - triggering any camera through an isolated GPIO signal on the front side of the pi shield.</p> <p><strong>Shutdown/Reboot</strong></p> <p style=\"margin-left: 20px;\">Always use the shutdown button before you power off your Raspberry Pi.</p> <p><strong>Restore Default Settings</strong></p> <p style=\"margin-left: 20px;\">In case you want to restore the default settings</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 260,
-        "y": 120,
+        "x": 740,
+        "y": 240,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4630,14 +4697,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1><span style=\"color: rgb(226, 80, 65);\">Pinout</span></h1> <p><span style=\"color: rgb(226, 80, 65);\"><strong><span style=\"font-size: 19px;\">ONLY CHANGE THE PINOUT IF YOU ARE ABSOLUTELY SURE! CHANGES CAN DAMAGE THE RASPBERRY PI AND ANY PERIPHERALS!</span></strong></span></p> <p><br></p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 250,
+        "x": 430,
         "y": 200,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4645,70 +4714,12 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "smb",
-        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('smb'):\n    save('smb', state)\nif state == True:\n    os.system('sudo /etc/init.d/smbd start')\nelse:\n    os.system('sudo /etc/init.d/smbd stop')\n\n\n",
+        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('smb'):\n    save('smb', state)\nif state == True:\n    os.system('/etc/init.d/smbd start')\nelse:\n    os.system('/etc/init.d/smbd stop')\n\n\n",
         "outputs": 1,
         "x": 530,
         "y": 380,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "7b9d44c2b72c7558",
-        "type": "ui_button",
-        "z": "017bd4e4a428bee5",
-        "name": "reboot",
-        "group": "4fe6b4c0ade0938a",
-        "order": 13,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "restart",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "fa-repeat",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 90,
-        "y": 720,
-        "wires": [
-            [
-                "cc3cb10f2ea3f8b8",
-                "d114f4d4d7f31981"
-            ]
-        ]
-    },
-    {
-        "id": "b2f11720e95de6b7",
-        "type": "ui_button",
-        "z": "017bd4e4a428bee5",
-        "name": "shutdown",
-        "group": "4fe6b4c0ade0938a",
-        "order": 12,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "shutdown",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "fa-power-off",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 100,
-        "y": 800,
-        "wires": [
-            [
-                "cc3cb10f2ea3f8b8",
-                "f52d4d86b39aeb6b"
-            ]
         ]
     },
     {
@@ -4729,23 +4740,10 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "reboot",
-        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('sudo reboot')\n",
+        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('reboot -h')\n",
         "outputs": 1,
         "x": 270,
         "y": 720,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f52d4d86b39aeb6b",
-        "type": "python3-function",
-        "z": "017bd4e4a428bee5",
-        "name": "shutdown",
-        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('sudo shutdown -h now')",
-        "outputs": 1,
-        "x": 280,
-        "y": 800,
         "wires": [
             []
         ]
@@ -4755,7 +4753,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "4fe6b4c0ade0938a",
-        "order": 8,
+        "order": 7,
         "width": 2,
         "height": 1,
         "name": "",
@@ -4763,8 +4761,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 670,
-        "y": 600,
+        "x": 730,
+        "y": 620,
         "wires": []
     },
     {
@@ -4772,7 +4770,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "4fe6b4c0ade0938a",
-        "order": 10,
+        "order": 9,
         "width": 2,
         "height": 1,
         "name": "",
@@ -4793,7 +4791,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "4fe6b4c0ade0938a",
-        "order": 7,
+        "order": 8,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -4820,7 +4818,7 @@
         "topicType": "msg",
         "className": "",
         "x": 390,
-        "y": 600,
+        "y": 620,
         "wires": [
             [
                 "896242c5a7e50fa7"
@@ -4836,7 +4834,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "4fe6b4c0ade0938a",
-        "order": 9,
+        "order": 10,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -4888,6 +4886,11 @@
                 "type": "str"
             },
             {
+                "label": "USB Webcam",
+                "value": "usb_webcam",
+                "type": "str"
+            },
+            {
                 "label": "External Camera",
                 "value": "external",
                 "type": "str"
@@ -4922,14 +4925,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>Motor Settings</h1> <p><strong>Turntable Mode</strong></p> <p style=\"margin-left: 20px;\">Activate turntable mode in order to deactivate the rotor. The routine will only move the turntable and take a given number of photos.</p> <p><strong>Rotor - Start Angle, Min and Max Angle</strong></p> <p style=\"margin-left: 20px;\">Since this version of OpenScan does not have an endstop (yet), it is necessary to tell the device its position when the routine is being started. 0&deg; corresponds to the horizontal (natural) orientation.</p> <p style=\"margin-left: 20px;\">After that, the device will equally space the image positions between angle min and angle max.</p> <p><strong>Rotor/Turntable</strong></p> <p style=\"margin-left: 20px;\"><u>Steps per rotation</u> - &nbsp;defines the number of steps it takes to move the axis 360&deg;. It is defined by A*B*C, where A is the number of steps for one revolution of the given stepper motor (normally 200), B is the microstepping used (normally 16), and C the gear ratio (1 for the turntable and 15 or 5,33 for the OpenScan Mini and Classic respectively)</p> <p style=\"margin-left: 20px;\"><u>Delay</u> - time in microseconds between each step of the motor. Lower this value if the movement is too fast</p> <p style=\"margin-left: 20px;\"><u>Acceleration</u> - a factor defining how fast the delay time between each step is being changed during acceleration and deceleration phases. Lower this value in order to make the movement smoother.</p> <p style=\"margin-left: 20px;\"><u>Acceleration ramp</u> - the number of steps allowed for the acceleration processes. Increase this value, if you want smoother movement.</p> <p style=\"margin-left: 20px;\"><u>Manual Angle</u> - Defines the degree value for the manual movement through the arrow buttons in the scan menu</p> <p style=\"margin-left: 20px;\"><u>Direction</u> - If needed, reverse the movement (in case the arrow buttons and movement do not correspond). Alternatively, you can flip the motor cable 180&deg; (BUT MAKE SURE TO POWER OFF THE DEVICE!)</p> <p style=\"margin-left: 20px;\"><a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\"></a></p> <p><br></p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 870,
+        "x": 430,
         "y": 120,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4948,14 +4953,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>Camera Settings</h1> <p><strong>Jpeg quality</strong></p> <p style=\"margin-left: 20px;\">Value in percent, which usually does not need to be changed.</p> <p><strong>Downscale Preview</strong></p> <p style=\"margin-left: 20px;\">The preview image has to be scaled down depending on your network speed. If you want to have a higher quality preview image, you can increase this value, which defines the maximal width/height value. If the value is too high, the preview window might not update</p> <p><strong>Image Rotation</strong></p> <p style=\"margin-left: 20px;\">Change the image rotation, if needed.</p> <p><strong>Timeout</strong></p> <p style=\"margin-left: 20px;\">Defines the time in seconds, when the libcamera command (used for the camera modules) will timeout. Increase this value, if the camera does not get triggered in each position.</p> <p><strong>Delay Before/After</strong></p> <p style=\"margin-left: 20px;\">A fixed delay in seconds before and/or after a photo is taken. Increase this value when the photos have visual motion blur.</p> <p><strong>AWBG, Gain, Contrast, Saturation</strong></p> <p style=\"margin-left: 20px;\">Under most circumstances, you do not need to touch these values.</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 880,
+        "x": 420,
         "y": 160,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -4983,12 +4990,14 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "model",
-        "func": "from OpenScan import load_str, save\n\nstate = msg['payload']\nmsg['state'] = state\n\nif state != load_str('model'):\n    save('model', state)\n    if state == 'OSMini':\n        save('rotor_stepsperrotation',48000)\n        save('cam_rotation',90)\n\n    if state == 'OSClassic':\n        save('rotor_stepsperrotation',17067)\n        save('cam_rotation',0)",
+        "func": "from OpenScan import load_str, save\n\nstate = msg['payload']\nmsg['state'] = state\n\nif state != load_str('model'):\n    save('model', state)\n    if state == 'OSMini':\n        save('rotor_stepsperrotation',48000)\n        save('cam_rotation',90)\n        save('rotor_anglemin',-70)\n        save('rotor_anglemax',20)\n        \n\n    if state == 'OSClassic':\n        save('rotor_stepsperrotation',17067)\n        save('cam_rotation',0)\n        save('rotor_anglemin',-30)\n        save('rotor_anglemax',30)\n\nif state == \"OSMini\":\n    msg['crop2'] = 'Crop X (%)'\n    msg['crop1'] = 'Crop Y (%)'\nelif state == \"OSClassic\":\n    msg['crop1'] = 'Crop X (%)'\n    msg['crop2'] = 'Crop Y (%)'\n\nreturn msg",
         "outputs": 1,
         "x": 530,
-        "y": 600,
+        "y": 620,
         "wires": [
-            []
+            [
+                "f358de1e64b491bb"
+            ]
         ]
     },
     {
@@ -5033,7 +5042,7 @@
         "animate": false,
         "className": "",
         "x": 400,
-        "y": 640,
+        "y": 660,
         "wires": [
             [
                 "8be8015931c663cc"
@@ -5048,7 +5057,7 @@
         "func": "from OpenScan import save\n\nif msg['payload'] != 'OK':\n    msg['payload'] = False\n    return None,msg\n    \nsave('advanced_settings', True)\n\nreturn msg",
         "outputs": 2,
         "x": 820,
-        "y": 640,
+        "y": 660,
         "wires": [
             [
                 "62cd775a1c02dac8"
@@ -5195,7 +5204,7 @@
         "id": "27c6b221c90ed9e1",
         "type": "exec",
         "z": "017bd4e4a428bee5",
-        "command": "sudo iwlist wlan0 scan | grep ESSID | sed 's/ESSID://g;s/\"//g;s/^ *//;s/ *$//'",
+        "command": "iwlist wlan0 scan | grep ESSID | sed 's/ESSID://g;s/\"//g;s/^ *//;s/ *$//'",
         "addpay": false,
         "append": "",
         "useSpawn": "false",
@@ -5320,7 +5329,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "Reset Wifi",
-        "func": "from time import sleep\n\nif msg['payload']!=\"Yes\":\n    return\n\ntemp_dir = '/home/pi/OpenScan/tmp/wpa_empty.log'\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\nwith open(temp_dir, 'w+') as file:\n    file.write('update_config=1\\nctrl_interface=DIR=/var/run/wpa_supplicant\\ncountry=de\\n\\n')\nos.system('sudo mv '+ temp_dir + ' ' + wpa_dir)\nos.system('sudo wpa_cli -i wlan0 reconfigure')\nsleep(3)\nos.system('sudo systemctl restart nodered')\nreturn msg",
+        "func": "from time import sleep\n\nif msg['payload']!=\"Yes\":\n    return\n\ntemp_dir = '/home/pi/OpenScan/tmp/wpa_empty.log'\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\nwith open(temp_dir, 'w+') as file:\n    file.write('update_config=1\\nctrl_interface=DIR=/var/run/wpa_supplicant\\ncountry=de\\n\\n')\nos.system('mv '+ temp_dir + ' ' + wpa_dir)\nos.system('wpa_cli -i wlan0 reconfigure')\nsleep(3)\nos.system('systemctl restart nodered')\nreturn msg",
         "outputs": 1,
         "x": 440,
         "y": 1140,
@@ -5356,7 +5365,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "add Wifi",
-        "func": "from time import sleep\nsleep(0.1)\n\nos.system('sudo wpa_cli -i wlan0 reconfigure')\n\nreturn msg",
+        "func": "from time import sleep\nsleep(0.1)\n\nos.system('wpa_cli -i wlan0 reconfigure')\n\nreturn msg",
         "outputs": 1,
         "x": 1320,
         "y": 1000,
@@ -5430,7 +5439,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "modWPA",
-        "func": "if msg['payload'] == 'Cancel':\n    return\n\nif len(msg['payload'])!=2:\n    msg['payload'] = 'invalid country code'\n    return msg,None\n\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\ntemp_dir = '/home/pi/OpenScan/tmp/wpa'\n\ncode = msg['payload'].upper()\nssid = msg['ssid']\npassword = msg['password']\n\nif len(code) != 2:\n    msg['topic'] = 'ERROR'\n    msg['payload'] = 'invalid country code (see  ISO 3166-1 alpha-2)'\n    return msg\n\nwith open(wpa_dir, 'r') as file:\n    for i in file.readlines():\n        if 'country=' in i:\n            code_old=i.split('country=')[1][0:2]\n            break\n\nwith open(wpa_dir, 'r') as file:\n    wpa = file.read()\n    if ssid in wpa:\n        msg['topic'] = 'ERROR'\n        msg['payload'] = 'Network already exists! If you have trouble connecting, please consider resetting the saved Wifi connections.'\n        return msg\n    wpa=wpa.replace('country=' + code_old, 'country=' + code)\n    wpa=wpa + '\\nnetwork={\\n priority=10\\n ssid=\"'+ssid+'\"\\n psk=\"'+password+'\"\\n}\\n'\n\nwith open(temp_dir,'w+') as file:\n    file.write(wpa)\nos.system('sudo mv '+temp_dir + ' ' + wpa_dir)\n\nmsg['topic'] = 'Updating Wifi'\nmsg['payload'] = 'reconnecting might take a moment'\nreturn msg,msg\n",
+        "func": "if msg['payload'] == 'Cancel':\n    return\n\nif len(msg['payload'])!=2:\n    msg['payload'] = 'invalid country code'\n    return msg,None\n\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\ntemp_dir = '/home/pi/OpenScan/tmp/wpa'\n\ncode = msg['payload'].upper()\nssid = msg['ssid']\npassword = msg['password']\n\nif len(code) != 2:\n    msg['topic'] = 'ERROR'\n    msg['payload'] = 'invalid country code (see  ISO 3166-1 alpha-2)'\n    return msg\n\nwith open(wpa_dir, 'r') as file:\n    for i in file.readlines():\n        if 'country=' in i:\n            code_old=i.split('country=')[1][0:2]\n            break\n\nwith open(wpa_dir, 'r') as file:\n    wpa = file.read()\n    if ssid in wpa:\n        msg['topic'] = 'ERROR'\n        msg['payload'] = 'Network already exists! If you have trouble connecting, please consider resetting the saved Wifi connections.'\n        return msg\n    wpa=wpa.replace('country=' + code_old, 'country=' + code)\n    wpa=wpa + '\\nnetwork={\\n priority=10\\n ssid=\"'+ssid+'\"\\n psk=\"'+password+'\"\\n}\\n'\n\nwith open(temp_dir,'w+') as file:\n    file.write(wpa)\nos.system('mv '+temp_dir + ' ' + wpa_dir)\n\nmsg['topic'] = 'Updating Wifi'\nmsg['payload'] = 'reconnecting might take a moment'\nreturn msg,msg\n",
         "outputs": 2,
         "x": 1180,
         "y": 980,
@@ -5468,7 +5477,7 @@
         "id": "e97d17c6590138e2",
         "type": "ui_button",
         "z": "017bd4e4a428bee5",
-        "name": "Cloud",
+        "name": "Cloud-settings",
         "group": "3b4bd36726be16d5",
         "order": 1,
         "width": 6,
@@ -5480,14 +5489,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>OpenScanCloud</h1> <p style=\"margin-left: 20px;\">OpenScanCloud is a free/donation-based cloud processing service, which will convert your photos into 3d models using latest photogrammetry technology. Feel free to support the project with a small donation at <a href=\"%5C%22https://www.buymeacoffee.com/OpenScan%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>BuyMeACoffee</a>.</p> <p style=\"margin-left: 20px;\">The only requirement to use this service is a one-time, free-of-charge registration (which is solely an anti-spam measure). By filling out the registration form, you will receive an individual access token.</p> <p><strong>Register</strong></p> <p style=\"margin-left: 20px;\">In order to use the OpenScanCloud, you will have to enter your name and email. It might take 1-3 days to create the access token, which will be sent to your mail address. Please check your spam folder.</p> <p><strong>Enter Token</strong></p> <p style=\"margin-left: 20px;\">Please enter your individual token here in order to activate the cloud functionality. The token will be verified immediately. In case of any problems, please contact <a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\">cloud@openscan.eu</a></p> <p><strong>Token</strong></p> <p style=\"margin-left: 20px;\">A shorted version of your token will be displayed here. Please include a copy of this shorted token in any support requests <a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\">cloud@openscan.eu</a></p> <p><strong>Credit (GB)</strong></p> <p style=\"margin-left: 20px;\">Each token comes with a given amount of &apos;credit&apos; which is another measure against spam. The given number in Gigabyte indicates the amount of data, that you can process on the servers.&nbsp;</p> <p style=\"margin-left: 20px;\">IMPORTANT: The credit can be increased at any time by sending a (nice) mail to <a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\">cloud@openscan.eu</a></p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 870,
-        "y": 200,
+        "x": 620,
+        "y": 160,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -5856,8 +5867,7 @@
         "y": 1520,
         "wires": [
             [
-                "bbad1ab5f8f63fb7",
-                "b53c3038b7cb62b0"
+                "bbad1ab5f8f63fb7"
             ]
         ]
     },
@@ -5934,7 +5944,7 @@
         "name": "Motor",
         "info": "",
         "x": 90,
-        "y": 1620,
+        "y": 1600,
         "wires": []
     },
     {
@@ -5944,7 +5954,7 @@
         "name": "Camera",
         "info": "",
         "x": 90,
-        "y": 2280,
+        "y": 2240,
         "wires": []
     },
     {
@@ -5954,7 +5964,7 @@
         "name": "Pinout",
         "info": "",
         "x": 110,
-        "y": 2780,
+        "y": 2860,
         "wires": []
     },
     {
@@ -5965,7 +5975,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 13,
+        "order": 14,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -5977,7 +5987,7 @@
         "step": "0.005",
         "className": "",
         "x": 450,
-        "y": 1820,
+        "y": 1840,
         "wires": [
             [
                 "bb54bbdae6690576"
@@ -5992,7 +6002,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 26,
+        "order": 27,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6004,7 +6014,7 @@
         "step": "0.005",
         "className": "",
         "x": 420,
-        "y": 2060,
+        "y": 2080,
         "wires": [
             [
                 "fb8145a9f8d4f7b2"
@@ -6019,7 +6029,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 15,
+        "order": 16,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6031,7 +6041,7 @@
         "step": "0.1",
         "className": "",
         "x": 420,
-        "y": 1860,
+        "y": 1880,
         "wires": [
             [
                 "ea87ecfd2af3cc7f"
@@ -6046,7 +6056,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 17,
+        "order": 18,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6058,7 +6068,7 @@
         "step": "100",
         "className": "",
         "x": 440,
-        "y": 1900,
+        "y": 1920,
         "wires": [
             [
                 "249f44c3a87793ba"
@@ -6073,7 +6083,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 11,
+        "order": 12,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6084,7 +6094,7 @@
         "className": "",
         "topicType": "msg",
         "x": 460,
-        "y": 1780,
+        "y": 1800,
         "wires": [
             [
                 "0bb56b1edb12c2cf"
@@ -6096,7 +6106,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 16,
+        "order": 17,
         "width": 3,
         "height": 1,
         "name": "rotor Accramp",
@@ -6105,7 +6115,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 1860,
+        "y": 1880,
         "wires": []
     },
     {
@@ -6113,7 +6123,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 10,
+        "order": 11,
         "width": 3,
         "height": 1,
         "name": "rotor_Steps per Rotation",
@@ -6122,7 +6132,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 810,
-        "y": 1900,
+        "y": 1920,
         "wires": []
     },
     {
@@ -6130,7 +6140,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 14,
+        "order": 15,
         "width": 3,
         "height": 1,
         "name": "rotor Acc",
@@ -6139,7 +6149,7 @@
         "layout": "row-left",
         "className": "",
         "x": 760,
-        "y": 1820,
+        "y": 1840,
         "wires": []
     },
     {
@@ -6147,7 +6157,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 12,
+        "order": 13,
         "width": 3,
         "height": 1,
         "name": "rotor_delay",
@@ -6156,7 +6166,7 @@
         "layout": "row-left",
         "className": "",
         "x": 770,
-        "y": 1780,
+        "y": 1800,
         "wires": []
     },
     {
@@ -6164,7 +6174,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 22,
+        "order": 23,
         "width": 6,
         "height": 1,
         "name": "tt",
@@ -6173,7 +6183,7 @@
         "layout": "row-center",
         "className": "",
         "x": 90,
-        "y": 2020,
+        "y": 2040,
         "wires": []
     },
     {
@@ -6184,7 +6194,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 28,
+        "order": 29,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6196,7 +6206,7 @@
         "step": "0.1",
         "className": "",
         "x": 410,
-        "y": 2100,
+        "y": 2120,
         "wires": [
             [
                 "35422077b53da9bf"
@@ -6211,7 +6221,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 30,
+        "order": 31,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6223,7 +6233,7 @@
         "step": "1",
         "className": "",
         "x": 430,
-        "y": 2140,
+        "y": 2160,
         "wires": [
             [
                 "2c000bd53cdb98ca"
@@ -6238,7 +6248,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 24,
+        "order": 25,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6249,7 +6259,7 @@
         "className": "",
         "topicType": "msg",
         "x": 450,
-        "y": 2020,
+        "y": 2040,
         "wires": [
             [
                 "485a4bed5a6bea23"
@@ -6261,7 +6271,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 29,
+        "order": 30,
         "width": 3,
         "height": 1,
         "name": "ttAccramp",
@@ -6270,7 +6280,7 @@
         "layout": "row-left",
         "className": "",
         "x": 760,
-        "y": 2140,
+        "y": 2160,
         "wires": []
     },
     {
@@ -6278,7 +6288,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 23,
+        "order": 24,
         "width": 3,
         "height": 1,
         "name": "tt_steps per Rotation",
@@ -6287,7 +6297,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 800,
-        "y": 2020,
+        "y": 2040,
         "wires": []
     },
     {
@@ -6295,7 +6305,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 27,
+        "order": 28,
         "width": 3,
         "height": 1,
         "name": "tt Acc",
@@ -6304,7 +6314,7 @@
         "layout": "row-left",
         "className": "",
         "x": 750,
-        "y": 2100,
+        "y": 2120,
         "wires": []
     },
     {
@@ -6312,7 +6322,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 25,
+        "order": 26,
         "width": 3,
         "height": 1,
         "name": "tt_delay",
@@ -6321,7 +6331,7 @@
         "layout": "row-left",
         "className": "",
         "x": 760,
-        "y": 2060,
+        "y": 2080,
         "wires": []
     },
     {
@@ -6332,7 +6342,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 19,
+        "order": 20,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6344,7 +6354,7 @@
         "step": "1",
         "className": "",
         "x": 430,
-        "y": 1940,
+        "y": 1960,
         "wires": [
             [
                 "e0d7c36daa42b3f3"
@@ -6356,7 +6366,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 18,
+        "order": 19,
         "width": 3,
         "height": 1,
         "name": "rotor_angle",
@@ -6365,7 +6375,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 770,
-        "y": 1940,
+        "y": 1960,
         "wires": []
     },
     {
@@ -6376,7 +6386,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 32,
+        "order": 33,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6388,7 +6398,7 @@
         "step": "1",
         "className": "",
         "x": 420,
-        "y": 2180,
+        "y": 2200,
         "wires": [
             [
                 "c34111aaec734dd9"
@@ -6400,7 +6410,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 31,
+        "order": 32,
         "width": 3,
         "height": 1,
         "name": "tt_angle",
@@ -6409,7 +6419,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2180,
+        "y": 2200,
         "wires": []
     },
     {
@@ -6417,7 +6427,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 3,
+        "order": 4,
         "width": 6,
         "height": 1,
         "name": "rotor",
@@ -6437,7 +6447,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 34,
+        "order": 35,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6449,7 +6459,7 @@
         "step": "1",
         "className": "",
         "x": 410,
-        "y": 2220,
+        "y": 2240,
         "wires": [
             [
                 "89dbbe7d99ddbbaf"
@@ -6464,7 +6474,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 21,
+        "order": 22,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6476,7 +6486,7 @@
         "step": "1",
         "className": "",
         "x": 420,
-        "y": 1980,
+        "y": 2000,
         "wires": [
             [
                 "204b0a5c8629d78a"
@@ -6488,7 +6498,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 33,
+        "order": 34,
         "width": 3,
         "height": 1,
         "name": "tt_dir",
@@ -6497,7 +6507,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2220,
+        "y": 2240,
         "wires": []
     },
     {
@@ -6505,7 +6515,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 20,
+        "order": 21,
         "width": 3,
         "height": 1,
         "name": "rotor_dir",
@@ -6514,7 +6524,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 1980,
+        "y": 2000,
         "wires": []
     },
     {
@@ -6543,7 +6553,7 @@
             "b67dfacfc9a23aa5"
         ],
         "x": 955,
-        "y": 640,
+        "y": 660,
         "wires": []
     },
     {
@@ -6554,7 +6564,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 13,
+        "order": 16,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6566,7 +6576,7 @@
         "step": "0.1",
         "className": "",
         "x": 450,
-        "y": 2360,
+        "y": 2460,
         "wires": [
             [
                 "b81e238ccd0a04fe"
@@ -6581,7 +6591,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 11,
+        "order": 14,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6593,7 +6603,7 @@
         "step": "0.1",
         "className": "",
         "x": 440,
-        "y": 2400,
+        "y": 2500,
         "wires": [
             [
                 "a0048747e7300bdc"
@@ -6608,7 +6618,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 9,
+        "order": 12,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6620,7 +6630,7 @@
         "step": "0.01",
         "className": "",
         "x": 420,
-        "y": 2320,
+        "y": 2420,
         "wires": [
             [
                 "9b0d5c521a7822cc"
@@ -6635,7 +6645,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 19,
+        "order": 22,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6647,7 +6657,7 @@
         "step": "0.1",
         "className": "",
         "x": 410,
-        "y": 2440,
+        "y": 2540,
         "wires": [
             [
                 "9b26ed02296d27c9"
@@ -6662,7 +6672,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 15,
+        "order": 18,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6674,7 +6684,7 @@
         "step": "0.1",
         "className": "",
         "x": 430,
-        "y": 2480,
+        "y": 2580,
         "wires": [
             [
                 "b0ac7e9a7c713b84"
@@ -6689,7 +6699,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 17,
+        "order": 20,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6701,7 +6711,7 @@
         "step": "0.1",
         "className": "",
         "x": 430,
-        "y": 2520,
+        "y": 2620,
         "wires": [
             [
                 "827b1a671a77037d"
@@ -6716,7 +6726,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 21,
+        "order": 24,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6728,7 +6738,7 @@
         "step": "0.1",
         "className": "",
         "x": 430,
-        "y": 2560,
+        "y": 2660,
         "wires": [
             [
                 "78a1536c167da741"
@@ -6743,7 +6753,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 23,
+        "order": 26,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -6755,7 +6765,7 @@
         "step": "0.1",
         "className": "",
         "x": 430,
-        "y": 2600,
+        "y": 2700,
         "wires": [
             [
                 "fe9a5b68fc8c2077"
@@ -6782,7 +6792,7 @@
         "step": "1",
         "className": "",
         "x": 420,
-        "y": 2640,
+        "y": 2740,
         "wires": [
             [
                 "e27d2613e942f344"
@@ -6794,7 +6804,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 8,
+        "order": 11,
         "width": 3,
         "height": 1,
         "name": "timeout",
@@ -6803,7 +6813,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2320,
+        "y": 2420,
         "wires": []
     },
     {
@@ -6811,7 +6821,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 12,
+        "order": 15,
         "width": 3,
         "height": 1,
         "name": "delay_after",
@@ -6820,7 +6830,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 770,
-        "y": 2360,
+        "y": 2460,
         "wires": []
     },
     {
@@ -6828,7 +6838,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 10,
+        "order": 13,
         "width": 3,
         "height": 1,
         "name": "delay_before",
@@ -6837,7 +6847,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 770,
-        "y": 2400,
+        "y": 2500,
         "wires": []
     },
     {
@@ -6845,7 +6855,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 18,
+        "order": 21,
         "width": 3,
         "height": 1,
         "name": "gain",
@@ -6854,7 +6864,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2440,
+        "y": 2540,
         "wires": []
     },
     {
@@ -6862,7 +6872,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 14,
+        "order": 17,
         "width": 3,
         "height": 1,
         "name": "awbg red",
@@ -6871,7 +6881,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2480,
+        "y": 2580,
         "wires": []
     },
     {
@@ -6879,7 +6889,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 16,
+        "order": 19,
         "width": 3,
         "height": 1,
         "name": "awbg blue",
@@ -6888,7 +6898,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 770,
-        "y": 2520,
+        "y": 2620,
         "wires": []
     },
     {
@@ -6896,7 +6906,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 20,
+        "order": 23,
         "width": 3,
         "height": 1,
         "name": "contrast",
@@ -6905,7 +6915,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2560,
+        "y": 2660,
         "wires": []
     },
     {
@@ -6913,7 +6923,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 22,
+        "order": 25,
         "width": 3,
         "height": 1,
         "name": "saturation",
@@ -6922,7 +6932,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2600,
+        "y": 2700,
         "wires": []
     },
     {
@@ -6939,7 +6949,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2640,
+        "y": 2740,
         "wires": []
     },
     {
@@ -6961,7 +6971,7 @@
         "className": "",
         "topicType": "msg",
         "x": 410,
-        "y": 2820,
+        "y": 2900,
         "wires": [
             [
                 "b17e82651407d8e0"
@@ -6982,7 +6992,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2820,
+        "y": 2900,
         "wires": []
     },
     {
@@ -7004,7 +7014,7 @@
         "className": "",
         "topicType": "msg",
         "x": 410,
-        "y": 2860,
+        "y": 2940,
         "wires": [
             [
                 "2c812acffdb330c5"
@@ -7025,7 +7035,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2860,
+        "y": 2940,
         "wires": []
     },
     {
@@ -7047,7 +7057,7 @@
         "className": "",
         "topicType": "msg",
         "x": 410,
-        "y": 2900,
+        "y": 2980,
         "wires": [
             [
                 "ae0654af69446942"
@@ -7068,7 +7078,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2900,
+        "y": 2980,
         "wires": []
     },
     {
@@ -7090,7 +7100,7 @@
         "className": "",
         "topicType": "msg",
         "x": 420,
-        "y": 2940,
+        "y": 3020,
         "wires": [
             [
                 "58cf48cfacc979fb"
@@ -7111,7 +7121,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2940,
+        "y": 3020,
         "wires": []
     },
     {
@@ -7133,7 +7143,7 @@
         "className": "",
         "topicType": "msg",
         "x": 420,
-        "y": 2980,
+        "y": 3060,
         "wires": [
             [
                 "c7ae206f2fff6810"
@@ -7154,7 +7164,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2980,
+        "y": 3060,
         "wires": []
     },
     {
@@ -7176,7 +7186,7 @@
         "className": "",
         "topicType": "msg",
         "x": 420,
-        "y": 3020,
+        "y": 3100,
         "wires": [
             [
                 "cfebd4a47a68b319"
@@ -7197,7 +7207,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 3020,
+        "y": 3100,
         "wires": []
     },
     {
@@ -7219,7 +7229,7 @@
         "className": "",
         "topicType": "msg",
         "x": 410,
-        "y": 3060,
+        "y": 3140,
         "wires": [
             [
                 "90f4d220928e4727"
@@ -7240,7 +7250,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 3060,
+        "y": 3140,
         "wires": []
     },
     {
@@ -7262,7 +7272,7 @@
         "className": "",
         "topicType": "msg",
         "x": 410,
-        "y": 3100,
+        "y": 3180,
         "wires": [
             [
                 "b05e1e612887f9c2"
@@ -7283,7 +7293,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 3100,
+        "y": 3180,
         "wires": []
     },
     {
@@ -7305,7 +7315,7 @@
         "className": "",
         "topicType": "msg",
         "x": 410,
-        "y": 3140,
+        "y": 3220,
         "wires": [
             [
                 "fe22723ce5a3495f"
@@ -7326,7 +7336,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 3140,
+        "y": 3220,
         "wires": []
     },
     {
@@ -7348,7 +7358,7 @@
         "className": "",
         "topicType": "msg",
         "x": 420,
-        "y": 3180,
+        "y": 3260,
         "wires": [
             [
                 "2af447a6905b83bc"
@@ -7369,7 +7379,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 3180,
+        "y": 3260,
         "wires": []
     },
     {
@@ -7391,7 +7401,7 @@
         "className": "",
         "topicType": "msg",
         "x": 420,
-        "y": 3220,
+        "y": 3300,
         "wires": [
             [
                 "787a128f84f747c0"
@@ -7412,7 +7422,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 3220,
+        "y": 3300,
         "wires": []
     },
     {
@@ -7431,7 +7441,7 @@
         "topic": "",
         "name": "confirm",
         "x": 680,
-        "y": 640,
+        "y": 660,
         "wires": [
             [
                 "15fd1c9e5610cb85"
@@ -7446,7 +7456,7 @@
         "func": "from OpenScan import save, load_bool\n\nif msg['payload'] == True and not load_bool('advanced_settings'):\n    msg['payload'] = '''<p style=\"text-align: center;\"><span style=\"font-size: 22px;\"><strong><u>PLEASE READ :)</u></strong></span></p>\n<p style=\"margin-left: 20px; text-align: center;\"><strong>Modifying the advanced settings can potentially damage your device and/or the connected peripherals.</strong></p>\n<p style=\"margin-left: 20px; text-align: center;\"><strong>Please read the given information texts carefully and only change settings, when you are sure about the consequences!</strong></p>\n'''\n    return msg\nelif not msg['payload']: \n    save('advanced_settings', False)\n",
         "outputs": 1,
         "x": 530,
-        "y": 640,
+        "y": 660,
         "wires": [
             [
                 "5255759a7c5b2a74"
@@ -7461,7 +7471,7 @@
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
-        "order": 7,
+        "order": 10,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -7473,7 +7483,7 @@
         "step": "90",
         "className": "",
         "x": 420,
-        "y": 2680,
+        "y": 2780,
         "wires": [
             [
                 "b7d3fe0c0b40b3e1"
@@ -7485,7 +7495,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "93aadb71dee6d977",
-        "order": 6,
+        "order": 9,
         "width": 3,
         "height": 1,
         "name": "cam_rot",
@@ -7494,7 +7504,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2680,
+        "y": 2780,
         "wires": []
     },
     {
@@ -7509,7 +7519,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1780,
+        "y": 1800,
         "wires": [
             [
                 "1d4230b3d9b93f63"
@@ -7528,7 +7538,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1780,
+        "y": 1800,
         "wires": [
             []
         ]
@@ -7545,7 +7555,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1900,
+        "y": 1920,
         "wires": [
             [
                 "1ab34b0a78b2c577"
@@ -7564,7 +7574,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1900,
+        "y": 1920,
         "wires": [
             []
         ]
@@ -7581,7 +7591,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1940,
+        "y": 1960,
         "wires": [
             [
                 "1b3ac50d2c6600c6"
@@ -7600,7 +7610,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1940,
+        "y": 1960,
         "wires": [
             []
         ]
@@ -7617,7 +7627,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1980,
+        "y": 2000,
         "wires": [
             [
                 "b2e839fe47a32b5f"
@@ -7636,7 +7646,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1980,
+        "y": 2000,
         "wires": [
             []
         ]
@@ -7653,7 +7663,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1820,
+        "y": 1840,
         "wires": [
             [
                 "8c1a92f2dcc976c7"
@@ -7672,7 +7682,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1820,
+        "y": 1840,
         "wires": [
             []
         ]
@@ -7689,7 +7699,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1860,
+        "y": 1880,
         "wires": [
             [
                 "f9b51424edb0491c"
@@ -7708,7 +7718,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1860,
+        "y": 1880,
         "wires": [
             []
         ]
@@ -7725,7 +7735,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2020,
+        "y": 2040,
         "wires": [
             [
                 "0c50fdbb5ac3c373"
@@ -7744,7 +7754,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2140,
+        "y": 2160,
         "wires": [
             [
                 "6ef996f8a36f94c2"
@@ -7763,7 +7773,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2180,
+        "y": 2200,
         "wires": [
             [
                 "16e9a3a71c4bb916"
@@ -7782,7 +7792,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2220,
+        "y": 2240,
         "wires": [
             [
                 "9b1d8f9e21b34102"
@@ -7801,7 +7811,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2060,
+        "y": 2080,
         "wires": [
             [
                 "2647111c06f2055d"
@@ -7820,7 +7830,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2100,
+        "y": 2120,
         "wires": [
             [
                 "56bc3b93af2ebe16"
@@ -7839,7 +7849,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2020,
+        "y": 2040,
         "wires": [
             []
         ]
@@ -7856,7 +7866,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2140,
+        "y": 2160,
         "wires": [
             []
         ]
@@ -7873,7 +7883,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2180,
+        "y": 2200,
         "wires": [
             []
         ]
@@ -7890,7 +7900,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2220,
+        "y": 2240,
         "wires": [
             []
         ]
@@ -7907,7 +7917,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2060,
+        "y": 2080,
         "wires": [
             []
         ]
@@ -7924,7 +7934,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2100,
+        "y": 2120,
         "wires": [
             []
         ]
@@ -7941,7 +7951,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2320,
+        "y": 2420,
         "wires": [
             [
                 "d47515c9b208bfb7"
@@ -7960,7 +7970,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2320,
+        "y": 2420,
         "wires": [
             []
         ]
@@ -7977,7 +7987,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2360,
+        "y": 2460,
         "wires": [
             [
                 "9d94dbc523d989a3"
@@ -7996,7 +8006,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2400,
+        "y": 2500,
         "wires": [
             [
                 "0558d6eb9a01862e"
@@ -8015,7 +8025,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2360,
+        "y": 2460,
         "wires": [
             []
         ]
@@ -8032,7 +8042,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2400,
+        "y": 2500,
         "wires": [
             []
         ]
@@ -8049,7 +8059,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2440,
+        "y": 2540,
         "wires": [
             [
                 "89c76766c7552b57"
@@ -8068,7 +8078,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2440,
+        "y": 2540,
         "wires": [
             []
         ]
@@ -8085,7 +8095,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2480,
+        "y": 2580,
         "wires": [
             [
                 "c385518eb65a1b27"
@@ -8104,7 +8114,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2480,
+        "y": 2580,
         "wires": [
             []
         ]
@@ -8121,7 +8131,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2520,
+        "y": 2620,
         "wires": [
             [
                 "5c80833b718d9bf6"
@@ -8140,7 +8150,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2520,
+        "y": 2620,
         "wires": [
             []
         ]
@@ -8157,7 +8167,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2560,
+        "y": 2660,
         "wires": [
             [
                 "5a3826e112fb24e6"
@@ -8176,7 +8186,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2560,
+        "y": 2660,
         "wires": [
             []
         ]
@@ -8193,7 +8203,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2600,
+        "y": 2700,
         "wires": [
             [
                 "3182ed7ac02b1509"
@@ -8212,7 +8222,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2600,
+        "y": 2700,
         "wires": [
             []
         ]
@@ -8229,7 +8239,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2640,
+        "y": 2740,
         "wires": [
             [
                 "7fa6337cdf0a0bc8"
@@ -8248,7 +8258,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2640,
+        "y": 2740,
         "wires": [
             []
         ]
@@ -8265,7 +8275,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2680,
+        "y": 2780,
         "wires": [
             [
                 "9d464b2ba1edaf48"
@@ -8284,7 +8294,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2680,
+        "y": 2780,
         "wires": [
             []
         ]
@@ -8301,7 +8311,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2820,
+        "y": 2900,
         "wires": [
             [
                 "282681e7c4351f74"
@@ -8320,7 +8330,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2820,
+        "y": 2900,
         "wires": [
             []
         ]
@@ -8337,7 +8347,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 3180,
+        "y": 3260,
         "wires": [
             [
                 "661614f5bd2c71d6"
@@ -8356,7 +8366,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 3180,
+        "y": 3260,
         "wires": [
             []
         ]
@@ -8373,7 +8383,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2860,
+        "y": 2940,
         "wires": [
             [
                 "ef70d61678fe1f11"
@@ -8392,7 +8402,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2860,
+        "y": 2940,
         "wires": [
             []
         ]
@@ -8409,7 +8419,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2900,
+        "y": 2980,
         "wires": [
             [
                 "24929b4629f22070"
@@ -8428,7 +8438,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2900,
+        "y": 2980,
         "wires": [
             []
         ]
@@ -8445,7 +8455,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2940,
+        "y": 3020,
         "wires": [
             [
                 "8c396b060f3d2646"
@@ -8464,7 +8474,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2940,
+        "y": 3020,
         "wires": [
             []
         ]
@@ -8481,7 +8491,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2980,
+        "y": 3060,
         "wires": [
             [
                 "a3c58ea48c388215"
@@ -8500,7 +8510,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 2980,
+        "y": 3060,
         "wires": [
             []
         ]
@@ -8517,7 +8527,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 3020,
+        "y": 3100,
         "wires": [
             [
                 "9b5da90eaf6ac562"
@@ -8536,7 +8546,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 3020,
+        "y": 3100,
         "wires": [
             []
         ]
@@ -8553,7 +8563,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 3060,
+        "y": 3140,
         "wires": [
             [
                 "f24cb404d7d09f8a"
@@ -8572,7 +8582,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 3100,
+        "y": 3180,
         "wires": [
             [
                 "1f79467df98ce894"
@@ -8591,7 +8601,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 3140,
+        "y": 3220,
         "wires": [
             [
                 "65b0130e390c2e67"
@@ -8610,7 +8620,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 3060,
+        "y": 3140,
         "wires": [
             []
         ]
@@ -8627,7 +8637,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 3100,
+        "y": 3180,
         "wires": [
             []
         ]
@@ -8644,7 +8654,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 3140,
+        "y": 3220,
         "wires": [
             []
         ]
@@ -8661,7 +8671,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 3220,
+        "y": 3300,
         "wires": [
             [
                 "e23a396162026618"
@@ -8680,7 +8690,7 @@
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 3220,
+        "y": 3300,
         "wires": [
             []
         ]
@@ -8735,7 +8745,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 640,
+        "y": 660,
         "wires": [
             [
                 "c833f6243a059d83"
@@ -8774,7 +8784,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 600,
+        "y": 620,
         "wires": [
             [
                 "80b579a4220e5c23",
@@ -8906,7 +8916,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "chk/change hostname",
-        "func": "from OpenScan import save\n\nif msg['payload'] != 'OK':\n    pass\n\nwith open('/etc/hostname', 'r') as file:\n    old_hostname = file.read().replace('\\n','')\n\nhostname = msg['hostname']\nif len(hostname) < 4 :\n    msg['payload'] = ' '\n    msg['topic'] = 'ERROR - Hostname NOT changed'\n    return msg\n    \n\nwith open('/etc/hostname', 'w+') as file:\n    file.write(hostname)\nos.system('echo ' + hostname + ' | sudo tee /etc/hostname')\nwith open('/etc/hosts', 'r') as file:\n    temp = file.read()\ntemp = temp.replace(old_hostname,hostname)\nwith open('/etc/hosts', 'w') as file:\n    file.write(temp)\nos.system('sudo hostnamectl set-hostname ' + hostname)\nos.system('sudo systemctl restart avahi-daemon')\nsave('hostname',hostname)\nmsg['payload'] = hostname\nmsg['topic'] = 'Success - Hostname changed'\nreturn msg\n",
+        "func": "from OpenScan import save\n\nif msg['payload'] != 'OK':\n    pass\n\nwith open('/etc/hostname', 'r') as file:\n    old_hostname = file.read().replace('\\n','')\n\nhostname = msg['hostname']\nif len(hostname) < 4 :\n    msg['payload'] = ' '\n    msg['topic'] = 'ERROR - Hostname NOT changed'\n    return msg\n    \n\nwith open('/etc/hostname', 'w+') as file:\n    file.write(hostname)\nos.system('echo ' + hostname + ' | tee /etc/hostname')\nwith open('/etc/hosts', 'r') as file:\n    temp = file.read()\ntemp = temp.replace(old_hostname,hostname)\nwith open('/etc/hosts', 'w') as file:\n    file.write(temp)\nos.system('hostnamectl set-hostname ' + hostname)\nos.system('systemctl restart avahi-daemon')\nsave('hostname',hostname)\nmsg['payload'] = hostname\nmsg['topic'] = 'Success - Hostname changed'\nreturn msg\n",
         "outputs": 1,
         "x": 1140,
         "y": 940,
@@ -8976,28 +8986,11 @@
             "fe3a855fee9e28c6"
         ],
         "x": 155,
-        "y": 680,
+        "y": 720,
         "wires": [
             [
                 "d114f4d4d7f31981",
                 "cc3cb10f2ea3f8b8"
-            ]
-        ]
-    },
-    {
-        "id": "fc9abb94c35eec56",
-        "type": "link in",
-        "z": "017bd4e4a428bee5",
-        "name": "shutdown",
-        "links": [
-            "597bfb653e8cddbf"
-        ],
-        "x": 155,
-        "y": 840,
-        "wires": [
-            [
-                "cc3cb10f2ea3f8b8",
-                "f52d4d86b39aeb6b"
             ]
         ]
     },
@@ -9036,14 +9029,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1>Files&amp;Cloud</h1> <p><strong>Refresh</strong></p> <p style=\"margin-left: 20px;\">You can refresh the status of the processing of your files in the OpenScanCloud. Make sure to read and agree the terms of use (in settings menu) before using the OpenScanCloud. Do not spam this button, as this might lead to temporary/permanent suspension of your IP address.</p> <p style=\"margin-left: 20px;\">The status (in the table) of the individual sets in the file list will be updated to one of the following:</p> <p style=\"margin-left: 20px;\"><u>Created&nbsp;</u>- you started the upload of your image set. If you are stuck on this status, please try to restart the upload.</p> <p style=\"margin-left: 20px;\"><u>Initialized&nbsp;</u>- all files have been uploaded and processing will start as soon as possible</p> <p style=\"margin-left: 20px;\"><u>File approved&nbsp;</u>- the server received and verified your files</p> <p style=\"margin-left: 20px;\"><u>Processing started</u> - your files are currently being processed</p> <p style=\"margin-left: 20px;\"><u>Processing failed</u> - there are various reasons why processing might fail. Please check the email for more details or contact me at <a href=\"%5C%22mailto:cloud@openscan.eu%5C%22\">cloud@openscan.eu</a></p> <p style=\"margin-left: 20px;\">processing done - check your email, where you should find a link to the 3d model :)</p> <p><strong>Status (on the right column)</strong></p> <p style=\"margin-left: 20px;\">Indicates, what the device is currently up to.</p> <p style=\"margin-left: 20px;\"><u>Refreshing&nbsp;</u>- updating all image set&apos;s status</p> <p style=\"margin-left: 20px;\"><u>Uploading&nbsp;</u>- while transferring the image set to the OpenScanCloud servers. If the upload freezes, be patient. If nothing happens, reboot the device and restart the upload.</p> <p style=\"margin-left: 20px;\"><u>Project started</u> - when the upload of a set was successful</p> <p style=\"margin-left: 20px;\"><u>Zipping&nbsp;</u>- files larger then 200mb have to be split and re-zipped before uploading to the OpenScanCloud, the process might take a while depending on the filesize.</p> <p style=\"margin-left: 20px;\"><u>Combining</u> - two sets into one might take up to a minute. </p> <p><strong>Set</strong></p> <p style=\"margin-left: 20px;\">select a set from the file list by clicking on a row in the table</p> <p><strong>Download</strong></p> <p style=\"margin-left: 20px;\">Download the selected set from the OpenScan device to your computer/mobile/tablet</p> <p><strong>Upload</strong></p> <p style=\"margin-left: 20px;\">Upload the selected file to the OpenScanCloud</p> <p><strong>Combine</strong></p> <p style=\"margin-left: 20px;\">In order to combine two sets, select one set. Click the combine button and select the second set. A pop-up will appear, and you can confirm the operation. All images from the two sets will be merged into one set. The original image sets will be deleted!</p> <p><strong>Delete Set/All</strong></p> <p style=\"margin-left: 20px;\">Please keep in mind, that the memory of the SD card is relatively small, and thus you will have to delete individual or all photo sets from time to time.</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 610,
-        "y": 120,
+        "x": 590,
+        "y": 200,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -9062,11 +9057,11 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "<h1 style=\"text-align: left;\">Files&amp;Cloud</h1> <p><strong>Current Status</strong></p> <p style=\"margin-left: 20px;\"><u>--READY--&nbsp;</u>- everything is okay and ready to go :)</p> <p style=\"margin-left: 20px;\"><u>Routine-preparing</u> - before starting the routine some time might pass depending on the number of photos</p> <p style=\"margin-left: 20px;\"><u>Routine-stopping</u> - manually ending the routine by pressing the stop button</p> <p style=\"margin-left: 20px;\"><u>Routine-Photo X/Y</u> - Showing the progress of the routine</p> <p style=\"margin-left: 20px;\"><u>No Camera Found</u> - please check the camera ribbon cable</p> <p style=\"margin-left: 20px;\"><u>Error: XXX</u> - Please contact <a href=\"mailto:info@openscan.eu\">info@openscan.eu</a> or post an issue on <a href=\"https://github.com/OpenScanEu/OpenScan2\" rel=\"noopener noreferrer\" target=\"_blank\">Github.com</a></p> <p><strong>Projectname</strong></p> <p style=\"margin-left: 20px;\">Each photo set will be saved using the following pattern &nbsp;YYYY-MM-DD_hh-mm-ss_projectname.zip (e.g. 2022-04-05_12.12.12_toysoldier.zip). Keep your files organized by giving each set a new projectname. If not specified &apos;default&apos; will be used.</p> <p><strong>Rotor</strong></p> <p style=\"margin-left: 20px;\">Moving the rotor by increments of 5&deg;. Please make sure to start the routine with the camera in the horizontal position.</p> <p><strong>Turntable</strong></p> <p style=\"margin-left: 20px;\">Moving the turntable by increments of 15&deg;.</p> <p><strong>Ringlight</strong></p> <p style=\"margin-left: 20px;\">Use the ring light for shadow-free illumination. It is highly recommended to use the polarizer in order to avoid reflections. Note, that the polarizer will absorb 75% of the light, so you might need to use both ring lights.</p> <p><strong>Photos</strong></p> <p style=\"margin-left: 20px;\">Set the number of photos for the current set. 60-120 photos should be more than enough for most objects. <u><strong>If the reconstruction fails or is very bad with 60 photos, increasing the number of photos will not help!</strong></u></p> <p><strong>Shutter</strong></p> <p style=\"margin-left: 20px;\">Again: <strong><u>Less is more</u></strong>! If the value is too high, some areas might get overexposed and thus, the software will not be able to recognize the surface feature of the object. Here are some reference values:</p> <p style=\"margin-left: 20px;\">- no polarizer: 5-20ms</p> <p style=\"margin-left: 20px;\">- mostly white object, &nbsp;with polarizer + one ringlight: 50-200ms</p> <p><strong>Crop X/Y</strong></p> <p style=\"margin-left: 20px;\">Make sure to use the right object holder to place the object in the middle of the screen. Try to crop as many unnecessary areas as possible. This will greatly lower the file size and resulting transfer and reconstruction times!</p> <p><strong>Start/Stop</strong></p> <p style=\"margin-left: 20px;\">Use the buttons to start/stop the routine</p> <p><strong>Reboot/Shutdown</strong></p> <p style=\"margin-left: 20px;\">In case of an error, try to restart the device. Always use the shutdown button before powering-off the device!</p> <p><strong>MF - Manual Focus</strong></p> <p style=\"margin-left: 20px;\">By default, the switch is &apos;off&apos;, which means that autofocus is active. For small objects, it might be necessary to use manual focus: activate the switch and set the focus by pressing + and - accordingly. The distance is measured between the camera lens and the focal plane (which should be in the center or slightly in front of the center of the object).</p>",
+        "payload": "<h1 style=\"text-align: left;\">Scan Settings</h1> <p><strong>Current Status</strong></p> <p style=\"margin-left: 20px;\"><u>--READY--&nbsp;</u>- everything is okay and ready to go :)</p> <p style=\"margin-left: 20px;\"><u>Routine-preparing</u> - before starting the routine some time might pass depending on the number of photos</p> <p style=\"margin-left: 20px;\"><u>Routine-stopping</u> - manually ending the routine by pressing the stop button</p> <p style=\"margin-left: 20px;\"><u>Routine-Photo X/Y</u> - Showing the progress of the routine</p> <p style=\"margin-left: 20px;\"><u>No Camera Found</u> - please check the camera ribbon cable</p> <p style=\"margin-left: 20px;\"><u>Error: XXX</u> - Please contact <a href=\"mailto:info@openscan.eu\">info@openscan.eu</a> or post an issue on <a href=\"https://github.com/OpenScanEu/OpenScan2\" rel=\"noopener noreferrer\" target=\"_blank\">Github.com</a></p> <p><strong>Projectname</strong></p> <p style=\"margin-left: 20px;\">Each photo set will be saved using the following pattern &nbsp;YYYY-MM-DD_hh-mm-ss_projectname.zip (e.g. 2022-04-05_12.12.12_toysoldier.zip). Keep your files organized by giving each set a new projectname. If not specified &apos;default&apos; will be used.</p> <p><strong>Rotor</strong></p> <p style=\"margin-left: 20px;\">Moving the rotor by increments of 5&deg;. Please make sure to start the routine with the camera in the horizontal position.</p> <p><strong>Turntable</strong></p> <p style=\"margin-left: 20px;\">Moving the turntable by increments of 15&deg;.</p> <p><strong>Ringlight</strong></p> <p style=\"margin-left: 20px;\">Use the ring light for shadow-free illumination. It is highly recommended to use the polarizer in order to avoid reflections. Note, that the polarizer will absorb 75% of the light, so you might need to use both ring lights.</p> <p><strong>Photos</strong></p> <p style=\"margin-left: 20px;\">Set the number of photos for the current set. 60-120 photos should be more than enough for most objects. <u><strong>If the reconstruction fails or is very bad with 60 photos, increasing the number of photos will not help!</strong></u></p> <p><strong>Shutter</strong></p> <p style=\"margin-left: 20px;\">Again: <strong><u>Less is more</u></strong>! If the value is too high, some areas might get overexposed and thus, the software will not be able to recognize the surface feature of the object. Here are some reference values:</p> <p style=\"margin-left: 20px;\">- no polarizer: 5-20ms</p> <p style=\"margin-left: 20px;\">- mostly white object, &nbsp;with polarizer + one ringlight: 50-200ms</p> <p><strong>Crop X/Y</strong></p> <p style=\"margin-left: 20px;\">Make sure to use the right object holder to place the object in the middle of the screen. Try to crop as many unnecessary areas as possible. This will greatly lower the file size and resulting transfer and reconstruction times!</p> <p><strong>Start/Stop</strong></p> <p style=\"margin-left: 20px;\">Use the buttons to start/stop the routine</p> <p><strong>Reboot/Shutdown</strong></p> <p style=\"margin-left: 20px;\">In case of an error, try to restart the device. Always use the shutdown button before powering-off the device!</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 1100,
+        "x": 760,
         "y": 120,
         "wires": [
             [
@@ -9079,7 +9074,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "Reset rfkill",
-        "func": "from os import system\nif \"Interface doesn't support scanning\" in msg['payload']:\n    system('rfkill unblock all')\n    system('sudo ifconfig wlan0 up')\n    return msg",
+        "func": "from os import system\nif \"Interface doesn't support scanning\" in msg['payload']:\n    system('rfkill unblock all')\n    system('ifconfig wlan0 up')\n    return msg",
         "outputs": 1,
         "x": 390,
         "y": 1100,
@@ -9099,7 +9094,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1660,
+        "y": 1680,
         "wires": [
             [
                 "327c8bdde31033a4"
@@ -9111,7 +9106,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 6,
+        "order": 7,
         "width": 3,
         "height": 1,
         "name": "rotor_anglemin",
@@ -9120,7 +9115,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 1660,
+        "y": 1680,
         "wires": []
     },
     {
@@ -9135,7 +9130,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1660,
+        "y": 1680,
         "wires": [
             []
         ]
@@ -9148,7 +9143,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 7,
+        "order": 8,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -9160,7 +9155,7 @@
         "step": "5",
         "className": "",
         "x": 440,
-        "y": 1660,
+        "y": 1680,
         "wires": [
             [
                 "da286366433c83a0"
@@ -9175,7 +9170,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 9,
+        "order": 10,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -9187,7 +9182,7 @@
         "step": "5",
         "className": "",
         "x": 440,
-        "y": 1700,
+        "y": 1720,
         "wires": [
             [
                 "e531ffe3dcf34eb4"
@@ -9202,7 +9197,7 @@
         "label": "",
         "tooltip": "",
         "group": "d49a6dfd7fb17096",
-        "order": 5,
+        "order": 6,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -9214,7 +9209,7 @@
         "step": "5",
         "className": "",
         "x": 440,
-        "y": 1740,
+        "y": 1760,
         "wires": [
             [
                 "9ce407cb16f0419a"
@@ -9233,7 +9228,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1700,
+        "y": 1720,
         "wires": [
             [
                 "94288df4c6756197"
@@ -9252,7 +9247,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1700,
+        "y": 1720,
         "wires": [
             []
         ]
@@ -9269,7 +9264,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1740,
+        "y": 1760,
         "wires": [
             [
                 "4702a4a09124e27d"
@@ -9288,7 +9283,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1740,
+        "y": 1760,
         "wires": [
             []
         ]
@@ -9298,7 +9293,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 8,
+        "order": 9,
         "width": 3,
         "height": 1,
         "name": "rotor_anglemax",
@@ -9307,7 +9302,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 1700,
+        "y": 1720,
         "wires": []
     },
     {
@@ -9315,7 +9310,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "d49a6dfd7fb17096",
-        "order": 4,
+        "order": 5,
         "width": 3,
         "height": 1,
         "name": "rotor_anglestart",
@@ -9324,7 +9319,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 1740,
+        "y": 1760,
         "wires": []
     },
     {
@@ -9376,14 +9371,16 @@
         "bgcolor": "transparent",
         "className": "",
         "icon": "fa-question-circle",
-        "payload": "",
+        "payload": "<h1 style=\"text-align: left;\">Focus Settings</h1> <p><strong>MF - Manual Focus</strong></p> <p style=\"margin-left: 20px;\">By default, the switch is &apos;off&apos;, which means that autofocus is active. For small objects, it might be necessary to use manual focus: activate the switch and set the focus by pressing + and - accordingly. The distance is measured between the camera lens and the focal plane (which should be in the center or slightly in front of the center of the object). Be aware, that the distance value is only a rough estimate (mm)</p> <p><strong>ST - Stacking</strong></p> <p style=\"margin-left: 20px;\">Stacking is disabled by default. Once activated, you will be able to set the following:</p> <p style=\"margin-left: 20px;\"><u>Stacksize</u> - defines the number of photos between the minimal and the maximal focal distance</p> <p style=\"margin-left: 20px;\"><u>SET</u> press this button to set the maximal/minimal focal distance. Pressing the button a third time will re-set the values.</p>",
         "payloadType": "str",
         "topic": "topic",
         "topicType": "msg",
-        "x": 640,
-        "y": 200,
+        "x": 760,
+        "y": 160,
         "wires": [
-            []
+            [
+                "f304680180a23479"
+            ]
         ]
     },
     {
@@ -9530,7 +9527,7 @@
             "960912e90ba5b5bc"
         ],
         "x": 175,
-        "y": 1660,
+        "y": 1600,
         "wires": [
             [
                 "91fe20cb16f54293",
@@ -9548,7 +9545,8 @@
                 "f46ced86106306c8",
                 "4339704cd8552eb3",
                 "1ac53bb6150645fe",
-                "0d48bb415c584420"
+                "0d48bb415c584420",
+                "b6e420121e6466e7"
             ]
         ]
     },
@@ -9560,8 +9558,8 @@
         "links": [
             "960912e90ba5b5bc"
         ],
-        "x": 145,
-        "y": 2320,
+        "x": 155,
+        "y": 2280,
         "wires": [
             [
                 "d5308090f2b7971a",
@@ -9574,7 +9572,8 @@
                 "ba10e04dd1761692",
                 "a69d216114f908a5",
                 "f02d4a036a225e87",
-                "1efd4a05aee0b86c"
+                "1efd4a05aee0b86c",
+                "6841e5a392f0fb4f"
             ]
         ]
     },
@@ -9587,7 +9586,7 @@
             "960912e90ba5b5bc"
         ],
         "x": 155,
-        "y": 2820,
+        "y": 2900,
         "wires": [
             [
                 "612cccacda1a65aa",
@@ -9610,8 +9609,8 @@
         "z": "017bd4e4a428bee5",
         "name": "Reset default",
         "group": "4fe6b4c0ade0938a",
-        "order": 15,
-        "width": 4,
+        "order": 14,
+        "width": 6,
         "height": 1,
         "passthru": false,
         "label": "Restore default settings",
@@ -9624,7 +9623,7 @@
         "payloadType": "str",
         "topic": "Restore default settings?",
         "topicType": "str",
-        "x": 1050,
+        "x": 930,
         "y": 300,
         "wires": [
             [
@@ -9647,7 +9646,7 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 1210,
+        "x": 1090,
         "y": 300,
         "wires": [
             [
@@ -9666,7 +9665,7 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1350,
+        "x": 1230,
         "y": 300,
         "wires": [
             [
@@ -9683,7 +9682,7 @@
         "links": [
             "38783aea9cc317a6"
         ],
-        "x": 1435,
+        "x": 1325,
         "y": 300,
         "wires": []
     },
@@ -9724,23 +9723,6 @@
         ]
     },
     {
-        "id": "b53c3038b7cb62b0",
-        "type": "debug",
-        "z": "017bd4e4a428bee5",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1130,
-        "y": 1440,
-        "wires": []
-    },
-    {
         "id": "f304680180a23479",
         "type": "ui_toast",
         "z": "017bd4e4a428bee5",
@@ -9755,7 +9737,7 @@
         "className": "",
         "topic": "",
         "name": "Info",
-        "x": 1250,
+        "x": 1010,
         "y": 120,
         "wires": [
             []
@@ -9773,7 +9755,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 1620,
+        "y": 1640,
         "wires": [
             [
                 "ce215e159ce7267f"
@@ -9807,7 +9789,7 @@
         "animate": false,
         "className": "",
         "x": 440,
-        "y": 1620,
+        "y": 1640,
         "wires": [
             [
                 "f95f528dec31425c"
@@ -9826,7 +9808,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 1620,
+        "y": 1640,
         "wires": [
             []
         ]
@@ -9835,7 +9817,7 @@
         "id": "4ebe5baece5ce9f2",
         "type": "ui_slider",
         "z": "017bd4e4a428bee5",
-        "name": "downscale_threshold",
+        "name": "preview_resolution",
         "label": "",
         "tooltip": "",
         "group": "93aadb71dee6d977",
@@ -9846,12 +9828,12 @@
         "outs": "end",
         "topic": "",
         "topicType": "str",
-        "min": "200",
-        "max": "4000",
-        "step": "200",
+        "min": "0.5",
+        "max": "10",
+        "step": "0.5",
         "className": "",
-        "x": 460,
-        "y": 2720,
+        "x": 450,
+        "y": 2280,
         "wires": [
             [
                 "60a415fff23cb55e"
@@ -9866,13 +9848,13 @@
         "order": 4,
         "width": 3,
         "height": 1,
-        "name": "downscale_threshold",
-        "label": "Downscale Preview (px)",
+        "name": "preview_res",
+        "label": "Preview Resolution (Mpx)",
         "format": "",
         "layout": "row-spread",
         "className": "",
-        "x": 800,
-        "y": 2720,
+        "x": 770,
+        "y": 2280,
         "wires": []
     },
     {
@@ -9880,14 +9862,14 @@
         "type": "function",
         "z": "017bd4e4a428bee5",
         "name": "loadI",
-        "func": "var file = 'downscale_threshold'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data);\nreturn msg",
+        "func": "var file = 'cam_preview_resolution'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data)/1000000;\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2720,
+        "y": 2280,
         "wires": [
             [
                 "4ebe5baece5ce9f2"
@@ -9899,14 +9881,14 @@
         "type": "function",
         "z": "017bd4e4a428bee5",
         "name": "write",
-        "func": "var file = 'downscale_threshold'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "func": "var file = 'cam_preview_resolution'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload*1000000)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2720,
+        "y": 2280,
         "wires": [
             []
         ]
@@ -9920,7 +9902,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "1f7f7e1e24f5ad9b",
-        "order": 6,
+        "order": 5,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -9972,6 +9954,11 @@
                 "type": "str"
             },
             {
+                "label": "USB Webcam",
+                "value": "usb_webcam",
+                "type": "str"
+            },
+            {
                 "label": "External Camera",
                 "value": "external",
                 "type": "str"
@@ -9999,7 +9986,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "1f7f7e1e24f5ad9b",
-        "order": 4,
+        "order": 3,
         "width": 4,
         "height": 1,
         "passthru": true,
@@ -10026,7 +10013,7 @@
         "topicType": "msg",
         "className": "",
         "x": 390,
-        "y": 560,
+        "y": 580,
         "wires": [
             [
                 "896242c5a7e50fa7"
@@ -10038,7 +10025,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "1f7f7e1e24f5ad9b",
-        "order": 5,
+        "order": 4,
         "width": 2,
         "height": 1,
         "name": "",
@@ -10055,7 +10042,7 @@
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
         "group": "1f7f7e1e24f5ad9b",
-        "order": 3,
+        "order": 2,
         "width": 2,
         "height": 1,
         "name": "",
@@ -10063,8 +10050,272 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 670,
-        "y": 560,
+        "x": 730,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "a4b7eea9a9736b0a",
+        "type": "ui_button",
+        "z": "017bd4e4a428bee5",
+        "name": "Update&Info",
+        "group": "ddbd496e.93a288",
+        "order": 1,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "transparent",
+        "className": "",
+        "icon": "fa-question-circle",
+        "payload": "<h1>Update&amp;Log</h1> <p><strong>Status</strong></p> <p>See whether new updates are available. It is highly recommended to use the latest firmware version. See OpenScan2 on <a href=\"%5C%22https://github.com/OpenScanEu/OpenScan2%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>Github.com</a> for details and the source code.</p> <p><strong>Updatetype</strong></p> <p>- stable: latest well-tested and mostly bug-free version for the OpenScanMini or Classic and various cameras</p> <p>- beta: stable version + some experimental and new features, which might bring joy and some new bugs as well</p> <p>- mini: very simplified firmware for the OpenScanMini + Arducam IMX519</p> <p><strong>Auto-Check update availability</strong></p> <p>Perform an automated update-check after each start of the device. If the device is connected to the internet, it will get the latest files from OpenScan2 on <a href=\"%5C%22https://github.com/OpenScanEu/OpenScan2%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>Github.com</a></p> <p>This option is activated by default.</p> <p><strong>Check Updates</strong></p> <p>Alternatively, you can check for updates manually at any time by pressing this button.</p> <p><strong>Download Error Log</strong></p> <p>In case you encounter any errors with your device, please download the error log text and send a copy to <a href=\"%5C%22mailto:info@openscan.eu%5C%22\">info@openscan.eu</a> or create an issue on <a href=\"%5C%22https://github.com/OpenScanEu/OpenScan2%5C%22\" rel='\\\"noopener' target='\\\"_blank\\\"'>Github.com</a></p>",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 750,
+        "y": 200,
+        "wires": [
+            [
+                "f304680180a23479"
+            ]
+        ]
+    },
+    {
+        "id": "b6e420121e6466e7",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "loadB",
+        "func": "var file = 'routine_secondpass'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 1600,
+        "wires": [
+            [
+                "ab8d5cfe9190bb5f"
+            ]
+        ]
+    },
+    {
+        "id": "ab8d5cfe9190bb5f",
+        "type": "ui_switch",
+        "z": "017bd4e4a428bee5",
+        "name": "",
+        "label": "Second pass",
+        "tooltip": "",
+        "group": "d49a6dfd7fb17096",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 430,
+        "y": 1600,
+        "wires": [
+            [
+                "fa51327f0140b045"
+            ]
+        ]
+    },
+    {
+        "id": "fa51327f0140b045",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "write",
+        "func": "var file = 'routine_secondpass'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 1600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6841e5a392f0fb4f",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "loadB",
+        "func": "var file = 'cam_output_downscale'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 2320,
+        "wires": [
+            [
+                "110216d678fad14f"
+            ]
+        ]
+    },
+    {
+        "id": "110216d678fad14f",
+        "type": "ui_switch",
+        "z": "017bd4e4a428bee5",
+        "name": "",
+        "label": "Downscale output",
+        "tooltip": "",
+        "group": "93aadb71dee6d977",
+        "order": 6,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 450,
+        "y": 2320,
+        "wires": [
+            [
+                "214d548d564f8ba2"
+            ]
+        ]
+    },
+    {
+        "id": "214d548d564f8ba2",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "write",
+        "func": "var file = 'cam_output_downscale'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });\n  \nmsg.enabled = msg.payload\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 2320,
+        "wires": [
+            [
+                "1becbff4884b8c1a"
+            ]
+        ]
+    },
+    {
+        "id": "8be1ca844a6caa54",
+        "type": "ui_slider",
+        "z": "017bd4e4a428bee5",
+        "name": "output_resolution",
+        "label": "",
+        "tooltip": "",
+        "group": "93aadb71dee6d977",
+        "order": 8,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "outs": "end",
+        "topic": "",
+        "topicType": "str",
+        "min": "0.5",
+        "max": "20",
+        "step": "0.5",
+        "className": "",
+        "x": 450,
+        "y": 2360,
+        "wires": [
+            [
+                "a6b2c0a0604ccf14"
+            ]
+        ]
+    },
+    {
+        "id": "9ac09d89d791e953",
+        "type": "ui_text",
+        "z": "017bd4e4a428bee5",
+        "group": "93aadb71dee6d977",
+        "order": 7,
+        "width": 3,
+        "height": 1,
+        "name": "image_res",
+        "label": "Output Resolution (Mpx)",
+        "format": "",
+        "layout": "row-spread",
+        "className": "",
+        "x": 770,
+        "y": 2360,
+        "wires": []
+    },
+    {
+        "id": "1becbff4884b8c1a",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "loadI",
+        "func": "var file = 'cam_output_resolution'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data)/1000000;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 2360,
+        "wires": [
+            [
+                "8be1ca844a6caa54"
+            ]
+        ]
+    },
+    {
+        "id": "a6b2c0a0604ccf14",
+        "type": "function",
+        "z": "017bd4e4a428bee5",
+        "name": "write",
+        "func": "var file = 'cam_output_resolution'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload*1000000)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 2360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f358de1e64b491bb",
+        "type": "link out",
+        "z": "017bd4e4a428bee5",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "b30d918661392ab3",
+            "44c598049cd533fd"
+        ],
+        "x": 635,
+        "y": 620,
         "wires": []
     },
     {
@@ -10090,7 +10341,7 @@
         "type": "ui_text",
         "z": "c8e7ecb5849edb9a",
         "group": "ddbd496e.93a288",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "",
@@ -10107,7 +10358,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "check files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter # new file counter\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter\n\nreturn msg\n",
         "outputs": 1,
         "x": 510,
         "y": 260,
@@ -10164,7 +10415,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "ddbd496e.93a288",
-        "order": 3,
+        "order": 5,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -10215,7 +10466,7 @@
         "type": "ui_text",
         "z": "c8e7ecb5849edb9a",
         "group": "ddbd496e.93a288",
-        "order": 2,
+        "order": 4,
         "width": 4,
         "height": 1,
         "name": "",
@@ -10235,7 +10486,7 @@
         "label": "Auto-check update availability",
         "tooltip": "",
         "group": "ddbd496e.93a288",
-        "order": 4,
+        "order": 6,
         "width": 6,
         "height": 1,
         "passthru": true,
@@ -10358,7 +10609,7 @@
         "z": "c8e7ecb5849edb9a",
         "name": "",
         "group": "ddbd496e.93a288",
-        "order": 5,
+        "order": 7,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -10385,7 +10636,7 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "download files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.copy(temp, msg[scope][i]['dst'])\n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str, save\n\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.copy(temp, msg[scope][i]['dst'])\n    \n    if msg[scope][i]['dst'] == '/boot/config.txt':\n        save('camera','')\n    \n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
         "outputs": 1,
         "x": 840,
         "y": 260,
@@ -10468,8 +10719,8 @@
         "links": [
             "960912e90ba5b5bc"
         ],
-        "x": 75,
-        "y": 420,
+        "x": 55,
+        "y": 400,
         "wires": [
             [
                 "2bb5fe78e09fec8a"
@@ -10481,15 +10732,21 @@
         "type": "python3-function",
         "z": "c8e7ecb5849edb9a",
         "name": "msg",
-        "func": "import subprocess\nmsg['raspbian'] = subprocess.getoutput(\"cat /etc/os-release | grep -i 'PRETTY_NAME'\")[13:-1]\nmsg['device'] = subprocess.getoutput(\"cat /proc/device-tree/model\")\nmsg['flask'] = subprocess.getoutput(\"systemctl status flask |grep -i 'Active:'\").split(' ')[6]\nreturn msg",
+        "func": "\nfrom subprocess import getoutput\nimport os\n\nmsg['os'] = getoutput(\"cat /etc/os-release | grep -i 'PRETTY_NAME'\")[13:-1]\nmsg['device'] = getoutput(\"cat /proc/device-tree/model\")\nmsg['flask'] = getoutput(\"systemctl status flask |grep -i 'Active:'\").split(' ')[6]\nmsg['osdate'] = getoutput(\"vcgencmd version\").split('\\n')[0]\nmsg['temp'] = getoutput(\"vcgencmd measure_temp\").split('=')[1]\ncpu_total = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $2}'\")\ncpu_used = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $3}'\")\nswap_total = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $2}'\")\nswap_used = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $3}'\")\ndiskspace_used = getoutput(\"df -h / | tail -n1 |awk '{print $3}'\")\ndiskspace_total = getoutput(\"df -h / | tail -n1 |awk '{print $2}'\")\n\nmsg['cpu'] = cpu_used + '/' + cpu_total + 'MB'\nmsg['swap'] = swap_used + '/' + swap_total + 'MB'\nmsg['diskspace'] =diskspace_used + '/' + diskspace_total\n\nif msg['flask'] == 'inactive':\n    os.system('systemctl restart flask')\n\nreturn msg",
         "outputs": 1,
         "x": 170,
-        "y": 420,
+        "y": 400,
         "wires": [
             [
                 "dbc77052ac950624",
                 "d97c3068ef5fef96",
-                "73a3b828f862312b"
+                "73a3b828f862312b",
+                "901e31453b2bdff8",
+                "f983854748ee4763",
+                "5347c7c517f5e8c7",
+                "3a5016f7003cd72c",
+                "6d720c4a4ecd9475",
+                "6438b7d060a70d81"
             ]
         ]
     },
@@ -10503,11 +10760,11 @@
         "height": 0,
         "name": "",
         "label": "OS:",
-        "format": "{{msg.raspbian}}",
+        "format": "{{msg.os}}",
         "layout": "row-spread",
         "className": "",
-        "x": 310,
-        "y": 460,
+        "x": 450,
+        "y": 440,
         "wires": []
     },
     {
@@ -10515,7 +10772,7 @@
         "type": "ui_text",
         "z": "c8e7ecb5849edb9a",
         "group": "3ce32450.e0cffc",
-        "order": 3,
+        "order": 8,
         "width": 0,
         "height": 0,
         "name": "",
@@ -10523,8 +10780,8 @@
         "format": "{{msg.flask}}",
         "layout": "row-spread",
         "className": "",
-        "x": 310,
-        "y": 500,
+        "x": 450,
+        "y": 480,
         "wires": []
     },
     {
@@ -10540,8 +10797,8 @@
         "format": "{{msg.device}}",
         "layout": "row-spread",
         "className": "",
-        "x": 320,
-        "y": 420,
+        "x": 460,
+        "y": 400,
         "wires": []
     },
     {
@@ -10552,29 +10809,12 @@
         "func": "import json\nimport requests\nimport shutil\n\nscope = 'main'\n#scope = 'beta'\n\nupdatepath = '/home/pi/OpenScan/tmp/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nmsg = {}\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg2 = msg.copy()\ndel msg[scope]\n\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/Arducam.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/Arducam.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/OpenScan.py'\nmsg[scope]['3']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/config.txt'\nmsg[scope]['4']['dst'] = '/boot/config.txt'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/flows.json'\nmsg[scope]['5']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['6'] = {}\nmsg[scope]['6']['src'] = scope + '/settings.js'\nmsg[scope]['6']['dst'] = '/root/.node-red/settings.js'\n\nmsg[scope]['7'] = {}\nmsg[scope]['7']['src'] = 'files/logo.jpg'\nmsg[scope]['7']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nmsg['payload'] = 'created with scope: ' + scope\n\nreturn msg",
         "outputs": 1,
         "x": 300,
-        "y": 680,
+        "y": 820,
         "wires": [
             [
-                "a5a9f7f08d272914"
+                "50f6fb8adf0249d7"
             ]
         ]
-    },
-    {
-        "id": "a5a9f7f08d272914",
-        "type": "debug",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 450,
-        "y": 680,
-        "wires": []
     },
     {
         "id": "80175eb8dc6ad009",
@@ -10598,7 +10838,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 680,
+        "y": 820,
         "wires": [
             [
                 "4c7fa5b5b27b83a5"
@@ -10611,7 +10851,7 @@
         "z": "c8e7ecb5849edb9a",
         "group": "3ce32450.e0cffc",
         "name": "Download LOG",
-        "order": 25,
+        "order": 9,
         "width": 6,
         "height": 1,
         "format": "<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\"   target=\"_blank\" ng-href='tmp/log.txt'>\n <div class=\"center\" style=\"position: relative; top: 30%;\">Download error log\n</div></md-button>\n",
@@ -10621,7 +10861,7 @@
         "templateScope": "local",
         "className": "",
         "x": 140,
-        "y": 540,
+        "y": 760,
         "wires": [
             []
         ]
@@ -10654,5 +10894,252 @@
                 "b0629875a30ae1d7"
             ]
         ]
+    },
+    {
+        "id": "901e31453b2bdff8",
+        "type": "delay",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 180,
+        "y": 440,
+        "wires": [
+            [
+                "2bb5fe78e09fec8a"
+            ]
+        ]
+    },
+    {
+        "id": "f983854748ee4763",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "",
+        "format": "{{msg.osdate}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 450,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "5347c7c517f5e8c7",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "CPU temp:",
+        "format": "{{msg.temp}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 470,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "3a5016f7003cd72c",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "CPU memory:",
+        "format": "{{msg.cpu}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 480,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "6d720c4a4ecd9475",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Swap memory:",
+        "format": "{{msg.swap}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 480,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "6438b7d060a70d81",
+        "type": "ui_text",
+        "z": "c8e7ecb5849edb9a",
+        "group": "3ce32450.e0cffc",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Diskspace:",
+        "format": "{{msg.diskspace}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 470,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "d7362e6e0ec7bdaa",
+        "type": "inject",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "props": [
+            {
+                "p": "overwrite",
+                "v": "true",
+                "vt": "bool"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 900,
+        "wires": [
+            [
+                "4ce127c61c3c5966",
+                "beacc3dc5398fa79"
+            ]
+        ]
+    },
+    {
+        "id": "4ce127c61c3c5966",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "prepare image creation",
+        "func": "import os\n\n#factory reset, reset wpa, create wpa in boot, rm files\n#should be done before creating a new raspbian image\n\nbasepath = '/home/pi/OpenScan/'\n\n#remove files\n\ndir = basepath + 'scans/'\n\nfor i in ['scans/','tmp/']:\n    os.system('rm -r ' + basepath + i)\n    os.mkdir(basepath + i)\n\n#delete wifi\ntemp_dir = '/home/pi/OpenScan/tmp/wpa_empty.log'\nwpa_dir = '/etc/wpa_supplicant/wpa_supplicant.conf'\n\nwith open(temp_dir, 'w+') as file:\n    file.write('update_config=1\\nctrl_interface=DIR=/var/run/wpa_supplicant\\ncountry=de\\n\\n')\nos.system('mv '+ temp_dir + ' ' + wpa_dir)\nos.system('wpa_cli -i wlan0 reconfigure')\n\n#create new wpa_supplicant.conf\nwith open('/boot/wpa_supplicant.conf','w+') as file:\n    file.write('country=de\\nupdate_config=1\\nctrl_interface=/var/run/wpa_supplicant\\n\\nnetwork={\\n scan_ssid=1\\n ssid=\"wlan name\"\\n psk=\"xxxx\"\\n}')\n\n#rm tmp dir\n\n\n#stop photos:\nos.system('systemctl stop flask')\nos.system('rm -r ' + basepath + 'tmp')\nos.system('mkdir ' + basepath + 'tmp')\n\nos.system('systemctl stop nodered')\n\n#reset factory\n\n",
+        "outputs": 1,
+        "x": 330,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "beacc3dc5398fa79",
+        "type": "link out",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "38783aea9cc317a6"
+        ],
+        "x": 235,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "8d012912f302be85",
+        "type": "ui_button",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "group": "ddbd496e.93a288",
+        "order": 8,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Show Details/Changelog",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 170,
+        "y": 340,
+        "wires": [
+            [
+                "5242607a723cc628"
+            ]
+        ]
+    },
+    {
+        "id": "5242607a723cc628",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "Changelog",
+        "func": "import requests\n\ntempfile = '/home/pi/OpenScan/tmp/changelog'\n\nurl = 'https://raw.githubusercontent.com/OpenScan-org/OpenScan-Doc/main/docs/changelog.md'\nr = requests.get(url, allow_redirects=False)\n\nwith open(tempfile,'wb') as file:\n    file.write(r.content)\n    \nwith open(tempfile, 'r') as file:\n    text = file.read()\n    \ntext = text.replace('\\n','<br>').replace('*', '&emsp; - ')\nmsg['payload'] = text\n\nreturn msg",
+        "outputs": 1,
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "573722197b15bf84"
+            ]
+        ]
+    },
+    {
+        "id": "573722197b15bf84",
+        "type": "ui_toast",
+        "z": "c8e7ecb5849edb9a",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": true,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 570,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "50f6fb8adf0249d7",
+        "type": "debug",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 820,
+        "wires": []
     }
 ]

@@ -58,8 +58,11 @@ def OpenScanCloud(cmd, msg):
 def camera(cmd, msg = {}):
     from requests import get
     flask = 'http://127.0.0.1:1312/'
-    r = get(flask + cmd, params=msg)
-    return r.status_code
+    try:
+        r = get(flask + cmd, params=msg)
+        return r.status_code
+    except:
+        return 400
 
 def motorrun(motor,angle):
     import RPi.GPIO as GPIO
@@ -143,8 +146,12 @@ def take_photo(file):
     else:
         autofocus = ''
 
-    cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus + ' >/dev/null 2>&1'
-#    cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus
+    if camera  == "usb_webcam":
+        cmd = 'fswebcam -i 0 -r "1280x720" -F 5 --no-banner --jpeg 95 --save ' + filepath2
+    else:
+        cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus + ' >/dev/null 2>&1'
+    #    cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus
+        
     system(cmd)
     return cmd
 
