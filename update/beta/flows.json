@@ -825,7 +825,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "CREATE FACTORY DEFAULT",
-        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n}}\nreturn msg",
+        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n    'pin_rotor_endstop':27,\n    'pin_tt_endstop':5,\n    'pin_extra_endstop':26,\n    'pin_extra_dir':21,\n    'pin_extra_step':20,\n    'pin_extra_enable':19,\n    'extra_acc':1,\n    'extra_accramp':200,\n    'extra_angle':10,\n    'extra_delay':0.0001,\n    'extra_dir':1,\n    'extra_stepsperrotation':3200,\n}}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -879,7 +879,8 @@
         "y": 800,
         "wires": [
             [
-                "960912e90ba5b5bc"
+                "960912e90ba5b5bc",
+                "ea0e57d83f291e23"
             ]
         ]
     },
@@ -1023,7 +1024,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "FIRMWARE VERSION",
-        "func": "msg.firmware = '2022-08-02'\nreturn msg",
+        "func": "msg.firmware = '2022-08-16'\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1087,6 +1088,156 @@
         "y": 40,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "245e4341d4fb611c",
+        "type": "function",
+        "z": "829d803b6033a693",
+        "name": "pinmap_v2",
+        "func": "msg = { \n'overwrite':true,\n'settings':{\n    'pin_rotor_endstop':27,\n    'pin_tt_endstop':5,\n    'pin_extra_endstop':26,\n    'pin_external':25,\n    'pin_ringlight1':24,\n    'pin_ringlight2':24,\n    'pin_rotor_dir':23,\n    'pin_rotor_enable':19,\n    'pin_rotor_step':22,\n    'pin_tt_dir':6,\n    'pin_tt_enable':19,\n    'pin_tt_step':16,\n    'pin_extra_dir':21,\n    'pin_extra_step':20,\n    'pin_extra_enable':19,\n    'extra_acc':1,\n    'extra_accramp':200,\n    'extra_angle':10,\n    'extra_delay':0.0001,\n    'extra_dir':1,\n    'extra_stepsperrotation':3200,\n}}\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 40,
+        "wires": [
+            [
+                "627406f3611511dc"
+            ]
+        ]
+    },
+    {
+        "id": "627406f3611511dc",
+        "type": "python3-function",
+        "z": "829d803b6033a693",
+        "name": "write",
+        "func": "from os import listdir\n\nbasedir = '/home/pi/OpenScan/settings/'\n\nmsg['payload'] = ''\n\nfiles = listdir(basedir)\n\nfor i in msg['settings']:\n    if msg['overwrite'] != True:\n        if i not in files:\n            with open(basedir + i, 'w+') as file:\n                file.write(str(msg['settings'][i]))        \n    else:\n        with open(basedir + i, 'w+') as file:\n            file.write(str(msg['settings'][i])) \n\nmsg['payload'] = True\n\nreturn msg",
+        "outputs": 1,
+        "x": 1010,
+        "y": 40,
+        "wires": [
+            [
+                "50eeb3e362f9027f"
+            ]
+        ]
+    },
+    {
+        "id": "88b1bddde110298a",
+        "type": "inject",
+        "z": "829d803b6033a693",
+        "name": "",
+        "props": [
+            {
+                "p": "overwrite",
+                "v": "false",
+                "vt": "bool"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.1",
+        "topic": "",
+        "x": 730,
+        "y": 40,
+        "wires": [
+            [
+                "245e4341d4fb611c"
+            ]
+        ]
+    },
+    {
+        "id": "50eeb3e362f9027f",
+        "type": "link out",
+        "z": "829d803b6033a693",
+        "name": "started1s",
+        "mode": "link",
+        "links": [
+            "2f4c0f98.dee2",
+            "397ab7f44b893c89",
+            "65145c939b6647e2",
+            "65b38bfeb3fee710",
+            "6d1e12f51f9af0b6",
+            "788fabff98c7973c",
+            "9b2bc9849aee310b",
+            "a1e14624058e74cd",
+            "a67c18aaca2f5fa5",
+            "bd80ec228fb9a86d",
+            "cc9c4092edeb43cc",
+            "d3fc91d87d5d5f62",
+            "d7c1fb4c028b21a5",
+            "e5f38b4a07a5e278",
+            "f0b355967b33dfee",
+            "d0104e0163745993",
+            "5e7d5e4335d37794"
+        ],
+        "x": 1095,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ea0e57d83f291e23",
+        "type": "debug",
+        "z": "829d803b6033a693",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "4f3121f158f06a61",
+        "type": "python3-function",
+        "z": "829d803b6033a693",
+        "name": "Rotor left",
+        "func": "from OpenScan import motorrun, load_int\nfrom time import sleep\n\nmotorrun('rotor',100,True)\n\nmotorrun('tt',360,True)\nmotorrun('extra',360,True)",
+        "outputs": 1,
+        "x": 940,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4a8a04b1e5dca8fe",
+        "type": "inject",
+        "z": "829d803b6033a693",
+        "name": "run rotor till endstop",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 770,
+        "y": 80,
+        "wires": [
+            [
+                "4f3121f158f06a61"
+            ]
         ]
     },
     {
@@ -2376,7 +2527,8 @@
         "z": "1613373abaf77a2c",
         "name": "",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 55,
         "y": 1400,
@@ -3119,7 +3271,8 @@
         "z": "1613373abaf77a2c",
         "name": "start camchk",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 55,
         "y": 100,
@@ -3187,7 +3340,8 @@
         "z": "1613373abaf77a2c",
         "name": "start routine settings",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 55,
         "y": 500,
@@ -3428,7 +3582,8 @@
             "960912e90ba5b5bc",
             "a4f09e25.02569",
             "ed35109311335099",
-            "fb13752beddee9f2"
+            "fb13752beddee9f2",
+            "50eeb3e362f9027f"
         ],
         "x": 355,
         "y": 140,
@@ -4097,7 +4252,8 @@
         "z": "4981d84ef1a366d1",
         "name": "",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 655,
         "y": 220,
@@ -5658,7 +5814,8 @@
         "links": [
             "960912e90ba5b5bc",
             "b01581296b94dfcd",
-            "d859bb39914d4999"
+            "d859bb39914d4999",
+            "50eeb3e362f9027f"
         ],
         "x": 75,
         "y": 1340,
@@ -5725,7 +5882,8 @@
         "links": [
             "960912e90ba5b5bc",
             "9c51aa678f16980f",
-            "b42e061fb1f1f3d7"
+            "b42e061fb1f1f3d7",
+            "50eeb3e362f9027f"
         ],
         "x": 75,
         "y": 1380,
@@ -7297,49 +7455,6 @@
         "wires": []
     },
     {
-        "id": "65b0130e390c2e67",
-        "type": "ui_text_input",
-        "z": "017bd4e4a428bee5",
-        "name": "tten",
-        "label": "",
-        "tooltip": "",
-        "group": "644b3bcc903d46ca",
-        "order": 19,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "mode": "number",
-        "delay": "0",
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 410,
-        "y": 3220,
-        "wires": [
-            [
-                "fe22723ce5a3495f"
-            ]
-        ]
-    },
-    {
-        "id": "10ac340984418a58",
-        "type": "ui_text",
-        "z": "017bd4e4a428bee5",
-        "group": "644b3bcc903d46ca",
-        "order": 18,
-        "width": 4,
-        "height": 1,
-        "name": "tten",
-        "label": "Turntable enable",
-        "format": "",
-        "layout": "row-spread",
-        "className": "",
-        "x": 750,
-        "y": 3220,
-        "wires": []
-    },
-    {
         "id": "661614f5bd2c71d6",
         "type": "ui_text_input",
         "z": "017bd4e4a428bee5",
@@ -7358,7 +7473,7 @@
         "className": "",
         "topicType": "msg",
         "x": 420,
-        "y": 3260,
+        "y": 3220,
         "wires": [
             [
                 "2af447a6905b83bc"
@@ -7374,12 +7489,12 @@
         "width": 4,
         "height": 1,
         "name": "endstop1",
-        "label": "Endstop 1",
+        "label": "Endstop Rotor",
         "format": "",
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 3260,
+        "y": 3220,
         "wires": []
     },
     {
@@ -7401,7 +7516,7 @@
         "className": "",
         "topicType": "msg",
         "x": 420,
-        "y": 3300,
+        "y": 3260,
         "wires": [
             [
                 "787a128f84f747c0"
@@ -7416,13 +7531,13 @@
         "order": 22,
         "width": 4,
         "height": 1,
-        "name": "endstop1",
-        "label": "Endstop 2",
+        "name": "endstop2",
+        "label": "Endstop Turntable",
         "format": "",
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 3300,
+        "y": 3260,
         "wires": []
     },
     {
@@ -8340,14 +8455,14 @@
         "type": "function",
         "z": "017bd4e4a428bee5",
         "name": "loadI",
-        "func": "var file = 'pin_endstop1'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data);\nreturn msg",
+        "func": "var file = 'pin_rotor_endstop'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data);\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 3260,
+        "y": 3220,
         "wires": [
             [
                 "661614f5bd2c71d6"
@@ -8359,14 +8474,14 @@
         "type": "function",
         "z": "017bd4e4a428bee5",
         "name": "write",
-        "func": "var file = 'pin_endstop1'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "func": "var file = 'pin_rotor_endstop'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 3260,
+        "y": 3220,
         "wires": [
             []
         ]
@@ -8590,25 +8705,6 @@
         ]
     },
     {
-        "id": "5d70f4715c9a5ae1",
-        "type": "function",
-        "z": "017bd4e4a428bee5",
-        "name": "loadI",
-        "func": "var file = 'pin_tt_enable'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data);\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 290,
-        "y": 3220,
-        "wires": [
-            [
-                "65b0130e390c2e67"
-            ]
-        ]
-    },
-    {
         "id": "90f4d220928e4727",
         "type": "function",
         "z": "017bd4e4a428bee5",
@@ -8643,35 +8739,18 @@
         ]
     },
     {
-        "id": "fe22723ce5a3495f",
-        "type": "function",
-        "z": "017bd4e4a428bee5",
-        "name": "write",
-        "func": "var file = 'pin_tt_enable'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 610,
-        "y": 3220,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "58bbe9fc41e0d7b9",
         "type": "function",
         "z": "017bd4e4a428bee5",
         "name": "loadI",
-        "func": "var file = 'pin_endstop2'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data);\nreturn msg",
+        "func": "var file = 'pin_tt_endstop'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data);\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 3300,
+        "y": 3260,
         "wires": [
             [
                 "e23a396162026618"
@@ -8683,14 +8762,14 @@
         "type": "function",
         "z": "017bd4e4a428bee5",
         "name": "write",
-        "func": "var file = 'pin_endstop2'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "func": "var file = 'pin_tt_endstop'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
         "x": 610,
-        "y": 3300,
+        "y": 3260,
         "wires": [
             []
         ]
@@ -9330,7 +9409,8 @@
         "links": [
             "ec2db55a99bbe3ee",
             "d5175561293ef490",
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 835,
         "y": 900,
@@ -9455,7 +9535,8 @@
         "z": "017bd4e4a428bee5",
         "name": "enable projectname",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 135,
         "y": 340,
@@ -9475,7 +9556,8 @@
         "z": "017bd4e4a428bee5",
         "name": "enable projectname",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 155,
         "y": 760,
@@ -9491,7 +9573,8 @@
         "z": "017bd4e4a428bee5",
         "name": "enable projectname",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 135,
         "y": 940,
@@ -9507,7 +9590,8 @@
         "z": "017bd4e4a428bee5",
         "name": "enable projectname",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 135,
         "y": 1020,
@@ -9524,7 +9608,8 @@
         "z": "017bd4e4a428bee5",
         "name": "enable projectname",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 175,
         "y": 1600,
@@ -9556,7 +9641,8 @@
         "z": "017bd4e4a428bee5",
         "name": "enable projectname",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 155,
         "y": 2280,
@@ -9583,7 +9669,8 @@
         "z": "017bd4e4a428bee5",
         "name": "enable projectname",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 155,
         "y": 2900,
@@ -9597,7 +9684,6 @@
                 "dcee66c0d56c6934",
                 "6ec7d85bb17eb159",
                 "4f42d02a3776a006",
-                "5d70f4715c9a5ae1",
                 "3b126549c03a872e",
                 "58bbe9fc41e0d7b9"
             ]
@@ -10375,7 +10461,8 @@
         "z": "c8e7ecb5849edb9a",
         "name": "",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 75,
         "y": 140,
@@ -10717,7 +10804,8 @@
         "z": "c8e7ecb5849edb9a",
         "name": "",
         "links": [
-            "960912e90ba5b5bc"
+            "960912e90ba5b5bc",
+            "50eeb3e362f9027f"
         ],
         "x": 55,
         "y": 400,

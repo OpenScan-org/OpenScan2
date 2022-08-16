@@ -64,7 +64,8 @@ def camera(cmd, msg = {}):
     except:
         return 400
 
-def motorrun(motor,angle):
+def motorrun(motor,angle,ES_enable=False,ES_start_state = True):
+    #motor can be "rotor", "tt" or "extra"
     import RPi.GPIO as GPIO
     from time import sleep
     from math import cos
@@ -77,6 +78,7 @@ def motorrun(motor,angle):
     spr = load_int(motor + '_stepsperrotation')
     dirpin = load_int('pin_' + motor + '_dir')
     steppin = load_int('pin_' + motor +'_step')
+    ES_pin = load_int('pin_' + motor + '_endstop')
     dir = load_int(motor + '_dir')
     ramp = load_int(motor + '_accramp')
     acc = load_float(motor + '_acc')
@@ -86,12 +88,16 @@ def motorrun(motor,angle):
     step_count=int(angle*spr/360) * dir
     GPIO.setup(dirpin, GPIO.OUT)
     GPIO.setup(steppin, GPIO.OUT)
+    GPIO.setup(ES_pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+
     if (step_count>0):
         GPIO.output(dirpin, GPIO.HIGH)
     if(step_count<0):
         GPIO.output(dirpin, GPIO.LOW)
         step_count=-step_count
     for x in range(step_count):
+        if ES_enable == True and GPIO.input(ES_pin) != ES_start_state:
+            break
         GPIO.output(steppin, GPIO.HIGH)
         if x<=ramp and x<=step_count/2:
             delay = delay_init * (1 + -1/acc*cos(1*(ramp-x)/ramp)+1/acc)
