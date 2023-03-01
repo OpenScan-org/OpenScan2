@@ -4735,7 +4735,7 @@
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
         "name": "load camera&model",
-        "func": "from OpenScan import load_str, load_bool\n\nmodel = load_str('model')\ncamera = load_str('camera')\nupdate = load_bool('updateable')\nmsg['model'] = model\nmsg['camera'] = camera\nmsg2 = {}\nmsg3 = {}\nmsg4 = {}\n\nif camera in ('imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','gphoto'):\n    msg['payload'] = {\"group\":{\"hide\":[\"Scan_Arducam\"],\"show\":[\"Scan_Settings\",\"Scan_Picamera\"]}}\nelif camera in ('imx519'):\n    msg['payload'] = {\"group\":{\"hide\":[\"Scan_Picamera\"],\"show\":[\"Scan_Settings\",\"Scan_Arducam\"]}}\nelif camera in ('external'):\n    msg['payload'] = {\"group\":{\"hide\":[\"Scan_Arducam\",\"Scan_Picamera\"],\"show\":[\"Scan_Settings\"]}}\n\n\nif model == 'None' or model == '' or camera == 'None' or camera == '':\n    msg2['payload']={\"tabs\": {\"hide\": [\"Scan\", \"Files&Cloud\",\"Settings\",\"Update & Info\"]}}\n    msg3['payload'] = {\"group\":{\"hide\":[\"OpenScan_Home\"],\"show\":[\"OpenScan_Initialize\"]}}\nelse:\n    msg2['payload']={\"tabs\": {\"show\": [\"Scan\", \"Files&Cloud\",\"Settings\",\"Update & Info\"]},\"hide\":{}}\n    msg3['payload'] = {\"group\":{\"show\":[\"OpenScan_Home\"],\"hide\":[\"OpenScan_Initialize\"]}}\n\nif update == True:\n    msg4['payload'] = {\"group\":{\"show\":[\"OpenScan_Update\"]}}\nelif update == False:\n    msg4['payload'] = {\"group\":{\"hide\":[\"OpenScan_Update\"]}}\n\nreturn msg,msg2,msg3,msg4",
+        "func": "from OpenScan import load_str, load_bool\n\nmodel = load_str('model')\ncamera = load_str('camera')\nupdate = load_bool('updateable')\nmsg['model'] = model\nmsg['camera'] = camera\nmsg2 = {}\nmsg3 = {}\nmsg4 = {}\n\nif camera in ('imx519'):\n    msg['payload'] = {\"group\":{\"hide\":[\"Scan_Picamera\"],\"show\":[\"Scan_Settings\",\"Scan_Arducam\"]}}\n\n\nif model == 'None' or model == '':\n    msg2['payload']={\"tabs\": {\"hide\": [\"Scan\", \"Files&Cloud\",\"Settings\",\"Update & Info\"]}}\n    msg3['payload'] = {\"group\":{\"hide\":[\"OpenScan_Home\"],\"show\":[\"OpenScan_Initialize\"]}}\nelse:\n    msg2['payload']={\"tabs\": {\"show\": [\"Scan\", \"Files&Cloud\",\"Settings\",\"Update & Info\"]},\"hide\":{}}\n    msg3['payload'] = {\"group\":{\"show\":[\"OpenScan_Home\"],\"hide\":[\"OpenScan_Initialize\"]}}\n\nif update == True:\n    msg4['payload'] = {\"group\":{\"show\":[\"OpenScan_Update\"]}}\nelif update == False:\n    msg4['payload'] = {\"group\":{\"hide\":[\"OpenScan_Update\"]}}\n\nreturn msg,msg2,msg3,msg4",
         "outputs": 4,
         "x": 340,
         "y": 40,
@@ -4804,7 +4804,7 @@
         "func": "from OpenScan import load_bool\n\nif load_bool('advanced_settings') == False:\n    msg['payload']={\"group\":{\"hide\":[\"Settings_Camera\",\"Settings_Motor\",\"Settings_Pinout\",],\"show\":[\"Settings_General\",\"Settings_Network\",\"Settings_OpenScanCloud\"]}}\nelse:\n    msg['payload']={\"group\":{\"hide\":[],\"show\":[\"Settings_General\",\"Settings_Network\",\"Settings_OpenScanCloud\",\"Settings_Camera\",\"Settings_Motor\",\"Settings_Pinout\",]}}\nreturn msg",
         "outputs": 1,
         "x": 320,
-        "y": 80,
+        "y": 100,
         "wires": [
             [
                 "b4db790aad28ba39"
