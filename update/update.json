@@ -109,5 +109,42 @@
             "dst": "/home/pi/OpenScan/files/logo.jpg",
             "filesize": 582519
         }
+    },
+    "betaARDU": {
+        "1": {
+            "src": "betaARDU/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "filesize": 8230
+        },
+        "2": {
+            "src": "betaARDU/Arducam.py",
+            "dst": "/usr/lib/python3/dist-packages/Arducam.py",
+            "filesize": 6154
+        },
+        "3": {
+            "src": "betaARDU/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "filesize": 6443
+        },
+        "4": {
+            "src": "betaARDU/config.txt",
+            "dst": "/boot/config.txt",
+            "filesize": 2178
+        },
+        "5": {
+            "src": "betaARDU/flows.json",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
+            "filesize": 320952
+        },
+        "6": {
+            "src": "betaARDU/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "filesize": 20321
+        },
+        "7": {
+            "src": "files/logo.jpg",
+            "dst": "/home/pi/OpenScan/files/logo.jpg",
+            "filesize": 582519
+        }
     }
 }
