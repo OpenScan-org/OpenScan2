@@ -237,7 +237,7 @@
         "tab": "e23b837a9f040895",
         "order": 1,
         "disp": false,
-        "width": "6",
+        "width": 7,
         "collapse": false,
         "className": ""
     },
@@ -246,9 +246,9 @@
         "type": "ui_group",
         "name": "Arducam",
         "tab": "e23b837a9f040895",
-        "order": 3,
+        "order": 2,
         "disp": false,
-        "width": 12,
+        "width": 7,
         "collapse": false,
         "className": ""
     },
@@ -425,22 +425,43 @@
         "height": 1
     },
     {
-        "id": "6451c29233a72aad",
+        "id": "dbb7eb0d2f05c7de",
+        "type": "ui_group",
+        "name": "advanced",
+        "tab": "e23b837a9f040895",
+        "order": 3,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "67bed070378925f9",
         "type": "ui_spacer",
         "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "7aaf184330605300",
-        "order": 21,
+        "order": 10,
         "width": 1,
         "height": 1
     },
     {
-        "id": "ea06ee234b711905",
+        "id": "07f28cd0a8de7b59",
         "type": "ui_spacer",
         "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "7aaf184330605300",
-        "order": 24,
+        "order": 12,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "d7ba75471c0e3d24",
+        "type": "ui_spacer",
+        "z": "1613373abaf77a2c",
+        "name": "spacer",
+        "group": "7aaf184330605300",
+        "order": 14,
         "width": 1,
         "height": 1
     },
@@ -786,7 +807,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "global",
-        "func": "global.set('flag_pw', true)\nglobal.set('flag', true)\nglobal.set('combine', false)\nglobal.set('focus', 12.1)\nglobal.set('focus1', 0)\nglobal.set('focus2', 0)\n\n",
+        "func": "global.set('flag_pw', true)\nglobal.set('flag', true)\nglobal.set('combine', false)\nglobal.set('focus', 12.1)\nglobal.set('focus1', 0)\nglobal.set('focus2', 0)\n\nglobal.set('light', 0)\nglobal.set('state1', 0)",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -805,7 +826,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "CREATE FACTORY DEFAULT",
-        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'cam_mask_threshold':45,\n    'cam_mask':true,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n    'pin_rotor_endstop':14,\n    'pin_tt_endstop':5,\n    'pin_extra_endstop':26,\n    'pin_extra_dir':21,\n    'pin_extra_step':20,\n    'pin_extra_enable':19,\n    'extra_acc':1,\n    'extra_accramp':200,\n    'extra_angle':10,\n    'extra_delay':0.0001,\n    'extra_dir':1,\n    'extra_stepsperrotation':3200,\n}}\nreturn msg",
+        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'cam_mask_threshold':45,\n    'cam_mask':true,\n    'hostname':'openscan',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n    'pin_rotor_endstop':14,\n    'pin_tt_endstop':5,\n    'pin_extra_endstop':26,\n    'pin_extra_dir':21,\n    'pin_extra_step':20,\n    'pin_extra_enable':19,\n    'extra_acc':1,\n    'extra_accramp':200,\n    'extra_angle':10,\n    'extra_delay':0.0001,\n    'extra_dir':1,\n    'extra_stepsperrotation':3200,\n    'preset':2,\n    'object_size':11.0,\n}}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1004,7 +1025,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "FIRMWARE VERSION",
-        "func": "msg.firmware = '2022-08-16'\nreturn msg",
+        "func": "msg.firmware = '2023-03-27'\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1058,7 +1079,7 @@
         "order": 2,
         "width": "0",
         "height": "0",
-        "format": "\n<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        load();\n    }else setTimeout(load, 500)\n});\n\nfunction load(){\n    $('#bmac').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<div/ id=\"bmac\">');\n    \n    div.append(p);\n    div[0].style.margin = '0px 0px 0px auto';\n    toolbar.append(div);\n\n\n    p.append('<a class=\"md-button\" target=\"_blank\" href=\"https://www.patreon.com/bePatron?u=51974655\"><U>DONATE</U></a>');\n    p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" href=\"http://openscan:1312/shutdown\"><i class=\"fa fa-power-off\" ></i></a>')\n    p.append('   ')\n    p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" href=\"http://openscan:1312/reboot\"><i class=\"fa fa-repeat\" ></i></a>')\n\n}\n\n</script>\n",
+        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        load();\n    } else {\n        setTimeout(load, 500);\n    }\n});\n\nfunction load(){\n    $('#bmac').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<div/ id=\"bmac\">');\n    \n    div.append(p);\n    div[0].style.margin = '0px 0px 0px auto';\n    toolbar.append(div);\n\n    // Retrieve the file content using $.get() method\n    $.get('/settings/hostname', function(data) {\n        // Construct the hyperlink URL using the retrieved data\n        var link = 'http://' + data.trim() +':1312';\n        // Add the hyperlink to the p element\n        p.append('<a class=\"md-button2\" style=\"margin:5px 10px 5px 0;\" href=\"' + link + '/shutdown\"><i class=\"fa fa-power-off\"></i></a>');\n        p.append('<a class=\"md-button2\" style=\"margin:5px 0 5px 10px;\" href=\"' + link + '/reboot\"><i class=\"fa fa-repeat\"></i></a>');\n    });\n\n    p.append('<a class=\"md-button\" target=\"_blank\" href=\"https://www.patreon.com/bePatron?u=51974655\"><U>DONATE</U></a>');\n}\n\n</script>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
@@ -1158,7 +1179,7 @@
             "d0104e0163745993",
             "5e7d5e4335d37794"
         ],
-        "x": 1095,
+        "x": 1105,
         "y": 40,
         "wires": []
     },
@@ -1252,308 +1273,14 @@
         "wires": []
     },
     {
-        "id": "828e5298.d2192",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "group": "7aaf184330605300",
-        "order": 9,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "⇐",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "num",
-        "topic": "",
-        "topicType": "str",
-        "x": 90,
-        "y": 400,
-        "wires": [
-            [
-                "b12e54fb.3141b8"
-            ]
-        ]
-    },
-    {
-        "id": "96c7e241.458e6",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "group": "7aaf184330605300",
-        "order": 10,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "label": "⇒",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "num",
-        "topic": "",
-        "topicType": "str",
-        "x": 90,
-        "y": 440,
-        "wires": [
-            [
-                "37f52dd4.bd7572"
-            ]
-        ]
-    },
-    {
-        "id": "2e854876.6b6008",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "group": "7aaf184330605300",
-        "order": 6,
-        "width": 2,
-        "height": 1,
-        "passthru": true,
-        "label": "⇑",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "num",
-        "topic": "",
-        "topicType": "str",
-        "x": 90,
-        "y": 280,
-        "wires": [
-            [
-                "555aea34.b3b5e4"
-            ]
-        ]
-    },
-    {
-        "id": "753817f.1b9b3e8",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "group": "7aaf184330605300",
-        "order": 7,
-        "width": 2,
-        "height": 1,
-        "passthru": true,
-        "label": "⇓",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "num",
-        "topic": "",
-        "topicType": "str",
-        "x": 90,
-        "y": 320,
-        "wires": [
-            [
-                "9905e0c9.dddcd"
-            ]
-        ]
-    },
-    {
-        "id": "8775044.3aa3ef8",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 8,
-        "width": 2,
-        "height": 1,
-        "name": "",
-        "label": "Turntable",
-        "format": "",
-        "layout": "row-left",
-        "className": "",
-        "x": 100,
-        "y": 360,
-        "wires": []
-    },
-    {
-        "id": "9e8a2d23.bf6ce",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 5,
-        "width": 2,
-        "height": 1,
-        "name": "",
-        "label": "Rotor",
-        "format": "",
-        "layout": "row-left",
-        "className": "",
-        "x": 90,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "555aea34.b3b5e4",
-        "type": "delay",
-        "z": "1613373abaf77a2c",
-        "name": "lmt 0.2/s",
-        "pauseType": "rate",
-        "timeout": "0.1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "0.2",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "outputs": 1,
-        "x": 220,
-        "y": 280,
-        "wires": [
-            [
-                "46e00b45.c24ca4"
-            ]
-        ]
-    },
-    {
-        "id": "9905e0c9.dddcd",
-        "type": "delay",
-        "z": "1613373abaf77a2c",
-        "name": "lmt 0.2/s",
-        "pauseType": "rate",
-        "timeout": "0.1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "0.2",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "outputs": 1,
-        "x": 220,
-        "y": 320,
-        "wires": [
-            [
-                "6ee089cb343a35ef"
-            ]
-        ]
-    },
-    {
-        "id": "b12e54fb.3141b8",
-        "type": "delay",
-        "z": "1613373abaf77a2c",
-        "name": "lmt 0.2/s",
-        "pauseType": "rate",
-        "timeout": "0.1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "0.2",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "outputs": 1,
-        "x": 220,
-        "y": 400,
-        "wires": [
-            [
-                "c1871a2b9af5419a"
-            ]
-        ]
-    },
-    {
-        "id": "37f52dd4.bd7572",
-        "type": "delay",
-        "z": "1613373abaf77a2c",
-        "name": "lmt 0.2/s",
-        "pauseType": "rate",
-        "timeout": "0.1",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "0.2",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": true,
-        "outputs": 1,
-        "x": 220,
-        "y": 440,
-        "wires": [
-            [
-                "42b9f1fc49e69f54"
-            ]
-        ]
-    },
-    {
-        "id": "46e00b45.c24ca4",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "Rotor left",
-        "func": "from OpenScan import motorrun, load_int\n\nmotorrun('rotor',load_int('rotor_angle'))",
-        "outputs": 1,
-        "x": 380,
-        "y": 280,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6ee089cb343a35ef",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "Rotor right",
-        "func": "from OpenScan import motorrun, load_int\n\nmotorrun('rotor',-load_int('rotor_angle'))",
-        "outputs": 1,
-        "x": 370,
-        "y": 320,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "42b9f1fc49e69f54",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "TT right",
-        "func": "from OpenScan import motorrun, load_int\n\nmotorrun('tt',-load_int('tt_angle'))",
-        "outputs": 1,
-        "x": 360,
-        "y": 440,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c1871a2b9af5419a",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "TT left",
-        "func": "from OpenScan import motorrun, load_int\n\nmotorrun('tt',load_int('tt_angle'))",
-        "outputs": 1,
-        "x": 350,
-        "y": 400,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "aebad788761dce4a",
         "type": "ui_slider",
         "z": "1613373abaf77a2c",
         "name": "routine_photocount",
         "label": "",
         "tooltip": "",
-        "group": "7aaf184330605300",
-        "order": 14,
+        "group": "dbb7eb0d2f05c7de",
+        "order": 2,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -1561,11 +1288,11 @@
         "topic": "",
         "topicType": "str",
         "min": "10",
-        "max": "300",
+        "max": "500",
         "step": "10",
         "className": "",
         "x": 350,
-        "y": 540,
+        "y": 300,
         "wires": [
             [
                 "ce28a0b5bfb0d5a1"
@@ -1584,10 +1311,11 @@
         "finalize": "",
         "libs": [],
         "x": 190,
-        "y": 540,
+        "y": 300,
         "wires": [
             [
-                "aebad788761dce4a"
+                "aebad788761dce4a",
+                "baed8d6e7daa8b38"
             ]
         ]
     },
@@ -1603,7 +1331,7 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 540,
+        "y": 300,
         "wires": [
             []
         ]
@@ -1620,7 +1348,7 @@
         "finalize": "",
         "libs": [],
         "x": 190,
-        "y": 580,
+        "y": 340,
         "wires": [
             [
                 "470b10726d298834",
@@ -1636,8 +1364,8 @@
         "label": " ",
         "tooltip": "",
         "group": "7aaf184330605300",
-        "order": 16,
-        "width": 3,
+        "order": 5,
+        "width": 4,
         "height": 1,
         "passthru": false,
         "outs": "end",
@@ -1648,7 +1376,7 @@
         "step": "0.1",
         "className": "",
         "x": 310,
-        "y": 580,
+        "y": 340,
         "wires": [
             [
                 "44c3947a9b92d32d",
@@ -1668,7 +1396,7 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 580,
+        "y": 340,
         "wires": [
             []
         ]
@@ -1677,8 +1405,8 @@
         "id": "069bcf58b1fe44cd",
         "type": "ui_text",
         "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 13,
+        "group": "dbb7eb0d2f05c7de",
+        "order": 1,
         "width": 3,
         "height": 1,
         "name": "photocount",
@@ -1686,8 +1414,8 @@
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 670,
-        "y": 540,
+        "x": 730,
+        "y": 300,
         "wires": []
     },
     {
@@ -1695,7 +1423,7 @@
         "type": "ui_text",
         "z": "1613373abaf77a2c",
         "group": "7aaf184330605300",
-        "order": 15,
+        "order": 4,
         "width": 3,
         "height": 1,
         "name": "shutter",
@@ -1703,8 +1431,8 @@
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 650,
-        "y": 580,
+        "x": 710,
+        "y": 340,
         "wires": []
     },
     {
@@ -1714,8 +1442,8 @@
         "name": "Crop X",
         "label": " ",
         "tooltip": "",
-        "group": "7aaf184330605300",
-        "order": 18,
+        "group": "dbb7eb0d2f05c7de",
+        "order": 4,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -1727,7 +1455,7 @@
         "step": "1",
         "className": "",
         "x": 320,
-        "y": 620,
+        "y": 420,
         "wires": [
             [
                 "c2b2ab5524271123"
@@ -1741,8 +1469,8 @@
         "name": "Crop Y",
         "label": " ",
         "tooltip": "",
-        "group": "7aaf184330605300",
-        "order": 20,
+        "group": "dbb7eb0d2f05c7de",
+        "order": 6,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -1754,7 +1482,7 @@
         "step": "1",
         "className": "",
         "x": 310,
-        "y": 660,
+        "y": 460,
         "wires": [
             [
                 "26f17a7f406df73c"
@@ -1773,7 +1501,7 @@
         "finalize": "",
         "libs": [],
         "x": 190,
-        "y": 620,
+        "y": 420,
         "wires": [
             [
                 "cc69dba8d54a29dd"
@@ -1792,7 +1520,7 @@
         "finalize": "",
         "libs": [],
         "x": 190,
-        "y": 660,
+        "y": 460,
         "wires": [
             [
                 "e3a90602605fb9e9"
@@ -1811,7 +1539,7 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 620,
+        "y": 420,
         "wires": [
             []
         ]
@@ -1828,7 +1556,7 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 660,
+        "y": 460,
         "wires": [
             []
         ]
@@ -1837,8 +1565,8 @@
         "id": "fecf5cff888bb570",
         "type": "ui_text",
         "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 17,
+        "group": "dbb7eb0d2f05c7de",
+        "order": 3,
         "width": 3,
         "height": 1,
         "name": "cropx",
@@ -1846,16 +1574,16 @@
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 690,
-        "y": 620,
+        "x": 710,
+        "y": 420,
         "wires": []
     },
     {
         "id": "0ee4950bd21498bd",
         "type": "ui_text",
         "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 19,
+        "group": "dbb7eb0d2f05c7de",
+        "order": 5,
         "width": 3,
         "height": 1,
         "name": "cropy",
@@ -1863,8 +1591,8 @@
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 690,
-        "y": 660,
+        "x": 710,
+        "y": 460,
         "wires": []
     },
     {
@@ -1875,8 +1603,8 @@
         "label": "",
         "tooltip": "",
         "group": "7aaf184330605300",
-        "order": 4,
-        "width": 3,
+        "order": 3,
+        "width": 4,
         "height": 1,
         "passthru": true,
         "mode": "text",
@@ -1886,7 +1614,7 @@
         "className": "",
         "topicType": "str",
         "x": 320,
-        "y": 500,
+        "y": 260,
         "wires": [
             [
                 "67385b196c517ac6"
@@ -1905,7 +1633,7 @@
         "finalize": "",
         "libs": [],
         "x": 190,
-        "y": 500,
+        "y": 260,
         "wires": [
             [
                 "ebbf11b55d758806"
@@ -1924,68 +1652,9 @@
         "finalize": "",
         "libs": [],
         "x": 510,
-        "y": 500,
+        "y": 260,
         "wires": [
             []
-        ]
-    },
-    {
-        "id": "4dd7285c2b0fd79b",
-        "type": "ui_slider",
-        "z": "1613373abaf77a2c",
-        "name": "ringlight",
-        "label": "",
-        "tooltip": "",
-        "group": "7aaf184330605300",
-        "order": 12,
-        "width": 3,
-        "height": 1,
-        "passthru": true,
-        "outs": "all",
-        "topic": "",
-        "topicType": "str",
-        "min": 0,
-        "max": "3",
-        "step": 1,
-        "className": "",
-        "x": 320,
-        "y": 700,
-        "wires": [
-            [
-                "873dace18a23fdf2"
-            ]
-        ]
-    },
-    {
-        "id": "873dace18a23fdf2",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "LED",
-        "func": "from OpenScan import ringlight\nval = msg['payload']\n\nif val == 0:\n    ringlight(1,False)\n    ringlight(2,False)\nelif val == 1:\n    ringlight(1,False)\n    ringlight(2,True)\nelif val == 2:\n    ringlight(1,True)\n    ringlight(2,False)\nelif val == 3:\n    ringlight(1,True)\n    ringlight(2,True)",
-        "outputs": 1,
-        "x": 510,
-        "y": 700,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9e30e33a1520fee0",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "loadI",
-        "func": "msg.payload = 0\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 190,
-        "y": 700,
-        "wires": [
-            [
-                "4dd7285c2b0fd79b"
-            ]
         ]
     },
     {
@@ -1994,7 +1663,7 @@
         "z": "1613373abaf77a2c",
         "name": "start ",
         "group": "7aaf184330605300",
-        "order": 22,
+        "order": 11,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -2008,8 +1677,8 @@
         "payloadType": "date",
         "topic": "enabled",
         "topicType": "str",
-        "x": 150,
-        "y": 880,
+        "x": 190,
+        "y": 740,
         "wires": [
             [
                 "33d94a04b96a2de0",
@@ -2024,7 +1693,7 @@
         "z": "1613373abaf77a2c",
         "name": "stop",
         "group": "7aaf184330605300",
-        "order": 23,
+        "order": 13,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -2038,8 +1707,8 @@
         "payloadType": "global",
         "topic": "",
         "topicType": "str",
-        "x": 490,
-        "y": 960,
+        "x": 530,
+        "y": 820,
         "wires": [
             [
                 "1787f08ed7070ddd",
@@ -2054,8 +1723,8 @@
         "name": "stop",
         "func": "from OpenScan import load_str, save\n\nstatus = load_str('status_internal_cam')\n\nif status == 'no camera found' or status[:5]=='Featu' or status =='--READY--':\n    return\n\nsave('status_internal_cam', 'Routine-stopping')",
         "outputs": 1,
-        "x": 630,
-        "y": 960,
+        "x": 670,
+        "y": 820,
         "wires": [
             []
         ]
@@ -2070,8 +1739,8 @@
             "8367cfa0bf5bc5df",
             "b33d604c.5f1a6"
         ],
-        "x": 395,
-        "y": 840,
+        "x": 435,
+        "y": 700,
         "wires": []
     },
     {
@@ -2095,8 +1764,8 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 290,
-        "y": 1000,
+        "x": 330,
+        "y": 860,
         "wires": [
             [
                 "c1c044f3c2139f68"
@@ -2118,8 +1787,8 @@
             "fb13752beddee9f2",
             "bd75f33b8a57c522"
         ],
-        "x": 55,
-        "y": 880,
+        "x": 95,
+        "y": 740,
         "wires": [
             [
                 "7dd287f40385922f"
@@ -2137,8 +1806,8 @@
             "8367cfa0bf5bc5df",
             "b33d604c.5f1a6"
         ],
-        "x": 695,
-        "y": 880,
+        "x": 735,
+        "y": 740,
         "wires": []
     },
     {
@@ -2146,18 +1815,20 @@
         "type": "function",
         "z": "1613373abaf77a2c",
         "name": "enable",
-        "func": "msg.flag = global.get('flag')\nif (global.get('flag_pw')== true){\n    return msg\n}\n",
+        "func": "msg.flag = global.get('flag')\nmsg.light = global.get('light')\nmsg.state1 = global.get('state1')\n\nvar min = 1;\nvar max = 100000;\nvar random = Math.floor(Math.random() * (max - min + 1)) + min;\n\nvar formatted = random.toString().padStart(3, '0');\nmsg.payload=\"/tmp2/preview.jpg?ts=\" + Date.now().toString();\n\nif (global.get('flag_pw') == false){\n    delete msg.payload;\n}\n\nreturn msg\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 230,
-        "y": 1220,
+        "x": 270,
+        "y": 1040,
         "wires": [
             [
                 "04cc2467807d2d6b",
-                "14f9617b5b301318"
+                "14f9617b5b301318",
+                "e3bd0db4a124b012",
+                "8f5d87ce24c40b11"
             ]
         ]
     },
@@ -2180,8 +1851,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 610,
-        "y": 1260,
+        "x": 650,
+        "y": 960,
         "wires": [
             []
         ]
@@ -2205,8 +1876,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 390,
-        "y": 1260,
+        "x": 450,
+        "y": 960,
         "wires": [
             []
         ]
@@ -2268,8 +1939,8 @@
         "z": "1613373abaf77a2c",
         "name": "preview internal cam",
         "info": "",
-        "x": 110,
-        "y": 1160,
+        "x": 150,
+        "y": 940,
         "wires": []
     },
     {
@@ -2293,11 +1964,12 @@
         "topic": "Repeat",
         "payload": "0.2",
         "payloadType": "str",
-        "x": 80,
-        "y": 1220,
+        "x": 120,
+        "y": 1080,
         "wires": [
             [
-                "95439678bb2df2a2"
+                "95439678bb2df2a2",
+                "79ecb889f7113405"
             ]
         ]
     },
@@ -2306,14 +1978,13 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Take Preview Shot",
-        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\n\nstatus = load_str('status_internal_cam')\n\nif msg['flag'] == False and not 'Routine' in status:\n    return msg\n\nmsg['payload']=\"/tmp2/preview.jpg?ts=\"+str(int(time()*10))\n\nif status!=\"--READY--\":\n    return msg\n\n#msg['preview'] = True\n\ncamera('/picam2_take_photo')\n\nreturn msg\n",
+        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\n\nstatus = load_str('status_internal_cam')\n\nif msg['flag'] == False and not 'Routine' in status:\n    return msg\n\nmsg['payload']=\"/tmp2/preview.jpg?ts=\"+str(int(time()))\n\nif status!=\"--READY--\":\n    return msg\n\n#msg['preview'] = True\n\ncamera('/picam2_take_photo')\n\nreturn msg\n",
         "outputs": 1,
-        "x": 410,
-        "y": 1220,
+        "x": 470,
+        "y": 1000,
         "wires": [
             [
                 "948a3ae4444685f2",
-                "8f5d87ce24c40b11",
                 "1316b9e28c9ea809"
             ]
         ]
@@ -2323,7 +1994,7 @@
         "type": "ui_text",
         "z": "1613373abaf77a2c",
         "group": "7aaf184330605300",
-        "order": 3,
+        "order": 2,
         "width": 3,
         "height": 1,
         "name": "projectname",
@@ -2331,25 +2002,8 @@
         "format": "",
         "layout": "row-left",
         "className": "",
-        "x": 670,
-        "y": 500,
-        "wires": []
-    },
-    {
-        "id": "82c8ad50ecfbc755",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 11,
-        "width": 3,
-        "height": 1,
-        "name": "ringlight",
-        "label": "Ringlight",
-        "format": "",
-        "layout": "row-left",
-        "className": "",
-        "x": 660,
-        "y": 700,
+        "x": 730,
+        "y": 260,
         "wires": []
     },
     {
@@ -2363,8 +2017,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 960,
+        "x": 330,
+        "y": 820,
         "wires": [
             [
                 "579f2211199fd6ab"
@@ -2382,8 +2036,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 490,
-        "y": 1000,
+        "x": 530,
+        "y": 860,
         "wires": [
             [
                 "579f2211199fd6ab"
@@ -2396,8 +2050,8 @@
         "z": "1613373abaf77a2c",
         "name": "preview arducam with focus",
         "info": "",
-        "x": 140,
-        "y": 1360,
+        "x": 180,
+        "y": 1140,
         "wires": []
     },
     {
@@ -2407,171 +2061,20 @@
         "group": "90223f7ddc082321",
         "name": "preview_arducam",
         "order": 1,
-        "width": 12,
-        "height": 12,
-        "format": "<div align=\"center\" >\n<img ng-src= {{msg.payload}} style=\"width: auto; height: auto;max-width: 502px;max-height: 606px\"/>\n</div>\n",
+        "width": 7,
+        "height": 9,
+        "format": "<style>\n/* Define the color classes */\n.btn-0 {\n  opacity:0.2;\n}\n\n.btn-1 {\n opacity:0.6;\n\n}\n\n.btn-2 {\n  opacity:1;\n}\n\n</style>\n\n<div style=\"position: absolute; top: 0; left: 0; width: 100%; height: 100%;\">\n<img ng-src=\"{{msg.payload}}\" style=\"width: 100%; height: 100%; object-position:top; object-fit: contain; vertical-align: top;\"/>\n    <div style=\"position: absolute; top: 3%; right: 3% ; height: 30% \">\n      <md-button class=\"button save\" style=\"color: default; padding: 10px; margin: 0px 0px 0px 0px; width:100%; height: 27%;\" ng-class=\"{'btn-0': msg.light == 0, 'btn-1': msg.light == 1, 'btn-2': msg.light == 2}\" ng-click=\"send({light:toggleState()})\"><i class=\"fa fa-lightbulb-o fa-2x\"></i></md-button>\n    </div>\n    <div style=\"position: absolute; top: 13%; right: 3% ; width:10%; height: 30% \">\n      <md-button class=\"button save\" style=\"color: default; padding: 10px; margin: 0px 0px 0px 0px; width:100%; height: 27%;\" ng-class=\"{'btn-0': msg.state1 == 0, 'btn-1': msg.state1 == 2, }\" ng-click=\"send({state1:toggleState1()})\"><i class=\"fa fa-cog\"></i></md-button>\n    </div>\n\n    <div style=\"position: absolute; top: 20px; left: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 130px; height: 130px;\">\n\n\n\n    <div style=\"display: flex; justify-content: center; align-items: center; width: 100%; height: 33.33%; margin-bottom: 10px;\">\n      <md-button class=\"button save\" style=\"color: default; padding: 10px; margin: 0px 0px 0px 0px; width: 33.33%; height: 100%;\" ng-click=\"send({payload: 'up'})\"><i class=\"fa fa-arrow-up\"></i></md-button>\n    </div>\n    <div style=\"display: flex; justify-content: space-between; align-items: center; width: 100%; height: 33.33%; margin-bottom: 10px;\">\n      <md-button class=\"button save\" style=\"color: default; padding: 10px; margin: 0; width: 33.33%; height: 100%;\" ng-click=\"send({payload: 'left'})\"><i class=\"fa fa-arrow-left\"></i></md-button>\n      <md-button class=\"button save\" style=\"opacity: 0; color: default; padding: 10px; margin: 0; width: 33.33%; height: 100%; pointer-events: none;\"></md-button>\n      <md-button class=\"button save\" style=\"color: default; padding: 10px; margin: 0; width: 33.33%; height: 100%;\" ng-click=\"send({payload: 'right'})\"><i class=\"fa fa-arrow-right\"></i></md-button>\n    </div>\n    <div style=\"display: flex; justify-content: center; align-items: center; width: 100%; height: 33.33%;\">\n      <md-button class=\"button save\" style=\"color: default; padding: 10px; margin: 0px 0px 0px 0px; width: 33.33%; height: 100%;\" ng-click=\"send({payload: 'down'})\"><i class=\"fa fa-arrow-down\"></i></md-button>\n    </div>\n  </div>\n</div>\n\n<script>\n// Define the button state and label\nvar state = 0;\nvar state1 = 0;\n\n// Initialize the button state and label\nfunction init() {\n    // Get the current state from the incoming message, if any\n    var msg = scope.$parent.msg;\n    if (msg) {\n        state = msg.light;\n        state1 = msg.state1\n    }\n}\n\n// Toggle the button state and label\nfunction toggleState() {\n    state = (state + 1) % 3\n    return state\n}\nfunction toggleState1() {\n    state1 = (state1 + 1) % 2\n    return state1\n}\nscope.toggleState1 = toggleState1;\nscope.state1 = state1;\nscope.toggleState = toggleState;\nscope.state = state;\n</script>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
         "templateScope": "local",
         "className": "",
-        "x": 630,
-        "y": 1300,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "65145c939b6647e2",
-        "type": "link in",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "links": [
-            "960912e90ba5b5bc",
-            "50eeb3e362f9027f"
-        ],
-        "x": 105,
-        "y": 1460,
+        "x": 670,
+        "y": 1040,
         "wires": [
             [
-                "5007c23cac1a8a94",
-                "dd7c6d8a60742521"
-            ]
-        ]
-    },
-    {
-        "id": "a1d29e56599da0bd",
-        "type": "link in",
-        "z": "1613373abaf77a2c",
-        "name": "focusnumber",
-        "links": [
-            "210ef5246d1a8790",
-            "2dd2503d7ab0214b",
-            "6b94bf2295b1b31d"
-        ],
-        "x": 485,
-        "y": 1680,
-        "wires": [
-            [
-                "06504f47ee1744d7",
-                "5f8b90ef08a7d68c"
-            ]
-        ]
-    },
-    {
-        "id": "06504f47ee1744d7",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "90223f7ddc082321",
-        "order": 7,
-        "width": 2,
-        "height": 1,
-        "name": "",
-        "label": "Stacksize:",
-        "format": "",
-        "layout": "row-center",
-        "className": "",
-        "x": 1010,
-        "y": 1680,
-        "wires": []
-    },
-    {
-        "id": "21306d6402225553",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "msg",
-        "func": "global.set('stacksize', msg.payload)\n\n\nmsg.stacksize = msg.payload\nmsg.enabled = true\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 860,
-        "y": 1640,
-        "wires": [
-            [
-                "06504f47ee1744d7"
-            ]
-        ]
-    },
-    {
-        "id": "e2f8fdd47bdd1b66",
-        "type": "ui_slider",
-        "z": "1613373abaf77a2c",
-        "name": "stacksize",
-        "label": " ",
-        "tooltip": "",
-        "group": "90223f7ddc082321",
-        "order": 8,
-        "width": 3,
-        "height": 1,
-        "passthru": true,
-        "outs": "end",
-        "topic": "",
-        "topicType": "str",
-        "min": "2",
-        "max": "20",
-        "step": "1",
-        "className": "",
-        "x": 710,
-        "y": 1640,
-        "wires": [
-            [
-                "21306d6402225553"
-            ]
-        ]
-    },
-    {
-        "id": "5f8b90ef08a7d68c",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "loadI",
-        "func": "msg.payload = 0\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 580,
-        "y": 1640,
-        "wires": [
-            [
-                "e2f8fdd47bdd1b66"
-            ]
-        ]
-    },
-    {
-        "id": "917a194be245384a",
-        "type": "link in",
-        "z": "1613373abaf77a2c",
-        "name": "enable projectname",
-        "links": [
-            "a0ba1aa77c5c8b7c",
-            "a42c12e94f65fa01"
-        ],
-        "x": 55,
-        "y": 540,
-        "wires": [
-            [
-                "f4b3112a9ec6c487"
-            ]
-        ]
-    },
-    {
-        "id": "65cef204b16f8741",
-        "type": "link in",
-        "z": "1613373abaf77a2c",
-        "name": "enable shutter",
-        "links": [
-            "2d76e5617f13cd6c",
-            "a0ba1aa77c5c8b7c",
-            "a42c12e94f65fa01"
-        ],
-        "x": 55,
-        "y": 580,
-        "wires": [
-            [
-                "84d6b96c8ebaac96"
+                "4562512ae803bde9",
+                "22c79d9ccba7362d"
             ]
         ]
     },
@@ -2579,33 +2082,18 @@
         "id": "2aea1727dbea76ce",
         "type": "link in",
         "z": "1613373abaf77a2c",
-        "name": "enable cropx",
+        "name": "enable crop",
         "links": [
-            "a0ba1aa77c5c8b7c",
-            "a42c12e94f65fa01"
+            "7bee373feaa4a1ba",
+            "97d59b63596d4fed"
         ],
-        "x": 55,
-        "y": 620,
+        "x": 65,
+        "y": 440,
         "wires": [
             [
-                "9c6b48b7b4cc4e1a"
-            ]
-        ]
-    },
-    {
-        "id": "4f212b44aa487945",
-        "type": "link in",
-        "z": "1613373abaf77a2c",
-        "name": "enable cropy",
-        "links": [
-            "a0ba1aa77c5c8b7c",
-            "a42c12e94f65fa01"
-        ],
-        "x": 55,
-        "y": 660,
-        "wires": [
-            [
-                "c470fd0b15356206"
+                "9c6b48b7b4cc4e1a",
+                "c470fd0b15356206",
+                "107a030938cbfea9"
             ]
         ]
     },
@@ -2631,8 +2119,8 @@
         "type": "ui_text",
         "z": "1613373abaf77a2c",
         "group": "7aaf184330605300",
-        "order": 2,
-        "width": 6,
+        "order": 1,
+        "width": 7,
         "height": 1,
         "name": "",
         "label": "Current Status:",
@@ -2688,7 +2176,7 @@
             "50eeb3e362f9027f"
         ],
         "x": 55,
-        "y": 500,
+        "y": 260,
         "wires": [
             [
                 "f4b3112a9ec6c487",
@@ -2696,8 +2184,8 @@
                 "84d6b96c8ebaac96",
                 "9c6b48b7b4cc4e1a",
                 "c470fd0b15356206",
-                "9e30e33a1520fee0",
-                "79ecb889f7113405"
+                "bda29ed0107e6e62",
+                "596008f691396d4d"
             ]
         ]
     },
@@ -2712,8 +2200,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 590,
-        "y": 880,
+        "x": 630,
+        "y": 740,
         "wires": [
             [
                 "fb13752beddee9f2"
@@ -2731,8 +2219,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 300,
-        "y": 840,
+        "x": 340,
+        "y": 700,
         "wires": [
             [
                 "e9b13dfd9f8d3711"
@@ -2748,54 +2236,11 @@
             "f20da2fc4978b7bf",
             "1316b9e28c9ea809"
         ],
-        "x": 135,
-        "y": 1260,
+        "x": 175,
+        "y": 1040,
         "wires": [
             [
                 "95439678bb2df2a2"
-            ]
-        ]
-    },
-    {
-        "id": "79ecb889f7113405",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "inactive",
-        "func": "from requests import get\nfrom OpenScan import load_int\n\ntimeout = load_int('timeout_ringlight')\n\nmsg['cmd'] = 'get'\n\ntry:\n    flask = 'http://127.0.0.1:1312/ping'\n    r = get(flask, params=msg)\n\n    idle = float(r.text.split(\":\")[1].split('}')[0])\n\n    msg['payload'] = idle\n\n    if idle > timeout:\n        return msg,msg\nexcept:\n    pass\n\nreturn None,msg",
-        "outputs": 2,
-        "x": 200,
-        "y": 740,
-        "wires": [
-            [
-                "9e30e33a1520fee0"
-            ],
-            [
-                "8d7e04531c34f349"
-            ]
-        ]
-    },
-    {
-        "id": "8d7e04531c34f349",
-        "type": "delay",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "pauseType": "delay",
-        "timeout": "30",
-        "timeoutUnits": "seconds",
-        "rate": "1",
-        "nbRateUnits": "1",
-        "rateUnits": "second",
-        "randomFirst": "1",
-        "randomLast": "5",
-        "randomUnits": "seconds",
-        "drop": false,
-        "allowrate": false,
-        "outputs": 1,
-        "x": 200,
-        "y": 780,
-        "wires": [
-            [
-                "79ecb889f7113405"
             ]
         ]
     },
@@ -2807,8 +2252,8 @@
         "links": [
             "f358de1e64b491bb"
         ],
-        "x": 595,
-        "y": 640,
+        "x": 615,
+        "y": 440,
         "wires": [
             [
                 "fecf5cff888bb570",
@@ -2825,8 +2270,8 @@
         "links": [
             "d14bbbb446d45e39"
         ],
-        "x": 655,
-        "y": 1220,
+        "x": 595,
+        "y": 1000,
         "wires": []
     },
     {
@@ -2836,8 +2281,8 @@
         "name": "shutter",
         "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nimport math\n\n\ncamera('/picam2_exposure?exposure=' + str(int(msg['payload']*1000)))\n\nreturn msg\n",
         "outputs": 1,
-        "x": 610,
-        "y": 760,
+        "x": 510,
+        "y": 380,
         "wires": [
             []
         ]
@@ -2848,168 +2293,9 @@
         "z": "1613373abaf77a2c",
         "name": "momentary button template",
         "info": "<div id=\"momentary\">\n   <md-button style=\"min-width:36px;\n                    width: 100%; \n                    height: 100%; \n\">\n       \n      <i class=\"fa fa-minus\"></i>\n   </md-button>\n</div>\n<script>\n(function($scope) {\n    \n$('#momentary').on('touchstart mousedown', function(e) {\n    e.preventDefault(); //prevent default behavior\n    $scope.send({\"trigger\": 1});\n});\n\n$('#momentary').on('touchend mouseup', function(e) {\n    e.preventDefault(); //prevent default behavior\n    $scope.send({\"trigger\": 0});\n});\n    \n})(scope);\n</script>",
-        "x": 1090,
-        "y": 480,
+        "x": 830,
+        "y": 200,
         "wires": []
-    },
-    {
-        "id": "7088d21957f7879d",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "global",
-        "func": "global.set('focus', msg.payload)\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 720,
-        "y": 1460,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e14793a42f4637e7",
-        "type": "ui_button",
-        "z": "1613373abaf77a2c",
-        "name": "set focus",
-        "group": "90223f7ddc082321",
-        "order": 4,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "label": "{{msg.focuslabel}}",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 420,
-        "y": 1540,
-        "wires": [
-            [
-                "8ca3d58780c0bdc7"
-            ]
-        ]
-    },
-    {
-        "id": "8ca3d58780c0bdc7",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "global",
-        "func": "focus = global.get('focus')\nfocus1 = global.get('focus1')\nfocus2 = global.get('focus2')\n\nmsg.payload = 0\nmsg.enabled = false\n\nif (focus1 == 0 && focus2==0){\n    global.set('focus1', focus)\n    global.set('stacksize', 0)\n\n    msg.value1=global.get('focus1')\n    msg.value2=\"n.def.\"\n    msg.focuslabel = \"SET Focus2\"\n\n    return msg\n}\nif (focus1 !=0 && focus2 ==0 && focus1!=focus){\n    global.set('focus2', focus)\n    msg.value1=global.get('focus1')\n    msg.value2=global.get('focus2')\n    msg.enabled = true\n    msg.payload = 2\n    msg.focuslabel = \"RESET Focus\"\n    return msg\n\n}\n\nif (focus1 !=0 && focus2 !=0){\n    global.set('focus1', 0)\n    global.set('focus2', 0)\n    global.set('stacksize', 0)\n\n    msg.value1 = ' '\n    msg.value2 = ' '\n    msg.focuslabel = \"SET Focus \"\n    msg.enabled = false\n    msg.payload = 2\n\n    return msg\n}\n\n\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 560,
-        "y": 1540,
-        "wires": [
-            [
-                "52b271057d448dbd",
-                "e2f8fdd47bdd1b66",
-                "990cc283a70946bd",
-                "fd22719fd1cbf848",
-                "06504f47ee1744d7"
-            ]
-        ]
-    },
-    {
-        "id": "52b271057d448dbd",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "90223f7ddc082321",
-        "order": 5,
-        "width": 2,
-        "height": 1,
-        "name": "",
-        "label": "Focus1",
-        "format": "{{msg.value1}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 710,
-        "y": 1540,
-        "wires": []
-    },
-    {
-        "id": "5007c23cac1a8a94",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "global",
-        "func": "msg.payload = global.get('focus')\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 200,
-        "y": 1460,
-        "wires": [
-            [
-                "907163fddf75593e"
-            ]
-        ]
-    },
-    {
-        "id": "990cc283a70946bd",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "90223f7ddc082321",
-        "order": 6,
-        "width": 2,
-        "height": 1,
-        "name": "",
-        "label": "Focus2",
-        "format": "{{msg.value2}}",
-        "layout": "row-center",
-        "className": "",
-        "x": 710,
-        "y": 1580,
-        "wires": []
-    },
-    {
-        "id": "fd22719fd1cbf848",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "global",
-        "func": "msg.enabled = true\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 280,
-        "y": 1540,
-        "wires": [
-            [
-                "e14793a42f4637e7"
-            ]
-        ]
-    },
-    {
-        "id": "dd7c6d8a60742521",
-        "type": "function",
-        "z": "1613373abaf77a2c",
-        "name": "global",
-        "func": "msg.focuslabel = \"Set Focus1\"\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 140,
-        "y": 1540,
-        "wires": [
-            [
-                "fd22719fd1cbf848"
-            ]
-        ]
     },
     {
         "id": "d015a0482f48a4ad",
@@ -3022,8 +2308,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 290,
-        "y": 880,
+        "x": 330,
+        "y": 740,
         "wires": [
             [
                 "9a6b30a0175a8ecd"
@@ -3031,27 +2317,14 @@
         ]
     },
     {
-        "id": "bd156f1879386ffb",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "Routine_save",
-        "func": "from OpenScan import load_bool, load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime, time\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nfrom Arducam import Focuser\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\ncamera('/picam2_switch_mode?mode=1')\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\ntt_mode = load_bool('turntable_mode')\ncam_delay_before = load_float(\"cam_delay_before\")\ncam_delay_after = load_float(\"cam_delay_after\")\n\nSTmode = False\n\nif msg['stacksize'] != 0:\n    stacksize = msg['stacksize']\n    focus1 = msg['focus1']\n    focus2 = msg['focus2']\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = msg['focus2']\n    focusstep = (focus2-focus1)/(stacksize - 1)\n    STmode = True\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nstarttime = time()\n\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n        \n    motorrun('rotor', rotor_angle)\n    motorrun('tt', tt_angle)\n    sleep(cam_delay_before)\n\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    if counter < 6:\n        ETA = ''\n    if STmode == True:\n        counter2 = 0\n        for focus in range (stacksize):\n            counter2 += 1\n            camera('/picam2_focus?focus=' + str(focus1 + focus * focusstep))\n            camera('/picam2_take_photo')\n            if load_str('status_internal_cam') == \"Routine-stopping\":\n                break\n            save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2) + ETA)\n            zip.write(temppath, projectname + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n    else:\n        save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n        camera('/picam2_take_photo')\n        zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n    ETA = '-ETA:'+str(int((photocount/counter - 1)*(time() - starttime)))+'/'+str(int(photocount/counter*(time() - starttime)))+'s'\n    sleep(cam_delay_after)\n    position_last = position\n\nzip.close()\ncamera('/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nsystem('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\" )\n\nreturn msg\n",
-        "outputs": 1,
-        "x": 860,
-        "y": 840,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "9a6b30a0175a8ecd",
         "type": "python3-function",
         "z": "1613373abaf77a2c",
-        "name": "Routine_thread",
-        "func": "from OpenScan import load_bool, load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime, time\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nimport threading\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nsave('status_internal_cam','Routine-preparing')\ncamera('/picam2_switch_mode?mode=1')\n\nprojectname=load_str(\"routine_projectname\")\nphotocount = load_int('routine_photocount') #vorher point_count\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\ntt_mode = load_bool('turntable_mode')\n\nSTmode = False\n\nif msg['stacksize'] != 0 and msg['focus1']!=0 and msg['focus1']!=msg['focus2'] :\n    stacksize = msg['stacksize']\n    focus1 = msg['focus1']\n    focus2 = msg['focus2']\n    if focus1 > focus2:\n        focus2 = focus1\n        focus1 = msg['focus2']\n    focusstep = (focus2-focus1)/(stacksize - 1)\n    STmode = True\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\nif tt_mode == False:\n    coordinates = create_coordinates(angle_min,angle_max,photocount)\nelse:\n    angle_start = 0\n    coordinates = []\n    for i in range (photocount):\n        coordinates.append([0,360/photocount*(i+1)])\n\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nstarttime = time()\n\ndef f1():\n    save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    camera('/picam2_take_photo')\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")    \n\ndef f2():\n    counter2 = 0\n    for focus in range (stacksize):\n        counter2 += 1\n        camera('/picam2_focus?focus=' + str(focus1 + focus * focusstep))\n        camera('/picam2_take_photo')\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam','Routine-' + str(counter) + '/' + str(photocount) + ' F' + str(counter2) + ETA)\n        zip.write(temppath, projectname + '_' + str(counter) + '-' + str(focus) + \".jpg\")\n\ndef f3():\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    motorrun('tt', tt_angle)\n#    motorrun('tt', 90)\n    \n    motorrun('rotor', rotor_angle)\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    if counter < 6:\n        ETA = ''\n    if STmode == True:\n        f2()\n        t1 = threading.Thread(target=time) #helper\n    else:\n        t1 = threading.Thread(target=f1)\n\n    t2 = threading.Thread(target=f3)\n    t1.start()\n    sleep(load_float(\"cam_delay_before\"))\n    t2.start()\n    t1.join()\n    t2.join()\n    sleep(load_float(\"cam_delay_after\"))\n\n\n\n    ETA = '-ETA:'+str(int((photocount/counter - 1)*(time() - starttime)))+'/'+str(int(photocount/counter*(time() - starttime)))+'s'\n    position_last = position\n\nzip.close()\ncamera('/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nsystem('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\" )\n\nreturn msg\n",
+        "name": "Routine",
+        "func": "from OpenScan import load_bool, load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime, time\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nimport math\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nfocuslist = [6, 7.5, 9, 10.5, 13, 16, 20] # 11cm\nfocuslist = [7, 8.5, 9.5, 11, 13, 17] # \nfocuslist = [11, 12, 13]  # 3cm\nfocuslist = [10,12,14]\n\nobjectsize = load_float('object_size')\nfocus_min = 11.5-objectsize/2 \nfocus_max = 11.5+objectsize/2 \nsteps = int(objectsize+0.5)//2 + 2\nfocuslist = []\nfor i in range (steps):\n    focuslist.append(focus_min - 0.2 + i * (focus_max-focus_min)/(steps-1))\n\nsave('status_internal_cam','Routine-preparing')\ncamera('/picam2_switch_mode?mode=1')\n\nprojectname=load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nphotocount = load_int('routine_photocount')\n\nSTmode = False\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nstarttime = time()\n\ndef photo():\n    save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    camera('/picam2_take_photo')\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")    \n\ndef move_motor():\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n    tt_angle = position[1] - position_last[1] \n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    motorrun('tt', tt_angle)\n    motorrun('rotor', rotor_angle)\n\ncounter2 = 0\n\ndef focus(i):\n    f = math.pow(focuslist[i]/737086, -1/1.4096)/273\n    camera('/picam2_focus?focus=' + str(f))\n\n    if i < len(focuslist)-1:\n        i += 1\n    else:\n        i = 0\n    return i\n\n\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    if counter < 6:\n        ETA = ''\n        \n    sleep(load_float(\"cam_delay_before\"))\n    photo()\n    counter2 = focus(counter2)\n    sleep(load_float(\"cam_delay_after\"))\n    move_motor()\n\n\n    ETA = '-ETA:'+str(int((photocount/counter - 1)*(time() - starttime)))+'/'+str(int(photocount/counter*(time() - starttime)))+'s'\n    position_last = position\n\nzip.close()\ncamera('/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nsystem('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\" )\n\nreturn msg\n",
         "outputs": 1,
-        "x": 440,
-        "y": 880,
+        "x": 460,
+        "y": 740,
         "wires": [
             [
                 "1daf9e3a5bd5ab48"
@@ -3064,7 +2337,7 @@
         "z": "1613373abaf77a2c",
         "name": "",
         "pauseType": "delay",
-        "timeout": "2",
+        "timeout": "1.5",
         "timeoutUnits": "seconds",
         "rate": "1",
         "nbRateUnits": "1",
@@ -3075,8 +2348,8 @@
         "drop": false,
         "allowrate": false,
         "outputs": 1,
-        "x": 440,
-        "y": 760,
+        "x": 330,
+        "y": 380,
         "wires": [
             [
                 "b654d34e2264f091"
@@ -3084,125 +2357,406 @@
         ]
     },
     {
-        "id": "0b4b04fef192e043",
-        "type": "ui_slider",
+        "id": "4562512ae803bde9",
+        "type": "delay",
         "z": "1613373abaf77a2c",
-        "name": "",
-        "label": "Focus (cm)",
-        "tooltip": "",
-        "group": "90223f7ddc082321",
-        "order": 3,
-        "width": 10,
-        "height": 1,
-        "passthru": true,
-        "outs": "end",
-        "topic": "topic",
-        "topicType": "msg",
-        "min": "6",
-        "max": "20",
-        "step": "0.1",
-        "className": "",
-        "x": 460,
-        "y": 1460,
+        "name": "lmt 0.2/s",
+        "pauseType": "rate",
+        "timeout": "0.1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "0.2",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 860,
+        "y": 1040,
         "wires": [
             [
-                "3543c32af7ecdf05"
+                "4687da5cda7df210"
             ]
         ]
     },
     {
-        "id": "3543c32af7ecdf05",
+        "id": "4687da5cda7df210",
         "type": "python3-function",
         "z": "1613373abaf77a2c",
-        "name": "focus",
-        "func": "import math\nfrom time import time, sleep\nfrom OpenScan import camera\n\ndistance = msg['payload'] \n\nfocus = math.pow(distance/737086, -1/1.4096)/273\n\ncamera('/picam2_focus?focus=' + str(focus))\n\nmsg['payload'] = focus\n\nreturn msg",
+        "name": "TT right",
+        "func": "from OpenScan import motorrun, load_int\n\nif 'payload' not in msg:\n    return\n\nif msg['payload'] == \"up\":\n    motorrun('rotor',load_int('rotor_angle'))\nif msg['payload'] == \"down\":\n    motorrun('rotor',-load_int('rotor_angle'))\nif msg['payload'] == \"left\":\n    motorrun('tt',load_int('tt_angle'))\nif msg['payload'] == \"right\":\n    motorrun('tt',-load_int('tt_angle'))\n\n",
         "outputs": 1,
-        "x": 600,
-        "y": 1460,
+        "x": 1000,
+        "y": 1040,
         "wires": [
-            [
-                "7088d21957f7879d"
-            ]
+            []
         ]
     },
     {
-        "id": "907163fddf75593e",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "focus",
-        "func": "import math\nfrom time import sleep \nsleep(1)\nfocus = msg['payload'] * 273 \ndistance = 737086 * math.pow(focus, -1.4096)\nmsg['payload'] = distance\nreturn msg",
-        "outputs": 1,
-        "x": 320,
-        "y": 1460,
-        "wires": [
-            [
-                "0b4b04fef192e043"
-            ]
-        ]
-    },
-    {
-        "id": "3bf0b3b90cefb053",
-        "type": "ui_switch",
-        "z": "1613373abaf77a2c",
-        "name": "",
-        "label": "AF",
-        "tooltip": "",
-        "group": "90223f7ddc082321",
-        "order": 2,
-        "width": 2,
-        "height": 1,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "",
-        "topicType": "str",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 130,
-        "y": 1400,
-        "wires": [
-            [
-                "38ae5cffd9c61418"
-            ]
-        ]
-    },
-    {
-        "id": "38ae5cffd9c61418",
-        "type": "python3-function",
-        "z": "1613373abaf77a2c",
-        "name": "focus",
-        "func": "from OpenScan import camera\n\nif msg['payload']:\n    camera(\"picam2_af2\")\n    msg['enabled'] = False\n    msg['focuslabel'] = \"Set focus\"\n\nelse:\n    msg['enabled'] = True\n    msg['focuslabel'] = \"Set focus\"\nreturn msg",
-        "outputs": 1,
-        "x": 270,
-        "y": 1400,
-        "wires": [
-            [
-                "e14793a42f4637e7",
-                "5007c23cac1a8a94"
-            ]
-        ]
-    },
-    {
-        "id": "54f7201099fc7815",
+        "id": "22c79d9ccba7362d",
         "type": "function",
         "z": "1613373abaf77a2c",
         "name": "global",
-        "func": "global.set('focus', msg.payload)\n",
+        "func": "if (typeof msg.light !== \"undefined\"){\n    global.set('light',msg.light)\n}\nif (typeof msg.state1 !== \"undefined\"){\n    global.set('state1',msg.state1)\n}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 430,
-        "y": 1400,
+        "x": 850,
+        "y": 1080,
+        "wires": [
+            [
+                "0e56ce299d236b8a"
+            ]
+        ]
+    },
+    {
+        "id": "0e56ce299d236b8a",
+        "type": "python3-function",
+        "z": "1613373abaf77a2c",
+        "name": "LED",
+        "func": "from OpenScan import ringlight\nif 'light' in msg:\n    val = msg['light']\n    if val == 0:\n        ringlight(1,False)\n        ringlight(2,False)\n    elif val == 1:\n        ringlight(1,False)\n        ringlight(2,True)\n    elif val == 2:\n        ringlight(1,True)\n        ringlight(2,True)",
+        "outputs": 1,
+        "x": 970,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79ecb889f7113405",
+        "type": "python3-function",
+        "z": "1613373abaf77a2c",
+        "name": "inactive",
+        "func": "from requests import get\nfrom OpenScan import load_int\n\ntimeout = load_int('timeout_ringlight')\n\nmsg['cmd'] = 'get'\n\ntry:\n    flask = 'http://127.0.0.1:1312/ping'\n    r = get(flask, params=msg)\n\n    idle = float(r.text.split(\":\")[1].split('}')[0])\n\n    msg['payload'] = idle\n\n    if idle > timeout:\n        msg['light'] = 0\n        return msg,msg\nexcept:\n    pass\n\nreturn None,msg",
+        "outputs": 2,
+        "x": 500,
+        "y": 1080,
+        "wires": [
+            [
+                "22c79d9ccba7362d",
+                "8f5d87ce24c40b11"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "e3bd0db4a124b012",
+        "type": "python3-function",
+        "z": "1613373abaf77a2c",
+        "name": "load advanced",
+        "func": "from OpenScan import load_bool\n\nif 'state1' in msg:\n    if msg['state1'] == 0:\n        msg['payload']={\"group\":{\"hide\":[\"Scan_advanced\"],\"show\":[]}}\n    else:\n        msg['payload']={\"group\":{\"hide\":[],\"show\":[\"Scan_advanced\"]}}\n    return msg",
+        "outputs": 1,
+        "x": 460,
+        "y": 920,
+        "wires": [
+            [
+                "5829cb2893d5322f"
+            ]
+        ]
+    },
+    {
+        "id": "5829cb2893d5322f",
+        "type": "ui_ui_control",
+        "z": "1613373abaf77a2c",
+        "name": "change visibility",
+        "events": "all",
+        "x": 680,
+        "y": 920,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e877dd2d8ae38e81",
+        "type": "ui_slider",
+        "z": "1613373abaf77a2c",
+        "name": "Object Size (cm)",
+        "label": "",
+        "tooltip": "",
+        "group": "7aaf184330605300",
+        "order": 7,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "topicType": "str",
+        "min": "2",
+        "max": "11",
+        "step": "0.5",
+        "className": "",
+        "x": 340,
+        "y": 500,
+        "wires": [
+            [
+                "a7829d885baf623a",
+                "b85904c34d9b3509"
+            ]
+        ]
+    },
+    {
+        "id": "b3ce9099119220b6",
+        "type": "ui_dropdown",
+        "z": "1613373abaf77a2c",
+        "name": "preset",
+        "label": "",
+        "tooltip": "",
+        "place": "",
+        "group": "7aaf184330605300",
+        "order": 9,
+        "width": 4,
+        "height": 1,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "preview",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "medium",
+                "value": 2,
+                "type": "num"
+            },
+            {
+                "label": "high",
+                "value": 3,
+                "type": "num"
+            },
+            {
+                "label": "ultra",
+                "value": 4,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 310,
+        "y": 580,
+        "wires": [
+            [
+                "eb6acf1e97976ab4",
+                "672199636fecf01d"
+            ]
+        ]
+    },
+    {
+        "id": "8326699ca4c0789b",
+        "type": "ui_text",
+        "z": "1613373abaf77a2c",
+        "group": "7aaf184330605300",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "name": "object size",
+        "label": "Object size (cm)",
+        "format": "",
+        "layout": "row-left",
+        "className": "",
+        "x": 730,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "9264df77cfa56a48",
+        "type": "ui_text",
+        "z": "1613373abaf77a2c",
+        "group": "7aaf184330605300",
+        "order": 8,
+        "width": 3,
+        "height": 1,
+        "name": "Preset",
+        "label": "Preset",
+        "format": "",
+        "layout": "row-left",
+        "className": "",
+        "x": 710,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "a7829d885baf623a",
+        "type": "python3-function",
+        "z": "1613373abaf77a2c",
+        "name": "focus",
+        "func": "import math\nfrom OpenScan import save,camera\ndef calc_crop(x):\n    cropy = int(- 14.18*x + 100.43)\n    cropx = int( -9*x + 95)\n    if cropx < 0:\n        cropx = 0\n    if cropx > 90:\n        cropx = 90\n    if cropy < 0:\n        cropy = 0\n    if cropy > 90:\n        cropy = 90\n    save('cam_cropx',cropx)\n    save('cam_cropy',cropy)\n    focus = 12-0.2*x\n    \n    f = math.pow(focus/737086, -1/1.4096)/273\n    camera('/picam2_focus?focus=' + str(f))\n    return \n\ncalc_crop(msg['payload'])\n\nreturn msg",
+        "outputs": 1,
+        "x": 510,
+        "y": 500,
+        "wires": [
+            [
+                "7bee373feaa4a1ba"
+            ]
+        ]
+    },
+    {
+        "id": "7bee373feaa4a1ba",
+        "type": "link out",
+        "z": "1613373abaf77a2c",
+        "name": "link out 2",
+        "mode": "link",
+        "links": [
+            "2aea1727dbea76ce"
+        ],
+        "x": 615,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "bda29ed0107e6e62",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "loadI",
+        "func": "var file = 'preset'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data);\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 190,
+        "y": 580,
+        "wires": [
+            [
+                "b3ce9099119220b6"
+            ]
+        ]
+    },
+    {
+        "id": "eb6acf1e97976ab4",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "write",
+        "func": "var file = 'preset'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b85904c34d9b3509",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "write",
+        "func": "var file = 'object_size'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 540,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "596008f691396d4d",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "loadF",
+        "func": "var file = 'object_size'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseFloat(data);\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 190,
+        "y": 500,
+        "wires": [
+            [
+                "e877dd2d8ae38e81"
+            ]
+        ]
+    },
+    {
+        "id": "672199636fecf01d",
+        "type": "python3-function",
+        "z": "1613373abaf77a2c",
+        "name": "shutter",
+        "func": "from OpenScan import save\n\npresets = {1:80,2:150,3:250,4:400}\n\nmsg['payload'] = presets[msg['payload']]\nreturn msg",
+        "outputs": 1,
+        "x": 510,
+        "y": 620,
+        "wires": [
+            [
+                "990893ac152ced5d"
+            ]
+        ]
+    },
+    {
+        "id": "990893ac152ced5d",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "write",
+        "func": "var file = 'routine_photocount'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 620,
+        "wires": [
+            [
+                "97d59b63596d4fed"
+            ]
+        ]
+    },
+    {
+        "id": "97d59b63596d4fed",
+        "type": "link out",
+        "z": "1613373abaf77a2c",
+        "name": "link out 3",
+        "mode": "link",
+        "links": [
+            "2aea1727dbea76ce"
+        ],
+        "x": 745,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "baed8d6e7daa8b38",
+        "type": "debug",
+        "z": "1613373abaf77a2c",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "f7dab1d2.5b0cc",
+        "type": "function",
+        "z": "1613373abaf77a2c",
+        "name": "Random Number",
+        "func": "var min = 1;\nvar max = 1000;\nvar random = Math.floor(Math.random() * (max - min + 1)) + min;\n\nvar formatted = random.toString().padStart(3, '0');\n\nmsg.payload = formatted;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 840,
         "wires": [
             []
         ]
@@ -8290,34 +7844,6 @@
         ]
     },
     {
-        "id": "45df91cae421e8e1",
-        "type": "ui_button",
-        "z": "017bd4e4a428bee5",
-        "name": "Scan_settings",
-        "group": "7aaf184330605300",
-        "order": 1,
-        "width": 6,
-        "height": 1,
-        "passthru": false,
-        "label": "",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "transparent",
-        "className": "",
-        "icon": "fa-question-circle",
-        "payload": "<h1 style=\"text-align: left;\">Scan Settings</h1> <p><strong>Current Status</strong></p> <p style=\"margin-left: 20px;\"><u>--READY--&nbsp;</u>- everything is okay and ready to go :)</p> <p style=\"margin-left: 20px;\"><u>Routine-preparing</u> - before starting the routine some time might pass depending on the number of photos</p> <p style=\"margin-left: 20px;\"><u>Routine-stopping</u> - manually ending the routine by pressing the stop button</p> <p style=\"margin-left: 20px;\"><u>Routine-Photo X/Y</u> - Showing the progress of the routine</p> <p style=\"margin-left: 20px;\"><u>No Camera Found</u> - please check the camera ribbon cable</p> <p style=\"margin-left: 20px;\"><u>Error: XXX</u> - Please contact <a href=\"mailto:info@openscan.eu\">info@openscan.eu</a> or post an issue on <a href=\"https://github.com/OpenScanEu/OpenScan2\" rel=\"noopener noreferrer\" target=\"_blank\">Github.com</a></p> <p><strong>Projectname</strong></p> <p style=\"margin-left: 20px;\">Each photo set will be saved using the following pattern &nbsp;YYYY-MM-DD_hh-mm-ss_projectname.zip (e.g. 2022-04-05_12.12.12_toysoldier.zip). Keep your files organized by giving each set a new projectname. If not specified &apos;default&apos; will be used.</p> <p><strong>Rotor</strong></p> <p style=\"margin-left: 20px;\">Moving the rotor by increments of 5&deg;. Please make sure to start the routine with the camera in the horizontal position.</p> <p><strong>Turntable</strong></p> <p style=\"margin-left: 20px;\">Moving the turntable by increments of 15&deg;.</p> <p><strong>Ringlight</strong></p> <p style=\"margin-left: 20px;\">Use the ring light for shadow-free illumination. It is highly recommended to use the polarizer in order to avoid reflections. Note, that the polarizer will absorb 75% of the light, so you might need to use both ring lights.</p> <p><strong>Photos</strong></p> <p style=\"margin-left: 20px;\">Set the number of photos for the current set. 60-120 photos should be more than enough for most objects. <u><strong>If the reconstruction fails or is very bad with 60 photos, increasing the number of photos will not help!</strong></u></p> <p><strong>Shutter</strong></p> <p style=\"margin-left: 20px;\">Again: <strong><u>Less is more</u></strong>! If the value is too high, some areas might get overexposed and thus, the software will not be able to recognize the surface feature of the object. Here are some reference values:</p> <p style=\"margin-left: 20px;\">- no polarizer: 5-20ms</p> <p style=\"margin-left: 20px;\">- mostly white object, &nbsp;with polarizer + one ringlight: 50-200ms</p> <p><strong>Crop X/Y</strong></p> <p style=\"margin-left: 20px;\">Make sure to use the right object holder to place the object in the middle of the screen. Try to crop as many unnecessary areas as possible. This will greatly lower the file size and resulting transfer and reconstruction times!</p> <p><strong>Start/Stop</strong></p> <p style=\"margin-left: 20px;\">Use the buttons to start/stop the routine</p> <p><strong>Reboot/Shutdown</strong></p> <p style=\"margin-left: 20px;\">In case of an error, try to restart the device. Always use the shutdown button before powering-off the device!</p>",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 760,
-        "y": 120,
-        "wires": [
-            [
-                "f304680180a23479"
-            ]
-        ]
-    },
-    {
         "id": "e9677b85856b5873",
         "type": "python3-function",
         "z": "017bd4e4a428bee5",
@@ -8353,7 +7879,7 @@
         "id": "add3e998b097c54f",
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
-        "group": "d49a6dfd7fb17096",
+        "group": "dbb7eb0d2f05c7de",
         "order": 7,
         "width": 3,
         "height": 1,
@@ -8390,7 +7916,7 @@
         "name": "rotor_anglemin",
         "label": "",
         "tooltip": "",
-        "group": "d49a6dfd7fb17096",
+        "group": "dbb7eb0d2f05c7de",
         "order": 8,
         "width": 3,
         "height": 1,
@@ -8417,7 +7943,7 @@
         "name": "rotor_anglemax",
         "label": "",
         "tooltip": "",
-        "group": "d49a6dfd7fb17096",
+        "group": "dbb7eb0d2f05c7de",
         "order": 10,
         "width": 3,
         "height": 1,
@@ -8540,7 +8066,7 @@
         "id": "fda776c5aa642867",
         "type": "ui_text",
         "z": "017bd4e4a428bee5",
-        "group": "d49a6dfd7fb17096",
+        "group": "dbb7eb0d2f05c7de",
         "order": 9,
         "width": 3,
         "height": 1,
@@ -9068,9 +8594,9 @@
         "name": "cam_mask_threshold",
         "label": "Mask Threshold",
         "tooltip": "",
-        "group": "90223f7ddc082321",
-        "order": 10,
-        "width": 7,
+        "group": "dbb7eb0d2f05c7de",
+        "order": 12,
+        "width": 6,
         "height": 1,
         "passthru": false,
         "outs": "end",
@@ -9158,7 +8684,7 @@
         "y": 2380,
         "wires": [
             [
-                "4554c413df8486a3"
+                "a5ee8ecf3eeb07c3"
             ]
         ]
     },
@@ -9169,9 +8695,9 @@
         "name": "",
         "label": "Mask Images",
         "tooltip": "",
-        "group": "90223f7ddc082321",
-        "order": 9,
-        "width": 5,
+        "group": "dbb7eb0d2f05c7de",
+        "order": 11,
+        "width": 6,
         "height": 1,
         "passthru": true,
         "decouple": "false",

@@ -1,7 +1,7 @@
 
 from flask import Flask, make_response, jsonify, request, abort
 from picamera2 import Picamera2
-from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops
+from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops, ImageFont
 from time import sleep, time
 import shutil
 from OpenScan import load_int, load_float, load_bool, ringlight
@@ -54,8 +54,9 @@ def ping():
     inactive = time() - timer
     return ({'inactive':inactive}, 200)
 
+
 def add_histo(img):
-    histo_size = 200
+    histo_size = 241
 
     img_gray = ImageOps.grayscale(img)
     histogram = img_gray.histogram()
@@ -70,8 +71,64 @@ def add_histo(img):
         y = 256 - int(histogram_normalized[i] * 256)
         draw.line((x, 256, x, y), fill=(0, 0, 0, 255))
 
+    text = ""
+    if min(histogram[235:238])>0:
+        text = "overexposed"
+    if sum(histogram[190:192])<8:
+        text = "underexposed"
+    font = ImageFont.truetype("DejaVuSans.ttf", 30)
+    text_width, text_height = draw.textsize(text, font)
+    x = (hist_image.width - text_width )/2
+    y = hist_image.height - text_height - 10
+    draw.text((x, y), text, font=font, fill=(255,0,0))
+
+    scale = 0.25
+    width1, height1 = hist_image.size
+    width2 = img.size[0]
+    new_width1 = int(width2 * scale)
+    new_height1 = int((height1 / width1) * new_width1)
+    hist_image = hist_image.convert('RGB')
+
+    hist_image = hist_image.resize((new_width1, new_height1))
+    x = hist_image.width - text_width - 10
+    y = hist_image.height - text_height - 10
+ 
+
+    img.paste(hist_image, (img.size[0]-new_width1-int(0.01*img.size[0]),img.size[1]-new_height1-int(0.01*img.size[0])))
+
+    return img
+
+def add_histo2(img):
+    histo_size = 241
+
+    img_gray = ImageOps.grayscale(img)
+    histogram = img_gray.histogram()
+    histogram_log = [math.log10(h + 1) for h in histogram]
+    histogram_max = max(histogram_log)
+    histogram_normalized = [float(h) / histogram_max for h in histogram_log]
+    hist_image = Image.new("RGBA", (histo_size, histo_size), (255, 255, 255, 0))
+    draw = ImageDraw.Draw(hist_image)
+
+    for i in range(0, 256):
+        x = i
+        y = 256 - int(histogram_normalized[i] * 256)
+        draw.line((x, 256, x, y), fill=(0, 0, 0, 255))
+
+    text = ""
+    if histogram[240]>0:
+        text = "overexposed"
+    if histogram[190]<5:
+        text = "underexposed"
+    font = ImageFont.truetype("DejaVuSans.ttf", 24)
+    text_width, text_height = draw.textsize(text, font)
+    x = hist_image.width - text_width - 10
+    y = hist_image.height - text_height - 10
+    draw.text((x, y), text, font=font, fill=(255,0,0))
+
+
     img.paste(hist_image, (img.size[0] - histo_size, img.size[1] - histo_size))
     return img
+
 
 def create_mask(image: Image, scale: float = 0.1, threshold: int = 45) -> Image:
     threshold = load_int("cam_mask_threshold")
@@ -118,6 +175,7 @@ def picam2_init():
     picam2.controls.AnalogueGain = 1.0
     picam2.start()
     return ({}, 200)
+
 ###################################################################################################################
 @app.route('/picam2_take_photo', methods=['get'])
 def picam2_take_photo():
