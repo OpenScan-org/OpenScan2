@@ -466,6 +466,16 @@
         "height": 1
     },
     {
+        "id": "645b1bbbafc0138a",
+        "type": "ui_spacer",
+        "z": "c8e7ecb5849edb9a",
+        "name": "spacer",
+        "group": "ddbd496e.93a288",
+        "order": 9,
+        "width": 6,
+        "height": 1
+    },
+    {
         "id": "3fe52603e2ac73b6",
         "type": "ui_template",
         "z": "829d803b6033a693",
@@ -1314,8 +1324,7 @@
         "y": 300,
         "wires": [
             [
-                "aebad788761dce4a",
-                "baed8d6e7daa8b38"
+                "aebad788761dce4a"
             ]
         ]
     },
@@ -2321,7 +2330,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Routine",
-        "func": "from OpenScan import load_bool, load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime, time\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nimport math\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nfocuslist = [6, 7.5, 9, 10.5, 13, 16, 20] # 11cm\nfocuslist = [7, 8.5, 9.5, 11, 13, 17] # \nfocuslist = [11, 12, 13]  # 3cm\nfocuslist = [10,12,14]\n\nobjectsize = load_float('object_size')\nfocus_min = 11.5-objectsize/2 \nfocus_max = 11.5+objectsize/2 \nsteps = int(objectsize+0.5)//2 + 2\nfocuslist = []\nfor i in range (steps):\n    focuslist.append(focus_min - 0.2 + i * (focus_max-focus_min)/(steps-1))\n\nsave('status_internal_cam','Routine-preparing')\ncamera('/picam2_switch_mode?mode=1')\n\nprojectname=load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nphotocount = load_int('routine_photocount')\n\nSTmode = False\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nstarttime = time()\n\ndef photo():\n    save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    camera('/picam2_take_photo')\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")    \n\ndef move_motor():\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n    tt_angle = position[1] - position_last[1] \n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    motorrun('tt', tt_angle)\n    motorrun('rotor', rotor_angle)\n\ncounter2 = 0\n\ndef focus(i):\n    f = math.pow(focuslist[i]/737086, -1/1.4096)/273\n    camera('/picam2_focus?focus=' + str(f))\n\n    if i < len(focuslist)-1:\n        i += 1\n    else:\n        i = 0\n    return i\n\n\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    if counter < 6:\n        ETA = ''\n        \n    sleep(load_float(\"cam_delay_before\"))\n    photo()\n    counter2 = focus(counter2)\n    sleep(load_float(\"cam_delay_after\"))\n    move_motor()\n\n\n    ETA = '-ETA:'+str(int((photocount/counter - 1)*(time() - starttime)))+'/'+str(int(photocount/counter*(time() - starttime)))+'s'\n    position_last = position\n\nzip.close()\ncamera('/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nsystem('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\" )\n\nreturn msg\n",
+        "func": "from OpenScan import load_bool, load_str, load_int, load_float, motorrun, create_coordinates, take_photo, save, load_bool, camera\nfrom time import sleep, strftime, time\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system\nfrom os.path import isfile\nimport math\nimport threading\n\nif load_str(\"status_internal_cam\")==\"no camera found\" or load_str(\"status_internal_cam\")[:5]==\"Featu\":\n    return\n\nobjectsize = load_float('object_size')\nfocus_min = 11.5-objectsize/2 \nfocus_max = 11.5+objectsize/2 \nsteps = int(objectsize+0.5)//2 + 2\nfocuslist = []\nfor i in range (steps):\n    focuslist.append(focus_min - 0.2 + i * (focus_max-focus_min)/(steps-1))\n\nsave('status_internal_cam','Routine-preparing')\ncamera('/picam2_switch_mode?mode=1')\n\nprojectname=load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nangle_start = load_int('rotor_anglestart')\nphotocount = load_int('routine_photocount')\n\nSTmode = False\n\ncounter = 0\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min,angle_max,photocount)\nposition_last = (angle_start , 0)\n\nzip = ZipFile(zippath, \"a\",ZIP_DEFLATED, allowZip64=True)\n\nstarttime = time()\n\ndef photo():\n    save('status_internal_cam','Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    camera('/picam2_take_photo')\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")    \n\ndef move_motor():\n    rotor_angle = position_last[0] - position[0]\n    if abs(rotor_angle) > 180:\n        rotor_angle = -360 * rotor_angle/abs(rotor_angle) + rotor_angle\n    tt_angle = position[1] - position_last[1] \n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    tt_thread = threading.Thread(target=motorrun, args=('tt', tt_angle))\n    rotor_thread = threading.Thread(target=motorrun, args=('rotor', rotor_angle))\n    tt_thread.start()\n    rotor_thread.start()\n    tt_thread.join()\n    rotor_thread.join()\n    \ncounter2 = 0\n\ndef focus(i):\n    f = math.pow(focuslist[i]/737086, -1/1.4096)/273\n    camera('/picam2_focus?focus=' + str(f))\n\n    if i < len(focuslist)-1:\n        i += 1\n    else:\n        i = 0\n    return i\n\n\n\nfor position in coordinates:\n    counter += 1\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n\n    if counter < 6:\n        ETA = ''\n        \n    sleep(load_float(\"cam_delay_before\"))\n    photo()\n    counter2 = focus(counter2)\n    sleep(load_float(\"cam_delay_after\"))\n    move_motor()\n\n\n    ETA = '-ETA:'+str(int((photocount/counter - 1)*(time() - starttime)))+'/'+str(int(photocount/counter*(time() - starttime)))+'s'\n    position_last = position\n\nzip.close()\ncamera('/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam','Routine-done')\n\nmotorrun('rotor',position_last[0] - angle_start)\nmotorrun('tt',position_last[1])\n\nsave('status_internal_cam','--READY--')\n\nsystem('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\" )\n\nreturn msg\n",
         "outputs": 1,
         "x": 460,
         "y": 740,
@@ -2418,7 +2427,7 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "LED",
-        "func": "from OpenScan import ringlight\nif 'light' in msg:\n    val = msg['light']\n    if val == 0:\n        ringlight(1,False)\n        ringlight(2,False)\n    elif val == 1:\n        ringlight(1,False)\n        ringlight(2,True)\n    elif val == 2:\n        ringlight(1,True)\n        ringlight(2,True)",
+        "func": "from OpenScan import ringlight\nif 'light' in msg:\n    val = msg['light']\n    if val == 0:\n        ringlight(1,False)\n        ringlight(2,False)\n    elif val == 1:\n        ringlight(2,False)\n        ringlight(1,True)\n    elif val == 2:\n        ringlight(1,True)\n        ringlight(2,True)",
         "outputs": 1,
         "x": 970,
         "y": 1080,
@@ -2726,22 +2735,6 @@
         ],
         "x": 745,
         "y": 620,
-        "wires": []
-    },
-    {
-        "id": "baed8d6e7daa8b38",
-        "type": "debug",
-        "z": "1613373abaf77a2c",
-        "name": "debug 2",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 560,
-        "y": 180,
         "wires": []
     },
     {
@@ -9610,7 +9603,7 @@
         "className": "",
         "topic": "",
         "name": "",
-        "x": 570,
+        "x": 550,
         "y": 340,
         "wires": [
             []
@@ -9632,5 +9625,68 @@
         "x": 520,
         "y": 820,
         "wires": []
+    },
+    {
+        "id": "0bc709f65b39abf4",
+        "type": "python3-function",
+        "z": "c8e7ecb5849edb9a",
+        "name": "reinstall cam",
+        "func": "import os\nimport RPi.GPIO as GPIO\nfrom OpenScan import ringlight\nfrom time import sleep\n\nos.system('wget -O /home/pi/OpenScan/tmp/install_pivariety_pkgs.sh https://github.com/ArduCAM/Arducam-Pivariety-V4L2-Driver/releases/download/install_script/install_pivariety_pkgs.sh ')\nos.system('chmod +x /home/pi/OpenScan/tmp/install_pivariety_pkgs.sh')\nos.system('/home/pi/OpenScan/tmp//install_pivariety_pkgs.sh -p imx519_kernel_driver_low_speed')\n\nGPIO.setwarnings(False)\nGPIO.cleanup()\n\ndelay = 0.1\nringlight(2,False)\n\nfor i in range (5):\n    ringlight(1,True)\n    sleep(delay)\n    ringlight(1,False)\n    sleep(delay)\n\nos.system('reboot -h')\nreturn msg",
+        "outputs": 1,
+        "x": 430,
+        "y": 720,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aae32774a93b4d54",
+        "type": "ui_button",
+        "z": "c8e7ecb5849edb9a",
+        "name": "",
+        "group": "ddbd496e.93a288",
+        "order": 10,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "ReInstall IMX519 DRIVERS",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "might take 1-2mins. if successful a restart is performed!",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 180,
+        "y": 720,
+        "wires": [
+            [
+                "0bc709f65b39abf4",
+                "21c8b3e8edf537f3"
+            ]
+        ]
+    },
+    {
+        "id": "21c8b3e8edf537f3",
+        "type": "ui_toast",
+        "z": "c8e7ecb5849edb9a",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "INSTALLING",
+        "name": "",
+        "x": 430,
+        "y": 760,
+        "wires": [
+            []
+        ]
     }
 ]
