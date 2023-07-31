@@ -1143,6 +1143,27 @@
         ]
     },
     {
+        "id": "c8167775e3401fad",
+        "type": "ui_template",
+        "z": "e6f4d02efb300ea9",
+        "group": "729f9ea6e3513c9b",
+        "name": "infotext",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "format": "<h2>What's new?</h2>\n<ul>\n    <li>speed improvement 2-3x</li>\n    <li>currently tested on OpenScan Mini + IMX519 with RPi 4</li>\n    <li>optimized toolpath</li>\n    <li>more responsive user interface</li>\n    <li>hotspot mode (when no wireless network available ssid: <em>openscan</em> pw: <em>opensource</em></li>\n    <li>preview features and sharpness</li>\n    <li>partial background masking</li>\n    <li>no more autofocus --&gt; instead you can set a min and max focus distance</li>\n</ul>\nnote, that this is still an early beta and there might be some unintended bugs. please reach out to info@openscan.eu if you run into any issues.",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 600,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
         "id": "6a3d9acbe097a3d2",
         "type": "function",
         "z": "481edaf6db5a7a54",
