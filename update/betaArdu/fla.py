@@ -1,4 +1,3 @@
-
 from flask import Flask, make_response, jsonify, request, abort
 from picamera2 import Picamera2
 from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops, ImageFont
@@ -9,6 +8,9 @@ import RPi.GPIO as GPIO
 from math import sqrt
 import os
 import math
+from skimage import io, feature, color, transform
+import numpy as np
+from scipy import ndimage
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -18,6 +20,51 @@ app = Flask(__name__)
 basedir = '/home/pi/OpenScan/'
 timer = time()
 cam_mode = 0
+
+def overlay_mask(image, mask_image):
+    # Ensure image is in RGB mode
+    image_rgb = image.convert('RGB')
+    # Create an empty image with RGBA channels
+    overlay = Image.new('RGBA', image_rgb.size)
+
+    # Prepare a red image of the same size
+    red_image = Image.new('RGB', image_rgb.size, (255, 0, 0))
+    # Prepare a mask where the condition is met (mask_image pixels == 255)
+    mask_condition = np.array(mask_image) > 0
+    overlay_mask = Image.fromarray(np.uint8(mask_condition) * 255)
+    # Paste the red image onto the overlay using the condition mask
+    overlay.paste(red_image, mask=overlay_mask)
+    # Combine the original image with the overlay
+    combined = Image.alpha_composite(image_rgb.convert('RGBA'), overlay)
+    # Convert the final image to RGB
+    combined_rgb = combined.convert('RGB')
+    return combined_rgb
+
+
+
+def highlight_sharpest_areas(image, threshold=load_int('cam_sharpness'), dilation_size=5):
+    # Convert PIL image to grayscale
+    image_gray = image.convert('L')
+
+    # Convert grayscale image to numpy array
+    image_array = np.array(image_gray)
+
+    # Calculate the gradient using a Sobel filter
+    dx = ndimage.sobel(image_array, 0)  # horizontal derivative
+    dy = ndimage.sobel(image_array, 1)  # vertical derivative
+    mag = np.hypot(dx, dy)  # magnitude
+
+    # Threshold the gradient to create a mask of the sharpest areas
+    mask = np.where(mag > threshold, 255, 0).astype(np.uint8)
+
+    dilated_mask = ndimage.binary_dilation(mask, structure=np.ones((dilation_size,dilation_size)))
+    # Create a PIL image from the mask
+    mask_image = Image.fromarray(dilated_mask)
+
+    return mask_image
+
+
+
 
 ###################################################################################################################
 @app.route('/shutdown', methods=['get'])
@@ -45,15 +92,34 @@ def reboot():
 
     os.system('reboot -h')
 ###################################################################################################################
-@app.route('/ping', methods=['get'])
-def ping():
-    global timer
-    cmd = str(request.args.get('cmd'))
-    if cmd == 'set':
-        timer = time()
-    inactive = time() - timer
-    return ({'inactive':inactive}, 200)
 
+def plot_orb_keypoints(pil_image):
+    downscale = 2
+    # Read the image from the given image path
+    image = np.array(pil_image)
+    #image = io.imread(image_path)
+    image = transform.resize(image, (image.shape[0] // downscale, image.shape[1] // downscale), anti_aliasing=True)
+
+    # Convert the image to grayscale
+    gray_image = color.rgb2gray(image)
+
+    try:
+        orb = feature.ORB(n_keypoints=10000, downscale=1.2, fast_n=2, fast_threshold=0.2 , n_scales=3, harris_k=0.001)
+        orb.detect_and_extract(gray_image)
+        keypoints = orb.keypoints
+    except:
+        return pil_image
+
+    # Convert the image back to the range [0, 255]
+    display_image = (image * 255).astype(np.uint8)
+
+    # Draw the keypoints on the image
+    draw = ImageDraw.Draw(pil_image)
+    size = max(2,int(image.shape[0]*downscale*0.005))
+    for i, (y, x) in enumerate(keypoints):
+        draw.ellipse([(downscale*x-size, downscale*y-size), (downscale*x+size, downscale*y+size)], fill = (0,255,0))
+    # Save the image with keypoints to the given output path
+    return pil_image
 
 def add_histo(img):
     histo_size = 241
@@ -77,7 +143,13 @@ def add_histo(img):
     if sum(histogram[190:192])<8:
         text = "underexposed"
     font = ImageFont.truetype("DejaVuSans.ttf", 30)
-    text_width, text_height = draw.textsize(text, font)
+
+    bbox = draw.textbbox((0, 0), text, font=font)
+
+    text_width = bbox[2] - bbox[0]
+    text_height = bbox[3] - bbox[1]
+
+
     x = (hist_image.width - text_width )/2
     y = hist_image.height - text_height - 10
     draw.text((x, y), text, font=font, fill=(255,0,0))
@@ -92,46 +164,16 @@ def add_histo(img):
     hist_image = hist_image.resize((new_width1, new_height1))
     x = hist_image.width - text_width - 10
     y = hist_image.height - text_height - 10
- 
+
 
     img.paste(hist_image, (img.size[0]-new_width1-int(0.01*img.size[0]),img.size[1]-new_height1-int(0.01*img.size[0])))
 
     return img
 
-def add_histo2(img):
-    histo_size = 241
-
-    img_gray = ImageOps.grayscale(img)
-    histogram = img_gray.histogram()
-    histogram_log = [math.log10(h + 1) for h in histogram]
-    histogram_max = max(histogram_log)
-    histogram_normalized = [float(h) / histogram_max for h in histogram_log]
-    hist_image = Image.new("RGBA", (histo_size, histo_size), (255, 255, 255, 0))
-    draw = ImageDraw.Draw(hist_image)
-
-    for i in range(0, 256):
-        x = i
-        y = 256 - int(histogram_normalized[i] * 256)
-        draw.line((x, 256, x, y), fill=(0, 0, 0, 255))
-
-    text = ""
-    if histogram[240]>0:
-        text = "overexposed"
-    if histogram[190]<5:
-        text = "underexposed"
-    font = ImageFont.truetype("DejaVuSans.ttf", 24)
-    text_width, text_height = draw.textsize(text, font)
-    x = hist_image.width - text_width - 10
-    y = hist_image.height - text_height - 10
-    draw.text((x, y), text, font=font, fill=(255,0,0))
-
-
-    img.paste(hist_image, (img.size[0] - histo_size, img.size[1] - histo_size))
-    return img
-
-
 def create_mask(image: Image, scale: float = 0.1, threshold: int = 45) -> Image:
     threshold = load_int("cam_mask_threshold")
+    if threshold <= 1:
+        return image
     orig = image
     image = image.resize((int(image.width*scale),int(image.height*scale)))
     image = image.convert("L")
@@ -169,7 +211,7 @@ def picam2_init():
 #    preview_config = picam2.create_preview_configuration(main={"size": (2028, 1520)})
     preview_config = picam2.create_preview_configuration(main={"size": (2028, 1520)}, controls ={"FrameDurationLimits": (1, 1000000)})
 
-#   preview_config = picam2.create_preview_configuration(main={"size": (2328, 1748)})
+#    preview_config = picam2.create_preview_configuration(main={"size": (2328, 1748)})
     capture_config = picam2.create_still_configuration(controls ={"FrameDurationLimits": (1, 1000000)})
     picam2.configure(preview_config)
     picam2.controls.AnalogueGain = 1.0
@@ -207,15 +249,19 @@ def picam2_take_photo():
             downscale = 0.1*1.4
         img = create_mask(img, downscale)
 
-    if cam_mode != 1:
+    if load_bool("cam_features") and not load_bool("cam_sharparea"):
+        img = plot_orb_keypoints(img)
+
+    if load_bool("cam_sharparea") and not load_bool("cam_features"):
+        img2 = highlight_sharpest_areas(img)
+        img = overlay_mask(img, img2)
+
+    if cam_mode != 1 and not  load_bool("cam_sharparea") and not load_bool("cam_features"):
         img = add_histo(img)
 
     img.save("/home/pi/OpenScan/tmp2/preview.jpg", quality=load_int('cam_jpeg_quality'))
     print("total " + str(int(1000*(time()-starttime))) + "ms")
     starttime = time()
-
-
-
 
     return ({}, 200)
 ###################################################################################################################
@@ -236,10 +282,6 @@ def picam2_af1():
 def picam2_af2():
     picam2.set_controls({"AfMode": 2 ,"AfTrigger": 0})
     return ({}, 200)
-
-
-
-
 
 ###################################################################################################################
 @app.route('/picam2_exposure', methods=['get'])
