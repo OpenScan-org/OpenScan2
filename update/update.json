@@ -129,7 +129,7 @@
         "4": {
             "src": "betaArdu/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 308615
+            "filesize": 308918
         },
         "5": {
             "src": "betaArdu/settings.js",

@@ -4119,11 +4119,14 @@
         "type": "python3-function",
         "z": "e43a27722b508115",
         "name": "load advanced",
-        "func": "from OpenScan import load_bool\n\nif load_bool('advanced_settings') == False:\n    msg['payload']={\"group\":{\"hide\":[\"Settings_Camera\",\"Settings_Motor\",\"Settings_Pinout\",],\"show\":[\"Settings_General\",\"Settings_Network\",\"Settings_OpenScanCloud\"]}}\nelse:\n    msg['payload']={\"group\":{\"hide\":[],\"show\":[\"Settings_General\",\"Settings_Network\",\"Settings_OpenScanCloud\",\"Settings_Camera\",\"Settings_Motor\",\"Settings_Pinout\",]}}\nreturn msg",
-        "outputs": 1,
+        "func": "from OpenScan import load_bool\n\nif load_bool('advanced_settings') == False:\n    msg['payload']={\"group\":{\"hide\":[\"Settings_Camera\",\"Settings_Motor\",\"Settings_Pinout\",],\"show\":[\"Settings_General\",\"Settings_Network\",\"Settings_OpenScanCloud\"]}}\nelse:\n    msg['payload']={\"group\":{\"hide\":[],\"show\":[\"Settings_General\",\"Settings_Network\",\"Settings_OpenScanCloud\",\"Settings_Camera\",\"Settings_Motor\",\"Settings_Pinout\",]}}\n\nupdate = load_bool('updateable')\n\nmsg2 = {}\n\nif update == True:\n    msg2['payload'] = {\"group\":{\"show\":[\"OpenScan_Update\"]}}\nelif update == False:\n    msg2['payload'] = {\"group\":{\"hide\":[\"OpenScan_Update\"]}}\n\n\nreturn msg,msg2",
+        "outputs": 2,
         "x": 360,
         "y": 60,
         "wires": [
+            [
+                "bf23328f9fb11b22"
+            ],
             [
                 "bf23328f9fb11b22"
             ]
