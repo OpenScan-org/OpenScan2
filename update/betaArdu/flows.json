@@ -697,7 +697,7 @@
         "type": "function",
         "z": "e6f4d02efb300ea9",
         "name": "global",
-        "func": "global.set('light', 0)\nglobal.set('state1', 0)\nglobal.set('network_ssid',\"\")\nglobal.set('network_password',\"\")\nglobal.set('network_country',\"\")\nreturn msg",
+        "func": "global.set('light', 0)\nglobal.set('state1', 0)\nglobal.set('network_ssid',\"\")\nglobal.set('network_password',\"\")\nglobal.set('network_country',\"\")\nglobal.set('flag_pw', true)\nglobal.set('flag',false)\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1439,7 +1439,7 @@
         "type": "function",
         "z": "481edaf6db5a7a54",
         "name": "enable",
-        "func": "msg.flag = global.get('flag')\nmsg.light = global.get('light')\nmsg.state1 = global.get('state1')\n\nvar min = 1;\nvar max = 100000;\nvar random = Math.floor(Math.random() * (max - min + 1)) + min;\n\nvar formatted = random.toString().padStart(3, '0');\nmsg.payload=\"/tmp2/preview.jpg?ts=\" + Date.now().toString();\n\nif (global.get('flag_pw') == false){\n    delete msg.payload;\n}\n\nreturn msg\n\n",
+        "func": "msg.light = global.get('light')\nmsg.state1 = global.get('state1')\nmsg.flag = global.get('flag')\n\n\nvar min = 1;\nvar max = 100000;\nvar random = Math.floor(Math.random() * (max - min + 1)) + min;\n\nvar formatted = random.toString().padStart(3, '0');\nmsg.payload=\"/tmp2/preview.jpg?ts=\" + Date.now().toString();\n\nif (global.get('flag_pw') == false){\n    if (msg.flag == true){\n        return msg\n    }\n    return \n}\nelse{\n    return msg\n}\n\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1452,7 +1452,8 @@
                 "d1b87196ae5373ed",
                 "41e6a4649b6afbfb",
                 "2fd24f8e8e9c08b7",
-                "85a268108250ba88"
+                "85a268108250ba88",
+                "e78235c36be29dbf"
             ]
         ]
     },
@@ -1520,12 +1521,12 @@
                 "vt": "str"
             }
         ],
-        "repeat": "0.2",
+        "repeat": "0.1",
         "crontab": "",
         "once": true,
         "onceDelay": "4",
         "topic": "Repeat",
-        "payload": "0.2",
+        "payload": "0.1",
         "payloadType": "str",
         "x": 100,
         "y": 840,
@@ -1540,7 +1541,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "Take Preview Shot",
-        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\n\nstatus = load_str('status_internal_cam')\n\n#return msg\n\n#if msg['flag'] == False and not 'Routine' in status:\n#    return msg\n\nmsg['payload']=\"/tmp2/preview.jpg?ts=\"+str(int(time()))\n\n#if status!=\"--READY--\":\n#    return msg\n\n#msg['preview'] = True\n\ncamera('/picam2_take_photo')\n\nreturn msg\n",
+        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\n\nstatus = load_str('status_internal_cam')\n\n#return msg\n\nmsg['payload']=\"/tmp2/preview.jpg?ts=\"+str(int(time()))\n\nif msg['flag'] == True:\n    return msg\n\n\n#if status!=\"--READY--\":\n#    return msg\n\n#msg['preview'] = True\n\ncamera('/picam2_take_photo')\n\nreturn msg\n",
         "outputs": 1,
         "x": 450,
         "y": 800,
@@ -1587,9 +1588,7 @@
         "x": 145,
         "y": 800,
         "wires": [
-            [
-                "855cbcadef1163c5"
-            ]
+            []
         ]
     },
     {
@@ -2098,7 +2097,7 @@
         "type": "function",
         "z": "481edaf6db5a7a54",
         "name": "msg",
-        "func": "global.set('flag_pw', true)\nglobal.set('flag', true)\nmsg.enabled = true\nreturn msg\n",
+        "func": "global.set('flag_pw', true)\nglobal.set('flag', false)\nmsg.enabled = true\nreturn msg\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2117,7 +2116,7 @@
         "type": "function",
         "z": "481edaf6db5a7a54",
         "name": "disable",
-        "func": "msg.enabled = false\nmsg.payload = false\nreturn msg\n",
+        "func": "msg.enabled = false\nmsg.payload = false\nglobal.set(\"flag\",true)\n\nreturn msg\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2142,8 +2141,7 @@
         "y": 1040,
         "wires": [
             [
-                "1daf9e3a5bd5ab48",
-                "d3d9c51cac4510d0"
+                "1daf9e3a5bd5ab48"
             ]
         ]
     },
@@ -2639,10 +2637,10 @@
         ]
     },
     {
-        "id": "d3d9c51cac4510d0",
+        "id": "e78235c36be29dbf",
         "type": "debug",
         "z": "481edaf6db5a7a54",
-        "name": "debug 5",
+        "name": "debug 9",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -2652,7 +2650,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 500,
-        "y": 980,
+        "y": 960,
         "wires": []
     },
     {
@@ -2667,7 +2665,8 @@
         "wires": [
             [
                 "f3662f8c7d3d7a2d",
-                "01e4783e148c6698"
+                "01e4783e148c6698",
+                "332d0b0957b80b33"
             ]
         ]
     },
@@ -3017,7 +3016,8 @@
         "wires": [
             [
                 "ea54fcc2.cfcc2",
-                "b42e061fb1f1f3d7"
+                "b42e061fb1f1f3d7",
+                "df2a071988c4c723"
             ],
             [
                 "6434e713f088012b"
@@ -3743,6 +3743,40 @@
                 "0c387c0291d6c131"
             ]
         ]
+    },
+    {
+        "id": "df2a071988c4c723",
+        "type": "debug",
+        "z": "80a3942785a26c29",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "332d0b0957b80b33",
+        "type": "debug",
+        "z": "80a3942785a26c29",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 675,
+        "y": 59,
+        "wires": []
     },
     {
         "id": "cb3437ec113e1b6f",
