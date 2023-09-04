@@ -1,140 +1,84 @@
 {
-    "mini": {
+    "stable": {
         "1": {
-            "src": "mini/fla.py",
+            "src": "stable/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 3910
+            "filesize": 13012
         },
         "2": {
-            "src": "mini/Arducam.py",
-            "dst": "/usr/lib/python3/dist-packages/Arducam.py",
-            "filesize": 6154
+            "src": "stable/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "filesize": 10253
         },
         "3": {
-            "src": "mini/OpenScan.py",
-            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 5864
-        },
-        "4": {
-            "src": "mini/config.txt",
-            "dst": "/boot/config.txt",
-            "filesize": 2196
-        },
-        "5": {
-            "src": "mini/flows.json",
-            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 178895
-        },
-        "6": {
-            "src": "mini/settings.js",
-            "dst": "/root/.node-red/settings.js",
-            "filesize": 20321
-        },
-        "7": {
-            "src": "files/logo2.jpg",
-            "dst": "/home/pi/OpenScan/files/logo.jpg",
-            "filesize": 582519
-        }
-    },
-    "main": {
-        "1": {
-            "src": "main/fla.py",
-            "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 5366
-        },
-        "2": {
-            "src": "main/Arducam.py",
-            "dst": "/usr/lib/python3/dist-packages/Arducam.py",
-            "filesize": 6154
-        },
-        "3": {
-            "src": "main/OpenScan.py",
-            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 6161
-        },
-        "4": {
-            "src": "main/config.txt",
-            "dst": "/boot/config.txt",
-            "filesize": 2179
-        },
-        "5": {
-            "src": "main/flows.json",
-            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 350544
-        },
-        "6": {
-            "src": "main/settings.js",
-            "dst": "/root/.node-red/settings.js",
-            "filesize": 20321
-        },
-        "7": {
-            "src": "files/logo.jpg",
-            "dst": "/home/pi/OpenScan/files/logo.jpg",
-            "filesize": 582519
-        }
-    },
-    "beta": {
-        "1": {
-            "src": "beta/fla.py",
-            "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 5366
-        },
-        "2": {
-            "src": "beta/Arducam.py",
-            "dst": "/usr/lib/python3/dist-packages/Arducam.py",
-            "filesize": 6154
-        },
-        "3": {
-            "src": "beta/OpenScan.py",
-            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 6443
-        },
-        "4": {
-            "src": "beta/config.txt",
-            "dst": "/boot/config.txt",
-            "filesize": 2179
-        },
-        "5": {
-            "src": "beta/flows.json",
-            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 353390
-        },
-        "6": {
-            "src": "beta/settings.js",
-            "dst": "/root/.node-red/settings.js",
-            "filesize": 20321
-        },
-        "7": {
-            "src": "files/logo.jpg",
-            "dst": "/home/pi/OpenScan/files/logo.jpg",
-            "filesize": 582519
-        }
-    },
-    "betaArdu": {
-        "1": {
-            "src": "betaArdu/fla.py",
-            "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 12089
-        },
-        "2": {
-            "src": "betaArdu/OpenScan.py",
-            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 10060
-        },
-        "3": {
-            "src": "betaArdu/config.txt",
+            "src": "stable/config.txt",
             "dst": "/boot/config.txt",
             "filesize": 2185
         },
         "4": {
-            "src": "betaArdu/flows.json",
-            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 310044
+            "src": "stable/flows.json.tmpl",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
+            "filesize": 325625
         },
         "5": {
-            "src": "betaArdu/settings.js",
+            "src": "stable/settings.js",
             "dst": "/root/.node-red/settings.js",
-            "filesize": 21199
+            "filesize": 21248
+        }
+    },
+
+    "beta": {
+        "1": {
+            "src": "beta/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "filesize": 13012
+        },
+        "2": {
+            "src": "beta/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "filesize": 10253
+        },
+        "3": {
+            "src": "beta/config.txt",
+            "dst": "/boot/config.txt",
+            "filesize": 2185
+        },
+        "4": {
+            "src": "beta/flows.json.tmpl",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
+            "filesize": 337413
+        },
+        "5": {
+            "src": "beta/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "filesize": 21248
+        }
+    },
+    "meanwhile": {
+        "1": {
+            "src": "meanwhile/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "filesize": 13012
+        },
+        "2": {
+            "src": "meanwhile/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "filesize": 10253
+        },
+        "3": {
+            "src": "meanwhile/config.txt",
+            "dst": "/boot/config.txt",
+            "filesize": 2185
+        },
+        "4": {
+            "src": "meanwhile/flows.json.tmpl",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
+            "filesize": 337413
+        },
+        "5": {
+            "src": "meanwhile/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "filesize": 21248
         }
     }
 }

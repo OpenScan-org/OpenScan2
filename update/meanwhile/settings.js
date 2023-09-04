@@ -19,6 +19,7 @@
  *  - Node Settings
  *
  **/
+process.env.HOSTNAME = require('os').hostname();
 
 module.exports = {
 

@@ -1,5 +1,5 @@
 /**
- * Node-RED Settings created at Mon, 24 Jan 2022 08:17:31 GMT
+ * Node-RED Settings created at Thu, 20 Apr 2023 08:41:18 GMT
  *
  * It can contain any valid JavaScript code that will get run when Node-RED
  * is started.
@@ -19,6 +19,7 @@
  *  - Node Settings
  *
  **/
+process.env.HOSTNAME = require('os').hostname();
 
 module.exports = {
 
@@ -54,7 +55,8 @@ module.exports = {
      * property can be used
      */
     //userDir: '/home/nol/.node-red/',
-	userDir: '/home/pi/OpenScan/settings/.node-red/',
+userDir: '/home/pi/OpenScan/settings/.node-red/',
+
     /** Node-RED scans the `nodes` directory in the userDir to find local node files.
      * The following property can be used to specify an additional directory to scan.
      */
@@ -137,11 +139,12 @@ module.exports = {
  *  - httpNodeCors
  *  - httpNodeMiddleware
  *  - httpStatic
+ * - httpStaticRoot
  ******************************************************************************/
 
     /** the tcp port that the Node-RED web server is listening on */
-//    uiPort: process.env.PORT || 1880,
-uiPort: process.env.PORT || 80,
+    uiPort: process.env.PORT || 80,
+
     /** By default, the Node-RED UI accepts connections on all IPv4 interfaces.
      * To listen on all IPv6 addresses, set uiHost to "::",
      * The following property can be used to listen on a specific interface. For
@@ -164,8 +167,8 @@ uiPort: process.env.PORT || 80,
      * The following property can be used to specify a different root path.
      * If set to false, this is disabled.
      */
-    //httpAdminRoot: '/admin',
-httpAdminRoot: '/editor',
+    httpAdminRoot: '/editor',
+
     /** The following property can be used to add a custom middleware function
      * in front of all admin http routes. For example, to set custom http
      * headers. It can be a single function or an array of middleware functions.
@@ -218,9 +221,28 @@ httpAdminRoot: '/editor',
     /** When httpAdminRoot is used to move the UI to a different root path, the
      * following property can be used to identify a directory of static content
      * that should be served at http://localhost:1880/.
+     * When httpStaticRoot is set differently to httpAdminRoot, there is no need 
+     * to move httpAdminRoot
      */
-    //httpStatic: '/home/nol/node-red-static/',
-httpStatic: '/home/pi/OpenScan/',
+    httpStatic: '/home/pi/OpenScan/',
+ 
+    //httpStatic: '/home/nol/node-red-static/', //single static source
+    /* OR multiple static sources can be created using an array of objects... */
+    //httpStatic: [
+    //    {path: '/home/nol/pics/',    root: "/img/"}, 
+    //    {path: '/home/nol/reports/', root: "/doc/"}, 
+    //],
+
+    /**  
+     * All static routes will be appended to httpStaticRoot
+     * e.g. if httpStatic = "/home/nol/docs" and  httpStaticRoot = "/static/"
+     *      then "/home/nol/docs" will be served at "/static/"
+     * e.g. if httpStatic = [{path: '/home/nol/pics/', root: "/img/"}]
+     *      and httpStaticRoot = "/static/"
+     *      then "/home/nol/pics/" will be served at "/static/img/"
+     */
+    //httpStaticRoot: '/static/',
+
 /*******************************************************************************
  * Runtime Settings
  *  - lang
@@ -348,9 +370,9 @@ httpStatic: '/home/pi/OpenScan/',
         },
         codeEditor: {
             /** Select the text editor component used by the editor.
-             * Defaults to "ace", but can be set to "ace" or "monaco"
+             * As of Node-RED V3, this defaults to "monaco", but can be set to "ace" if desired
              */
-            lib: "ace",
+            lib: "monaco",
             options: {
                 /** The follow options only apply if the editor is set to "monaco"
                  *
@@ -360,7 +382,7 @@ httpStatic: '/home/pi/OpenScan/',
                  */
                 theme: "vs",
                 /** other overrides can be set e.g. fontSize, fontFamily, fontLigatures etc.
-                 * for the full list, see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.istandaloneeditorconstructionoptions.html
+                 * for the full list, see https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IStandaloneEditorConstructionOptions.html
                  */
                 //fontSize: 14,
                 //fontFamily: "Cascadia Code, Fira Code, Consolas, 'Courier New', monospace",
@@ -405,13 +427,14 @@ httpStatic: '/home/pi/OpenScan/',
      * will allow the `os` module to be accessed in a Function node using:
      *    global.get("os")
      */
-    functionGlobalContext: {
-        os:require('os'),
-        path:require('path'),
-        fs:require('fs'),
-
-},
-
+//    functionGlobalContext: {
+        // os:require('os'),
+  //  },
+functionGlobalContext: { // enables and pre-populates the context.global variable
+    os:require('os'),
+    path:require('path'),
+    fs:require('fs')
+    },
     /** The maximum number of messages nodes will buffer internally as part of their
      * operation. This applies across a range of nodes that operate on message sequences.
      * defaults to no limit. A value of 0 also means no limit is applied.
@@ -425,8 +448,8 @@ httpStatic: '/home/pi/OpenScan/',
      *  middleware:{function or array}, (req,res,next) - http middleware
      *  ioMiddleware:{function or array}, (socket,next) - socket.io middleware
      */
-    //ui: { path: "ui" },
-ui: { path: "" },
+    ui: { path: "" },
+
     /** Colourise the console output of the debug node */
     //debugUseColors: true,
 

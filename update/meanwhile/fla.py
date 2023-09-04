@@ -1,4 +1,4 @@
-from flask import Flask, make_response, jsonify, request, abort
+from flask import Flask, make_response, jsonify, request, abort, redirect
 from picamera2 import Picamera2
 from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops, ImageFont
 from time import sleep, time
@@ -11,6 +11,7 @@ import math
 from skimage import io, feature, color, transform
 import numpy as np
 from scipy import ndimage
+import socket
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
@@ -20,6 +21,7 @@ app = Flask(__name__)
 basedir = '/home/pi/OpenScan/'
 timer = time()
 cam_mode = 0
+hostname = socket.gethostname().split(":")
 
 def overlay_mask(image, mask_image):
     # Ensure image is in RGB mode
@@ -69,28 +71,44 @@ def highlight_sharpest_areas(image, threshold=load_int('cam_sharpness'), dilatio
 ###################################################################################################################
 @app.route('/shutdown', methods=['get'])
 def shutdown():
-    delay = 0.1
-    ringlight(2,False)
+    shutdown_token = request.args.get('token')
+    hostname = request.host.split(":")[0]
+    f = open("/home/pi/OpenScan/settings/session_token", "r")
+    session_token = (f.readline())[:20]
+    if shutdown_token == session_token:
 
-    for i in range (5):
-        ringlight(1,True)
-        sleep(delay)
-        ringlight(1,False)
-        sleep(delay)
-    os.system('shutdown -h now')
+        delay = 0.1
+        ringlight(2,False)
+
+        for i in range (5):
+            ringlight(1,True)
+            sleep(delay)
+            ringlight(1,False)
+            sleep(delay)
+        os.system('shutdown -h now')
+
+    else:
+        return redirect("http://" + hostname, code=302)
 ###################################################################################################################
 @app.route('/reboot', methods=['get'])
 def reboot():
-    delay = 0.1
-    ringlight(2,False)
+    shutdown_token = request.args.get('token')
+    hostname = request.host.split(":")[0]
+    f = open("/home/pi/OpenScan/settings/session_token", "r")
+    session_token = (f.readline())[:20]
+    if shutdown_token == session_token:
+        delay = 0.1
+        ringlight(2,False)
 
-    for i in range (5):
-        ringlight(1,True)
-        sleep(delay)
-        ringlight(1,False)
-        sleep(delay)
+        for i in range (5):
+            ringlight(1,True)
+            sleep(delay)
+            ringlight(1,False)
+            sleep(delay)
 
-    os.system('reboot -h')
+        os.system('reboot -h')
+    else:
+        return redirect("http://" + hostname, code=302)
 ###################################################################################################################
 
 def plot_orb_keypoints(pil_image):
@@ -322,6 +340,11 @@ def picam2_show_mode():
 def picam2_af():
     picam2.set_controls({"AfMode": 1 ,"AfTrigger": 0}) # --> wait 3-5s
     return ({}, 200)
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
 if __name__ == '__main__':
 #    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
