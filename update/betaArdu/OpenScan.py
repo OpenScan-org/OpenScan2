@@ -165,7 +165,14 @@ def motorrun(motor,angle,ES_enable=False,ES_start_state = True):
         step_count=-step_count
     for x in range(step_count):
         if ES_enable == True and GPIO.input(ES_pin) != ES_start_state:
-            break
+            i = 0
+            while i <= 10:
+                if GPIO.input(ES_pin) == ES_start_state:
+                    i = 11
+                if i == 10:
+                    return
+                i = i + 1
+
         GPIO.output(steppin, GPIO.HIGH)
         if x<=ramp and x<=step_count/2:
             delay = delay_init * (1 + -1/acc*cos(1*(ramp-x)/ramp)+1/acc)

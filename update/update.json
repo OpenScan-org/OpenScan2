@@ -119,7 +119,7 @@
         "2": {
             "src": "betaArdu/OpenScan.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 10060
+            "filesize": 10253
         },
         "3": {
             "src": "betaArdu/config.txt",
@@ -129,7 +129,7 @@
         "4": {
             "src": "betaArdu/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 310044
+            "filesize": 315147
         },
         "5": {
             "src": "betaArdu/settings.js",
