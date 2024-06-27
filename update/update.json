@@ -63,7 +63,7 @@
         "2": {
             "src": "meanwhile/OpenScan.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 10253
+            "filesize": 10322
         },
         "3": {
             "src": "meanwhile/config.txt",
@@ -73,7 +73,7 @@
         "4": {
             "src": "meanwhile/flows.json.tmpl",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
-            "filesize": 337413
+            "filesize": 340275
         },
         "5": {
             "src": "meanwhile/settings.js",

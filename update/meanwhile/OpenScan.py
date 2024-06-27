@@ -133,7 +133,7 @@ def camera(cmd, msg = {}):
     except:
         return 400
 
-def motorrun(motor,angle,ES_enable=False,ES_start_state = True):
+def motorrun(motor,angle,ES_enable=False):
     #motor can be "rotor", "tt" or "extra"
     import RPi.GPIO as GPIO
     from time import sleep
@@ -147,6 +147,7 @@ def motorrun(motor,angle,ES_enable=False,ES_start_state = True):
     dirpin = load_int('pin_' + motor + '_dir')
     steppin = load_int('pin_' + motor +'_step')
     ES_pin = load_int('pin_' + motor + '_endstop')
+    ES_pushed = load_bool(motor + '_endstop_pushed')
     dir = load_int(motor + '_dir')
     ramp = load_int(motor + '_accramp')
     acc = load_float(motor + '_acc')
@@ -163,11 +164,12 @@ def motorrun(motor,angle,ES_enable=False,ES_start_state = True):
     if(step_count<0):
         GPIO.output(dirpin, GPIO.LOW)
         step_count=-step_count
+
     for x in range(step_count):
-        if ES_enable == True and GPIO.input(ES_pin) != ES_start_state:
+        if ES_enable == True and GPIO.input(ES_pin) == ES_pushed and (motor == "rotor" and GPIO.input(dirpin) == False):
             i = 0
             while i <= 10:
-                if GPIO.input(ES_pin) == ES_start_state:
+                if GPIO.input(ES_pin) != ES_pushed:
                     i = 11
                 if i == 10:
                     return
@@ -231,7 +233,7 @@ def take_photo(file):
     else:
         cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus + ' >/dev/null 2>&1'
     #    cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus
-        
+
     system(cmd)
     return cmd
 
