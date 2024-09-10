@@ -642,7 +642,8 @@
                 "8e39e4a037487ecd",
                 "bb84b9e5c7d8e21f",
                 "7113d7b25a851151",
-                "c4c1580c289fc7bd"
+                "c4c1580c289fc7bd",
+                "7494af94bc76a6a8"
             ]
         ]
     },
@@ -825,7 +826,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "CREATE FACTORY DEFAULT",
-        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n    'pin_rotor_endstop':27,\n    'pin_tt_endstop':5,\n    'pin_extra_endstop':26,\n    'pin_extra_dir':21,\n    'pin_extra_step':20,\n    'pin_extra_enable':19,\n    'extra_acc':1,\n    'extra_accramp':200,\n    'extra_angle':10,\n    'extra_delay':0.0001,\n    'extra_dir':1,\n    'extra_stepsperrotation':3200,\n}}\nreturn msg",
+        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n    'pin_rotor_endstop':24,\n    'pin_tt_endstop':25,\n    'pin_extra_endstop':26,\n    'pin_extra_dir':21,\n    'pin_extra_step':20,\n    'pin_extra_enable':19,\n    'extra_acc':1,\n    'extra_accramp':200,\n    'extra_angle':10,\n    'extra_delay':0.0001,\n    'extra_dir':1,\n    'extra_stepsperrotation':3200,\n}}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1024,7 +1025,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "FIRMWARE VERSION",
-        "func": "msg.firmware = '2024-08-21'\nreturn msg",
+        "func": "msg.firmware = '2024-09-09'\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1238,6 +1239,19 @@
             [
                 "4f3121f158f06a61"
             ]
+        ]
+    },
+    {
+        "id": "7494af94bc76a6a8",
+        "type": "python3-function",
+        "z": "829d803b6033a693",
+        "name": "fix_endstops",
+        "func": "from OpenScan import load_int, save\n\nif load_int('pin_rotor_endstop') == 27 and load_int('pin_tt_endstop') == 5:\n    save('pin_rotor_endstop',24)\n    save('pin_tt_endstop',25)",
+        "outputs": 1,
+        "x": 250,
+        "y": 680,
+        "wires": [
+            []
         ]
     },
     {
