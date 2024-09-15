@@ -1,0 +1,84 @@
+{
+    "stable": {
+        "1": {
+            "src": "stable/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "filesize": 13829
+        },
+        "2": {
+            "src": "stable/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "filesize": 10253
+        },
+        "3": {
+            "src": "stable/config.txt",
+            "dst": "/boot/config.txt",
+            "filesize": 2185
+        },
+        "4": {
+            "src": "stable/flows.json.tmpl",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
+            "filesize": 325787
+        },
+        "5": {
+            "src": "stable/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "filesize": 21248
+        }
+    },
+
+    "beta": {
+        "1": {
+            "src": "beta/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "filesize": 13012
+        },
+        "2": {
+            "src": "beta/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "filesize": 10253
+        },
+        "3": {
+            "src": "beta/config.txt",
+            "dst": "/boot/config.txt",
+            "filesize": 2185
+        },
+        "4": {
+            "src": "beta/flows.json.tmpl",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
+            "filesize": 337413
+        },
+        "5": {
+            "src": "beta/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "filesize": 21248
+        }
+    },
+    "meanwhile": {
+        "1": {
+            "src": "meanwhile/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "filesize": 13012
+        },
+        "2": {
+            "src": "meanwhile/OpenScan.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
+            "filesize": 10322
+        },
+        "3": {
+            "src": "meanwhile/config.txt",
+            "dst": "/boot/config.txt",
+            "filesize": 2185
+        },
+        "4": {
+            "src": "meanwhile/flows.json.tmpl",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
+            "filesize": 340275
+        },
+        "5": {
+            "src": "meanwhile/settings.js",
+            "dst": "/root/.node-red/settings.js",
+            "filesize": 21248
+        }
+    }
+}
