@@ -1,5 +1,11 @@
 # Changelog
 
+### 2024-11S
+* fixed: shutdown and reboot button in the UI
+* Added Swagger UI to help build, design and document the API
+* Fixed the FKMSGate
+* New update mechanism: Releases have their own version with their own stable, beta and meanwhile flavours.
+
 ### 2024-02-26
 * Fixed: Without telegram configured it was impossible to finish a scan (hanged on finish). But who in their sanity would not use telegram if available right?
 * After a reboot/shutdown, if you forgot to close that tab it will not trigger a disaster when you are scanning in the future
