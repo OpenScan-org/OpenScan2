@@ -3,7 +3,7 @@
         "1": {
             "src": "stable/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 13829
+            "filesize": 15180
         },
         "2": {
             "src": "stable/OpenScan.py",

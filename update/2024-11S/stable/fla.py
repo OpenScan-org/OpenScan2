@@ -4,7 +4,7 @@ from picamera2 import Picamera2
 from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops, ImageFont
 from time import sleep, time
 import shutil
-from OpenScan import load_int, load_float, load_bool, ringlight
+from OpenScan import load_int, load_float, load_bool, ringlight, motorrun
 import RPi.GPIO as GPIO
 from math import sqrt
 import os
@@ -23,8 +23,10 @@ api = Api(app)
 # Create a namespace for system operations
 system_ns = Namespace('system', description='System operations')
 camera_ns = Namespace('camera', description='Camera operations')
+motor_ns = Namespace('motor', description='Motor operations')
 api.add_namespace(system_ns)
 api.add_namespace(camera_ns)
+api.add_namespace(motor_ns)
 
 basedir = '/home/pi/OpenScan/'
 timer = time()
@@ -384,10 +386,47 @@ class AutoFocus(Resource):
         picam2.set_controls({"AfMode": 1, "AfTrigger": 0})  # --> wait 3-5s
         return {'message': 'Auto focus triggered'}, 200
 
+@motor_ns.route('/motor_run')
+class MotorRun(Resource):
+    '''
+    Run a motor
+    '''
+    @motor_ns.doc(params={
+        'motor': 'Motor name (rotor, tt, extra)',
+        'angle': 'Angle to rotate (integer)',
+        'ES_enable': 'Enable endstop (optional, boolean)',
+        'ES_start_state': 'Endstop start state (optional, boolean)'
+    })
+    @motor_ns.response(400, 'Bad Request')
+    def get(self):
+        '''Run a motor'''
+        motor = request.args.get('motor')
+        if not motor:
+            return {'error': 'Motor parameter is required'}, 400
+        if motor not in ['rotor', 'tt', 'extra']:
+            return {'error': 'Invalid motor name'}, 400
+
+        try:
+            angle = int(request.args.get('angle'))
+        except (TypeError, ValueError):
+            return {'error': 'Angle must be an integer'}, 400
+
+        ES_enable = request.args.get('ES_enable', 'false').lower() == 'true'
+        ES_start_state = request.args.get('ES_start_state', 'true').lower() == 'true'
+
+        try:
+            motorrun(motor, angle, ES_enable, ES_start_state)
+        except Exception as e:
+            return {'error': f'Error running motor: {str(e)}'}, 500
+
+        return {'message': f'Motor {motor} run to {angle} degrees'}, 200
+
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
+
 
 if __name__ == '__main__':
 #    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
