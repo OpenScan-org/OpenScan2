@@ -86,8 +86,34 @@ def highlight_sharpest_areas(image, threshold=load_int('cam_sharpness'), dilatio
 @system_ns.route('/status')
 class Status(Resource):
     def get(self):
-        '''Get system status'''
-        return {'message': 'System is running'}, 200
+        '''
+        Get system status
+        '''
+        import os
+        import json
+        from time import time
+
+        if os.path.exists('/tmp/status.json'):
+            try:
+                with open('/tmp/status.json', 'r') as status_file:
+                    status = json.load(status_file)
+                
+                elapsed_time = time() - status['start_time']
+                estimated_total_time = (elapsed_time / status['current_photo']) * status['total_photos']
+                time_remaining = max(0, estimated_total_time - elapsed_time)
+                
+                status.update({
+                    "status": "running",
+                    "elapsed_time": int(elapsed_time),
+                    "estimated_total_time": int(estimated_total_time),
+                    "time_remaining": int(time_remaining)
+                })
+                
+                return status, 200
+            except Exception as e:
+                return {"error": f"Error reading status file: {str(e)}"}, 500
+        else:
+            return {"status": "idle"}, 200
 
 @system_ns.route('/shutdown')
 class Shutdown(Resource):

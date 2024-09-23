@@ -3,7 +3,7 @@
         "1": {
             "src": "stable/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 16877
+            "filesize": 17869
         },
         "2": {
             "src": "stable/OpenScan.py",
@@ -18,7 +18,7 @@
         "4": {
             "src": "stable/flows.json.tmpl",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
-            "filesize": 325835
+            "filesize": 327814
         },
         "5": {
             "src": "stable/settings.js",
