@@ -3,12 +3,12 @@
         "1": {
             "src": "stable/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 16998
+            "filesize": 16877
         },
         "2": {
             "src": "stable/OpenScan.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 10253
+            "filesize": 10249
         },
         "3": {
             "src": "stable/config.txt",

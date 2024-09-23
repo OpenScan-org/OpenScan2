@@ -253,7 +253,6 @@ def create_mask(image: Image, scale: float = 0.1, threshold: int = 45) -> Image:
 
     return result
 
-###################################################################################################################
 @camera_ns.route('/picam2_init')
 class CameraInit(Resource):
     def get(self):
@@ -359,7 +358,7 @@ class TakePhotoRaw(Resource):
         img.save(temp_filename, format='JPEG', quality=load_int('cam_jpeg_quality'))
 
         # Send the file and ensure it's deleted after sending
-        @after_this_request
+        @after_request
         def remove_file(response):
             os.remove(temp_filename)
             return response
