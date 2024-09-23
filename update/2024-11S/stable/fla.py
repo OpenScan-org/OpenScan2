@@ -1,15 +1,14 @@
-from flask import Flask, make_response, jsonify, request, abort, redirect
+from flask import Flask, request, redirect, send_file, send_from_directory
 from flask_restx import Resource, Api, Namespace
 from picamera2 import Picamera2
 from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops, ImageFont
 from time import sleep, time
-import shutil
 from OpenScan import load_int, load_float, load_bool, ringlight, motorrun
 import RPi.GPIO as GPIO
 from math import sqrt
 import os
 import math
-from skimage import io, feature, color, transform
+from skimage import feature, color, transform
 import numpy as np
 from scipy import ndimage
 import socket
@@ -18,15 +17,18 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
 app = Flask(__name__)
-api = Api(app)
+api = Api(app, version='1.0', title='OpenScan API', description='API for OpenScan')
 
+v1 = Namespace('v1', description='API v1')
 # Create a namespace for system operations
 system_ns = Namespace('system', description='System operations')
 camera_ns = Namespace('camera', description='Camera operations')
 motor_ns = Namespace('motor', description='Motor operations')
-api.add_namespace(system_ns)
-api.add_namespace(camera_ns)
-api.add_namespace(motor_ns)
+
+api.add_namespace(v1, path='/v1')
+api.add_namespace(system_ns, path='/v1/system')
+api.add_namespace(camera_ns, path='/v1/camera')
+api.add_namespace(motor_ns, path='/v1/motor')
 
 basedir = '/home/pi/OpenScan/'
 timer = time()
@@ -81,6 +83,11 @@ def highlight_sharpest_areas(image, threshold=load_int('cam_sharpness'), dilatio
 ###################################################################################################################
 
 
+@system_ns.route('/status')
+class Status(Resource):
+    def get(self):
+        '''Get system status'''
+        return {'message': 'System is running'}, 200
 
 @system_ns.route('/shutdown')
 class Shutdown(Resource):
@@ -107,8 +114,6 @@ class Shutdown(Resource):
         else:
             return redirect("http://" + hostname, code=302)
 
-###################################################################################################################
-
 @system_ns.route('/reboot')
 class Reboot(Resource):
     @system_ns.doc(params={'token': 'Reboot token for authentication'})
@@ -133,7 +138,20 @@ class Reboot(Resource):
             return {'message': 'Rebooting'}, 200
         else:
             return redirect("http://" + hostname, code=302)
-###################################################################################################################
+
+@system_ns.route('/ringlight')
+class Ringlight(Resource):
+    @system_ns.doc(params={'state': 'Ringlight state (0 or 1)'})
+    def get(self):
+        '''Set ringlight state'''
+        state = int(request.args.get('state'))
+        if state == 0:
+            ringlight(1, False)
+            ringlight(2, False)
+        else:
+            ringlight(1, True)
+            ringlight(2, True)
+        return {'message': f'Ringlight set to {state}'}, 200
 
 def plot_orb_keypoints(pil_image):
     downscale = 2
@@ -310,6 +328,48 @@ class TakePhoto(Resource):
 
         return {'message': 'Photo taken and processed successfully'}, 200
 
+@camera_ns.route('/picam2_take_photo_raw')
+class TakePhotoRaw(Resource):
+    def get(self):
+        '''Take a photo and return it raw'''
+        starttime = time()
+
+        cropx = load_int('cam_cropx')/200
+        cropy = load_int('cam_cropy')/200
+        rotation = load_int('cam_rotation')
+        img = picam2.capture_image()
+
+        if cam_mode != 1:
+            img = img.convert('RGB')
+        w, h = img.size
+
+        if cropx != 0 or cropy != 0:
+            img = img.crop((w*cropx, h*cropy, w * (1-cropx), h * (1-cropy)))
+
+        if rotation == 90:
+            img = img.transpose(Image.ROTATE_90)
+        elif rotation == 180:
+            img = img.transpose(Image.ROTATE_180)
+        elif rotation == 270:
+            img = img.transpose(Image.ROTATE_270)
+
+        # Create a temporary file
+       
+        temp_filename = "/tmp/raw.jpg"
+        img.save(temp_filename, format='JPEG', quality=load_int('cam_jpeg_quality'))
+
+        # Send the file and ensure it's deleted after sending
+        @after_this_request
+        def remove_file(response):
+            os.remove(temp_filename)
+            return response
+
+        return send_file(
+            temp_filename,
+            mimetype='image/jpeg',
+            as_attachment=False
+        )
+
 @camera_ns.route('/picam2_focus')
 class picam2_focus(Resource):
     def get(self):
@@ -431,3 +491,4 @@ def favicon():
 if __name__ == '__main__':
 #    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
     app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)
+

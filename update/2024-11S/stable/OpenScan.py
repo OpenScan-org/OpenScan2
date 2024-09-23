@@ -78,9 +78,7 @@ def add_wifi_network(ssid, password, country):
     with open(conf_file, "w") as f:
         f.write(updated_content)
     os.system("sudo systemctl restart wpa_supplicant@wlan0")
-
     return True
-
 
 def load_str(name):
     filename = basepath+'settings/'+name
@@ -201,8 +199,6 @@ def take_photo(file):
 
     model=load_str('model')
 
-
-
     shutter = str(load_int('cam_shutter'))
     saturation = load_str('cam_saturation')
     contrast = load_str('cam_contrast')
@@ -234,6 +230,38 @@ def take_photo(file):
         
     system(cmd)
     return cmd
+
+def take_photo_raw():
+    from os import system
+    model=load_str('model')
+
+    shutter = str(load_int('cam_shutter'))
+    saturation = load_str('cam_saturation')
+    contrast = load_str('cam_contrast')
+    awbg_red = load_str('cam_awbg_red')
+    awbg_blue = load_str('cam_awbg_blue')
+    gain = load_str('cam_gain')
+    quality = load_int('cam_jpeg_quality')
+    filepath = '/tmp/tmp.jpg'
+    timeout = load_str('cam_timeout')
+    cropx = load_int('cam_cropx')/200
+    cropy = load_int('cam_cropy')/200
+    rotation = load_int('cam_rotation')
+    AF = load_bool('cam_AFmode')
+    camera = load_str('camera')
+
+    if camera == 'imx519' and AF == True:
+        autofocus = ' --autofocus '
+    else:
+        autofocus = ''
+
+    if camera  == "usb_webcam":
+        cmd = 'fswebcam -i 0 -r "1280x720" -F 5 --no-banner --jpeg 95 --save ' + filepath
+    else:
+        cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus + ' >/dev/null 2>&1'
+        
+    system(cmd)
+    
 
 def get_points(samples=1):
     from math import pi, sqrt, acos, atan2, cos, sin
