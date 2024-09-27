@@ -58,22 +58,22 @@
         "1": {
             "src": "meanwhile/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 13012
+            "filesize": 17869
         },
         "2": {
             "src": "meanwhile/OpenScan.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 10322
+            "filesize": 10249
         },
         "3": {
             "src": "meanwhile/config.txt",
             "dst": "/boot/config.txt",
-            "filesize": 2185
+            "filesize": 864
         },
         "4": {
-            "src": "meanwhile/flows.json.tmpl",
-            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json.tmpl",
-            "filesize": 340275
+            "src": "meanwhile/flows.json",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
+            "filesize": 327504
         },
         "5": {
             "src": "meanwhile/settings.js",

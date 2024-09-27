@@ -1,3 +1,4 @@
+# The contents of this file are embedded in the OpenScan app (Node-RED)
 from OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \
     load_bool, camera
 from time import sleep, strftime, time
@@ -9,21 +10,16 @@ from os.path import isfile, getsize
 import math
 import threading
 import numpy as np
+import json
 
 if load_str("status_internal_cam") == "no camera found" or load_str("status_internal_cam")[:5] == "Featu":
     return
 
-#motorrun('rotor', 140, ES_enable=True, ES_start_state=True)
-#motorrun('rotor', 10)
-
-
-
 save('status_internal_cam', 'Routine-preparing')
-camera('/picam2_switch_mode?mode=1')
+camera('/v1/camera/picam2_switch_mode?mode=1')
 
 save('cam_sharparea', False)
 save('cam_features', False)
-
 
 projectname = load_str("routine_projectname")
 angle_max = load_int('rotor_anglemax')
@@ -38,7 +34,6 @@ else:
 
 photocount = load_int('routine_photocount')
 
-autofocus = load_bool('cam_autofocus') ##change##
 focus_min = load_float('cam_focus_min')
 focus_max = load_float('cam_focus_max')
 stacksize = load_int('cam_stacksize')
@@ -49,8 +44,7 @@ if telegram_enable:
     telegram_api_token = load_str('telegram_api_token')
     telegram_client_id = load_str('telegram_client_id')
 
-##change##
-if focus_min == focus_max || autofocus:
+if focus_min == focus_max:
     stacksize = 1
 
 focuslist = []
@@ -93,59 +87,44 @@ def get_eta(starttime, photocounter, count):
     return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(
         int(photocount / counter * (time() - starttime))) + 's'
 
-def focus(f):
-    ##change##
-    if autofocus:
-        camera('/picam2_af')
-    else:
-        camera('/picam2_focus?focus=' + str(f))
-    ##change##
-
 def photo(counter2):
-    camera('/picam2_take_photo')
-    ##change##
-    focus(focuslist[returning[0]])
-    if returning[0] < len(focuslist) - 1:
-        returning[0] += 1
-    else:
-        returning[0] = 0
-    ##change##
+    camera('/v1/camera/picam2_take_photo')
+    returning[0] = focus(returning[0])
     zip.write(temppath, projectname + '_' + str(counter) + ".jpg")
 
-
 def stack_photo(i):
-
-    camera('/picam2_take_photo')
+    
+    camera('/v1/camera/picam2_take_photo')
     if group_stack_photos:
         name = projectname + '_' + str(counter) + "/" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'
     else:
         name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'
     zip.write(temppath, name)
-
+    
 def stack_focus(i):
     sleep(load_float('cam_shutter')/1000000*2)
     if i < len(focuslist)-1:
-        ##change##
-        focus(focuslist[i+1])
+        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[i+1]))
     else:
-        camera(focuslist[0])
+        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))
     sleep(1.7)
 
 def photo_stack():
-    camera(focuslist[0])
+    camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))
     for i in range(len(focuslist)):
         if load_str('status_internal_cam') == "Routine-stopping":
             break
         save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + "-F"+ str(i+1))
-
+        
         focus_thread = threading.Thread(target=stack_focus, args=(i,))
         photo_thread = threading.Thread(target=stack_photo, args=(i,))
-
+        
         focus_thread.start()
         photo_thread.start()
-
+        
         focus_thread.join()
         photo_thread.join()
+
 
 
 def move_motor():
@@ -183,6 +162,15 @@ def check_diskspace():
         save('status_internal_cam', 'Routine-stopping')
     return
 
+def focus(i):
+    f = focuslist[i]
+    camera('/v1/camera/picam2_focus?focus=' + str(f))
+    if i < len(focuslist) - 1:
+        i += 1
+    else:
+        i = 0
+    return i
+
 def send_telegram_message(message, telegram_api_token, telegram_client_id):
     telegram_bot_path = '/usr/local/bin/send-telegram'
     run([telegram_bot_path,"-a",telegram_api_token,"-c",telegram_client_id,"-m",message])
@@ -207,7 +195,7 @@ for position in coordinates:
 
     move_motor()
     sleep(load_float("cam_delay_before"))
-
+    
     if stacksize ==1:
         returning = [counter2]
         photo(returning)
@@ -218,7 +206,19 @@ for position in coordinates:
 
     sleep(load_float("cam_delay_after"))
     ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(
-        int(photocount / counter * (time() - starttime))) + 's'
+            int(photocount / counter * (time() - starttime))) + 's'
+    
+    status = {
+        "projectname": projectname,
+        "total_photos": photocount,
+        "current_photo": counter,
+        "stacksize": steps,
+        "start_time": int(starttime),
+        
+    }
+    with open('/tmp/status.json', 'w') as status_file:
+        json.dump(status, status_file)
+
     position_last = position
 
 zip.close()
@@ -226,9 +226,20 @@ try:
     send_telegram_message("[STOP] " + hostname + " stop " + projectname, telegram_api_token, telegram_client_id)
 except Exception as e:
     print(e)
-camera('/picam2_switch_mode?mode=0')
+camera('/v1/camera/picam2_switch_mode?mode=0')
 
 save('status_internal_cam', 'Routine-done')
+
+# Delete the status.json file
+import os
+
+try:
+    os.remove('/tmp/status.json')
+except FileNotFoundError:
+    pass  # File doesn't exist, so no need to delete
+except Exception as e:
+    print(f"Error deleting /tmp/status.json: {e}")
+
 
 motorrun('rotor', -position_last[0] )
 motorrun('tt', position_last[1])
