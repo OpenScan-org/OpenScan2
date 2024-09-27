@@ -40,6 +40,14 @@
         "env": []
     },
     {
+        "id": "87715429b0b1c9a3",
+        "type": "tab",
+        "label": "Statistics",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "90223f7ddc082321",
         "type": "ui_group",
         "name": "preview",
@@ -485,6 +493,25 @@
         "className": ""
     },
     {
+        "id": "ac59b8fb186de073",
+        "type": "ui_group",
+        "name": "[Statistics]",
+        "tab": "656b4eb8b15dab8f",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "656b4eb8b15dab8f",
+        "type": "ui_tab",
+        "name": "Statistics",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
         "id": "bc4e2c03859196c3",
         "type": "inject",
         "z": "e6f4d02efb300ea9",
@@ -636,7 +663,8 @@
             "cb40b9341bd22a28",
             "d1efcd5fa9d25785",
             "da61581182b7299e",
-            "2afb6a45c73fa244"
+            "2afb6a45c73fa244",
+            "9b3e6a06c82a0f52"
         ],
         "x": 645,
         "y": 60,
@@ -1000,7 +1028,7 @@
         "topic": "",
         "topicType": "str",
         "x": 120,
-        "y": 720,
+        "y": 820,
         "wires": [
             [
                 "1e7457ea9c2c5e09"
@@ -1017,7 +1045,7 @@
             "39a502b38837273d"
         ],
         "x": 245,
-        "y": 720,
+        "y": 820,
         "wires": []
     },
     {
@@ -1117,7 +1145,8 @@
             "cb40b9341bd22a28",
             "d1efcd5fa9d25785",
             "da61581182b7299e",
-            "2afb6a45c73fa244"
+            "2afb6a45c73fa244",
+            "9b3e6a06c82a0f52"
         ],
         "x": 1015,
         "y": 540,
@@ -1184,6 +1213,34 @@
         "y": 260,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "e548168473aa85d6",
+        "type": "ui_button",
+        "z": "e6f4d02efb300ea9",
+        "name": "",
+        "group": "729f9ea6e3513c9b",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Statistics",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 700,
+        "wires": [
+            [
+                "62cd5288.2805fc"
+            ]
         ]
     },
     {
@@ -2004,10 +2061,6 @@
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "",
@@ -2142,7 +2195,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "Routine",
-        "func": "# The contents of this file are embedded in the OpenScan app (Node-RED)\nfrom OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \\\n    load_bool, camera\nfrom time import sleep, strftime, time\nfrom subprocess import getoutput, run\n\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system, uname\nfrom os.path import isfile, getsize\nimport math\nimport threading\nimport numpy as np\nimport json\n\nif load_str(\"status_internal_cam\") == \"no camera found\" or load_str(\"status_internal_cam\")[:5] == \"Featu\":\n    return\n\nsave('status_internal_cam', 'Routine-preparing')\ncamera('/v1/camera/picam2_switch_mode?mode=1')\n\nsave('cam_sharparea', False)\nsave('cam_features', False)\n\nprojectname = load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nif load_bool('rotor_enable_endstop'):\n    angle_start = load_int('rotor_endstop_angle')\n    motorrun('rotor',angle_start/abs(angle_start) * 130, True, False)\n\nelse:\n    angle_start = load_int('rotor_anglestart')\n\n\nphotocount = load_int('routine_photocount')\n\nfocus_min = load_float('cam_focus_min')\nfocus_max = load_float('cam_focus_max')\nstacksize = load_int('cam_stacksize')\ngroup_stack_photos = load_bool('group_stack_photos')\n\ntelegram_enable = load_bool('telegram_enable')\nif telegram_enable:\n    telegram_api_token = load_str('telegram_api_token')\n    telegram_client_id = load_str('telegram_client_id')\n\nif focus_min == focus_max:\n    stacksize = 1\n\nfocuslist = []\nif stacksize == 1:\n    steps = 3 + int(abs(focus_max-focus_min)*0.8)\nelse:\n    steps = stacksize\n\nfor i in range (steps):\n    focuslist.append(min(focus_min,focus_max) + i * abs(focus_max-focus_min)/(steps-1))\n\nmsg['focuslist'] = focuslist\nmsg['payload2'] = []\ncounter = 0\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min, angle_max, photocount)\ncoordinates = sort_spherical_coordinates_deg(coordinates)\n\nmsg['payload'] = coordinates\n\nposition_last = (angle_start, 0)\n\nzip = ZipFile(zippath, \"a\", ZIP_DEFLATED, allowZip64=True)\n\nhostname = str(uname()[1])\n\nstarttime = time()\n\ndef get_eta(starttime, photocounter, count):\n    return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n\ndef photo(counter2):\n    camera('/v1/camera/picam2_take_photo')\n    returning[0] = focus(returning[0])\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n\ndef stack_photo(i):\n    \n    camera('/v1/camera/picam2_take_photo')\n    if group_stack_photos:\n        name = projectname + '_' + str(counter) + \"/\" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    else:\n        name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    zip.write(temppath, name)\n    \ndef stack_focus(i):\n    sleep(load_float('cam_shutter')/1000000*2)\n    if i < len(focuslist)-1:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[i+1]))\n    else:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    sleep(1.7)\n\ndef photo_stack():\n    camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    for i in range(len(focuslist)):\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + \"-F\"+ str(i+1))\n        \n        focus_thread = threading.Thread(target=stack_focus, args=(i,))\n        photo_thread = threading.Thread(target=stack_photo, args=(i,))\n        \n        focus_thread.start()\n        photo_thread.start()\n        \n        focus_thread.join()\n        photo_thread.join()\n\n\n\ndef move_motor():\n    rotor_angle = position[0] - position_last[0]\n    msg['payload2'].append(rotor_angle)\n    #if abs(rotor_angle) > 180:\n    #    rotor_angle = -360 * rotor_angle / abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    motorrun('tt',tt_angle)\n    motorrun('rotor',rotor_angle)\n    return\n\n    # THE FOLLOWING DOES NOT WORK PROPERLY WITH THREADING ?!\n\n    #tt_thread = threading.Thread(target=motorrun, args=('tt', tt_angle))\n    #rotor_thread = threading.Thread(target=motorrun, args=('rotor', rotor_angle))\n    #tt_thread.start()\n    #rotor_thread.start()\n    #tt_thread.join()\n    #rotor_thread.join()\n\n\ncounter2 = 0\n\ndef check_diskspace():\n    diskspace_threshold = load_int('diskspace_threshold')\n    diskspace = getoutput('df -h / | awk \"{print $5}\"').split('\\n')[1]\n    available = int(float(diskspace.replace(' ','').split('G')[2])*1000)\n    if available < diskspace_threshold:\n        save('status_internal_cam', 'Routine-stopping')\n    return\n\ndef focus(i):\n    f = focuslist[i]\n    camera('/v1/camera/picam2_focus?focus=' + str(f))\n    if i < len(focuslist) - 1:\n        i += 1\n    else:\n        i = 0\n    return i\n\ndef send_telegram_message(message, telegram_api_token, telegram_client_id):\n    telegram_bot_path = '/usr/local/bin/send-telegram'\n    run([telegram_bot_path,\"-a\",telegram_api_token,\"-c\",telegram_client_id,\"-m\",message])\n\nif telegram_enable:\n    telegram_message = \"[START] \" + hostname + \" starting \" + projectname + \"(\" + str(photocount) + \" photos) ETA: \"\n    try:\n        send_telegram_message(telegram_message, telegram_api_token, telegram_client_id)\n    except Exception as e:\n        print(e)\nfor position in coordinates:\n    counter += 1\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    if counter < 6:\n        ETA = ''\n\n    save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    if counter > 6:\n        check_diskspace()\n\n    move_motor()\n    sleep(load_float(\"cam_delay_before\"))\n    \n    if stacksize ==1:\n        returning = [counter2]\n        photo(returning)\n        counter2 = returning[0]\n\n    else:\n        photo_stack()\n\n    sleep(load_float(\"cam_delay_after\"))\n    ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n            int(photocount / counter * (time() - starttime))) + 's'\n    \n    # Calculate time remaining and write status to /tmp/status as JSON\n    elapsed_time = time() - starttime\n    estimated_total_time = (elapsed_time / counter) * photocount * steps\n    time_remaining = max(0, estimated_total_time - elapsed_time)\n    \n    status = {\n        \"scan_name\": projectname,\n        \"total_photos\": photocount,\n        \"current_photo\": counter,\n        \"stacksize\": steps,\n        \"start_time\": int(starttime),\n    }\n    with open('/tmp/status.json', 'w') as status_file:\n        json.dump(status, status_file)\n\n    position_last = position\n\nzip.close()\ntry:\n    send_telegram_message(\"[STOP] \" + hostname + \" stop \" + projectname, telegram_api_token, telegram_client_id)\nexcept Exception as e:\n    print(e)\ncamera('/v1/camera/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam', 'Routine-done')\n\n# Delete the status.json file\nimport os\n\ntry:\n    os.remove('/tmp/status.json')\nexcept FileNotFoundError:\n    pass  # File doesn't exist, so no need to delete\nexcept Exception as e:\n    print(f\"Error deleting /tmp/status.json: {e}\")\n\nmotorrun('rotor', -position_last[0] )\nmotorrun('tt', position_last[1])\n\nsave('status_internal_cam', '--READY--')\n\nsystem('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n\nreturn msg\n",
+        "func": "# The contents of this file are embedded in the OpenScan app (Node-RED)\nfrom OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \\\n    load_bool, camera\nfrom OpenScanStatistics import ScanStatistics\nfrom time import sleep, strftime, time\nfrom subprocess import getoutput, run\nfrom datetime import datetime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system, uname, remove\nfrom os.path import isfile, getsize\nimport math\nimport threading\nimport numpy as np\nimport json\n\nif load_str(\"status_internal_cam\") == \"no camera found\" or load_str(\"status_internal_cam\")[:5] == \"Featu\":\n    return\n\nstats = ScanStatistics()\n\nsave('status_internal_cam', 'Routine-preparing')\ncamera('/v1/camera/picam2_switch_mode?mode=1')\nsave('cam_sharparea', False)\nsave('cam_features', False)\n\narchitecture = load_str(\"architecture\")\ncamera_model = load_str(\"camera\")\nshield = \"green\"\nprojectname = load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\ndelete_aborted = load_bool('delete_aborted')\nif load_bool('rotor_enable_endstop'):\n    angle_start = load_int('rotor_endstop_angle')\n    motorrun('rotor',angle_start/abs(angle_start) * 130, True, False)\n\nelse:\n    angle_start = load_int('rotor_anglestart')\n\n\nphotocount = load_int('routine_photocount')\n\nfocus_min = load_float('cam_focus_min')\nfocus_max = load_float('cam_focus_max')\nstacksize = load_int('cam_stacksize')\ngroup_stack_photos = load_bool('group_stack_photos')\n\ntelegram_enable = load_bool('telegram_enable')\nif telegram_enable:\n    telegram_api_token = load_str('telegram_api_token')\n    telegram_client_id = load_str('telegram_client_id')\n\nif focus_min == focus_max:\n    stacksize = 1\n\nfocuslist = []\nif stacksize == 1:\n    steps = 3 + int(abs(focus_max-focus_min)*0.8)\nelse:\n    steps = stacksize\n\nfor i in range (steps):\n    focuslist.append(min(focus_min,focus_max) + i * abs(focus_max-focus_min)/(steps-1))\n\nmsg['focuslist'] = focuslist\nmsg['payload2'] = []\ncounter = 0\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min, angle_max, photocount)\ncoordinates = sort_spherical_coordinates_deg(coordinates)\n\nmsg['payload'] = coordinates\n\nposition_last = (angle_start, 0)\n\nzip = ZipFile(zippath, \"a\", ZIP_DEFLATED, allowZip64=True)\n\nhostname = str(uname()[1])\n\nstarttime = time()\n\ndef get_current_timestamp():\n    return datetime.now().strftime(\"%Y-%m-%d %H:%M\")\n\ndef get_eta(starttime, photocounter, count):\n    return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n\ndef photo(counter2):\n    camera('/v1/camera/picam2_take_photo')\n    returning[0] = focus(returning[0])\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n\ndef stack_photo(i):\n    \n    camera('/v1/camera/picam2_take_photo')\n    if group_stack_photos:\n        name = projectname + '_' + str(counter) + \"/\" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    else:\n        name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    zip.write(temppath, name)\n    \ndef stack_focus(i):\n    sleep(load_float('cam_shutter')/1000000*2)\n    if i < len(focuslist)-1:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[i+1]))\n    else:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    sleep(1.7)\n\ndef photo_stack():\n    camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    for i in range(len(focuslist)):\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + \"-F\"+ str(i+1))\n        \n        focus_thread = threading.Thread(target=stack_focus, args=(i,))\n        photo_thread = threading.Thread(target=stack_photo, args=(i,))\n        \n        focus_thread.start()\n        photo_thread.start()\n        \n        focus_thread.join()\n        photo_thread.join()\n\ndef move_motor():\n    rotor_angle = position[0] - position_last[0]\n    msg['payload2'].append(rotor_angle)\n    #if abs(rotor_angle) > 180:\n    #    rotor_angle = -360 * rotor_angle / abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    motorrun('tt',tt_angle)\n    motorrun('rotor',rotor_angle)\n    return\n        \ncounter2 = 0\n\ndef check_diskspace():\n    diskspace_threshold = load_int('diskspace_threshold')\n    diskspace = getoutput('df -h / | awk \"{print $5}\"').split('\\n')[1]\n    available = int(float(diskspace.replace(' ','').split('G')[2])*1000)\n    if available < diskspace_threshold:\n        save('status_internal_cam', 'Routine-stopping')\n    return\n\ndef focus(i):\n    f = focuslist[i]\n    camera('/v1/camera/picam2_focus?focus=' + str(f))\n    if i < len(focuslist) - 1:\n        i += 1\n    else:\n        i = 0\n    return i\n\ndef send_telegram_message(message, telegram_api_token, telegram_client_id):\n    telegram_bot_path = '/usr/local/bin/send-telegram'\n    run([telegram_bot_path,\"-a\",telegram_api_token,\"-c\",telegram_client_id,\"-m\",message])\n\ndate_init = get_current_timestamp()\n\nif telegram_enable:\n    telegram_message = \"[START] \" + hostname + \" starting \" + projectname + \"(\" + str(photocount) + \" photos) ETA: \"\n    try:\n        send_telegram_message(telegram_message, telegram_api_token, telegram_client_id)\n    except Exception as e:\n        print(e)\n\nfor position in coordinates:\n    counter += 1\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    if counter < 6:\n        ETA = ''\n\n    save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    if counter > 6:\n        check_diskspace()\n\n    move_motor()\n    sleep(load_float(\"cam_delay_before\"))\n    \n    if stacksize ==1:\n        returning = [counter2]\n        photo(returning)\n        counter2 = returning[0]\n\n    else:\n        photo_stack()\n\n    sleep(load_float(\"cam_delay_after\"))\n    ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n            int(photocount / counter * (time() - starttime))) + 's'\n    \n    # Calculate time remaining and write status to /tmp/status as JSON\n    elapsed_time = time() - starttime\n    estimated_total_time = (elapsed_time / counter) * photocount * steps\n    time_remaining = max(0, estimated_total_time - elapsed_time)\n    \n    status = {\n        \"scan_name\": projectname,\n        \"total_photos\": photocount,\n        \"current_photo\": counter,\n        \"stacksize\": steps,\n        \"start_time\": int(starttime),\n    }\n    with open('/tmp/status.json', 'w') as status_file:\n        json.dump(status, status_file)\n\n    position_last = position\n\nzip.close()\ntry:\n    send_telegram_message(\"[STOP] \" + hostname + \" stop \" + projectname, telegram_api_token, telegram_client_id)\nexcept Exception as e:\n    print(e)\ncamera('/v1/camera/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam', 'Routine-done')\n\n# Delete the status.json file\n\ntry:\n    remove('/tmp/status.json')\nexcept FileNotFoundError:\n    pass  # File doesn't exist, so no need to delete\nexcept Exception as e:\n    print(f\"Error deleting /tmp/status.json: {e}\")\n\nmotorrun('rotor', -position_last[0] )\nmotorrun('tt', position_last[1])\n\nsave('status_internal_cam', '--READY--')\ndate_end = get_current_timestamp()\n\nif counter == photocount:\n    stats.write_statistics(architecture, shield, date_init, date_end, photocount, counter, camera_model, False)\n    system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\nelse:\n    stats.write_statistics(architecture, shield, date_init, date_end, photocount, counter, camera_model, True)\n    if delete_aborted:\n        remove(zippath)\n    else:\n        system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n\nreturn msg\n",
         "outputs": 1,
         "x": 300,
         "y": 1040,
@@ -7032,7 +7085,7 @@
         "name": "loadB",
         "func": "var file = 'advanced_settings'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
         "outputs": 1,
-        "noerr": 0,
+        "noerr": 7,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -7355,7 +7408,8 @@
                 "22ef66b0e2058be2",
                 "9ce01c8ba97932c1",
                 "81356177176eebcf",
-                "d54b85891248ba88"
+                "d54b85891248ba88",
+                "53681e53353db898"
             ]
         ]
     },
@@ -7707,7 +7761,7 @@
         "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('reboot -h')\n",
         "outputs": 1,
         "x": 270,
-        "y": 520,
+        "y": 560,
         "wires": [
             []
         ]
@@ -7723,7 +7777,7 @@
             "09d4a9c756161e10"
         ],
         "x": 155,
-        "y": 520,
+        "y": 560,
         "wires": [
             [
                 "e2411b49791840e0"
@@ -8544,6 +8598,72 @@
         ]
     },
     {
+        "id": "e98c1b83744bb863",
+        "type": "ui_switch",
+        "z": "e43a27722b508115",
+        "name": "",
+        "label": "Delete Aborted",
+        "tooltip": "Delete aborted photosets",
+        "group": "d324f0b852c2df0a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 420,
+        "y": 520,
+        "wires": [
+            [
+                "7438a5bf5fcddec4"
+            ]
+        ]
+    },
+    {
+        "id": "7438a5bf5fcddec4",
+        "type": "python3-function",
+        "z": "e43a27722b508115",
+        "name": "delete_aborted",
+        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('delete_aborted'):\n    save('delete_aborted', state)\n",
+        "outputs": 1,
+        "x": 600,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "53681e53353db898",
+        "type": "function",
+        "z": "e43a27722b508115",
+        "name": "loadB",
+        "func": "var file = 'delete_aborted'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar data;\ndata = fs.readFileSync(filepath + file, 'utf8');\nif (data === '1' || data === 'True' || data === 'true') {\n    data = true;\n}\nelse {\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 520,
+        "wires": [
+            [
+                "e98c1b83744bb863"
+            ]
+        ]
+    },
+    {
         "id": "4c7fa5b5b27b83a5",
         "type": "python3-function",
         "z": "a5557543ccff5889",
@@ -9066,8 +9186,8 @@
         "z": "a5557543ccff5889",
         "name": "",
         "links": [
-            "960912e90ba5b5bc",
-            "50eeb3e362f9027f"
+            "50eeb3e362f9027f",
+            "960912e90ba5b5bc"
         ],
         "x": 95,
         "y": 700,
@@ -9160,7 +9280,7 @@
         "order": 9,
         "width": 6,
         "height": 1,
-        "format": "<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\"   target=\"_blank\" ng-href='tmp/log.txt'>\n <div class=\"center\" style=\"position: relative; top: 30%;\">Download error log\n</div></md-button>\n",
+        "format": "<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\"   target=\"_blank\" ng-href='/var/log/syslog'>\n <div class=\"center\" style=\"position: relative; top: 30%;\">Download error log\n</div></md-button>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
@@ -9372,6 +9492,102 @@
         "x": 610,
         "y": 640,
         "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b3e6a06c82a0f52",
+        "type": "link in",
+        "z": "87715429b0b1c9a3",
+        "name": "",
+        "links": [
+            "50eeb3e362f9027f",
+            "960912e90ba5b5bc"
+        ],
+        "x": 115,
+        "y": 420,
+        "wires": [
+            [
+                "f128ca405d1e1e4d",
+                "07d7ce3dab5f1c11"
+            ]
+        ]
+    },
+    {
+        "id": "cd0dc08fcb5968c8",
+        "type": "ui_text",
+        "z": "87715429b0b1c9a3",
+        "group": "ac59b8fb186de073",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Successful Scans",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 425,
+        "y": 407,
+        "wires": []
+    },
+    {
+        "id": "f128ca405d1e1e4d",
+        "type": "exec",
+        "z": "87715429b0b1c9a3",
+        "command": "cat /home/pi/OpenScan/statistics/statistics.csv|grep -vi false|tail -n +2|wc -l",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Successful Scans",
+        "x": 250,
+        "y": 420,
+        "wires": [
+            [
+                "cd0dc08fcb5968c8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b91b4d65f2090793",
+        "type": "ui_text",
+        "z": "87715429b0b1c9a3",
+        "group": "ac59b8fb186de073",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aborted Scans",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 440,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "07d7ce3dab5f1c11",
+        "type": "exec",
+        "z": "87715429b0b1c9a3",
+        "command": "cat /home/pi/OpenScan/statistics/statistics.csv|grep -vi True|tail -n +2|wc -l",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Aborted Scans",
+        "x": 245,
+        "y": 353,
+        "wires": [
+            [
+                "b91b4d65f2090793"
+            ],
+            [],
             []
         ]
     }
