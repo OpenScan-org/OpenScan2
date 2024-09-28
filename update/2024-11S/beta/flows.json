@@ -40,6 +40,14 @@
         "env": []
     },
     {
+        "id": "87715429b0b1c9a3",
+        "type": "tab",
+        "label": "Statistics",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "90223f7ddc082321",
         "type": "ui_group",
         "name": "preview",
@@ -485,26 +493,23 @@
         "className": ""
     },
     {
-        "id": "15edc2ce885dddb3",
+        "id": "ac59b8fb186de073",
         "type": "ui_group",
-        "name": "Colorines",
-        "tab": "457102eadc9ddb6c",
-        "order": 8,
+        "name": "[Statistics]",
+        "tab": "656b4eb8b15dab8f",
+        "order": 3,
         "disp": true,
         "width": "6",
         "collapse": false,
         "className": ""
     },
     {
-        "id": "33aff36289823faa",
-        "type": "ui_group",
-        "name": "Monitoring",
-        "tab": "457102eadc9ddb6c",
-        "order": 9,
-        "disp": true,
-        "width": "6",
-        "collapse": false,
-        "className": ""
+        "id": "656b4eb8b15dab8f",
+        "type": "ui_tab",
+        "name": "Statistics",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
     },
     {
         "id": "bc4e2c03859196c3",
@@ -658,7 +663,8 @@
             "cb40b9341bd22a28",
             "d1efcd5fa9d25785",
             "da61581182b7299e",
-            "2afb6a45c73fa244"
+            "2afb6a45c73fa244",
+            "9b3e6a06c82a0f52"
         ],
         "x": 645,
         "y": 60,
@@ -726,7 +732,7 @@
         "type": "python3-function",
         "z": "e6f4d02efb300ea9",
         "name": "LED Status",
-        "func": "from OpenScan import fade_led, check_hotspot_mode, load_int\n\npin = load_int(\"pin_ringlight1\")\npin2 = load_int(\"pin_ringlight2\")\n\nif check_hotspot_mode():\n    msg['mode'] = True\n    i=4\n    j=30\nelse:\n    msg['mode'] = False\n    i=2\n    j=30\n\nfor x in range (i):\n    fade_led(pin,j, 50, True)\n    #fade_led(pin2,j, 50, True)\n    fade_led(pin,j, 50, False)\n    #fade_led(pin2,j, 50, False)\n    pass\nmsg['inactivity'] = False\nreturn msg",
+        "func": "from OpenScan import fade_led, check_hotspot_mode, load_int\n\npin = load_int(\"pin_ringlight1\")\npin2 = load_int(\"pin_ringlight2\")\n\nif check_hotspot_mode():\n    msg['mode'] = True\n    i=4\n    j=30\nelse:\n    msg['mode'] = False\n    i=2\n    j=30\n\nfor x in range (i):\n    fade_led(pin,j, 50, True)\n    #fade_led(pin2,j, 50, True)\n    fade_led(pin,j, 50, False)\n    #fade_led(pin2,j, 50, False)\n    pass\nreturn msg",
         "outputs": 1,
         "x": 270,
         "y": 140,
@@ -792,7 +798,7 @@
         "type": "python3-function",
         "z": "e6f4d02efb300ea9",
         "name": "CAM init",
-        "func": "from OpenScan import camera\n\ncamera(\"/picam2_init\")\n\nmotor_enable_pin = 22\n\nimport RPi.GPIO as GPIO           # import RPi.GPIO module\nGPIO.setmode(GPIO.BCM)            # choose BCM or BOARD\nGPIO.setwarnings(False)\nGPIO.setup(22, GPIO.OUT) # set a port/pin as an output\nGPIO.output(22, 0) \n",
+        "func": "from OpenScan import camera\n\ncamera(\"/v1/camera/picam2_init\")\n\nmotor_enable_pin = 22\n\nimport RPi.GPIO as GPIO           # import RPi.GPIO module\nGPIO.setmode(GPIO.BCM)            # choose BCM or BOARD\nGPIO.setwarnings(False)\nGPIO.setup(22, GPIO.OUT) # set a port/pin as an output\nGPIO.output(22, 0) \n",
         "outputs": 1,
         "x": 260,
         "y": 180,
@@ -852,7 +858,7 @@
         "order": 14,
         "width": 7,
         "height": 1,
-        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n    $(function() {\n    if($('.md-toolbar-tools').length != 0){\n        load();\n    }else setTimeout(load, 500)\n});\n\nfunction load(){\n    $('#bmac').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<div/ id=\"bmac\">');\n    \n    div.append(p);\n    div[0].style.margin = '0px 0px 0px auto';\n    toolbar.append(div);\n\n    p.append(' ')\n    p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" href=\"http://openscandev.local:1312/shutdown?token=b558cb8414b288ec0eed\"><i class=\"fa fa-power-off\" ></i></a>')\n    p.append('   ')\n    p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" href=\"http://openscandev.local:1312/reboot?token=b558cb8414b288ec0eed\"><i class=\"fa fa-repeat\" ></i></a>')\n\n}\n\n</script>\n<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n\n    }\n\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n        background-color: transparent !important;\n    }\n\n\n\n    #O penScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n   }\n</style>",
+        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n    $(function() {\n        if($('.md-toolbar-tools').length != 0){\n            load();\n        } else {\n            setTimeout(load, 500);\n        }\n    });\n\n    function load(){\n        $('#bmac').remove();\n        var toolbar = $('.md-toolbar-tools');\n        \n        var div = $('<div/>');\n        var p = $('<div/ id=\"bmac\">');\n        \n        div.append(p);\n        div[0].style.margin = '0px 0px 0px auto';\n        toolbar.append(div);\n\n        p.append(' ');\n        p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" onclick=\"shutdown()\"><i class=\"fa fa-power-off\" ></i></a>');\n        p.append('   ');\n        p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" onclick=\"reboot()\"><i class=\"fa fa-repeat\" ></i></a>');\n    }\n\n    function getApiUrl() {\n        return `http://${window.location.hostname}:1312`;\n    }\n\n    function shutdown() {\n        if (confirm(\"Are you sure you want to shut down the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/shutdown?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Shutdown initiated. The system will power off shortly.\");\n            });\n        }\n    }\n\n    function reboot() {\n        if (confirm(\"Are you sure you want to reboot the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/reboot?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Reboot initiated. The system will restart shortly.\");\n            });\n        }\n    }\n</script>\n<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n\n    }\n\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n        background-color: transparent !important;\n    }\n\n\n\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n</style>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -1022,7 +1028,7 @@
         "topic": "",
         "topicType": "str",
         "x": 120,
-        "y": 720,
+        "y": 820,
         "wires": [
             [
                 "1e7457ea9c2c5e09"
@@ -1039,7 +1045,7 @@
             "39a502b38837273d"
         ],
         "x": 245,
-        "y": 720,
+        "y": 820,
         "wires": []
     },
     {
@@ -1139,7 +1145,8 @@
             "cb40b9341bd22a28",
             "d1efcd5fa9d25785",
             "da61581182b7299e",
-            "2afb6a45c73fa244"
+            "2afb6a45c73fa244",
+            "9b3e6a06c82a0f52"
         ],
         "x": 1015,
         "y": 540,
@@ -1206,6 +1213,34 @@
         "y": 260,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "e548168473aa85d6",
+        "type": "ui_button",
+        "z": "e6f4d02efb300ea9",
+        "name": "",
+        "group": "729f9ea6e3513c9b",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Statistics",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 100,
+        "y": 700,
+        "wires": [
+            [
+                "62cd5288.2805fc"
+            ]
         ]
     },
     {
@@ -1423,7 +1458,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "shutter",
-        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nimport math\n\n\ncamera('/picam2_exposure?exposure=' + str(int(msg['payload']*1000)))\n\nreturn msg\n",
+        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nimport math\n\n\ncamera('/v1/camera/picam2_exposure?exposure=' + str(int(msg['payload']*1000)))\n\nreturn msg\n",
         "outputs": 1,
         "x": 510,
         "y": 200,
@@ -1585,7 +1620,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "Take Preview Shot",
-        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\n\nstatus = load_str('status_internal_cam')\n\n#return msg\n\nmsg['payload']=\"/tmp2/preview.jpg?ts=\"+str(int(time()))\n\nif msg['flag'] == True:\n    return msg\n\n\n#if status!=\"--READY--\":\n#    return msg\n\n#msg['preview'] = True\n\ncamera('/picam2_take_photo')\n\nreturn msg\n",
+        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\n\nstatus = load_str('status_internal_cam')\n\n#return msg\n\nmsg['payload']=\"/tmp2/preview.jpg?ts=\"+str(int(time()))\n\nif msg['flag'] == True:\n    return msg\n\n\n#if status!=\"--READY--\":\n#    return msg\n\n#msg['preview'] = True\n\ncamera('/v1/camera/picam2_take_photo')\n\nreturn msg\n",
         "outputs": 1,
         "x": 450,
         "y": 800,
@@ -1676,7 +1711,7 @@
         "type": "function",
         "z": "481edaf6db5a7a54",
         "name": "global",
-        "func": "if (typeof msg.light !== \"undefined\"){\n    global.set('light',msg.light)\n}\nif (typeof msg.state1 !== \"undefined\"){\n    global.set('state1',msg.state1)\n}\n\nreturn msg",
+        "func": "if (typeof msg.light !== \"undefined\"){\n    global.set('light',msg.light)\n}\nif (typeof msg.state1 !== \"undefined\"){\n    global.set('state1',msg.state1)\n}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1695,7 +1730,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "LED",
-        "func": "from OpenScan import ringlight\nfrom time import time\n\nstarttime = time()\n\nif 'light' in msg:\n    val = msg['light']\n    while time()-starttime<0.02:\n        if val == 0:\n            ringlight(1,False)\n            ringlight(2,False)\n\n        elif val == 1 and msg['inactivity'] is False:\n            ringlight(1,True)\n            ringlight(2,True)\n\nreturn msg",
+        "func": "from OpenScan import ringlight\nfrom time import time\n\nstarttime = time()\n\nif 'light' in msg:\n    val = msg['light']\n    while time()-starttime<0.02:\n        if val == 0:\n            ringlight(1,False)\n            ringlight(2,False)\n\n        elif val == 1:\n            ringlight(1,True)\n            ringlight(2,True)\n\nreturn msg",
         "outputs": 1,
         "x": 870,
         "y": 880,
@@ -1891,8 +1926,7 @@
         "y": 880,
         "wires": [
             [
-                "1fe18f3b0b52aabd",
-                "5a8dac2ff3dfaaa3"
+                "1fe18f3b0b52aabd"
             ]
         ]
     },
@@ -2027,10 +2061,6 @@
         "props": [
             {
                 "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
             }
         ],
         "repeat": "",
@@ -2080,8 +2110,8 @@
             "b33d604c.5f1a6",
             "c8b93b42c720b9cf"
         ],
-        "x": 525,
-        "y": 1040,
+        "x": 535,
+        "y": 1060,
         "wires": []
     },
     {
@@ -2165,7 +2195,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "Routine",
-        "func": "from OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \\\n    load_bool, camera\nfrom time import sleep, strftime, time\nfrom subprocess import getoutput, run\n\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system, uname\nfrom os.path import isfile, getsize\nimport math\nimport threading\nimport numpy as np\n\nif load_str(\"status_internal_cam\") == \"no camera found\" or load_str(\"status_internal_cam\")[:5] == \"Featu\":\n    return\n\n#motorrun('rotor', 140, ES_enable=True, ES_start_state=True)\n#motorrun('rotor', 10)\n\n\n\nsave('status_internal_cam', 'Routine-preparing')\ncamera('/picam2_switch_mode?mode=1')\n\nsave('cam_sharparea', False)\nsave('cam_features', False)\n\n\nprojectname = load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\nif load_bool('rotor_enable_endstop'):\n    angle_start = load_int('rotor_endstop_angle')\n    motorrun('rotor',angle_start/abs(angle_start) * 130, True, False)\n\nelse:\n    angle_start = load_int('rotor_anglestart')\n\n\nphotocount = load_int('routine_photocount')\n\nfocus_min = load_float('cam_focus_min')\nfocus_max = load_float('cam_focus_max')\nstacksize = load_int('cam_stacksize')\ngroup_stack_photos = load_bool('group_stack_photos')\n\ntelegram_enable = load_bool('telegram_enable')\nif telegram_enable:\n    telegram_api_token = load_str('telegram_api_token')\n    telegram_client_id = load_str('telegram_client_id')\n\nif focus_min == focus_max:\n    stacksize = 1\n\nfocuslist = []\nif stacksize == 1:\n    steps = 3 + int(abs(focus_max-focus_min)*0.8)\nelse:\n    steps = stacksize\n\nfor i in range (steps):\n    focuslist.append(min(focus_min,focus_max) + i * abs(focus_max-focus_min)/(steps-1))\n\nmsg['focuslist'] = focuslist\nmsg['payload2'] = []\ncounter = 0\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min, angle_max, photocount)\ncoordinates = sort_spherical_coordinates_deg(coordinates)\n\nmsg['payload'] = coordinates\n\nposition_last = (angle_start, 0)\n\nzip = ZipFile(zippath, \"a\", ZIP_DEFLATED, allowZip64=True)\n\nhostname = str(uname()[1])\n\nstarttime = time()\n\ndef get_eta(starttime, photocounter, count):\n    return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n\ndef photo(counter2):\n    camera('/picam2_take_photo')\n    returning[0] = focus(returning[0])\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n\ndef stack_photo(i):\n    \n    camera('/picam2_take_photo')\n    if group_stack_photos:\n        name = projectname + '_' + str(counter) + \"/\" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    else:\n        name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    zip.write(temppath, name)\n    \ndef stack_focus(i):\n    sleep(load_float('cam_shutter')/1000000*2)\n    if i < len(focuslist)-1:\n        camera('/picam2_focus?focus=' + str(focuslist[i+1]))\n    else:\n        camera('/picam2_focus?focus=' + str(focuslist[0]))\n    sleep(1.7)\n\ndef photo_stack():\n    camera('/picam2_focus?focus=' + str(focuslist[0]))\n    for i in range(len(focuslist)):\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + \"-F\"+ str(i+1))\n        \n        focus_thread = threading.Thread(target=stack_focus, args=(i,))\n        photo_thread = threading.Thread(target=stack_photo, args=(i,))\n        \n        focus_thread.start()\n        photo_thread.start()\n        \n        focus_thread.join()\n        photo_thread.join()\n\n\n\ndef move_motor():\n    rotor_angle = position[0] - position_last[0]\n    msg['payload2'].append(rotor_angle)\n    #if abs(rotor_angle) > 180:\n    #    rotor_angle = -360 * rotor_angle / abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    motorrun('tt',tt_angle)\n    motorrun('rotor',rotor_angle)\n    return\n\n    # THE FOLLOWING DOES NOT WORK PROPERLY WITH THREADING ?!\n\n    #tt_thread = threading.Thread(target=motorrun, args=('tt', tt_angle))\n    #rotor_thread = threading.Thread(target=motorrun, args=('rotor', rotor_angle))\n    #tt_thread.start()\n    #rotor_thread.start()\n    #tt_thread.join()\n    #rotor_thread.join()\n\n\ncounter2 = 0\n\ndef check_diskspace():\n    diskspace_threshold = load_int('diskspace_threshold')\n    diskspace = getoutput('df -h / | awk \"{print $5}\"').split('\\n')[1]\n    available = int(float(diskspace.replace(' ','').split('G')[2])*1000)\n    if available < diskspace_threshold:\n        save('status_internal_cam', 'Routine-stopping')\n    return\n\ndef focus(i):\n    f = focuslist[i]\n    camera('/picam2_focus?focus=' + str(f))\n    if i < len(focuslist) - 1:\n        i += 1\n    else:\n        i = 0\n    return i\n\ndef send_telegram_message(message, telegram_api_token, telegram_client_id):\n    telegram_bot_path = '/usr/local/bin/send-telegram'\n    run([telegram_bot_path,\"-a\",telegram_api_token,\"-c\",telegram_client_id,\"-m\",message])\n\nif telegram_enable:\n    telegram_message = \"[START] \" + hostname + \" starting \" + projectname + \"(\" + str(photocount) + \" photos) ETA: \"\n    try:\n        send_telegram_message(telegram_message, telegram_api_token, telegram_client_id)\n    except Exception as e:\n        print(e)\nfor position in coordinates:\n    counter += 1\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    if counter < 6:\n        ETA = ''\n\n    save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    if counter > 6:\n        check_diskspace()\n\n    move_motor()\n    sleep(load_float(\"cam_delay_before\"))\n    \n    if stacksize ==1:\n        returning = [counter2]\n        photo(returning)\n        counter2 = returning[0]\n\n    else:\n        photo_stack()\n\n    sleep(load_float(\"cam_delay_after\"))\n    ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n    position_last = position\n\nzip.close()\ntry:\n    send_telegram_message(\"[STOP] \" + hostname + \" stop \" + projectname, telegram_api_token, telegram_client_id)\nexcept Exception as e:\n    print(e)\ncamera('/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam', 'Routine-done')\n\nmotorrun('rotor', -position_last[0] )\nmotorrun('tt', position_last[1])\n\nsave('status_internal_cam', '--READY--')\n\nsystem('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n\nreturn msg\n",
+        "func": "# The contents of this file are embedded in the OpenScan app (Node-RED)\nfrom OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \\\n    load_bool, camera\nfrom OpenScanStatistics import ScanStatistics\nfrom time import sleep, strftime, time\nfrom subprocess import getoutput, run\nfrom datetime import datetime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system, uname, remove\nfrom os.path import isfile, getsize\nimport math\nimport threading\nimport numpy as np\nimport json\n\nif load_str(\"status_internal_cam\") == \"no camera found\" or load_str(\"status_internal_cam\")[:5] == \"Featu\":\n    return\n\nstats = ScanStatistics()\n\nsave('status_internal_cam', 'Routine-preparing')\ncamera('/v1/camera/picam2_switch_mode?mode=1')\nsave('cam_sharparea', False)\nsave('cam_features', False)\n\narchitecture = load_str(\"architecture\")\ncamera_model = load_str(\"camera\")\nshield = \"green\"\nprojectname = load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\ndelete_aborted = load_bool('delete_aborted')\nif load_bool('rotor_enable_endstop'):\n    angle_start = load_int('rotor_endstop_angle')\n    motorrun('rotor',angle_start/abs(angle_start) * 130, True, False)\n\nelse:\n    angle_start = load_int('rotor_anglestart')\n\n\nphotocount = load_int('routine_photocount')\n\nfocus_min = load_float('cam_focus_min')\nfocus_max = load_float('cam_focus_max')\nstacksize = load_int('cam_stacksize')\ngroup_stack_photos = load_bool('group_stack_photos')\n\ntelegram_enable = load_bool('telegram_enable')\nif telegram_enable:\n    telegram_api_token = load_str('telegram_api_token')\n    telegram_client_id = load_str('telegram_client_id')\n\nif focus_min == focus_max:\n    stacksize = 1\n\nfocuslist = []\nif stacksize == 1:\n    steps = 3 + int(abs(focus_max-focus_min)*0.8)\nelse:\n    steps = stacksize\n\nfor i in range (steps):\n    focuslist.append(min(focus_min,focus_max) + i * abs(focus_max-focus_min)/(steps-1))\n\nmsg['focuslist'] = focuslist\nmsg['payload2'] = []\ncounter = 0\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min, angle_max, photocount)\ncoordinates = sort_spherical_coordinates_deg(coordinates)\n\nmsg['payload'] = coordinates\n\nposition_last = (angle_start, 0)\n\nzip = ZipFile(zippath, \"a\", ZIP_DEFLATED, allowZip64=True)\n\nhostname = str(uname()[1])\n\nstarttime = time()\n\ndef get_current_timestamp():\n    return datetime.now().strftime(\"%Y-%m-%d %H:%M\")\n\ndef get_eta(starttime, photocounter, count):\n    return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n\ndef photo(counter2):\n    camera('/v1/camera/picam2_take_photo')\n    returning[0] = focus(returning[0])\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n\ndef stack_photo(i):\n    \n    camera('/v1/camera/picam2_take_photo')\n    if group_stack_photos:\n        name = projectname + '_' + str(counter) + \"/\" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    else:\n        name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    zip.write(temppath, name)\n    \ndef stack_focus(i):\n    sleep(load_float('cam_shutter')/1000000*2)\n    if i < len(focuslist)-1:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[i+1]))\n    else:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    sleep(1.7)\n\ndef photo_stack():\n    camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    for i in range(len(focuslist)):\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + \"-F\"+ str(i+1))\n        \n        focus_thread = threading.Thread(target=stack_focus, args=(i,))\n        photo_thread = threading.Thread(target=stack_photo, args=(i,))\n        \n        focus_thread.start()\n        photo_thread.start()\n        \n        focus_thread.join()\n        photo_thread.join()\n\ndef move_motor():\n    rotor_angle = position[0] - position_last[0]\n    msg['payload2'].append(rotor_angle)\n    #if abs(rotor_angle) > 180:\n    #    rotor_angle = -360 * rotor_angle / abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    motorrun('tt',tt_angle)\n    motorrun('rotor',rotor_angle)\n    return\n        \ncounter2 = 0\n\ndef check_diskspace():\n    diskspace_threshold = load_int('diskspace_threshold')\n    diskspace = getoutput('df -h / | awk \"{print $5}\"').split('\\n')[1]\n    available = int(float(diskspace.replace(' ','').split('G')[2])*1000)\n    if available < diskspace_threshold:\n        save('status_internal_cam', 'Routine-stopping')\n    return\n\ndef focus(i):\n    f = focuslist[i]\n    camera('/v1/camera/picam2_focus?focus=' + str(f))\n    if i < len(focuslist) - 1:\n        i += 1\n    else:\n        i = 0\n    return i\n\ndef send_telegram_message(message, telegram_api_token, telegram_client_id):\n    telegram_bot_path = '/usr/local/bin/send-telegram'\n    run([telegram_bot_path,\"-a\",telegram_api_token,\"-c\",telegram_client_id,\"-m\",message])\n\ndate_init = get_current_timestamp()\n\nif telegram_enable:\n    telegram_message = \"[START] \" + hostname + \" starting \" + projectname + \"(\" + str(photocount) + \" photos) ETA: \"\n    try:\n        send_telegram_message(telegram_message, telegram_api_token, telegram_client_id)\n    except Exception as e:\n        print(e)\n\nfor position in coordinates:\n    counter += 1\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    if counter < 6:\n        ETA = ''\n\n    save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    if counter > 6:\n        check_diskspace()\n\n    move_motor()\n    sleep(load_float(\"cam_delay_before\"))\n    \n    if stacksize ==1:\n        returning = [counter2]\n        photo(returning)\n        counter2 = returning[0]\n\n    else:\n        photo_stack()\n\n    sleep(load_float(\"cam_delay_after\"))\n    ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n            int(photocount / counter * (time() - starttime))) + 's'\n    \n    # Calculate time remaining and write status to /tmp/status as JSON\n    elapsed_time = time() - starttime\n    estimated_total_time = (elapsed_time / counter) * photocount * steps\n    time_remaining = max(0, estimated_total_time - elapsed_time)\n    \n    status = {\n        \"scan_name\": projectname,\n        \"total_photos\": photocount,\n        \"current_photo\": counter,\n        \"stacksize\": steps,\n        \"start_time\": int(starttime),\n    }\n    with open('/tmp/status.json', 'w') as status_file:\n        json.dump(status, status_file)\n\n    position_last = position\n\nzip.close()\ntry:\n    send_telegram_message(\"[STOP] \" + hostname + \" stop \" + projectname, telegram_api_token, telegram_client_id)\nexcept Exception as e:\n    print(e)\ncamera('/v1/camera/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam', 'Routine-done')\n\n# Delete the status.json file\n\ntry:\n    remove('/tmp/status.json')\nexcept FileNotFoundError:\n    pass  # File doesn't exist, so no need to delete\nexcept Exception as e:\n    print(f\"Error deleting /tmp/status.json: {e}\")\n\nmotorrun('rotor', -position_last[0] )\nmotorrun('tt', position_last[1])\n\nsave('status_internal_cam', '--READY--')\ndate_end = get_current_timestamp()\n\nif counter == photocount:\n    stats.write_statistics(architecture, shield, date_init, date_end, photocount, counter, camera_model, False)\n    system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\nelse:\n    stats.write_statistics(architecture, shield, date_init, date_end, photocount, counter, camera_model, True)\n    if delete_aborted:\n        remove(zippath)\n    else:\n        system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n\nreturn msg\n",
         "outputs": 1,
         "x": 300,
         "y": 1040,
@@ -2351,7 +2381,7 @@
         "type": "function",
         "z": "481edaf6db5a7a54",
         "name": "enable",
-        "func": "var inactivity = msg['inactivity']\n\nif (inactivity) {\n    global.set('light', 0);\n    msg.light = 0;\n\n\n} else{\n    global.set('light', 1);\n    msg.light = 1;\n}\n\nmsg['inactivity'] = false\nreturn msg\n",
+        "func": "global.set('light', 1)\nmsg.light = 1\nreturn msg\n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -2361,8 +2391,7 @@
         "y": 880,
         "wires": [
             [
-                "180476141c2a44ad",
-                "8a4d7b329733f52b"
+                "180476141c2a44ad"
             ]
         ]
     },
@@ -2481,7 +2510,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "focus",
-        "func": "from OpenScan import camera\ncamera('/picam2_focus?focus=' + str(msg['payload']))\n\nreturn msg",
+        "func": "from OpenScan import camera\ncamera('/v1/camera/picam2_focus?focus=' + str(msg['payload']))\n\nreturn msg",
         "outputs": 1,
         "x": 1290,
         "y": 60,
@@ -2682,40 +2711,6 @@
         "statusType": "auto",
         "x": 620,
         "y": 1000,
-        "wires": []
-    },
-    {
-        "id": "5a8dac2ff3dfaaa3",
-        "type": "debug",
-        "z": "481edaf6db5a7a54",
-        "name": "debug 6",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 880,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "8a4d7b329733f52b",
-        "type": "debug",
-        "z": "481edaf6db5a7a54",
-        "name": "debug 7",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 400,
-        "y": 920,
         "wires": []
     },
     {
@@ -4181,7 +4176,7 @@
         "type": "python3-function",
         "z": "e43a27722b508115",
         "name": "check ip address",
-        "func": "import socket\nimport subprocess\n\ntestIP = \"8.8.8.8\"\ns = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)\ns.connect((testIP, 0))\nipaddr = s.getsockname()[0]\nhost = socket.gethostname()\n\nmsg['ip']=ipaddr\nmsg['hostname']=host\n\nreturn msg",
+        "func": "import socket\nimport subprocess\n\ntestIP = \"8.8.8.8\"\ns = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)\ns.connect((testIP, 0))\nipaddr = s.getsockname()[0]\nhost = socket.gethostname()\n\nmsg['ip']=ipaddr\n\nreturn msg",
         "outputs": 1,
         "x": 250,
         "y": 940,
@@ -7090,7 +7085,7 @@
         "name": "loadB",
         "func": "var file = 'advanced_settings'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\ndata = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
         "outputs": 1,
-        "noerr": 0,
+        "noerr": 7,
         "initialize": "",
         "finalize": "",
         "libs": [],
@@ -7413,7 +7408,8 @@
                 "22ef66b0e2058be2",
                 "9ce01c8ba97932c1",
                 "81356177176eebcf",
-                "d54b85891248ba88"
+                "d54b85891248ba88",
+                "53681e53353db898"
             ]
         ]
     },
@@ -7656,7 +7652,7 @@
         "type": "python3-function",
         "z": "e43a27722b508115",
         "name": "",
-        "func": "from OpenScan import camera\n\ncamera(\"/picam2_contrast?contrast=\" + str(msg['payload']))",
+        "func": "from OpenScan import camera\n\ncamera(\"/v1/camera/picam2_contrast?contrast=\" + str(msg['payload']))",
         "outputs": 1,
         "x": 660,
         "y": 2720,
@@ -7669,7 +7665,7 @@
         "type": "python3-function",
         "z": "e43a27722b508115",
         "name": "",
-        "func": "from OpenScan import camera\n\ncamera(\"/picam2_saturation?saturation=\" + str(msg['payload']))",
+        "func": "from OpenScan import camera\n\ncamera(\"/v1/camera/picam2_saturation?saturation=\" + str(msg['payload']))",
         "outputs": 1,
         "x": 660,
         "y": 2680,
@@ -7765,7 +7761,7 @@
         "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('reboot -h')\n",
         "outputs": 1,
         "x": 270,
-        "y": 520,
+        "y": 560,
         "wires": [
             []
         ]
@@ -7781,7 +7777,7 @@
             "09d4a9c756161e10"
         ],
         "x": 155,
-        "y": 520,
+        "y": 560,
         "wires": [
             [
                 "e2411b49791840e0"
@@ -8602,236 +8598,16 @@
         ]
     },
     {
-        "id": "69885a9ce218eb71",
-        "type": "comment",
-        "z": "e43a27722b508115",
-        "name": "Coloritos",
-        "info": "",
-        "x": 100,
-        "y": 3740,
-        "wires": []
-    },
-    {
-        "id": "dc1cde67c3022e6b",
-        "type": "function",
-        "z": "e43a27722b508115",
-        "name": "loadI",
-        "func": "var file = 'interface_color'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = data;\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 190,
-        "y": 3800,
-        "wires": [
-            [
-                "0dccca85770c7936"
-            ]
-        ]
-    },
-    {
-        "id": "b63e8246ad14ad9d",
-        "type": "function",
-        "z": "e43a27722b508115",
-        "name": "interface-color",
-        "func": "var file = 'interface_color'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n    if (err) {\n        return\n    }\n});",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 540,
-        "y": 3800,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b7044aa75196b521",
-        "type": "link in",
-        "z": "e43a27722b508115",
-        "name": "link in 3",
-        "links": [
-            "50eeb3e362f9027f",
-            "960912e90ba5b5bc"
-        ],
-        "x": 65,
-        "y": 3800,
-        "wires": [
-            [
-                "dc1cde67c3022e6b"
-            ]
-        ]
-    },
-    {
-        "id": "0dccca85770c7936",
-        "type": "ui_dropdown",
-        "z": "e43a27722b508115",
-        "name": "interface_color",
-        "label": "",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "15edc2ce885dddb3",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "multiple": false,
-        "options": [
-            {
-                "label": "Aburrido",
-                "value": "#097479",
-                "type": "str"
-            },
-            {
-                "label": "Morado",
-                "value": "#790974",
-                "type": "str"
-            },
-            {
-                "label": "Berenjena",
-                "value": "#79093c",
-                "type": "str"
-            },
-            {
-                "label": "Azul",
-                "value": "#093c79 ",
-                "type": "str"
-            },
-            {
-                "label": "Oliva",
-                "value": "#747909",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 360,
-        "y": 3800,
-        "wires": [
-            [
-                "b63e8246ad14ad9d"
-            ]
-        ]
-    },
-    {
-        "id": "667950f6671bd1a0",
-        "type": "function",
-        "z": "e43a27722b508115",
-        "name": "loadI",
-        "func": "var file = 'hostname'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = data;\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 210,
-        "y": 840,
-        "wires": [
-            [
-                "b82a1cbefad51cd8"
-            ]
-        ]
-    },
-    {
-        "id": "5f32d7e78e368454",
-        "type": "function",
-        "z": "e43a27722b508115",
-        "name": "write",
-        "func": "var file = 'hostname'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n    if (err) {\n        return\n    }\n});",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 510,
-        "y": 840,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b82a1cbefad51cd8",
-        "type": "ui_text_input",
-        "z": "e43a27722b508115",
-        "name": "hostname",
-        "label": "Hostname",
-        "tooltip": "",
-        "group": "8ab79a98e536e0d6",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "mode": "text",
-        "delay": 300,
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 360,
-        "y": 840,
-        "wires": [
-            [
-                "5f32d7e78e368454"
-            ]
-        ]
-    },
-    {
-        "id": "5fd155711e29b1b8",
-        "type": "comment",
-        "z": "e43a27722b508115",
-        "name": "Monitoring",
-        "info": "",
-        "x": 100,
-        "y": 3860,
-        "wires": []
-    },
-    {
-        "id": "815702499384f118",
-        "type": "function",
-        "z": "e43a27722b508115",
-        "name": "loadB",
-        "func": "var file = 'datadog_enable'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar data;\ndata = fs.readFileSync(filepath + file, 'utf8');\nif (data === '1' || data === 'True' || data === 'true') {\n    data = true;\n}\nelse {\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 190,
-        "y": 3920,
-        "wires": [
-            [
-                "bfdbdae28bf42ed4"
-            ]
-        ]
-    },
-    {
-        "id": "464c8495f86daaa7",
-        "type": "python3-function",
-        "z": "e43a27722b508115",
-        "name": "datadog_enable",
-        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('datadog_enable'):\n    save('datadog_enable', state)\n",
-        "outputs": 1,
-        "x": 520,
-        "y": 3920,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "bfdbdae28bf42ed4",
+        "id": "e98c1b83744bb863",
         "type": "ui_switch",
         "z": "e43a27722b508115",
-        "name": "datadog_enable",
-        "label": "Enable Datadog",
-        "tooltip": "Enable Datadog monitoring",
-        "group": "33aff36289823faa",
+        "name": "",
+        "label": "Delete Aborted",
+        "tooltip": "Delete aborted photosets",
+        "group": "d324f0b852c2df0a",
         "order": 1,
-        "width": "6",
-        "height": "1",
+        "width": 0,
+        "height": 0,
         "passthru": true,
         "decouple": "false",
         "topic": "topic",
@@ -8847,132 +8623,43 @@
         "offcolor": "",
         "animate": false,
         "className": "",
-        "x": 340,
-        "y": 3920,
+        "x": 420,
+        "y": 520,
         "wires": [
             [
-                "464c8495f86daaa7"
+                "7438a5bf5fcddec4"
             ]
         ]
     },
     {
-        "id": "f93ce2d26953341f",
-        "type": "ui_text_input",
-        "z": "e43a27722b508115",
-        "name": "datadog_api_token",
-        "label": "Datadog Api Token",
-        "tooltip": "Datadog Api Token",
-        "group": "33aff36289823faa",
-        "order": 5,
-        "width": 6,
-        "height": 1,
-        "passthru": false,
-        "mode": "password",
-        "delay": "0",
-        "topic": "topic",
-        "sendOnBlur": true,
-        "className": "",
-        "topicType": "msg",
-        "x": 350,
-        "y": 3960,
-        "wires": [
-            [
-                "647641e79884eb87"
-            ]
-        ]
-    },
-    {
-        "id": "ee668e39d213070b",
-        "type": "function",
-        "z": "e43a27722b508115",
-        "name": "loadI",
-        "func": "var file = 'datadog_api_token'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = data;\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 190,
-        "y": 3960,
-        "wires": [
-            [
-                "f93ce2d26953341f"
-            ]
-        ]
-    },
-    {
-        "id": "647641e79884eb87",
-        "type": "function",
-        "z": "e43a27722b508115",
-        "name": "datadog_api_token",
-        "func": "var file = 'datadog_api_token'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n    if (err) {\n        return\n    }\n});",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 550,
-        "y": 3960,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ff2dea1ab9cb7776",
-        "type": "link in",
-        "z": "e43a27722b508115",
-        "name": "link in 4",
-        "links": [
-            "50eeb3e362f9027f",
-            "960912e90ba5b5bc"
-        ],
-        "x": 65,
-        "y": 3960,
-        "wires": [
-            [
-                "815702499384f118",
-                "ee668e39d213070b"
-            ]
-        ]
-    },
-    {
-        "id": "a1b81e7fe94ad4e5",
+        "id": "7438a5bf5fcddec4",
         "type": "python3-function",
         "z": "e43a27722b508115",
-        "name": "",
-        "func": "import subprocess\nsubprocess.run([\"systemctl\",\"restart\",\"nodered\"])\nreturn msg",
+        "name": "delete_aborted",
+        "func": "from OpenScan import load_bool, save\n\nstate = msg['payload']\n\nif state != load_bool('delete_aborted'):\n    save('delete_aborted', state)\n",
         "outputs": 1,
-        "x": 530,
-        "y": 3740,
+        "x": 600,
+        "y": 520,
         "wires": [
             []
         ]
     },
     {
-        "id": "2f3a3c0e682ae862",
-        "type": "ui_button",
+        "id": "53681e53353db898",
+        "type": "function",
         "z": "e43a27722b508115",
-        "name": "restart_interface",
-        "group": "15edc2ce885dddb3",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Restart Interface",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 340,
-        "y": 3740,
+        "name": "loadB",
+        "func": "var file = 'delete_aborted'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar data;\ndata = fs.readFileSync(filepath + file, 'utf8');\nif (data === '1' || data === 'True' || data === 'true') {\n    data = true;\n}\nelse {\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 270,
+        "y": 520,
         "wires": [
             [
-                "a1b81e7fe94ad4e5"
+                "e98c1b83744bb863"
             ]
         ]
     },
@@ -8981,7 +8668,7 @@
         "type": "python3-function",
         "z": "a5557543ccff5889",
         "name": "create beta new",
-        "func": "import json\nimport requests\nimport shutil\n\n#scope = 'main'\nscope = 'meanwhile'\n\nupdatepath = '/home/pi/OpenScan/tmp/'\nurl = 'https://raw.githubusercontent.com/stealthizer/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nmsg = {}\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg2 = msg.copy()\nif scope in msg:\n    del msg[scope]\n\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/OpenScan.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/config.txt'\nmsg[scope]['3']['dst'] = '/boot/config.txt'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/flows.json'\nmsg[scope]['4']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/settings.js'\nmsg[scope]['5']['dst'] = '/root/.node-red/settings.js'\n\n#msg[scope]['6'] = {}\n#msg[scope]['6']['src'] = 'files/logo.jpg'\n#msg[scope]['6']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nmsg['payload'] = 'created with scope: ' + scope\n\nreturn msg",
+        "func": "import json\nimport requests\nimport shutil\n\n#scope = 'main'\nscope = 'stable'\n\nupdatepath = '/home/pi/OpenScan/tmp/'\nurl = 'https://raw.githubusercontent.com/stealthizer/OpenScan2/2024-11S/update/2024-11S'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\n\n## load update.json\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'download update.json failed'\n    return msg\n\nmsg = {}\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg2 = msg.copy()\nif scope in msg:\n    del msg[scope]\n\nmsg[scope]={}\nmsg[scope]['1'] = {}\nmsg[scope]['1']['src'] = scope + '/fla.py'\nmsg[scope]['1']['dst'] = '/home/pi/OpenScan/files/fla.py'\n\nmsg[scope]['2'] = {}\nmsg[scope]['2']['src'] = scope + '/OpenScan.py'\nmsg[scope]['2']['dst'] = '/usr/lib/python3/dist-packages/OpenScan.py'\n\nmsg[scope]['3'] = {}\nmsg[scope]['3']['src'] = scope + '/config.txt'\nmsg[scope]['3']['dst'] = '/boot/config.txt'\n\nmsg[scope]['4'] = {}\nmsg[scope]['4']['src'] = scope + '/flows.json'\nmsg[scope]['4']['dst'] = '/home/pi/OpenScan/settings/.node-red/flows.json'\n\nmsg[scope]['5'] = {}\nmsg[scope]['5']['src'] = scope + '/settings.js'\nmsg[scope]['5']['dst'] = '/root/.node-red/settings.js'\n\n#msg[scope]['6'] = {}\n#msg[scope]['6']['src'] = 'files/logo.jpg'\n#msg[scope]['6']['dst'] = '/home/pi/OpenScan/files/logo.jpg'\n\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    filesize = os.path.getsize(filepath)\n    msg[scope][i]['filesize'] = filesize\n\nif os.path.isdir('/home/pi/OpenScan/tmp/update/'):\n    os.system('rm -r /home/pi/OpenScan/tmp/update')    \nos.makedirs('/home/pi/OpenScan/tmp/update/')\n\nwith open('/home/pi/OpenScan/tmp/update/update.json', 'w+') as f:\n    json.dump(msg, f, indent=4)\n\nfor i in msg[scope]:\n    if not os.path.isdir(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])):\n        os.makedirs(os.path.dirname('/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src']))\n    shutil.copy(msg[scope][i]['dst'], '/home/pi/OpenScan/tmp/update/' + msg[scope][i]['src'])\n\nmsg['payload'] = 'created with scope: ' + scope\n\nreturn msg",
         "outputs": 1,
         "x": 260,
         "y": 140,
@@ -9098,7 +8785,7 @@
         "type": "python3-function",
         "z": "a5557543ccff5889",
         "name": "get update",
-        "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif not msg['payload']:\n    msg['status'] = '--READY--'\n    return msg\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/stealthizer/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = 'checking updates'\n\nreturn msg, msg",
+        "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif not msg['payload']:\n    msg['status'] = '--READY--'\n    return msg\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/stealthizer/OpenScan2/2024-11S/update/2024-11S/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = 'checking updates'\n\nreturn msg, msg",
         "outputs": 2,
         "x": 390,
         "y": 540,
@@ -9133,7 +8820,7 @@
         "type": "python3-function",
         "z": "a5557543ccff5889",
         "name": "check files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/stealthizer/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/stealthizer/OpenScan2/2024-11S/update/2024-11S'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter\n\nreturn msg\n",
         "outputs": 1,
         "x": 550,
         "y": 560,
@@ -9417,7 +9104,7 @@
         "type": "python3-function",
         "z": "a5557543ccff5889",
         "name": "download files",
-        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str, save\n\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/stealthizer/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.copy(temp, msg[scope][i]['dst'])\n    \n    if msg[scope][i]['dst'] == '/boot/config.txt':\n        save('camera','')\n    \n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
+        "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str, save\n\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/stealthizer/OpenScan2/2024-11S/update/2024-11S/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.copy(temp, msg[scope][i]['dst'])\n    \n    if msg[scope][i]['dst'] == '/boot/config.txt':\n        save('camera','')\n    \n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
         "outputs": 1,
         "x": 880,
         "y": 560,
@@ -9499,8 +9186,8 @@
         "z": "a5557543ccff5889",
         "name": "",
         "links": [
-            "960912e90ba5b5bc",
-            "50eeb3e362f9027f"
+            "50eeb3e362f9027f",
+            "960912e90ba5b5bc"
         ],
         "x": 95,
         "y": 700,
@@ -9590,10 +9277,10 @@
         "z": "a5557543ccff5889",
         "group": "3ce32450.e0cffc",
         "name": "Download LOG",
-        "order": 10,
+        "order": 9,
         "width": 6,
         "height": 1,
-        "format": "<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\"   target=\"_blank\" ng-href='tmp/log.txt'>\n <div class=\"center\" style=\"position: relative; top: 30%;\">Download error log\n</div></md-button>\n",
+        "format": "<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\"   target=\"_blank\" ng-href='/var/log/syslog'>\n <div class=\"center\" style=\"position: relative; top: 30%;\">Download error log\n</div></md-button>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
@@ -9809,43 +9496,98 @@
         ]
     },
     {
-        "id": "cde61b7de9eeaba7",
-        "type": "ui_button",
-        "z": "a5557543ccff5889",
+        "id": "9b3e6a06c82a0f52",
+        "type": "link in",
+        "z": "87715429b0b1c9a3",
         "name": "",
-        "group": "3ce32450.e0cffc",
-        "order": 9,
-        "width": 0,
-        "height": 0,
-        "passthru": false,
-        "label": "Expand Root",
-        "tooltip": "Sets the maximum space your SD card admits",
-        "color": "",
-        "bgcolor": "",
-        "className": "",
-        "icon": "",
-        "payload": "expand",
-        "payloadType": "str",
-        "topic": "topic",
-        "topicType": "msg",
-        "x": 510,
-        "y": 1020,
+        "links": [
+            "50eeb3e362f9027f",
+            "960912e90ba5b5bc"
+        ],
+        "x": 115,
+        "y": 420,
         "wires": [
             [
-                "eab36487d201f867"
+                "f128ca405d1e1e4d",
+                "07d7ce3dab5f1c11"
             ]
         ]
     },
     {
-        "id": "eab36487d201f867",
-        "type": "python3-function",
-        "z": "a5557543ccff5889",
+        "id": "cd0dc08fcb5968c8",
+        "type": "ui_text",
+        "z": "87715429b0b1c9a3",
+        "group": "ac59b8fb186de073",
+        "order": 0,
+        "width": 0,
+        "height": 0,
         "name": "",
-        "func": "import subprocess\nsubprocess.run([\"raspi-config\",\"--expand-rootfs\"])\nreturn msg",
-        "outputs": 1,
-        "x": 690,
-        "y": 1020,
+        "label": "Successful Scans",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 425,
+        "y": 407,
+        "wires": []
+    },
+    {
+        "id": "f128ca405d1e1e4d",
+        "type": "exec",
+        "z": "87715429b0b1c9a3",
+        "command": "cat /home/pi/OpenScan/statistics/statistics.csv|grep -vi false|tail -n +2|wc -l",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Successful Scans",
+        "x": 250,
+        "y": 420,
         "wires": [
+            [
+                "cd0dc08fcb5968c8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "b91b4d65f2090793",
+        "type": "ui_text",
+        "z": "87715429b0b1c9a3",
+        "group": "ac59b8fb186de073",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Aborted Scans",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 440,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "07d7ce3dab5f1c11",
+        "type": "exec",
+        "z": "87715429b0b1c9a3",
+        "command": "cat /home/pi/OpenScan/statistics/statistics.csv|grep -vi True|tail -n +2|wc -l",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "Aborted Scans",
+        "x": 245,
+        "y": 353,
+        "wires": [
+            [
+                "b91b4d65f2090793"
+            ],
+            [],
             []
         ]
     }

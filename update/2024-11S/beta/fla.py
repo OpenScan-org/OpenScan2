@@ -1,14 +1,14 @@
-from flask import Flask, make_response, jsonify, request, abort, redirect
+from flask import Flask, request, redirect, send_file, send_from_directory
+from flask_restx import Resource, Api, Namespace
 from picamera2 import Picamera2
 from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops, ImageFont
 from time import sleep, time
-import shutil
-from OpenScan import load_int, load_float, load_bool, ringlight
+from OpenScan import load_int, load_float, load_bool, ringlight, motorrun
 import RPi.GPIO as GPIO
 from math import sqrt
 import os
 import math
-from skimage import io, feature, color, transform
+from skimage import feature, color, transform
 import numpy as np
 from scipy import ndimage
 import socket
@@ -17,6 +17,18 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 
 app = Flask(__name__)
+api = Api(app, version='1.0', title='OpenScan API', description='API for OpenScan')
+
+v1 = Namespace('v1', description='API v1')
+# Create a namespace for system operations
+system_ns = Namespace('system', description='System operations')
+camera_ns = Namespace('camera', description='Camera operations')
+motor_ns = Namespace('motor', description='Motor operations')
+
+api.add_namespace(v1, path='/v1')
+api.add_namespace(system_ns, path='/v1/system')
+api.add_namespace(camera_ns, path='/v1/camera')
+api.add_namespace(motor_ns, path='/v1/motor')
 
 basedir = '/home/pi/OpenScan/'
 timer = time()
@@ -43,8 +55,8 @@ def overlay_mask(image, mask_image):
     return combined_rgb
 
 
-
 def highlight_sharpest_areas(image, threshold=load_int('cam_sharpness'), dilation_size=5):
+    
     # Convert PIL image to grayscale
     image_gray = image.convert('L')
 
@@ -69,47 +81,103 @@ def highlight_sharpest_areas(image, threshold=load_int('cam_sharpness'), dilatio
 
 
 ###################################################################################################################
-@app.route('/shutdown', methods=['get'])
-def shutdown():
-    shutdown_token = request.args.get('token')
-    hostname = request.host.split(":")[0]
-    f = open("/home/pi/OpenScan/settings/session_token", "r")
-    session_token = (f.readline())[:20]
-    if shutdown_token == session_token:
 
-        delay = 0.1
-        ringlight(2,False)
 
-        for i in range (5):
-            ringlight(1,True)
-            sleep(delay)
-            ringlight(1,False)
-            sleep(delay)
-        os.system('shutdown -h now')
+@system_ns.route('/status')
+class Status(Resource):
+    def get(self):
+        '''
+        Get system status
+        '''
+        import os
+        import json
+        from time import time
 
-    else:
-        return redirect("http://" + hostname, code=302)
-###################################################################################################################
-@app.route('/reboot', methods=['get'])
-def reboot():
-    shutdown_token = request.args.get('token')
-    hostname = request.host.split(":")[0]
-    f = open("/home/pi/OpenScan/settings/session_token", "r")
-    session_token = (f.readline())[:20]
-    if shutdown_token == session_token:
-        delay = 0.1
-        ringlight(2,False)
+        if os.path.exists('/tmp/status.json'):
+            try:
+                with open('/tmp/status.json', 'r') as status_file:
+                    status = json.load(status_file)
+                
+                elapsed_time = time() - status['start_time']
+                estimated_total_time = (elapsed_time / status['current_photo']) * status['total_photos']
+                time_remaining = max(0, estimated_total_time - elapsed_time)
+                
+                status.update({
+                    "status": "running",
+                    "elapsed_time": int(elapsed_time),
+                    "estimated_total_time": int(estimated_total_time),
+                    "time_remaining": int(time_remaining)
+                })
+                
+                return status, 200
+            except Exception as e:
+                return {"error": f"Error reading status file: {str(e)}"}, 500
+        else:
+            return {"status": "idle"}, 200
 
-        for i in range (5):
-            ringlight(1,True)
-            sleep(delay)
-            ringlight(1,False)
-            sleep(delay)
+@system_ns.route('/shutdown')
+class Shutdown(Resource):
+    @system_ns.doc(params={'token': 'Shutdown token for authentication'})
+    def get(self):
+        '''Shutdown the Raspberry Pi'''
+        shutdown_token = request.args.get('token')
+        hostname = request.host.split(":")[0]
+        with open("/home/pi/OpenScan/settings/session_token", "r") as f:
+            session_token = f.readline()[:20]
+        
+        if shutdown_token == session_token or True:
+            delay = 0.1 
+            ringlight(2, False)
 
-        os.system('reboot -h')
-    else:
-        return redirect("http://" + hostname, code=302)
-###################################################################################################################
+            for _ in range(5):
+                ringlight(1, True)
+                sleep(delay)
+                ringlight(1, False)
+                sleep(delay)
+            
+            os.system('shutdown -h now')
+            return {'message': 'Shutting down'}, 200
+        else:
+            return redirect("http://" + hostname, code=302)
+
+@system_ns.route('/reboot')
+class Reboot(Resource):
+    @system_ns.doc(params={'token': 'Reboot token for authentication'})
+    def get(self):
+        '''Reboot the Raspberry Pi'''
+        shutdown_token = request.args.get('token')
+        hostname = request.host.split(":")[0]
+        with open("/home/pi/OpenScan/settings/session_token", "r") as f:
+            session_token = f.readline()[:20]
+        
+        if shutdown_token == session_token or True:
+            delay = 0.1
+            ringlight(2, False)
+
+            for _ in range(5):
+                ringlight(1, True)
+                sleep(delay)
+                ringlight(1, False)
+                sleep(delay)
+            
+            os.system('reboot -h')
+            return {'message': 'Rebooting'}, 200
+        else:
+            return redirect("http://" + hostname, code=302)
+
+@system_ns.route('/ringlight')
+class Ringlight(Resource):
+    @system_ns.doc(params={'state': 'Ringlight state (0 or 1)'})
+    def get(self):
+        '''Set ringlight state'''
+        state = int(request.args.get('state'))
+        if state == 0:
+            ringlight(1, False)
+            ringlight(2, False)
+        else:
+            ringlight(1, True)
+            ringlight(2, True)
+        return {'message': f'Ringlight set to {state}'}, 200
 
 def plot_orb_keypoints(pil_image):
     downscale = 2
@@ -211,141 +279,241 @@ def create_mask(image: Image, scale: float = 0.1, threshold: int = 45) -> Image:
 
     return result
 
-###################################################################################################################
-@app.route('/picam2_init', methods=['get'])
-def picam2_init():
-    global picam2
-    global preview_config
-    global capture_config
+@camera_ns.route('/picam2_init')
+class CameraInit(Resource):
+    def get(self):
+        '''Initialize the camera'''
+        global picam2
+        global preview_config
+        global capture_config
 
-    try:
+        try:
+            picam2.controls.AnalogueGain = 1.0
+            return {}, 200
+        except:
+            pass
+
+        picam2 = Picamera2()
+
+        preview_config = picam2.create_preview_configuration(
+            main={"size": (2028, 1520)}, 
+            controls={"FrameDurationLimits": (1, 1000000)}
+        )
+
+        capture_config = picam2.create_still_configuration(
+            controls={"FrameDurationLimits": (1, 1000000)}
+        )
+
+        picam2.configure(preview_config)
         picam2.controls.AnalogueGain = 1.0
+        picam2.start()
+        return {}, 200
+
+@camera_ns.route('/picam2_take_photo')
+class TakePhoto(Resource):
+    def get(self):
+        '''Take a photo and process it'''
+        starttime = time()
+
+        cropx = load_int('cam_cropx')/200
+        cropy = load_int('cam_cropy')/200
+        rotation = load_int('cam_rotation')
+        img = picam2.capture_image()
+
+        if cam_mode != 1:
+            img = img.convert('RGB')
+        w, h = img.size
+
+        if cropx != 0 or cropy != 0:
+            img = img.crop((w*cropx, h*cropy, w * (1-cropx), h * (1-cropy)))
+
+        if rotation == 90:
+            img = img.transpose(Image.ROTATE_90)
+        elif rotation == 180:
+            img = img.transpose(Image.ROTATE_180)
+        elif rotation == 270:
+            img = img.transpose(Image.ROTATE_270)
+
+        if load_bool("cam_mask"):
+            downscale = 0.045*1.4 if cam_mode == 1 else 0.1*1.4
+            img = create_mask(img, downscale)
+
+        if load_bool("cam_features") and not load_bool("cam_sharparea"):
+            img = plot_orb_keypoints(img)
+
+        if load_bool("cam_sharparea") and not load_bool("cam_features"):
+            img2 = highlight_sharpest_areas(img)
+            img = overlay_mask(img, img2)
+
+        if cam_mode != 1 and not load_bool("cam_sharparea") and not load_bool("cam_features"):
+            img = add_histo(img)
+
+        img.save("/home/pi/OpenScan/tmp2/preview.jpg", quality=load_int('cam_jpeg_quality'))
+        print("total " + str(int(1000*(time()-starttime))) + "ms")
+
+        return {'message': 'Photo taken and processed successfully'}, 200
+
+@camera_ns.route('/picam2_take_photo_raw')
+class TakePhotoRaw(Resource):
+    def get(self):
+        '''Take a photo and return it raw'''
+        starttime = time()
+
+        cropx = load_int('cam_cropx')/200
+        cropy = load_int('cam_cropy')/200
+        rotation = load_int('cam_rotation')
+        img = picam2.capture_image()
+
+        if cam_mode != 1:
+            img = img.convert('RGB')
+        w, h = img.size
+
+        if cropx != 0 or cropy != 0:
+            img = img.crop((w*cropx, h*cropy, w * (1-cropx), h * (1-cropy)))
+
+        if rotation == 90:
+            img = img.transpose(Image.ROTATE_90)
+        elif rotation == 180:
+            img = img.transpose(Image.ROTATE_180)
+        elif rotation == 270:
+            img = img.transpose(Image.ROTATE_270)
+
+        # Create a temporary file
+       
+        temp_filename = "/tmp/raw.jpg"
+        img.save(temp_filename, format='JPEG', quality=load_int('cam_jpeg_quality'))
+
+        # Send the file and ensure it's deleted after sending
+        @after_request
+        def remove_file(response):
+            os.remove(temp_filename)
+            return response
+
+        return send_file(
+            temp_filename,
+            mimetype='image/jpeg',
+            as_attachment=False
+        )
+
+@camera_ns.route('/picam2_focus')
+class picam2_focus(Resource):
+    def get(self):
+        focus = float(request.args.get('focus'))
+        picam2.set_controls({"AfMode": 0, "LensPosition": focus})
         return ({}, 200)
-    except:
-        pass
-    picam2 = Picamera2()
 
-#    preview_config = picam2.create_preview_configuration(main={"size": (1280, 720)}) #--> wrong aspect ratio!
-#    preview_config = picam2.create_preview_configuration(main={"size": (2028, 1520)})
-    preview_config = picam2.create_preview_configuration(main={"size": (2028, 1520)}, controls ={"FrameDurationLimits": (1, 1000000)})
+@camera_ns.route('/picam2_af1')
+class AutoFocus1(Resource):
+    def get(self):
+        '''Set auto focus mode to macro'''
+        picam2.set_controls({"AfMode": 2, "AfTrigger": 0, "AfRange": controls.AfRangeEnum.Macro})
+        return {'message': 'Auto focus set to macro mode'}, 200
 
-#    preview_config = picam2.create_preview_configuration(main={"size": (2328, 1748)})
-    capture_config = picam2.create_still_configuration(controls ={"FrameDurationLimits": (1, 1000000)})
-    picam2.configure(preview_config)
-    picam2.controls.AnalogueGain = 1.0
-    picam2.start()
-    return ({}, 200)
+@camera_ns.route('/picam2_af2')
+class AutoFocus2(Resource):
+    def get(self):
+        '''Set auto focus mode'''
+        picam2.set_controls({"AfMode": 2, "AfTrigger": 0})
+        return {'message': 'Auto focus mode set'}, 200
 
-###################################################################################################################
-@app.route('/picam2_take_photo', methods=['get'])
-def picam2_take_photo():
-    starttime = time()
+@camera_ns.route('/picam2_exposure')
+class CameraExposure(Resource):
+    @camera_ns.doc(params={'exposure': 'Exposure time in microseconds'})
+    def get(self):
+        '''Set camera exposure time'''
+        exposure = int(request.args.get('exposure'))
+        picam2.controls.AnalogueGain = 1.0
+        picam2.controls.ExposureTime = exposure
+        return {'message': f'Exposure set to {exposure} microseconds'}, 200
 
-    cropx = load_int('cam_cropx')/200
-    cropy = load_int('cam_cropy')/200
-    rotation = load_int('cam_rotation')
-    img = picam2.capture_image()
+@camera_ns.route('/picam2_contrast')
+class CameraContrast(Resource):
+    @camera_ns.doc(params={'contrast': 'Contrast value (float)'})
+    def get(self):
+        '''Set camera contrast'''
+        contrast = float(request.args.get('contrast'))
+        picam2.controls.Contrast = contrast
+        return {'message': f'Contrast set to {contrast}'}, 200
 
-    if cam_mode !=1:
-        img = img.convert('RGB')
-    w,h = img.size
+@camera_ns.route('/picam2_saturation')
+class CameraSaturation(Resource):
+    @camera_ns.doc(params={'saturation': 'Saturation value (float)'})
+    def get(self):
+        '''Set camera saturation'''
+        saturation = float(request.args.get('saturation'))
+        picam2.controls.Saturation = saturation
+        return {'message': f'Saturation set to {saturation}'}, 200
 
-    if cropx != 0 or cropy != 0:
-        img = img.crop((w*cropx, h*cropy, w * (1-cropx), h * (1-cropy)))
-
-    if rotation == 90:
-        img  = img.transpose(Image.ROTATE_90)
-    elif rotation == 180:
-        img= img.transpose(Image.ROTATE_180)
-    elif rotation == 270:
-        img= img.transpose(Image.ROTATE_270)
-
-    if load_bool("cam_mask"):
+@camera_ns.route('/picam2_switch_mode')
+class CameraSwitchMode(Resource):
+    @camera_ns.doc(params={'mode': 'Camera mode (0 or 1)'})
+    def get(self):
+        '''Switch camera mode'''
+        global cam_mode
+        cam_mode = int(request.args.get('mode'))
         if cam_mode == 1:
-            downscale = 0.045*1.4
+            picam2.switch_mode(capture_config)
         else:
-            downscale = 0.1*1.4
-        img = create_mask(img, downscale)
+            picam2.switch_mode(preview_config)
+        return {'message': f'Camera mode switched to {cam_mode}'}, 200
 
-    if load_bool("cam_features") and not load_bool("cam_sharparea"):
-        img = plot_orb_keypoints(img)
+@camera_ns.route('/picam2_show_mode')
+class CameraShowMode(Resource):
+    def get(self):
+        '''Show current camera mode'''
+        global cam_mode
+        return {'mode': cam_mode}, 200
 
-    if load_bool("cam_sharparea") and not load_bool("cam_features"):
-        img2 = highlight_sharpest_areas(img)
-        img = overlay_mask(img, img2)
+@camera_ns.route('/picam2_af')
+class AutoFocus(Resource):
+    def get(self):
+        '''Trigger auto focus'''
+        picam2.set_controls({"AfMode": 1, "AfTrigger": 0})  # --> wait 3-5s
+        return {'message': 'Auto focus triggered'}, 200
 
-    if cam_mode != 1 and not  load_bool("cam_sharparea") and not load_bool("cam_features"):
-        img = add_histo(img)
+@motor_ns.route('/motor_run')
+class MotorRun(Resource):
+    '''
+    Run a motor
+    '''
+    @motor_ns.doc(params={
+        'motor': 'Motor name (rotor, tt, extra)',
+        'angle': 'Angle to rotate (integer)',
+        'ES_enable': 'Enable endstop (optional, boolean)',
+        'ES_start_state': 'Endstop start state (optional, boolean)'
+    })
+    @motor_ns.response(400, 'Bad Request')
+    def get(self):
+        '''Run a motor'''
+        motor = request.args.get('motor')
+        if not motor:
+            return {'error': 'Motor parameter is required'}, 400
+        if motor not in ['rotor', 'tt', 'extra']:
+            return {'error': 'Invalid motor name'}, 400
 
-    img.save("/home/pi/OpenScan/tmp2/preview.jpg", quality=load_int('cam_jpeg_quality'))
-    print("total " + str(int(1000*(time()-starttime))) + "ms")
-    starttime = time()
+        try:
+            angle = int(request.args.get('angle'))
+        except (TypeError, ValueError):
+            return {'error': 'Angle must be an integer'}, 400
 
-    return ({}, 200)
-###################################################################################################################
-@app.route('/picam2_focus', methods=['get'])
-def picam2_focus():
-    focus = float(request.args.get('focus'))
-    picam2.set_controls({"AfMode": 0, "LensPosition": focus})
-    return ({}, 200)
-###################################################################################################################
-@app.route('/picam2_af1', methods=['get'])
-def picam2_af1():
-    from libcamera import controls
+        ES_enable = request.args.get('ES_enable', 'false').lower() == 'true'
+        ES_start_state = request.args.get('ES_start_state', 'true').lower() == 'true'
 
-    picam2.set_controls({"AfMode": 2 ,"AfTrigger": 0, "AfRange":controls.AfRangeEnum.Macro})
-    return ({}, 200)
-###################################################################################################################
-@app.route('/picam2_af2', methods=['get'])
-def picam2_af2():
-    picam2.set_controls({"AfMode": 2 ,"AfTrigger": 0})
-    return ({}, 200)
+        try:
+            motorrun(motor, angle, ES_enable, ES_start_state)
+        except Exception as e:
+            return {'error': f'Error running motor: {str(e)}'}, 500
 
-###################################################################################################################
-@app.route('/picam2_exposure', methods=['get'])
-def picam2_exposure():
-    exposure = int(request.args.get('exposure'))
-    picam2.controls.AnalogueGain = 1.0
-    picam2.controls.ExposureTime = exposure
-    return ({}, 200)
-###################################################################################################################
-@app.route('/picam2_contrast', methods=['get'])
-def picam2_contrast():
-    contrast = float(request.args.get('contrast'))
-    picam2.controls.Contrast = contrast
-    return ({}, 200)
-###################################################################################################################
-@app.route('/picam2_saturation', methods=['get'])
-def picam2_saturation():
-    saturation = float(request.args.get('saturation'))
-    picam2.controls.Saturation = saturation
-    return ({}, 200)
-###################################################################################################################
-@app.route('/picam2_switch_mode', methods=['get'])
-def picam2_switch_mode():
-    global cam_mode
-    cam_mode = int(request.args.get('mode'))
-    if cam_mode == 1:
-        picam2.switch_mode(capture_config)
-    else:
-        picam2.switch_mode(preview_config)
-    return ({}, 200)
-###################################################################################################################
-@app.route('/picam2_show_mode', methods=['get'])
-def picam2_show_mode():
-    global cam_mode
-    return({"mode":cam_mode},200)
-###################################################################################################################
-@app.route('/picam2_af', methods=['get'])
-def picam2_af():
-    picam2.set_controls({"AfMode": 1 ,"AfTrigger": 0}) # --> wait 3-5s
-    return ({}, 200)
+        return {'message': f'Motor {motor} run to {angle} degrees'}, 200
+
 
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
+
 if __name__ == '__main__':
 #    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
     app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)
+

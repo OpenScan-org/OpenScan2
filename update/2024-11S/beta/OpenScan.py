@@ -78,9 +78,7 @@ def add_wifi_network(ssid, password, country):
     with open(conf_file, "w") as f:
         f.write(updated_content)
     os.system("sudo systemctl restart wpa_supplicant@wlan0")
-
     return True
-
 
 def load_str(name):
     filename = basepath+'settings/'+name
@@ -200,8 +198,6 @@ def take_photo(file):
     filepath = basepath + file
 
     model=load_str('model')
-
-
 
     shutter = str(load_int('cam_shutter'))
     saturation = load_str('cam_saturation')
