@@ -78,7 +78,7 @@
         "1": {
             "src": "meanwhile/OpenScan.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 10249
+            "filesize": 10396
         },
         "2": {
             "src": "meanwhile/OpenScanStatistics.py",
