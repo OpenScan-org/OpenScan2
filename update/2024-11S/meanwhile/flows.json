@@ -524,6 +524,37 @@
         "className": ""
     },
     {
+        "id": "e357ef02.ef3cb",
+        "type": "ui_group",
+        "name": "Page 1",
+        "tab": "4bc17c6e.b74934",
+        "order": 2,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c9165343995892c6",
+        "type": "ui_group",
+        "name": "Page 2",
+        "tab": "",
+        "order": 1,
+        "disp": false,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "4bc17c6e.b74934",
+        "type": "ui_tab",
+        "name": "Page 1",
+        "icon": "wi-wu-tstorms",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    },
+    {
         "id": "bc4e2c03859196c3",
         "type": "inject",
         "z": "e6f4d02efb300ea9",
@@ -545,7 +576,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 100,
-        "y": 460,
+        "y": 520,
         "wires": [
             [
                 "949bafced17d66d6"
@@ -564,7 +595,7 @@
         "finalize": "",
         "libs": [],
         "x": 250,
-        "y": 460,
+        "y": 520,
         "wires": [
             []
         ]
@@ -600,7 +631,8 @@
                 "b1e2491c952f84c9",
                 "fac6626127bba4f5",
                 "bc2f0adaf72f97e9",
-                "ac242724fe7605a6"
+                "ac242724fe7605a6",
+                "d81572486f15cd7a"
             ]
         ]
     },
@@ -718,7 +750,7 @@
         "payload": "",
         "payloadType": "str",
         "x": 100,
-        "y": 380,
+        "y": 440,
         "wires": [
             [
                 "6c6ef2255a7d39e5"
@@ -737,7 +769,7 @@
             "6bf8344af427a6ba"
         ],
         "x": 205,
-        "y": 380,
+        "y": 440,
         "wires": []
     },
     {
@@ -871,14 +903,14 @@
         "order": 14,
         "width": 7,
         "height": 1,
-        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n    $(function() {\n        if($('.md-toolbar-tools').length != 0){\n            load();\n        } else {\n            setTimeout(load, 500);\n        }\n    });\n\n    function load(){\n        $('#bmac').remove();\n        var toolbar = $('.md-toolbar-tools');\n        \n        var div = $('<div/>');\n        var p = $('<div/ id=\"bmac\">');\n        \n        div.append(p);\n        div[0].style.margin = '0px 0px 0px auto';\n        toolbar.append(div);\n\n        p.append(' ');\n        p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" onclick=\"shutdown()\"><i class=\"fa fa-power-off\" ></i></a>');\n        p.append('   ');\n        p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" onclick=\"reboot()\"><i class=\"fa fa-repeat\" ></i></a>');\n    }\n\n    function getApiUrl() {\n        return `http://${window.location.hostname}:1312`;\n    }\n\n    function shutdown() {\n        if (confirm(\"Are you sure you want to shut down the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/shutdown?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Shutdown initiated. The system will power off shortly.\");\n            });\n        }\n    }\n\n    function reboot() {\n        if (confirm(\"Are you sure you want to reboot the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/reboot?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Reboot initiated. The system will restart shortly.\");\n            });\n        }\n    }\n</script>\n<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n\n    }\n\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n        background-color: transparent !important;\n    }\n\n\n\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n</style>",
+        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n    $(function() {\n        if($('.md-toolbar-tools').length != 0){\n            load();  // Pass the payload to the load function\n        } else {\n            setTimeout(function() { load(); }, 500);  // Pass payload to setTimeout\n        }\n    });\n    function load(){\n        $('#bmac').remove();\n        var toolbar = $('.md-toolbar-tools');\n        var div = $('<div/>');\n        var p = $('<div/>', { id: 'bmac' });\n        \n        \n        div.append(p);\n        div[0].style.margin = '0px 0px 0px auto';\n        toolbar.append(div);\n        p.append('<small>2024-11S - stable</small>');        p.append(' ');\n        p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" onclick=\"shutdown()\"><i class=\"fa fa-power-off\" ></i></a>');\n        p.append('   ');\n        p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" onclick=\"reboot()\"><i class=\"fa fa-repeat\" ></i></a>');\n    }\n\n    function getApiUrl() {\n        return `http://${window.location.hostname}:1312`;\n    }\n\n    function shutdown() {\n        if (confirm(\"Are you sure you want to shut down the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/shutdown?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Shutdown initiated. The system will power off shortly.\");\n            });\n        }\n    }\n\n    function reboot() {\n        if (confirm(\"Are you sure you want to reboot the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/reboot?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Reboot initiated. The system will restart shortly.\");\n            });\n        }\n    }\n</script>\n<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n    }\n\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n        background-color: transparent !important;\n    }\n\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n</style>\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "global",
         "className": "",
-        "x": 580,
-        "y": 140,
+        "x": 650,
+        "y": 360,
         "wires": [
             []
         ]
@@ -917,7 +949,7 @@
         "topic": "",
         "topicType": "str",
         "x": 90,
-        "y": 540,
+        "y": 600,
         "wires": [
             [
                 "62cd5288.2805fc"
@@ -945,7 +977,7 @@
         "topic": "",
         "topicType": "str",
         "x": 100,
-        "y": 620,
+        "y": 680,
         "wires": [
             [
                 "62cd5288.2805fc"
@@ -959,7 +991,7 @@
         "name": "",
         "events": "all",
         "x": 280,
-        "y": 540,
+        "y": 600,
         "wires": [
             []
         ]
@@ -985,7 +1017,7 @@
         "topic": "",
         "topicType": "str",
         "x": 90,
-        "y": 580,
+        "y": 640,
         "wires": [
             [
                 "62cd5288.2805fc"
@@ -1013,7 +1045,7 @@
         "topic": "",
         "topicType": "str",
         "x": 110,
-        "y": 660,
+        "y": 720,
         "wires": [
             [
                 "62cd5288.2805fc"
@@ -1131,36 +1163,23 @@
         "name": "started1s",
         "mode": "link",
         "links": [
-            "2f4c0f98.dee2",
-            "397ab7f44b893c89",
-            "65145c939b6647e2",
-            "65b38bfeb3fee710",
-            "6d1e12f51f9af0b6",
-            "788fabff98c7973c",
-            "9b2bc9849aee310b",
-            "a1e14624058e74cd",
-            "a67c18aaca2f5fa5",
-            "bd80ec228fb9a86d",
-            "cc9c4092edeb43cc",
-            "d3fc91d87d5d5f62",
-            "d7c1fb4c028b21a5",
-            "e5f38b4a07a5e278",
-            "f0b355967b33dfee",
-            "d0104e0163745993",
-            "5e7d5e4335d37794",
-            "b4c843620c251c43",
-            "3876d5cbd248592b",
-            "a4c81754c148b86f",
+            "1dffb799fdf10cbc",
+            "2afb6a45c73fa244",
             "2e9b29c70969cf01",
-            "2477f81cddc8fa31",
-            "29036b35dfd672c6",
+            "2f4c0f98.dee2",
+            "3876d5cbd248592b",
             "592ec13d8f8923a9",
+            "5e7d5e4335d37794",
+            "9b3e6a06c82a0f52",
+            "9fd259de91de1da1",
+            "b4c843620c251c43",
             "cb40b9341bd22a28",
+            "d0104e0163745993",
             "d1efcd5fa9d25785",
             "da61581182b7299e",
-            "2afb6a45c73fa244",
-            "9b3e6a06c82a0f52",
-            "fbc5fc2e65311f8b"
+            "e5f38b4a07a5e278",
+            "fbc5fc2e65311f8b",
+            "fd0258418489839d"
         ],
         "x": 1015,
         "y": 540,
@@ -1250,10 +1269,74 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 100,
-        "y": 700,
+        "y": 760,
         "wires": [
             [
                 "62cd5288.2805fc"
+            ]
+        ]
+    },
+    {
+        "id": "d81572486f15cd7a",
+        "type": "function",
+        "z": "e6f4d02efb300ea9",
+        "name": "loadl",
+        "func": "let fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar file = 'openscan_version'\nconst data = fs.readFileSync(filepath + file, 'utf8');\nmsg.payload = String(data);\nflow.set('openscan_version',data)\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "b1b0ccb783dd5882"
+            ]
+        ]
+    },
+    {
+        "id": "fa6db57803ae2b6d",
+        "type": "debug",
+        "z": "e6f4d02efb300ea9",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": true,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "b1b0ccb783dd5882",
+        "type": "change",
+        "z": "e6f4d02efb300ea9",
+        "name": "openscan_version",
+        "rules": [
+            {
+                "t": "set",
+                "p": "openscan_version",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 415,
+        "y": 360,
+        "wires": [
+            [
+                "fa6db57803ae2b6d",
+                "0d8c6bc7887fb3c2"
             ]
         ]
     },
@@ -2209,7 +2292,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "Routine",
-        "func": "# The contents of this file are embedded in the OpenScan app (Node-RED)\nfrom OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \\\n    load_bool, camera\nfrom OpenScanStatistics import ScanStatistics\nfrom time import sleep, strftime, time\nfrom subprocess import getoutput, run\nfrom datetime import datetime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system, uname, remove\nfrom os.path import isfile, getsize\nimport math\nimport threading\nimport numpy as np\nimport json\n\nif load_str(\"status_internal_cam\") == \"no camera found\" or load_str(\"status_internal_cam\")[:5] == \"Featu\":\n    return\n\nstats = ScanStatistics()\n\nsave('status_internal_cam', 'Routine-preparing')\ncamera('/v1/camera/picam2_switch_mode?mode=1')\nsave('cam_sharparea', False)\nsave('cam_features', False)\n\narchitecture = load_str(\"architecture\")\ncamera_model = load_str(\"camera\")\nshield = load_str(\"shield_type\")\nprojectname = load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\ndelete_aborted = load_bool('delete_aborted')\nif load_bool('rotor_enable_endstop'):\n    angle_start = load_int('rotor_endstop_angle')\n    motorrun('rotor',angle_start/abs(angle_start) * 130, True, False)\n\nelse:\n    angle_start = load_int('rotor_anglestart')\n\n\nphotocount = load_int('routine_photocount')\n\nfocus_min = load_float('cam_focus_min')\nfocus_max = load_float('cam_focus_max')\nstacksize = load_int('cam_stacksize')\ngroup_stack_photos = load_bool('group_stack_photos')\n\ntelegram_enable = load_bool('telegram_enable')\nif telegram_enable:\n    telegram_api_token = load_str('telegram_api_token')\n    telegram_client_id = load_str('telegram_client_id')\n\nif focus_min == focus_max:\n    stacksize = 1\n\nfocuslist = []\nif stacksize == 1:\n    steps = 3 + int(abs(focus_max-focus_min)*0.8)\nelse:\n    steps = stacksize\n\nfor i in range (steps):\n    focuslist.append(min(focus_min,focus_max) + i * abs(focus_max-focus_min)/(steps-1))\n\nmsg['focuslist'] = focuslist\nmsg['payload2'] = []\ncounter = 0\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min, angle_max, photocount)\ncoordinates = sort_spherical_coordinates_deg(coordinates)\n\nmsg['payload'] = coordinates\n\nposition_last = (angle_start, 0)\n\nzip = ZipFile(zippath, \"a\", ZIP_DEFLATED, allowZip64=True)\n\nhostname = str(uname()[1])\n\nstarttime = time()\n\ndef get_current_timestamp():\n    return datetime.now().strftime(\"%Y-%m-%d %H:%M\")\n\ndef get_eta(starttime, photocounter, count):\n    return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n\ndef photo(counter2):\n    camera('/v1/camera/picam2_take_photo')\n    returning[0] = focus(returning[0])\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n\ndef stack_photo(i):\n    \n    camera('/v1/camera/picam2_take_photo')\n    if group_stack_photos:\n        name = projectname + '_' + str(counter) + \"/\" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    else:\n        name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    zip.write(temppath, name)\n    \ndef stack_focus(i):\n    sleep(load_float('cam_shutter')/1000000*2)\n    if i < len(focuslist)-1:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[i+1]))\n    else:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    sleep(1.7)\n\ndef photo_stack():\n    camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    for i in range(len(focuslist)):\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + \"-F\"+ str(i+1))\n        \n        focus_thread = threading.Thread(target=stack_focus, args=(i,))\n        photo_thread = threading.Thread(target=stack_photo, args=(i,))\n        \n        focus_thread.start()\n        photo_thread.start()\n        \n        focus_thread.join()\n        photo_thread.join()\n\ndef move_motor():\n    rotor_angle = position[0] - position_last[0]\n    msg['payload2'].append(rotor_angle)\n    #if abs(rotor_angle) > 180:\n    #    rotor_angle = -360 * rotor_angle / abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n\n    motorrun('tt',tt_angle)\n    motorrun('rotor',rotor_angle)\n    return\n\ndef check_diskspace():\n    diskspace_threshold = load_int('diskspace_threshold')\n    diskspace = getoutput('df -h / | awk \"{print $5}\"').split('\\n')[1]\n    available = int(float(diskspace.replace(' ','').split('G')[2])*1000)\n    if available < diskspace_threshold:\n        save('status_internal_cam', 'Routine-stopping')\n    return\n\ndef focus(i):\n    f = focuslist[i]\n    camera('/v1/camera/picam2_focus?focus=' + str(f))\n    if i < len(focuslist) - 1:\n        i += 1\n    else:\n        i = 0\n    return i\n\ndef send_telegram_message(message, telegram_api_token, telegram_client_id):\n    telegram_bot_path = '/usr/local/bin/send-telegram'\n    run([telegram_bot_path,\"-a\",telegram_api_token,\"-c\",telegram_client_id,\"-m\",message])\n\ncounter2 = 0\n\ndate_init = get_current_timestamp()\n\nif telegram_enable:\n    telegram_message = \"[START] \" + hostname + \" starting \" + projectname + \"(\" + str(photocount) + \" photos) ETA: \"\n    try:\n        send_telegram_message(telegram_message, telegram_api_token, telegram_client_id)\n    except Exception as e:\n        print(e)\n\nfor position in coordinates:\n    counter += 1\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    if counter < 6:\n        ETA = ''\n\n    save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    if counter > 6:\n        check_diskspace()\n\n    move_motor()\n    sleep(load_float(\"cam_delay_before\"))\n    \n    if stacksize ==1:\n        returning = [counter2]\n        photo(returning)\n        counter2 = returning[0]\n    else:\n        photo_stack()\n\n    sleep(load_float(\"cam_delay_after\"))\n    ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n            int(photocount / counter * (time() - starttime))) + 's'\n    \n    # Calculate time remaining and write status to /tmp/status as JSON\n    elapsed_time = time() - starttime\n    estimated_total_time = (elapsed_time / counter) * photocount * steps\n    time_remaining = max(0, estimated_total_time - elapsed_time)\n    \n    status = {\n        \"scan_name\": projectname,\n        \"total_photos\": photocount,\n        \"current_photo\": counter,\n        \"stacksize\": steps,\n        \"start_time\": int(starttime),\n    }\n    with open('/tmp/status.json', 'w') as status_file:\n        json.dump(status, status_file)\n\n    position_last = position\n\nzip.close()\ntry:\n    send_telegram_message(\"[STOP] \" + hostname + \" stop \" + projectname, telegram_api_token, telegram_client_id)\nexcept Exception as e:\n    print(e)\ncamera('/v1/camera/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam', 'Routine-done')\n\ntry:\n    remove('/tmp/status.json')\nexcept FileNotFoundError:\n    pass  # File doesn't exist, so no need to delete\nexcept Exception as e:\n    print(f\"Error deleting /tmp/status.json: {e}\")\n\nmotorrun('rotor', -position_last[0] )\nmotorrun('tt', position_last[1])\n\nsave('status_internal_cam', '--READY--')\ndate_end = get_current_timestamp()\n\nif counter == photocount:\n    stats.write_statistics(architecture, shield, date_init, date_end, photocount, counter, camera_model, False)\n    system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\nelse:\n    stats.write_statistics(architecture, shield, date_init, date_end, photocount, counter, camera_model, True)\n    if delete_aborted:\n        remove(zippath)\n    else:\n        system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n\nreturn msg\n",
+        "func": "# The contents of this file are embedded in the OpenScan app (Node-RED)\nfrom OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \\\n    load_bool, camera\nfrom OpenScanStatistics import ScanStatistics\nfrom time import sleep, strftime, time\nfrom subprocess import getoutput, run\nfrom datetime import datetime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system, uname, remove\nfrom os.path import isfile, getsize\nimport math\nimport threading\nimport numpy as np\nimport json\n\nif load_str(\"status_internal_cam\") == \"no camera found\" or load_str(\"status_internal_cam\")[:5] == \"Featu\":\n    return\n\nstats = ScanStatistics()\n\nsave('status_internal_cam', 'Routine-preparing')\ncamera('/v1/camera/picam2_switch_mode?mode=1')\nsave('cam_sharparea', False)\nsave('cam_features', False)\n\narchitecture = load_str(\"architecture\")\ncamera_model = load_str(\"camera\")\nshield = load_str(\"shield_type\")\nprojectname = load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\ndelete_aborted = load_bool('delete_aborted')\nif load_bool('rotor_enable_endstop'):\n    angle_start = load_int('rotor_endstop_angle')\n    motorrun('rotor',angle_start/abs(angle_start) * 130, True, False)\n\nelse:\n    angle_start = load_int('rotor_anglestart')\n\n\nphotocount = load_int('routine_photocount')\n\nfocus_min = load_float('cam_focus_min')\nfocus_max = load_float('cam_focus_max')\nstacksize = load_int('cam_stacksize')\ngroup_stack_photos = load_bool('group_stack_photos')\n\ntelegram_enable = load_bool('telegram_enable')\nif telegram_enable:\n    telegram_api_token = load_str('telegram_api_token')\n    telegram_client_id = load_str('telegram_client_id')\n\nif focus_min == focus_max:\n    stacksize = 1\n\nfocuslist = []\nif stacksize == 1:\n    steps = 3 + int(abs(focus_max-focus_min)*0.8)\nelse:\n    steps = stacksize\n\nfor i in range (steps):\n    focuslist.append(min(focus_min,focus_max) + i * abs(focus_max-focus_min)/(steps-1))\n\nmsg['focuslist'] = focuslist\nmsg['payload2'] = []\ncounter = 0\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min, angle_max, photocount)\ncoordinates = sort_spherical_coordinates_deg(coordinates)\n\nmsg['payload'] = coordinates\n\nposition_last = (angle_start, 0)\n\nzip = ZipFile(zippath, \"a\", ZIP_DEFLATED, allowZip64=True)\n\nhostname = str(uname()[1])\n\nstarttime = time()\n\ndef get_current_timestamp():\n    return datetime.now().strftime(\"%Y-%m-%d %H:%M\")\n\ndef get_eta(starttime, photocounter, count):\n    return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n\ndef photo(counter2):\n    camera('/v1/camera/picam2_take_photo')\n    returning[0] = focus(returning[0])\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n\ndef stack_photo(i):\n    \n    camera('/v1/camera/picam2_take_photo')\n    if group_stack_photos:\n        name = projectname + '_' + str(counter) + \"/\" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    else:\n        name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    zip.write(temppath, name)\n    \ndef stack_focus(i):\n    sleep(load_float('cam_shutter')/1000000*2)\n    if i < len(focuslist)-1:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[i+1]))\n    else:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    sleep(1.7)\n\ndef photo_stack():\n    camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    for i in range(len(focuslist)):\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + \"-F\"+ str(i+1))\n        \n        focus_thread = threading.Thread(target=stack_focus, args=(i,))\n        photo_thread = threading.Thread(target=stack_photo, args=(i,))\n        \n        focus_thread.start()\n        photo_thread.start()\n        \n        focus_thread.join()\n        photo_thread.join()\n\ndef move_motor():\n    rotor_angle = position[0] - position_last[0]\n    msg['payload2'].append(rotor_angle)\n    #if abs(rotor_angle) > 180:\n    #    rotor_angle = -360 * rotor_angle / abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n    motorrun('rotor',rotor_angle)\n    motorrun('tt',tt_angle)\n    return\n\ndef check_diskspace():\n    diskspace_threshold = load_int('diskspace_threshold')\n    diskspace = getoutput('df -h / | awk \"{print $5}\"').split('\\n')[1]\n    available = int(float(diskspace.replace(' ','').split('G')[2])*1000)\n    if available < diskspace_threshold:\n        save('status_internal_cam', 'Routine-stopping')\n    return\n\ndef focus(i):\n    f = focuslist[i]\n    camera('/v1/camera/picam2_focus?focus=' + str(f))\n    if i < len(focuslist) - 1:\n        i += 1\n    else:\n        i = 0\n    return i\n\ndef send_telegram_message(message, telegram_api_token, telegram_client_id):\n    telegram_bot_path = '/usr/local/bin/send-telegram'\n    run([telegram_bot_path,\"-a\",telegram_api_token,\"-c\",telegram_client_id,\"-m\",message])\n\ncounter2 = 0\n\ndate_init = get_current_timestamp()\n\nif telegram_enable:\n    telegram_message = \"[START] \" + hostname + \" starting \" + projectname + \"(\" + str(photocount) + \" photos) ETA: \"\n    try:\n        send_telegram_message(telegram_message, telegram_api_token, telegram_client_id)\n    except Exception as e:\n        print(e)\n\nfor position in coordinates:\n    counter += 1\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    if counter < 6:\n        ETA = ''\n\n    save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    if counter > 6:\n        check_diskspace()\n\n    move_motor()\n    sleep(load_float(\"cam_delay_before\"))\n    \n    if stacksize ==1:\n        returning = [counter2]\n        photo(returning)\n        counter2 = returning[0]\n    else:\n        photo_stack()\n\n    sleep(load_float(\"cam_delay_after\"))\n    ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n            int(photocount / counter * (time() - starttime))) + 's'\n    \n    # Calculate time remaining and write status to /tmp/status as JSON\n    elapsed_time = time() - starttime\n    estimated_total_time = (elapsed_time / counter) * photocount * steps\n    time_remaining = max(0, estimated_total_time - elapsed_time)\n    \n    status = {\n        \"scan_name\": projectname,\n        \"total_photos\": photocount,\n        \"current_photo\": counter,\n        \"stacksize\": steps,\n        \"start_time\": int(starttime),\n    }\n    with open('/tmp/status.json', 'w') as status_file:\n        json.dump(status, status_file)\n\n    position_last = position\n\nzip.close()\ntry:\n    send_telegram_message(\"[STOP] \" + hostname + \" stop \" + projectname, telegram_api_token, telegram_client_id)\nexcept Exception as e:\n    print(e)\ncamera('/v1/camera/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam', 'Routine-done')\n\ntry:\n    remove('/tmp/status.json')\nexcept FileNotFoundError:\n    pass  # File doesn't exist, so no need to delete\nexcept Exception as e:\n    print(f\"Error deleting /tmp/status.json: {e}\")\n\nmotorrun('rotor', -position_last[0] )\nmotorrun('tt', position_last[1])\n\nsave('status_internal_cam', '--READY--')\ndate_end = get_current_timestamp()\n\nif counter == photocount:\n    stats.write_statistics(architecture, shield, date_init, date_end, photocount, counter, camera_model, False)\n    system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\nelse:\n    stats.write_statistics(architecture, shield, date_init, date_end, photocount, counter, camera_model, True)\n    if delete_aborted:\n        remove(zippath)\n    else:\n        system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n\nreturn msg\n",
         "outputs": 1,
         "x": 300,
         "y": 1040,
@@ -8686,7 +8769,7 @@
         "type": "function",
         "z": "e43a27722b508115",
         "name": "function 2",
-        "func": "let fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar file = 'shield_type';\nconst current_shield = fs.readFileSync(filepath + file, 'utf8');\n\nvar current_choice = msg.payload\n\nif (current_choice != current_shield) {\n    \n    switch (current_choice) {\n        case \"green\":\n            fs.writeFile(filepath + 'pin_external', String(10), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_ringlight1', String(17), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_ringlight2', String(27), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_dir', String(5), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_step', String(6), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_enable', String(23), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_tt_dir', String(9), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_tt_step', String(11), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_endstop', String(14), err => {\n                if (err) {\n                    return\n                }\n            });\n            break;\n        case \"black\":\n            fs.writeFile(filepath + 'pin_external', String(5), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_ringlight1', String(24), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_ringlight2', String(26), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_dir', String(23), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_step', String(27), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_enable', String(22), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_tt_dir', String(6), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_tt_step', String(26), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_endstop', String(17), err => {\n                if (err) {\n                    return\n                }\n            });\n            break;\n        case \"custom\":\n            break;\n    }\n\n    fs.writeFile(filepath + file, current_choice, err => {\n        if (err) {\n            return\n        }\n    });\n}\n\nreturn msg;",
+        "func": "let fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar file = 'shield_type';\nconst current_shield = fs.readFileSync(filepath + file, 'utf8');\n\nvar current_choice = msg.payload\n\nif (current_choice != current_shield) {\n    \n    switch (current_choice) {\n        case \"green\":\n            fs.writeFile(filepath + 'pin_external', String(10), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_ringlight1', String(17), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_ringlight2', String(27), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_dir', String(5), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_step', String(6), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_enable', String(23), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_tt_dir', String(9), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_tt_step', String(11), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_endstop', String(14), err => {\n                if (err) {\n                    return\n                }\n            });\n            break;\n        case \"black\":\n            fs.writeFile(filepath + 'pin_external', String(5), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_ringlight1', String(24), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_ringlight2', String(26), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_dir', String(23), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_step', String(27), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_enable', String(22), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_tt_dir', String(6), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_tt_step', String(26), err => {\n                if (err) {\n                    return\n                }\n            });\n            fs.writeFile(filepath + 'pin_rotor_endstop', String(17), err => {\n                if (err) {\n                    return\n                }\n            });\n            break;\n        case \"custom\":\n            break;\n    }\n\n    fs.writeFile(filepath + file, current_choice, err => {\n        if (err) {\n            return\n        }\n    });\n}\n\nmsg.status = 'The new ' + current_choice + ' shield has been configured'\nmsg.topic = msg.status\nmsg.payload = 'Do you want to reboot now to apply the changes?'\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8695,8 +8778,64 @@
         "x": 460,
         "y": 3840,
         "wires": [
+            [
+                "137f032887544d74"
+            ]
+        ]
+    },
+    {
+        "id": "137f032887544d74",
+        "type": "ui_toast",
+        "z": "e43a27722b508115",
+        "position": "prompt",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": false,
+        "outputs": 1,
+        "ok": "OK",
+        "cancel": "Cancel",
+        "raw": true,
+        "className": "",
+        "topic": "",
+        "name": "Reboot",
+        "x": 600,
+        "y": 3840,
+        "wires": [
+            [
+                "d2db49796fe0da79",
+                "d0d6820224b0ab0f"
+            ]
+        ]
+    },
+    {
+        "id": "d2db49796fe0da79",
+        "type": "python3-function",
+        "z": "e43a27722b508115",
+        "name": "",
+        "func": "print(msg['payload'])\nreturn msg",
+        "outputs": 1,
+        "x": 790,
+        "y": 3840,
+        "wires": [
             []
         ]
+    },
+    {
+        "id": "d0d6820224b0ab0f",
+        "type": "debug",
+        "z": "e43a27722b508115",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 3720,
+        "wires": []
     },
     {
         "id": "4c7fa5b5b27b83a5",
