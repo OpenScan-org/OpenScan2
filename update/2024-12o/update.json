@@ -83,7 +83,7 @@
         "2": {
             "src": "meanwhile/OpenScanStatistics.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScanStatistics.py",
-            "filesize": 793
+            "filesize": 902
         },
         "3": {
             "src": "meanwhile/config.txt",
@@ -103,7 +103,7 @@
         "6": {
             "src": "meanwhile/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 344127
+            "filesize": 344293
         },
         "7": {
             "src": "meanwhile/settings.js",
