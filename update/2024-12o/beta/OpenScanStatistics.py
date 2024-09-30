@@ -1,18 +1,38 @@
-import csv
+import json
+import os
+from datetime import datetime
+from dataclasses import dataclass
+
+@dataclass
+class ScanData:
+    arch: str
+    openscan_version: str
+    openscan_branch: str
+    shield: str
+    date_init: str  # Format: YYYY-MM-DD HH:MM
+    date_end: str   # Format: YYYY-MM-DD HH:MM
+    num_photos: int
+    done_photos: int
+    camera: str
+    stack_size: int
+    telegram_enabled: bool
+    delete_aborted: bool
+    endstop_enabled: bool
+    group_stack_photos: bool
+    aborted: bool
 
 class ScanStatistics:
-    def __init__(self, filename="/home/pi/OpenScan/statistics/statistics.csv"):
-        self.filename = filename
-        self.header = ["arch", "shield", "date_init", "date_end", "num_photos", "done-photos", "camera", "aborted"]
+    def __init__(self, filename: str = "/home/pi/OpenScan/statistics") -> None:
+        self.filename: str = filename
 
-    def write_statistics(self, arch, shield, date_init, date_end, num_photos, done_photos, camera, aborted):
-        data = [arch, shield, date_init, date_end, num_photos, done_photos, camera, aborted]
-        
-        with open(self.filename, "a", newline='') as csv_file:
-            csv_writer = csv.writer(csv_file, delimiter=';')
-            
-            # Write header if file is empty
-            if csv_file.tell() == 0:
-                csv_writer.writerow(self.header)
-            
-            csv_writer.writerow(data)
+    def write_statistics(self, scan_data: ScanData) -> None:
+        data: dict = scan_data.__dict__  # Convert dataclass to dictionary
+
+        # Parse date_init to get year and month
+        date_object: datetime = datetime.strptime(scan_data.date_init, "%Y-%m-%d %H:%M")
+        record_filename: str = os.path.join(self.filename, f"statistics-{date_object.year}-{date_object.month:02d}.json")
+
+        # Append the new data as a new line
+        with open(record_filename, "a") as json_file:
+            json.dump(data, json_file, separators=(',', ':'), indent=None)  # Collapsed JSON
+            json_file.write('\n')  # Add a newline after each entry
