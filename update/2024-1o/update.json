@@ -81,6 +81,11 @@
             "filesize": 10396
         },
         "2": {
+            "src": "meanwhile/OpenScanConfig.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScanConfig.py",
+            "filesize": 5247
+        },
+        "3": {
             "src": "meanwhile/OpenScanStatistics.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScanStatistics.py",
             "filesize": 1288
