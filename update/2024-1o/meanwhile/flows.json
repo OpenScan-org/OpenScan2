@@ -523,6 +523,40 @@
         "className": ""
     },
     {
+        "id": "dfb4a60f.d788f8",
+        "type": "ui_group",
+        "name": "Data Export",
+        "tab": "48418b79.0f5834",
+        "order": 1,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "48418b79.0f5834",
+        "type": "ui_tab",
+        "name": "Dashboard",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "c33a1024a72aa169",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "cc6c4310cf7b61cc",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "cc6c4310cf7b61cc",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
         "id": "bc4e2c03859196c3",
         "type": "inject",
         "z": "e6f4d02efb300ea9",
@@ -871,13 +905,13 @@
         "order": 14,
         "width": 7,
         "height": 1,
-        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n    $(function() {\n        if($('.md-toolbar-tools').length != 0){\n            load();  // Pass the payload to the load function\n        } else {\n            setTimeout(function() { load(); }, 500);  // Pass payload to setTimeout\n        }\n    });\n    function load(){\n        $('#bmac').remove();\n        var toolbar = $('.md-toolbar-tools');\n        var div = $('<div/>');\n        var p = $('<div/>', { id: 'bmac' });\n        \n        \n        div.append(p);\n        div[0].style.margin = '0px 0px 0px auto';\n        toolbar.append(div);\n        p.append('<small>Meanwhile 2024-1o - meanwhile</small>');        p.append(' ');\n        p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" onclick=\"shutdown()\"><i class=\"fa fa-power-off\" ></i></a>');\n        p.append('   ');\n        p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" onclick=\"reboot()\"><i class=\"fa fa-repeat\" ></i></a>');\n    }\n\n    function getApiUrl() {\n        return `http://${window.location.hostname}:1312`;\n    }\n\n    function shutdown() {\n        if (confirm(\"Are you sure you want to shut down the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/shutdown?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Shutdown initiated. The system will power off shortly.\");\n            });\n        }\n    }\n\n    function reboot() {\n        if (confirm(\"Are you sure you want to reboot the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/reboot?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Reboot initiated. The system will restart shortly.\");\n            });\n        }\n    }\n</script>\n<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n    }\n\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n        background-color: transparent !important;\n    }\n\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n</style>\n",
+        "format": "<div id=\"{{'my_'+$id}}\" style=\"{{'color:'+theme.base_color}}\">Some text</div>\n<script>\n    (function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n      $(\"#my_\"+scope.$id).html(msg.payload);\n    }\n  });\n})(scope);\n</script>\n<script id=\"titleScript\" type=\"text/javascript\">\n    $(function() {\n        if($('.md-toolbar-tools').length != 0){\n            load();\n        } else {\n            setTimeout(function() { load(); }, 500);\n        }\n    });\n    function load(){\n        $('#bmac').remove();\n        var toolbar = $('.md-toolbar-tools');\n        var div = $('<div/>');\n        var p = $('<div/>', { id: 'bmac' });\n        \n        \n        div.append(p);\n        div[0].style.margin = '0px 0px 0px auto';\n        toolbar.append(div);\n        p.append('<small>Meanwhile {payload} - meanwhile</small>');        p.append(' ');\n        p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" onclick=\"shutdown()\"><i class=\"fa fa-power-off\" ></i></a>');\n        p.append('   ');\n        p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" onclick=\"reboot()\"><i class=\"fa fa-repeat\" ></i></a>');\n    }\n\n    function getApiUrl() {\n        return `http://${window.location.hostname}:1312`;\n    }\n\n    function shutdown() {\n        if (confirm(\"Are you sure you want to shut down the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/shutdown?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Shutdown initiated. The system will power off shortly.\");\n            });\n        }\n    }\n\n    function reboot() {\n        if (confirm(\"Are you sure you want to reboot the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/reboot?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Reboot initiated. The system will restart shortly.\");\n            });\n        }\n    }\n</script>\n<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n    }\n\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n        background-color: transparent !important;\n    }\n\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n</style>\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "global",
         "className": "",
-        "x": 650,
+        "x": 470,
         "y": 360,
         "wires": [
             []
@@ -1249,7 +1283,7 @@
         "type": "function",
         "z": "e6f4d02efb300ea9",
         "name": "loadl",
-        "func": "let fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar file = 'openscan_version'\nconst data = fs.readFileSync(filepath + file, 'utf8');\nmsg.payload = String(data);\nflow.set('openscan_version',data)\nreturn msg",
+        "func": "let fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar file = 'openscan_version'\nconst data = fs.readFileSync(filepath + file, 'utf8');\nmsg.openscan_version = String(data);\n\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1259,7 +1293,8 @@
         "y": 360,
         "wires": [
             [
-                "b1b0ccb783dd5882"
+                "0d8c6bc7887fb3c2",
+                "fa6db57803ae2b6d"
             ]
         ]
     },
@@ -1276,37 +1311,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 590,
-        "y": 460,
+        "x": 430,
+        "y": 400,
         "wires": []
-    },
-    {
-        "id": "b1b0ccb783dd5882",
-        "type": "change",
-        "z": "e6f4d02efb300ea9",
-        "name": "openscan_version",
-        "rules": [
-            {
-                "t": "set",
-                "p": "openscan_version",
-                "pt": "flow",
-                "to": "payload",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 415,
-        "y": 360,
-        "wires": [
-            [
-                "fa6db57803ae2b6d",
-                "0d8c6bc7887fb3c2"
-            ]
-        ]
     },
     {
         "id": "6a3d9acbe097a3d2",
@@ -2674,8 +2681,8 @@
         "z": "481edaf6db5a7a54",
         "name": "start routine settings",
         "links": [
-            "960912e90ba5b5bc",
-            "50eeb3e362f9027f"
+            "50eeb3e362f9027f",
+            "960912e90ba5b5bc"
         ],
         "x": 95,
         "y": 480,
@@ -9033,7 +9040,7 @@
         "type": "ui_text",
         "z": "a5557543ccff5889",
         "group": "ddbd496e.93a288",
-        "order": 3,
+        "order": 2,
         "width": 0,
         "height": 0,
         "name": "",
@@ -9107,7 +9114,7 @@
         "tooltip": "",
         "place": "Select option",
         "group": "ddbd496e.93a288",
-        "order": 5,
+        "order": 4,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -9163,7 +9170,7 @@
         "type": "ui_text",
         "z": "a5557543ccff5889",
         "group": "ddbd496e.93a288",
-        "order": 4,
+        "order": 3,
         "width": 4,
         "height": 1,
         "name": "",
@@ -9183,7 +9190,7 @@
         "label": "Auto-check update availability",
         "tooltip": "",
         "group": "ddbd496e.93a288",
-        "order": 6,
+        "order": 5,
         "width": 6,
         "height": 1,
         "passthru": true,
@@ -9287,7 +9294,7 @@
         "z": "a5557543ccff5889",
         "name": "",
         "group": "ddbd496e.93a288",
-        "order": 7,
+        "order": 6,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -9648,7 +9655,7 @@
         "z": "a5557543ccff5889",
         "name": "",
         "group": "ddbd496e.93a288",
-        "order": 8,
+        "order": 7,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -9705,6 +9712,66 @@
         "wires": [
             []
         ]
+    },
+    {
+        "id": "28cab3989dcf898b",
+        "type": "ui_template",
+        "z": "a5557543ccff5889",
+        "group": "ddbd496e.93a288",
+        "name": "Download Config",
+        "order": 9,
+        "width": 0,
+        "height": 0,
+        "format": "<body>\n<md-button style=\"background-color:default ; color:default;width:100%; height:100%;\" target=\"_blank\"\n    ng-href=\"http://openscan.local:1312/v1/system/get_settings\">\n    <div class=\"center\" style=\"position: relative; top: 30%;\">Download Config\n    </div>\n</md-button>\n</body>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 530,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c5268070.c55a3",
+        "type": "ui_template",
+        "z": "a5557543ccff5889",
+        "group": "ddbd496e.93a288",
+        "name": "Upload Btn",
+        "order": 8,
+        "width": "3",
+        "height": 1,
+        "format": "\n<body>\n<button class=\"md-raised md-button md-ink-ripple\" onclick=\"importData()\">Upload</button>    \n\n<script>\nlet restoreScope = scope;\n\nfunction importData() {\n  let input = document.createElement('input');\n  input.type = 'file';\n  input.id = 'restoreBtn';\n  input.onchange = _ => {\n    // you can use this method to get file and perform respective operations\n        let fReader = new FileReader();\n        fReader.readAsText(input.files[0]);\n        fReader.onloadend = function(event){\n        restoreScope.send({payload:event.target.result});}\n        };\n  input.click();\n}\n</script>\n</body>\n",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "className": "",
+        "x": 510,
+        "y": 1060,
+        "wires": [
+            [
+                "5e18b80e617a3db8"
+            ]
+        ]
+    },
+    {
+        "id": "5e18b80e617a3db8",
+        "type": "debug",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 1060,
+        "wires": []
     },
     {
         "id": "9b3e6a06c82a0f52",

@@ -232,6 +232,9 @@ userDir: '/home/pi/OpenScan/settings/.node-red/',
     //    {path: '/home/nol/pics/',    root: "/img/"}, 
     //    {path: '/home/nol/reports/', root: "/doc/"}, 
     //],
+    httpStatic: [
+        {path: '/home/pi/OpenScan/tmp2/', root: "/tmp2/"}
+    ], 
 
     /**  
      * All static routes will be appended to httpStaticRoot

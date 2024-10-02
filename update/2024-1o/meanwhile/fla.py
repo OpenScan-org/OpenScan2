@@ -1,14 +1,16 @@
+from zipfile import ZipFile
 from flask import Flask, request, redirect, send_file, send_from_directory
 from flask_restx import Resource, Api, Namespace
 from picamera2 import Picamera2
 from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops, ImageFont
 from time import sleep, time
 from OpenScan import load_int, load_float, load_bool, ringlight, motorrun
+from OpenScanSettings import get_openscan_settings, export_settings_to_file
 import RPi.GPIO as GPIO
 from math import sqrt
 import os
 import math
-from skimage import feature, color, transform
+#from skimage import feature, color, transform
 import numpy as np
 from scipy import ndimage
 import socket
@@ -114,6 +116,24 @@ class Status(Resource):
                 return {"error": f"Error reading status file: {str(e)}"}, 500
         else:
             return {"status": "idle"}, 200
+
+@system_ns.route('/get_settings')
+class SendSettingsFile(Resource):
+    def get(self):
+        openscan_tmp_folder = '/home/pi/OpenScan/tmp2'
+        file_name = 'settings.zip'
+        openscan_settings = get_openscan_settings()
+        export_settings_to_file(openscan_settings, openscan_tmp_folder + "/" + file_name)
+
+        with ZipFile(file_name, 'w') as zip_object:
+            zip_object.write(openscan_tmp_folder + "/" + file_name)
+
+        if os.path.exists(openscan_tmp_folder + "/" + file_name):
+            print("ZIP file created")
+        else:
+            print("ZIP file not created")
+        return send_from_directory(openscan_tmp_folder, file_name, as_attachment=True)
+
 
 @system_ns.route('/shutdown')
 class Shutdown(Resource):
@@ -512,8 +532,6 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-
 if __name__ == '__main__':
-#    app.run(host='127.0.0.1', port=1312, debug=False, threaded=True)
     app.run(host='0.0.0.0', port=1312, debug=False, threaded=True)
 

@@ -81,39 +81,39 @@
             "filesize": 10396
         },
         "2": {
-            "src": "meanwhile/OpenScanConfig.py",
-            "dst": "/usr/lib/python3/dist-packages/OpenScanConfig.py",
-            "filesize": 5247
+            "src": "meanwhile/OpenScanSettings.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScanSettings.py",
+            "filesize": 5293
         },
         "3": {
             "src": "meanwhile/OpenScanStatistics.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScanStatistics.py",
             "filesize": 1288
         },
-        "3": {
+        "4": {
             "src": "meanwhile/config.txt",
             "dst": "/boot/config.txt",
-            "filesize": 864
+            "filesize": 866
         },
-        "4": {
+        "5": {
             "src": "meanwhile/expand_root.sh",
             "dst": "/home/pi/OpenScan/files/expand_root.sh",
             "filesize": 170
         },
-        "5": {
+        "6": {
             "src": "meanwhile/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 17869
-        },
-        "6": {
-            "src": "meanwhile/flows.json",
-            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 343551
+            "filesize": 18593
         },
         "7": {
+            "src": "meanwhile/flows.json",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
+            "filesize": 346256
+        },
+        "8": {
             "src": "meanwhile/settings.js",
             "dst": "/root/.node-red/settings.js",
-            "filesize": 21248
+            "filesize": 21332
         }
     }
 }

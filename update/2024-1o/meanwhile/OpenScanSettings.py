@@ -5,7 +5,7 @@ from dataclasses import dataclass, asdict
 from unicodedata import decimal
 
 @dataclass
-class OpenScanConfig:
+class OpenScanSettings:
     advanced_settings: bool
     architecture: str
     cam_awbg_blue: int
@@ -113,8 +113,8 @@ class OpenScanConfig:
     update_auto: bool
     uploadprogress: str
     @classmethod
-    def get_openscan_config(cls):
-        config = {}
+    def get_openscan_settings(cls):
+        settings = {}
         blacklist = [
             'token',
             'session_token',
@@ -132,35 +132,35 @@ class OpenScanConfig:
                         value = file.read().strip()
                         field_type = cls.__annotations__[field]
                         if field_type == bool:
-                            config[field] = value.lower() == 'true'
+                            settings[field] = value.lower() == 'true'
                         elif field_type == int:
-                            config[field] = int(value)
+                            settings[field] = int(value)
                         elif field_type == float:
-                            config[field] = float(value)
+                            settings[field] = float(value)
                         else:
-                            config[field] = value
+                            settings[field] = value
                 except FileNotFoundError:
                     print(f"Warning: File {field} not found. Skipping this field.")
                 except ValueError:
                     print(f"Warning: Could not convert value for {field}. Skipping this field.")
         
-        return config
+        return settings
 
     @staticmethod
-    def export_config_to_file(config, file_path):
+    def export_settings_to_file(settings, file_path):
         with open(file_path, "w") as json_file:
-            json.dump(config, json_file, indent=4)
+            json.dump(settings, json_file, indent=4)
 
-def get_openscan_config():
-    return OpenScanConfig.get_openscan_config()
+def get_openscan_settings():
+    return OpenScanSettings.get_openscan_settings()
 
-def export_config_to_file(config, file_path):
-    OpenScanConfig.export_config_to_file(config, file_path)
+def export_settings_to_file(settings, file_path):
+    OpenScanSettings.export_settings_to_file(settings, file_path)
 
-def persist_settings_from_file(config):
-    for field, value in config.items():
-        if field in OpenScanConfig.__dataclass_fields__:
-            field_type = OpenScanConfig.__annotations__[field]
+def persist_settings_from_file(settings):
+    for field, value in settings.items():
+        if field in OpenScanSettings.__dataclass_fields__:
+            field_type = OpenScanSettings.__annotations__[field]
             try:
                 if field_type == bool:
                     value = str(value).lower()
