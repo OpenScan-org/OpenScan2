@@ -36,3 +36,37 @@ class ScanStatistics:
         with open(record_filename, "a") as json_file:
             json.dump(data, json_file, separators=(',', ':'), indent=None)  # Collapsed JSON
             json_file.write('\n')  # Add a newline after each entry
+    
+    def get_statistics_from_file(self):
+        '''
+        get the required statistics as a dictionary
+        '''
+        statistics = {}
+        file_path = self.filename
+        
+        # Check if the file exists
+        if not os.path.exists(file_path):
+            return statistics
+        
+        # Read all lines from the file
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+        
+        # Process each line (each JSON object)
+        for line in lines:
+            try:
+                data = json.loads(line.strip())
+                for key, value in data.items():
+                    if key not in statistics:
+                        statistics[key] = {}
+                    if value not in statistics[key]:
+                        statistics[key][value] = 0
+                    statistics[key][value] += 1
+            except json.JSONDecodeError:
+                continue  # Skip invalid JSON lines
+        
+        # Find the most common value for each field
+        for key in statistics:
+            statistics[key] = max(statistics[key], key=statistics[key].get)
+        
+        return statistics

@@ -9775,7 +9775,7 @@
         "order": 8,
         "width": "3",
         "height": 1,
-        "format": "\n<body>\n<button class=\"md-raised md-button md-ink-ripple\" onclick=\"importData()\">Upload</button>    \n\n<script>\nlet restoreScope = scope;\n\nfunction importData() {\n  let input = document.createElement('input');\n  input.type = 'file';\n  input.id = 'restoreBtn';\n  input.onchange = _ => {\n    // you can use this method to get file and perform respective operations\n        let fReader = new FileReader();\n        fReader.readAsText(input.files[0]);\n        fReader.onloadend = function(event){\n        restoreScope.send({payload:event.target.result});}\n        };\n  input.click();\n}\n</script>\n</body>\n",
+        "format": "<md-button class=\"md-raised\" style=\"background-color:default; color:default; width:100%; height:100%;\"\n    ng-click=\"importData()\">\n    <div class=\"center\" style=\"position: relative; top: 30%;\">Upload Config</div>\n</md-button>\n\n<input type=\"file\" id=\"fileInput\" style=\"display: none;\" accept=\".zip\" onchange=\"handleFileSelect(event)\">\n\n<script>\n    var scope = scope || {};\n    scope.importData = function() {\n        document.getElementById('fileInput').click();\n    };\n\n    function handleFileSelect(event) {\n        var file = event.target.files[0];\n        if (file && file.type === 'application/zip') {\n            var reader = new FileReader();\n            reader.onload = function(e) {\n                var arrayBuffer = e.target.result;\n                var bytes = new Uint8Array(arrayBuffer);\n                var binaryString = '';\n                for (var i = 0; i < bytes.byteLength; i++) {\n                    binaryString += String.fromCharCode(bytes[i]);\n                }\n                var base64 = btoa(binaryString);\n                \n                scope.send({\n                    payload: {\n                        filename: file.name,\n                        content: base64\n                    }\n                });\n            };\n            reader.readAsArrayBuffer(file);\n        } else {\n            console.error('Please select a valid zip file');\n            scope.send({payload: 'Invalid file type'});\n        }\n    }\n</script>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": false,
@@ -9785,7 +9785,7 @@
         "y": 1060,
         "wires": [
             [
-                "5e18b80e617a3db8"
+                "f92f5fe65eaea996"
             ]
         ]
     },
@@ -9801,8 +9801,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 750,
-        "y": 1060,
+        "x": 790,
+        "y": 1000,
         "wires": []
     },
     {
@@ -9821,6 +9821,193 @@
         "x": 720,
         "y": 380,
         "wires": []
+    },
+    {
+        "id": "f92f5fe65eaea996",
+        "type": "file",
+        "z": "a5557543ccff5889",
+        "name": "Save Settings",
+        "filename": "/home/pi/OpenScan/tmp2/upload.zip",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "binary",
+        "x": 700,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c4f91df3.caef7",
+        "type": "http in",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "url": "/files",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 1280,
+        "wires": [
+            [
+                "cc5a37cf.86c6d8",
+                "c14febc0.522db8"
+            ]
+        ]
+    },
+    {
+        "id": "ef0aaf76.2236e",
+        "type": "http response",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 590,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "cc5a37cf.86c6d8",
+        "type": "debug",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "req",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "6a156025.b1c9f",
+        "type": "inject",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 1380,
+        "wires": [
+            [
+                "fd62708f.a560a"
+            ]
+        ]
+    },
+    {
+        "id": "9c0b2081.b1ac6",
+        "type": "function",
+        "z": "a5557543ccff5889",
+        "name": "Format the header and payload",
+        "func": "msg.headers = {\n    \"Content-Type\": \"multipart/form-data; boundary=------------------------d74496d66958873e\"\n}\n\n\nmsg.payload = '--------------------------d74496d66958873e\\r\\n'+\n'Content-Disposition: form-data; name=\"select\"\\r\\n'+\n'\\r\\n'+\n'true\\r\\n'+\n'--------------------------d74496d66958873e\\r\\n'+\n'Content-Disposition: form-data; name=\"print\"\\r\\n'+\n'\\r\\n'+\n'true\\r\\n'+\n'--------------------------d74496d66958873e\\r\\n'+\n'Content-Disposition: form-data; name=\"file\"; filename=\"'+msg.filename+'\"\\r\\n'+\n'Content-Type: application/octet-stream\\r\\n'+\n'\\r\\n'+\nmsg.payload+'\\r\\n'+\n'--------------------------d74496d66958873e--\\r\\n';\n\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 1440,
+        "wires": [
+            [
+                "85c748e8.2d1f88"
+            ]
+        ]
+    },
+    {
+        "id": "85c748e8.2d1f88",
+        "type": "http request",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "http://localhost:1880/files",
+        "tls": "",
+        "proxy": "",
+        "x": 610,
+        "y": 1440,
+        "wires": [
+            [
+                "a4810d7a.f652a"
+            ]
+        ]
+    },
+    {
+        "id": "a4810d7a.f652a",
+        "type": "debug",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 790,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "c14febc0.522db8",
+        "type": "change",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "okay",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 1280,
+        "wires": [
+            [
+                "ef0aaf76.2236e"
+            ]
+        ]
+    },
+    {
+        "id": "fd62708f.a560a",
+        "type": "file in",
+        "z": "a5557543ccff5889",
+        "name": "",
+        "filename": "/tmp/file.txt",
+        "filenameType": "str",
+        "format": "",
+        "chunk": false,
+        "sendError": false,
+        "allProps": false,
+        "x": 420,
+        "y": 1380,
+        "wires": [
+            [
+                "9c0b2081.b1ac6"
+            ]
+        ]
     },
     {
         "id": "9b3e6a06c82a0f52",
