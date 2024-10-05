@@ -115,9 +115,7 @@ class OpenScanSettings:
     
     @classmethod
     def get_openscan_settings(cls):
-        settings = {
-            "version": "1.0"  # Add a version identifier
-        }
+        settings = {}
         blacklist = [
             'token',
             'session_token',
@@ -147,7 +145,10 @@ class OpenScanSettings:
                 except ValueError:
                     print(f"Warning: Could not convert value for {field}. Skipping this field.")
         
-        return settings
+        return {
+            "version": "1.0",
+            "settings": settings
+        }
 
     @staticmethod
     def export_settings_to_file(settings, file_path=None):

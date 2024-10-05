@@ -126,7 +126,7 @@ class SendSettingsFile(Resource):
         export_settings_to_file(openscan_settings, openscan_tmp_folder + "/" + file_name + '.json')
 
         with ZipFile(openscan_tmp_folder + "/" + file_name + '.zip', 'w') as zip_object:
-            zip_object.write(openscan_tmp_folder + "/" + file_name + "json", zip_object.ZIP_DEFLATED)
+            zip_object.write(openscan_tmp_folder + "/" + file_name + ".json", arcname = file_name + '.json')
         if os.path.exists(openscan_tmp_folder + "/" + file_name + ".zip"):
             print("ZIP file created")
         else:

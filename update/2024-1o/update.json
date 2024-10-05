@@ -108,7 +108,7 @@
         "6": {
             "src": "meanwhile/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 18687
+            "filesize": 18694
         },
         "7": {
             "src": "meanwhile/flows.json",
