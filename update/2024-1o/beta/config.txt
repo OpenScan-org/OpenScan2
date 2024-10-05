@@ -5,7 +5,7 @@
 # Additional overlays and parameters are documented /boot/overlays/README
 
 # Automatically load overlays for detected cameras
-camera_auto_detect=1
+# camera_auto_detect=1
 
 # Automatically load overlays for detected DSI displays
 display_auto_detect=1

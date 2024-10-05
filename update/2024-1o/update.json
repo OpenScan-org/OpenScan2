@@ -44,34 +44,39 @@
             "filesize": 10396
         },
         "2": {
+            "src": "beta/OpenScanSettings.py",
+            "dst": "/usr/lib/python3/dist-packages/OpenScanSettings.py",
+            "filesize": 5293
+        },
+        "3": {
             "src": "beta/OpenScanStatistics.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScanStatistics.py",
             "filesize": 1288
         },
-        "3": {
+        "4": {
             "src": "beta/config.txt",
             "dst": "/boot/config.txt",
-            "filesize": 864
+            "filesize": 866
         },
-        "4": {
+        "5": {
             "src": "beta/expand_root.sh",
             "dst": "/home/pi/OpenScan/files/expand_root.sh",
             "filesize": 170
         },
-        "5": {
-            "src": "meanwhile/fla.py",
-            "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 17869
-        },
         "6": {
-            "src": "beta/flows.json",
-            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 342709
+            "src": "beta/fla.py",
+            "dst": "/home/pi/OpenScan/files/fla.py",
+            "filesize": 18687
         },
         "7": {
+            "src": "beta/flows.json",
+            "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
+            "filesize": 346421
+        },
+        "8": {
             "src": "beta/settings.js",
             "dst": "/root/.node-red/settings.js",
-            "filesize": 21248
+            "filesize": 21332
         }
     },
     "meanwhile": {
@@ -83,7 +88,7 @@
         "2": {
             "src": "meanwhile/OpenScanSettings.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScanSettings.py",
-            "filesize": 5293
+            "filesize": 5588
         },
         "3": {
             "src": "meanwhile/OpenScanStatistics.py",
@@ -108,7 +113,7 @@
         "7": {
             "src": "meanwhile/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 346421
+            "filesize": 347248
         },
         "8": {
             "src": "meanwhile/settings.js",

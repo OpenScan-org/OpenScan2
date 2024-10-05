@@ -4120,7 +4120,7 @@
         "name": "Network",
         "info": "",
         "x": 100,
-        "y": 720,
+        "y": 760,
         "wires": []
     },
     {
@@ -7530,7 +7530,7 @@
         "topic": "Restore default settings?",
         "topicType": "str",
         "x": 110,
-        "y": 620,
+        "y": 680,
         "wires": [
             [
                 "53e6681d7254d484"
@@ -7553,7 +7553,7 @@
         "topic": "",
         "name": "",
         "x": 270,
-        "y": 620,
+        "y": 680,
         "wires": [
             [
                 "c11e79cfa7bc10b7"
@@ -7572,7 +7572,7 @@
         "finalize": "",
         "libs": [],
         "x": 410,
-        "y": 620,
+        "y": 680,
         "wires": [
             [
                 "307782d10c1acdaf"
@@ -7589,7 +7589,7 @@
             "38783aea9cc317a6"
         ],
         "x": 505,
-        "y": 620,
+        "y": 680,
         "wires": []
     },
     {
@@ -8902,6 +8902,35 @@
         "wires": []
     },
     {
+        "id": "d9d7acf381c002cf",
+        "type": "python3-function",
+        "z": "e43a27722b508115",
+        "name": "restart interface",
+        "func": "import os\nfrom time import sleep\nsleep(1.5)\nimport RPi.GPIO as GPIO\nGPIO.setwarnings(False)\nGPIO.cleanup()\nos.system('service flask restart')\nos.system('service nodered restart')\n",
+        "outputs": 1,
+        "x": 300,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "acfcc56da7ec7880",
+        "type": "link in",
+        "z": "e43a27722b508115",
+        "name": "restart interface",
+        "links": [
+            "fe3a855fee9e28c6"
+        ],
+        "x": 155,
+        "y": 600,
+        "wires": [
+            [
+                "d9d7acf381c002cf"
+            ]
+        ]
+    },
+    {
         "id": "4c7fa5b5b27b83a5",
         "type": "python3-function",
         "z": "a5557543ccff5889",
@@ -9394,7 +9423,8 @@
         "mode": "link",
         "links": [
             "9bb0adbd716ce347",
-            "01c882fcc51b349c"
+            "01c882fcc51b349c",
+            "acfcc56da7ec7880"
         ],
         "x": 995,
         "y": 560,

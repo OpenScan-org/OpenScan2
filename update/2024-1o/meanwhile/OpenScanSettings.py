@@ -112,9 +112,12 @@ class OpenScanSettings:
     updateable: bool
     update_auto: bool
     uploadprogress: str
+    
     @classmethod
     def get_openscan_settings(cls):
-        settings = {}
+        settings = {
+            "version": "1.0"  # Add a version identifier
+        }
         blacklist = [
             'token',
             'session_token',
@@ -147,14 +150,20 @@ class OpenScanSettings:
         return settings
 
     @staticmethod
-    def export_settings_to_file(settings, file_path):
+    def export_settings_to_file(settings, file_path=None):
+        from datetime import datetime
+        
+        if file_path is None:
+            current_date = datetime.now().strftime("%Y-%m-%d")
+            file_path = f"openscan-settings-{current_date}.json"
+        
         with open(file_path, "w") as json_file:
             json.dump(settings, json_file, indent=4)
 
 def get_openscan_settings():
     return OpenScanSettings.get_openscan_settings()
 
-def export_settings_to_file(settings, file_path):
+def export_settings_to_file(settings, file_path=None):
     OpenScanSettings.export_settings_to_file(settings, file_path)
 
 def persist_settings_from_file(settings):
