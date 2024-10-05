@@ -121,18 +121,17 @@ class Status(Resource):
 class SendSettingsFile(Resource):
     def get(self):
         openscan_tmp_folder = '/home/pi/OpenScan/tmp2'
-        file_name = 'settings.zip'
+        file_name = 'settings'
         openscan_settings = get_openscan_settings()
-        export_settings_to_file(openscan_settings, openscan_tmp_folder + "/" + file_name)
+        export_settings_to_file(openscan_settings, openscan_tmp_folder + "/" + file_name + '.json')
 
-        with ZipFile(file_name, 'w') as zip_object:
-            zip_object.write(openscan_tmp_folder + "/" + file_name)
-
-        if os.path.exists(openscan_tmp_folder + "/" + file_name):
+        with ZipFile(openscan_tmp_folder + "/" + file_name + '.zip', 'w') as zip_object:
+            zip_object.write(openscan_tmp_folder + "/" + file_name + "json", zip_object.ZIP_DEFLATED)
+        if os.path.exists(openscan_tmp_folder + "/" + file_name + ".zip"):
             print("ZIP file created")
         else:
             print("ZIP file not created")
-        return send_from_directory(openscan_tmp_folder, file_name, as_attachment=True)
+        return send_from_directory(openscan_tmp_folder, file_name + ".zip", as_attachment=True)
 
 
 @system_ns.route('/shutdown')
