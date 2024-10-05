@@ -42,28 +42,30 @@ class ScanStatistics:
         get the required statistics as a dictionary
         '''
         statistics = {}
-        file_path = self.filename
+        directory = self.filename
         
-        # Check if the file exists
-        if not os.path.exists(file_path):
+        # Check if the directory exists
+        if not os.path.exists(directory):
             return statistics
         
-        # Read all lines from the file
-        with open(file_path, 'r') as file:
-            lines = file.readlines()
-        
-        # Process each line (each JSON object)
-        for line in lines:
-            try:
-                data = json.loads(line.strip())
-                for key, value in data.items():
+        # Process all CSV files in the directory
+        for filename in os.listdir(directory):
+            if filename.endswith('.csv'):
+                file_path = os.path.join(directory, filename)
+                with open(file_path, 'r') as file:
+                    lines = file.readlines()
+                
+                # Process each line of the CSV file
+                for line in lines[1:]:  # Skip header row
+                    data = line.strip().split(',')
+                    if len(data) < 2:  # Ensure there's at least a key-value pair
+                        continue
+                    key, value = data[0], data[1]
                     if key not in statistics:
                         statistics[key] = {}
                     if value not in statistics[key]:
                         statistics[key][value] = 0
                     statistics[key][value] += 1
-            except json.JSONDecodeError:
-                continue  # Skip invalid JSON lines
         
         # Find the most common value for each field
         for key in statistics:
