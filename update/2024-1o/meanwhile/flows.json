@@ -63,7 +63,7 @@
         "type": "ui_tab",
         "name": "Scan",
         "icon": "dashboard",
-        "order": 2,
+        "order": 3,
         "disabled": false,
         "hidden": false
     },
@@ -173,7 +173,7 @@
         "link": "https://openscan-org.github.io/OpenScan-Doc/",
         "icon": "fa-bookmark",
         "target": "iframe",
-        "order": 8
+        "order": 9
     },
     {
         "id": "23f75a8768250ce8",
@@ -182,7 +182,7 @@
         "link": "https://www.patreon.com/OpenScan",
         "icon": "fa-bookmark",
         "target": "newtab",
-        "order": 7
+        "order": 8
     },
     {
         "id": "b5fdd57b.15eda8",
@@ -209,7 +209,7 @@
         "type": "ui_tab",
         "name": "Files&Cloud",
         "icon": "dashboard",
-        "order": 3,
+        "order": 4,
         "disabled": false,
         "hidden": false
     },
@@ -281,7 +281,7 @@
         "type": "ui_tab",
         "name": "Update & Info",
         "icon": "dashboard",
-        "order": 4,
+        "order": 6,
         "disabled": false,
         "hidden": false
     },
@@ -487,7 +487,7 @@
         "type": "ui_tab",
         "name": "Statistics",
         "icon": "dashboard",
-        "order": 6,
+        "order": 7,
         "disabled": false,
         "hidden": false
     },
@@ -536,7 +536,7 @@
         "type": "ui_tab",
         "name": "Dashboard",
         "icon": "dashboard",
-        "order": 1
+        "order": 2
     },
     {
         "id": "c33a1024a72aa169",
@@ -553,6 +553,7 @@
         "type": "ui_tab",
         "name": "Home",
         "icon": "dashboard",
+        "order": 10,
         "disabled": false,
         "hidden": false
     },
@@ -905,7 +906,7 @@
         "order": 14,
         "width": 7,
         "height": 1,
-        "format": "<div id=\"{{'my_'+$id}}\" style=\"{{'color:'+theme.base_color}}\">Some text</div>\n<script>\n    (function(scope) {\n  scope.$watch('msg', function(msg) {\n    if (msg) {\n      // Do something when msg arrives\n      $(\"#my_\"+scope.$id).html(msg.payload);\n    }\n  });\n})(scope);\n</script>\n<script id=\"titleScript\" type=\"text/javascript\">\n    $(function() {\n        if($('.md-toolbar-tools').length != 0){\n            load();\n        } else {\n            setTimeout(function() { load(); }, 500);\n        }\n    });\n    function load(){\n        $('#bmac').remove();\n        var toolbar = $('.md-toolbar-tools');\n        var div = $('<div/>');\n        var p = $('<div/>', { id: 'bmac' });\n        \n        \n        div.append(p);\n        div[0].style.margin = '0px 0px 0px auto';\n        toolbar.append(div);\n        p.append('<small>Meanwhile {payload} - meanwhile</small>');        p.append(' ');\n        p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" onclick=\"shutdown()\"><i class=\"fa fa-power-off\" ></i></a>');\n        p.append('   ');\n        p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" onclick=\"reboot()\"><i class=\"fa fa-repeat\" ></i></a>');\n    }\n\n    function getApiUrl() {\n        return `http://${window.location.hostname}:1312`;\n    }\n\n    function shutdown() {\n        if (confirm(\"Are you sure you want to shut down the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/shutdown?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Shutdown initiated. The system will power off shortly.\");\n            });\n        }\n    }\n\n    function reboot() {\n        if (confirm(\"Are you sure you want to reboot the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/reboot?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Reboot initiated. The system will restart shortly.\");\n            });\n        }\n    }\n</script>\n<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n    }\n\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n        background-color: transparent !important;\n    }\n\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n</style>\n",
+        "format": "\n<script id=\"titleScript\" type=\"text/javascript\">\n    $(function() {\n        if($('.md-toolbar-tools').length != 0){\n            load();\n        } else {\n            setTimeout(function() { load(); }, 500);\n        }\n    });\n    function load(){\n        $('#bmac').remove();\n        var toolbar = $('.md-toolbar-tools');\n        var div = $('<div/>');\n        var p = $('<div/>', { id: 'bmac' });\n        \n        \n        div.append(p);\n        div[0].style.margin = '0px 0px 0px auto';\n        toolbar.append(div);\n        p.append('<small>Meanwhile 2024-1o - meanwhile</small>');        p.append(' ');\n        p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" onclick=\"shutdown()\"><i class=\"fa fa-power-off\" ></i></a>');\n        p.append('   ');\n        p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" onclick=\"reboot()\"><i class=\"fa fa-repeat\" ></i></a>');\n    }\n\n    function getApiUrl() {\n        return `http://${window.location.hostname}:1312`;\n    }\n\n    function shutdown() {\n        if (confirm(\"Are you sure you want to shut down the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/shutdown?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Shutdown initiated. The system will power off shortly.\");\n            });\n        }\n    }\n\n    function reboot() {\n        if (confirm(\"Are you sure you want to reboot the system?\")) {\n            fetch(`${getApiUrl()}/v1/system/reboot?token=403e5d6f0568bcb647d8`, {\n                method: 'GET',\n            })\n            .then(data => {\n                alert(\"Reboot initiated. The system will restart shortly.\");\n            });\n        }\n    }\n</script>\n<style>\n    body {\n        background-image: url(\"/files/logo.jpg\");\n        background-repeat: no-repeat;\n        background-attachment: fixed;\n        background-position: center;\n    }\n\n    #OpenScan_Home {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n\n    [node-id=\"a291fc98e4269c1b\"] {\n        background-color: transparent !important;\n    }\n\n    #OpenScan_Update {\n        background-color: transparent !important;\n        border-color: transparent !important;\n    }\n</style>\n",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
@@ -9031,7 +9032,8 @@
                 "1bbe2d769f42c313"
             ],
             [
-                "fefe45404bdb19c4"
+                "fefe45404bdb19c4",
+                "44573d9223b2a75d"
             ]
         ]
     },
@@ -9771,6 +9773,23 @@
         "statusType": "auto",
         "x": 750,
         "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "44573d9223b2a75d",
+        "type": "debug",
+        "z": "a5557543ccff5889",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 380,
         "wires": []
     },
     {

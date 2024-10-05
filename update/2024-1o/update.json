@@ -103,12 +103,12 @@
         "6": {
             "src": "meanwhile/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 18593
+            "filesize": 18687
         },
         "7": {
             "src": "meanwhile/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 346256
+            "filesize": 346421
         },
         "8": {
             "src": "meanwhile/settings.js",
