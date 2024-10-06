@@ -66,7 +66,7 @@
         "6": {
             "src": "beta/fla.py",
             "dst": "/home/pi/OpenScan/files/fla.py",
-            "filesize": 19750
+            "filesize": 19865
         },
         "7": {
             "src": "beta/flows.json",
@@ -88,7 +88,7 @@
         "2": {
             "src": "meanwhile/OpenScanSettings.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScanSettings.py",
-            "filesize": 5588
+            "filesize": 5520
         },
         "3": {
             "src": "meanwhile/OpenScanStatistics.py",

@@ -7,7 +7,6 @@ from unicodedata import decimal
 @dataclass
 class OpenScanSettings:
     advanced_settings: bool
-    architecture: str
     cam_awbg_blue: int
     cam_awbg_red: int
     cam_contrast: int
@@ -35,7 +34,6 @@ class OpenScanSettings:
     cam_shutter: int
     cam_stacksize: int
     cam_timeout: int
-    datadog_api_token: str
     datadog_enable: bool
     delete_aborted: bool
     diskspace_threshold: int
@@ -50,9 +48,7 @@ class OpenScanSettings:
     interface_color: str
     model: str
     object_size: float
-    openscan_branch: str
     openscan_uuid: str
-    openscan_version: str
     osc_credit: int
     osc_limit_filesize: int
     osc_limit_photos: int
@@ -69,7 +65,6 @@ class OpenScanSettings:
     pin_rotor_endstop: int
     pin_rotor_step: int
     pin_tt_dir: int
-    pin_tt_enable: int
     pin_tt_step: int
     raspberry_model: str
     raspbian_codename: str
@@ -91,17 +86,14 @@ class OpenScanSettings:
     routine_secondpass: bool
     sdcard_manfid: str
     sdcard_name: str
-    session_token: str
     shield_type: str
     smb_enable: bool
     ssh_enable: bool
     status_cloud: str
     status_internal_cam: str
-    telegram_api_token: str
     telegram_client_id: str
     telegram_enable: bool
     terms: bool
-    token: str
     tt_acc: float
     tt_accramp: int
     tt_angle: int
@@ -117,6 +109,9 @@ class OpenScanSettings:
     def get_openscan_settings(cls):
         settings = {}
         blacklist = [
+            'architecture',
+            'openscan_version',
+            'openscan_branch',
             'token',
             'session_token',
             'telegram_api_token',
@@ -124,7 +119,8 @@ class OpenScanSettings:
             'status_uploadprogress',
             'raspberry_model',
             'sdcard_name',
-            'sdcard_manfid'
+            'sdcard_manfid',
+            'uploadprogress'
              ]  # Add more keywords as needed
         for field in cls.__dataclass_fields__:
             if field not in blacklist:
