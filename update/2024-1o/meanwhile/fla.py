@@ -2,7 +2,6 @@ from zipfile import ZipFile
 from flask import Flask, request, redirect, send_file, send_from_directory
 from flask_restx import Resource, Api, Namespace
 from picamera2 import Picamera2
-from datetime import datetime
 from PIL import Image, ImageDraw, ImageOps, ImageFilter, ImageEnhance, ImageChops, ImageFont
 from time import sleep, time
 from OpenScan import load_int, load_float, load_bool, ringlight, motorrun
@@ -124,8 +123,7 @@ class SendSettingsFile(Resource):
     def get(self):
         statistics_folder:str = '/home/pi/OpenScan/statistics/'
         openscan_tmp_folder:str = '/home/pi/OpenScan/tmp2'
-        current_date = datetime.now().strftime("%Y-%m-%d")
-        file_name = f"openscan-settings-{current_date}.json"
+        file_name:str = 'settings'
         openscan_settings = get_openscan_settings()
         export_settings_to_file(openscan_settings, openscan_tmp_folder + "/" + file_name + '.json')
 

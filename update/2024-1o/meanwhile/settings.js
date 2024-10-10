@@ -233,7 +233,8 @@ userDir: '/home/pi/OpenScan/settings/.node-red/',
     //    {path: '/home/nol/reports/', root: "/doc/"}, 
     //],
     httpStatic: [
-        {path: '/home/pi/OpenScan/tmp2/', root: "/tmp2/"}
+        {path: '/home/pi/OpenScan/tmp2/', root: "/tmp2/"},
+	{path: '/home/pi/OpenScan/scans/', root: "/scans/"}
     ], 
 
     /**  
