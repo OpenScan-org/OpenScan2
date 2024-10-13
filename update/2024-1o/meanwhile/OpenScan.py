@@ -131,7 +131,7 @@ def camera(cmd, msg = {}):
     except:
         return 400
 
-def motorrun(motor,angle,ES_enable=False,ES_start_state = True):
+def motorrun(motor,angle,endstop=False):
     #motor can be "rotor", "tt" or "extra"
     import RPi.GPIO as GPIO
     from time import sleep
@@ -144,22 +144,20 @@ def motorrun(motor,angle,ES_enable=False,ES_start_state = True):
     spr = load_int(motor + '_stepsperrotation')
     dirpin = load_int('pin_' + motor + '_dir')
     steppin = load_int('pin_' + motor +'_step')
-    ES_pin = load_int('pin_' + motor + '_endstop')
     dir = load_int(motor + '_dir')
     ramp = load_int(motor + '_accramp')
     acc = load_float(motor + '_acc')
-    if motor != 'tt':
-      ES_pin = load_int('pin_' + motor + '_endstop')
-    else:
-      ES_pin = '33'
     delay_init = load_float(motor + '_delay')
     delay = delay_init
 
     step_count=int(angle*spr/360) * dir
     GPIO.setup(dirpin, GPIO.OUT)
     GPIO.setup(steppin, GPIO.OUT)
-    if motor != 'tt':
-      GPIO.setup(ES_pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+
+    if endstop:
+        endstop_pin = load_int('pin_' + motor + '_endstop')
+        endstop_pushed = load_bool(motor + '_endstop_pushed')
+        GPIO.setup(ES_pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
     if (step_count>0):
         GPIO.output(dirpin, GPIO.HIGH)
@@ -167,14 +165,16 @@ def motorrun(motor,angle,ES_enable=False,ES_start_state = True):
         GPIO.output(dirpin, GPIO.LOW)
         step_count=-step_count
     for x in range(step_count):
-        if ES_enable == True and GPIO.input(ES_pin) != ES_start_state and motor != 'tt':
-            i = 0
-            while i <= 10:
-                if GPIO.input(ES_pin) == ES_start_state:
-                    i = 11
-                if i == 10:
-                    return
-                i = i + 1
+        if endstop:
+            # Stop movement if endstop is pushed AND if rotor is moving and isn't going away from the endstop. 
+            if GPIO.input(endstop_pin) == endstop_pushed and (motor == 'rotor' and GPIO.input(dirpin) == False):
+                i = 0
+                while i <= 10:
+                    if GPIO.input(endstop_pin) != endstop_pushed:
+                        i = 11
+                    if i == 10:
+                        return
+                    i = i + 1
 
         GPIO.output(steppin, GPIO.HIGH)
         if x<=ramp and x<=step_count/2:

@@ -1771,7 +1771,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "motorrun",
-        "func": "from OpenScan import motorrun, load_int\n\nif 'payload' not in msg:\n    return\n\nif msg['payload'] == \"up\":\n    motorrun('rotor',load_int('rotor_angle'))\nif msg['payload'] == \"down\":\n    motorrun('rotor',-load_int('rotor_angle'))\nif msg['payload'] == \"left\":\n    motorrun('tt',load_int('tt_angle'))\nif msg['payload'] == \"right\":\n    motorrun('tt',-load_int('tt_angle'))\n\n",
+        "func": "from OpenScan import motorrun, load_int, load_bool\n\nif 'payload' not in msg:\n    return\n\nrotor_endstop_enable = load_bool('rotor_endstop_enable')\n\nif msg['payload'] == \"up\":\n    motorrun('rotor',load_int('rotor_angle'), rotor_endstop_enable)\nif msg['payload'] == \"down\":\n    motorrun('rotor',-load_int('rotor_angle'), rotor_endstop_enable)\nif msg['payload'] == \"left\":\n    motorrun('tt',load_int('tt_angle'))\nif msg['payload'] == \"right\":\n    motorrun('tt',-load_int('tt_angle'))\n\n",
         "outputs": 1,
         "x": 780,
         "y": 840,
@@ -2268,7 +2268,7 @@
         "type": "python3-function",
         "z": "481edaf6db5a7a54",
         "name": "Routine",
-        "func": "# The contents of this file are embedded in the OpenScan app (Node-RED)\nfrom OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \\\n    load_bool, camera\nfrom OpenScanStatistics import ScanStatistics, ScanData\nfrom time import sleep, strftime, time\nfrom subprocess import getoutput, run\nfrom datetime import datetime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system, uname, remove\nfrom os.path import isfile, getsize\nimport math\nimport threading\nimport numpy as np\nimport json\n\nif load_str(\"status_internal_cam\") == \"no camera found\" or load_str(\"status_internal_cam\")[:5] == \"Featu\":\n    return\n\nstats = ScanStatistics()\n\nsave('status_internal_cam', 'Routine-preparing')\ncamera('/v1/camera/picam2_switch_mode?mode=1')\nsave('cam_sharparea', False)\nsave('cam_features', False)\n\narchitecture = load_str(\"architecture\")\nopenscan_version = load_str(\"openscan_version\")\nopenscan_branch = load_str(\"openscan_branch\")\ncamera_model = load_str(\"camera\")\nshield = load_str(\"shield_type\")\nprojectname = load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\ndelete_aborted = load_bool('delete_aborted')\nrotate_tt_first = load_bool('rotate_tt_first')\nendstop_enable = load_bool('rotor_enable_endstop')\nif endstop_enable:\n    angle_start = load_int('rotor_endstop_angle')\n    motorrun('rotor',angle_start/abs(angle_start) * 130, True, False)\n\nelse:\n    angle_start = load_int('rotor_anglestart')\n\n\nphotocount = load_int('routine_photocount')\n\nfocus_min = load_float('cam_focus_min')\nfocus_max = load_float('cam_focus_max')\nstacksize = load_int('cam_stacksize')\ngroup_stack_photos = load_bool('group_stack_photos')\n\ntelegram_enable = load_bool('telegram_enable')\nif telegram_enable:\n    telegram_api_token = load_str('telegram_api_token')\n    telegram_client_id = load_str('telegram_client_id')\n\nif focus_min == focus_max:\n    stacksize = 1\n\nfocuslist = []\nif stacksize == 1:\n    steps = 3 + int(abs(focus_max-focus_min)*0.8)\nelse:\n    steps = stacksize\n\nfor i in range (steps):\n    focuslist.append(min(focus_min,focus_max) + i * abs(focus_max-focus_min)/(steps-1))\n\nmsg['focuslist'] = focuslist\nmsg['payload2'] = []\ncounter = 0\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min, angle_max, photocount)\ncoordinates = sort_spherical_coordinates_deg(coordinates)\n\nmsg['payload'] = coordinates\n\nposition_last = (angle_start, 0)\n\nzip = ZipFile(zippath, \"a\", ZIP_DEFLATED, allowZip64=True)\n\nhostname = str(uname()[1])\n\nstarttime = time()\n\ndef get_current_timestamp():\n    return datetime.now().strftime(\"%Y-%m-%d %H:%M\")\n\ndef get_eta(starttime, photocounter, count):\n    return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n\ndef photo(counter2):\n    camera('/v1/camera/picam2_take_photo')\n    returning[0] = focus(returning[0])\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n\ndef stack_photo(i):\n    \n    camera('/v1/camera/picam2_take_photo')\n    if group_stack_photos:\n        name = projectname + '_' + str(counter) + \"/\" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    else:\n        name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    zip.write(temppath, name)\n    \ndef stack_focus(i):\n    sleep(load_float('cam_shutter')/1000000*2)\n    if i < len(focuslist)-1:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[i+1]))\n    else:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    sleep(1.7)\n\ndef photo_stack():\n    camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    for i in range(len(focuslist)):\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + \"-F\"+ str(i+1))\n        \n        focus_thread = threading.Thread(target=stack_focus, args=(i,))\n        photo_thread = threading.Thread(target=stack_photo, args=(i,))\n        \n        focus_thread.start()\n        photo_thread.start()\n        \n        focus_thread.join()\n        photo_thread.join()\n\ndef move_motor():\n    rotor_angle = position[0] - position_last[0]\n    msg['payload2'].append(rotor_angle)\n    #if abs(rotor_angle) > 180:\n    #    rotor_angle = -360 * rotor_angle / abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n    \n    if rotate_tt_first:\n        motorrun('tt',tt_angle)\n        motorrun('rotor',rotor_angle)\n    else:\n        motorrun('rotor',rotor_angle)\n        motorrun('tt',tt_angle)\n    return\n\ndef check_diskspace():\n    diskspace_threshold = load_int('diskspace_threshold')\n    diskspace = getoutput('df -h / | awk \"{print $5}\"').split('\\n')[1]\n    available = int(float(diskspace.replace(' ','').split('G')[2])*1000)\n    if available < diskspace_threshold:\n        save('status_internal_cam', 'Routine-stopping')\n    return\n\ndef focus(i):\n    f = focuslist[i]\n    camera('/v1/camera/picam2_focus?focus=' + str(f))\n    if i < len(focuslist) - 1:\n        i += 1\n    else:\n        i = 0\n    return i\n\ndef send_telegram_message(message, telegram_api_token, telegram_client_id):\n    telegram_bot_path = '/usr/local/bin/send-telegram'\n    run([telegram_bot_path,\"-a\",telegram_api_token,\"-c\",telegram_client_id,\"-m\",message])\n\ncounter2 = 0\n\ndate_init = get_current_timestamp()\n\nif telegram_enable:\n    telegram_message = \"[START] \" + hostname + \" starting \" + projectname + \"(\" + str(photocount) + \" photos) ETA: \"\n    try:\n        send_telegram_message(telegram_message, telegram_api_token, telegram_client_id)\n    except Exception as e:\n        print(e)\n\nfor position in coordinates:\n    counter += 1\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    if counter < 6:\n        ETA = ''\n\n    save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    if counter > 6:\n        check_diskspace()\n\n    move_motor()\n    sleep(load_float(\"cam_delay_before\"))\n    \n    if stacksize ==1:\n        returning = [counter2]\n        photo(returning)\n        counter2 = returning[0]\n    else:\n        photo_stack()\n\n    sleep(load_float(\"cam_delay_after\"))\n    ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n            int(photocount / counter * (time() - starttime))) + 's'\n    \n    # Calculate time remaining and write status to /tmp/status as JSON\n    elapsed_time = time() - starttime\n    estimated_total_time = (elapsed_time / counter) * photocount * steps\n    time_remaining = max(0, estimated_total_time - elapsed_time)\n    \n    status = {\n        \"scan_name\": projectname,\n        \"total_photos\": photocount,\n        \"current_photo\": counter,\n        \"stacksize\": steps,\n        \"start_time\": int(starttime),\n    }\n    with open('/tmp/status.json', 'w') as status_file:\n        json.dump(status, status_file)\n\n    position_last = position\n\nzip.close()\ntry:\n    send_telegram_message(\"[STOP] \" + hostname + \" stop \" + projectname, telegram_api_token, telegram_client_id)\nexcept Exception as e:\n    print(e)\ncamera('/v1/camera/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam', 'Routine-done')\n\ntry:\n    remove('/tmp/status.json')\nexcept FileNotFoundError:\n    pass  # File doesn't exist, so no need to delete\nexcept Exception as e:\n    print(f\"Error deleting /tmp/status.json: {e}\")\n\nmotorrun('rotor', -position_last[0] )\nmotorrun('tt', position_last[1])\n\nsave('status_internal_cam', '--READY--')\ndate_end = get_current_timestamp()\n\n\nif counter == photocount:\n    system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n    aborted=False\nelse:\n    aborted=True\n    if delete_aborted:\n        remove(zippath)\n    else:\n        system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n\nscan_data = ScanData(\n    arch=architecture,\n    openscan_version=openscan_version,\n    openscan_branch=openscan_branch,\n    shield=shield,\n    date_init=date_init,\n    date_end=date_end,\n    num_photos=photocount,\n    done_photos=counter,\n    camera=camera_model,\n    stack_size=stacksize,\n    telegram_enabled=telegram_enable,\n    delete_aborted=delete_aborted,\n    endstop_enabled=endstop_enable,\n    group_stack_photos=group_stack_photos,\n    aborted=aborted\n)\n\nstats.write_statistics(scan_data)\nreturn msg\n",
+        "func": "# The contents of this file are embedded in the OpenScan app (Node-RED)\nfrom OpenScan import load_bool, load_str, load_int, load_float, motorrun, sort_spherical_coordinates_deg, create_coordinates, take_photo, save, \\\n    load_bool, camera\nfrom OpenScanStatistics import ScanStatistics, ScanData\nfrom time import sleep, strftime, time\nfrom subprocess import getoutput, run\nfrom datetime import datetime\nfrom zipfile import ZipFile, ZIP_DEFLATED\nfrom os import system, uname, remove\nfrom os.path import isfile, getsize\nimport math\nimport threading\nimport numpy as np\nimport json\n\nif load_str(\"status_internal_cam\") == \"no camera found\" or load_str(\"status_internal_cam\")[:5] == \"Featu\":\n    return\n\nstats = ScanStatistics()\n\nsave('status_internal_cam', 'Routine-preparing')\ncamera('/v1/camera/picam2_switch_mode?mode=1')\nsave('cam_sharparea', False)\nsave('cam_features', False)\n\narchitecture = load_str(\"architecture\")\nopenscan_version = load_str(\"openscan_version\")\nopenscan_branch = load_str(\"openscan_branch\")\ncamera_model = load_str(\"camera\")\nshield = load_str(\"shield_type\")\nprojectname = load_str(\"routine_projectname\")\nangle_max = load_int('rotor_anglemax')\nangle_min = load_int('rotor_anglemin')\ndelete_aborted = load_bool('delete_aborted')\nrotate_tt_first = load_bool('rotate_tt_first')\nrotor_endstop_enable = load_bool('rotor_endstop_enable')\nif rotor_endstop_enable:\n    angle_start = load_int('rotor_endstop_angle')\n    motorrun('rotor',angle_start/abs(angle_start) * 130, True)\n\nelse:\n    angle_start = load_int('rotor_anglestart')\n\n\nphotocount = load_int('routine_photocount')\n\nfocus_min = load_float('cam_focus_min')\nfocus_max = load_float('cam_focus_max')\nstacksize = load_int('cam_stacksize')\ngroup_stack_photos = load_bool('group_stack_photos')\n\ntelegram_enable = load_bool('telegram_enable')\nif telegram_enable:\n    telegram_api_token = load_str('telegram_api_token')\n    telegram_client_id = load_str('telegram_client_id')\n\nif focus_min == focus_max:\n    stacksize = 1\n\nfocuslist = []\nif stacksize == 1:\n    steps = 3 + int(abs(focus_max-focus_min)*0.8)\nelse:\n    steps = stacksize\n\nfor i in range (steps):\n    focuslist.append(min(focus_min,focus_max) + i * abs(focus_max-focus_min)/(steps-1))\n\nmsg['focuslist'] = focuslist\nmsg['payload2'] = []\ncounter = 0\n\nbasepath = '/home/pi/OpenScan/'\ntemppath = basepath + 'tmp2/preview.jpg'\nzippath = basepath + 'tmp.zip'\n\nprojectcode = strftime('20%y-%m-%d_%H.%M.%S-') + projectname\n\nif isfile(zippath):\n    system('rm ' + zippath)\nsleep(1)\n\ncoordinates = create_coordinates(angle_min, angle_max, photocount)\ncoordinates = sort_spherical_coordinates_deg(coordinates)\n\nmsg['payload'] = coordinates\n\nposition_last = (angle_start, 0)\n\nzip = ZipFile(zippath, \"a\", ZIP_DEFLATED, allowZip64=True)\n\nhostname = str(uname()[1])\n\nstarttime = time()\n\ndef get_current_timestamp():\n    return datetime.now().strftime(\"%Y-%m-%d %H:%M\")\n\ndef get_eta(starttime, photocounter, count):\n    return str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n        int(photocount / counter * (time() - starttime))) + 's'\n\ndef photo(counter2):\n    camera('/v1/camera/picam2_take_photo')\n    returning[0] = focus(returning[0])\n    zip.write(temppath, projectname + '_' + str(counter) + \".jpg\")\n\ndef stack_photo(i):\n    \n    camera('/v1/camera/picam2_take_photo')\n    if group_stack_photos:\n        name = projectname + '_' + str(counter) + \"/\" + projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    else:\n        name = projectname + '_' + str(counter) + '-' + str(i) + '.jpg'\n    zip.write(temppath, name)\n    \ndef stack_focus(i):\n    sleep(load_float('cam_shutter')/1000000*2)\n    if i < len(focuslist)-1:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[i+1]))\n    else:\n        camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    sleep(1.7)\n\ndef photo_stack():\n    camera('/v1/camera/picam2_focus?focus=' + str(focuslist[0]))\n    for i in range(len(focuslist)):\n        if load_str('status_internal_cam') == \"Routine-stopping\":\n            break\n        save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + \"-F\"+ str(i+1))\n        \n        focus_thread = threading.Thread(target=stack_focus, args=(i,))\n        photo_thread = threading.Thread(target=stack_photo, args=(i,))\n        \n        focus_thread.start()\n        photo_thread.start()\n        \n        focus_thread.join()\n        photo_thread.join()\n\ndef move_motor():\n    rotor_angle = position[0] - position_last[0]\n    msg['payload2'].append(rotor_angle)\n    #if abs(rotor_angle) > 180:\n    #    rotor_angle = -360 * rotor_angle / abs(rotor_angle) + rotor_angle\n    tt_angle = position_last[1] - position[1]\n    if tt_angle > 180:\n        tt_angle -= 360\n    elif tt_angle < -180:\n        tt_angle += 360\n    \n    if rotate_tt_first:\n        motorrun('tt',tt_angle)\n        motorrun('rotor',rotor_angle, rotor_endstop_enable)\n    else:\n        motorrun('rotor',rotor_angle, rotor_endstop_enable)\n        motorrun('tt',tt_angle)\n    return\n\ndef check_diskspace():\n    diskspace_threshold = load_int('diskspace_threshold')\n    diskspace = getoutput('df -h / | awk \"{print $5}\"').split('\\n')[1]\n    available = int(float(diskspace.replace(' ','').split('G')[2])*1000)\n    if available < diskspace_threshold:\n        save('status_internal_cam', 'Routine-stopping')\n    return\n\ndef focus(i):\n    f = focuslist[i]\n    camera('/v1/camera/picam2_focus?focus=' + str(f))\n    if i < len(focuslist) - 1:\n        i += 1\n    else:\n        i = 0\n    return i\n\ndef send_telegram_message(message, telegram_api_token, telegram_client_id):\n    telegram_bot_path = '/usr/local/bin/send-telegram'\n    run([telegram_bot_path,\"-a\",telegram_api_token,\"-c\",telegram_client_id,\"-m\",message])\n\ncounter2 = 0\n\ndate_init = get_current_timestamp()\n\nif telegram_enable:\n    telegram_message = \"[START] \" + hostname + \" starting \" + projectname + \"(\" + str(photocount) + \" photos) ETA: \"\n    try:\n        send_telegram_message(telegram_message, telegram_api_token, telegram_client_id)\n    except Exception as e:\n        print(e)\n\nfor position in coordinates:\n    counter += 1\n    filepath = basepath + 'tmp/' + projectname + '_' + str(counter) + \".jpg\"\n    if load_str('status_internal_cam') == \"Routine-stopping\":\n        break\n    if counter < 6:\n        ETA = ''\n\n    save('status_internal_cam', 'Routine-Photo ' + str(counter) + '/' + str(photocount) + ETA)\n    if counter > 6:\n        check_diskspace()\n\n    move_motor()\n    sleep(load_float(\"cam_delay_before\"))\n    \n    if stacksize ==1:\n        returning = [counter2]\n        photo(returning)\n        counter2 = returning[0]\n    else:\n        photo_stack()\n\n    sleep(load_float(\"cam_delay_after\"))\n    ETA = '-ETA:' + str(int((photocount / counter - 1) * (time() - starttime))) + '/' + str(\n            int(photocount / counter * (time() - starttime))) + 's'\n    \n    # Calculate time remaining and write status to /tmp/status as JSON\n    elapsed_time = time() - starttime\n    estimated_total_time = (elapsed_time / counter) * photocount * steps\n    time_remaining = max(0, estimated_total_time - elapsed_time)\n    \n    status = {\n        \"scan_name\": projectname,\n        \"total_photos\": photocount,\n        \"current_photo\": counter,\n        \"stacksize\": steps,\n        \"start_time\": int(starttime),\n    }\n    with open('/tmp/status.json', 'w') as status_file:\n        json.dump(status, status_file)\n\n    position_last = position\n\nzip.close()\ntry:\n    send_telegram_message(\"[STOP] \" + hostname + \" stop \" + projectname, telegram_api_token, telegram_client_id)\nexcept Exception as e:\n    print(e)\ncamera('/v1/camera/picam2_switch_mode?mode=0')\n\nsave('status_internal_cam', 'Routine-done')\n\ntry:\n    remove('/tmp/status.json')\nexcept FileNotFoundError:\n    pass  # File doesn't exist, so no need to delete\nexcept Exception as e:\n    print(f\"Error deleting /tmp/status.json: {e}\")\n\nmotorrun('rotor', -position_last[0], rotor_endstop_enable)\nmotorrun('tt', position_last[1])\n\nsave('status_internal_cam', '--READY--')\ndate_end = get_current_timestamp()\n\n\nif counter == photocount:\n    system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n    aborted=False\nelse:\n    aborted=True\n    if delete_aborted:\n        remove(zippath)\n    else:\n        system('mv ' + zippath + \" \" + basepath + \"scans/\" + projectcode + \".zip\")\n\nscan_data = ScanData(\n    arch=architecture,\n    openscan_version=openscan_version,\n    openscan_branch=openscan_branch,\n    shield=shield,\n    date_init=date_init,\n    date_end=date_end,\n    num_photos=photocount,\n    done_photos=counter,\n    camera=camera_model,\n    stack_size=stacksize,\n    telegram_enabled=telegram_enable,\n    delete_aborted=delete_aborted,\n    endstop_enabled=rotor_endstop_enable,\n    group_stack_photos=group_stack_photos,\n    aborted=aborted\n)\n\nstats.write_statistics(scan_data)\nreturn msg\n",
         "outputs": 1,
         "x": 300,
         "y": 1040,
@@ -4769,7 +4769,7 @@
         "name": "Camera",
         "info": "",
         "x": 90,
-        "y": 2500,
+        "y": 2560,
         "wires": []
     },
     {
@@ -4779,7 +4779,7 @@
         "name": "Pinout",
         "info": "",
         "x": 90,
-        "y": 2960,
+        "y": 3020,
         "wires": []
     },
     {
@@ -4790,7 +4790,7 @@
         "label": "",
         "tooltip": "",
         "group": "7a3279eea439bcdd",
-        "order": 16,
+        "order": 18,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -4802,7 +4802,7 @@
         "step": "0.005",
         "className": "",
         "x": 450,
-        "y": 2100,
+        "y": 2160,
         "wires": [
             [
                 "11fd3363416433f9"
@@ -4829,7 +4829,7 @@
         "step": "0.005",
         "className": "",
         "x": 420,
-        "y": 2340,
+        "y": 2400,
         "wires": [
             [
                 "e50492d1e18f43c6"
@@ -4844,7 +4844,7 @@
         "label": "",
         "tooltip": "",
         "group": "7a3279eea439bcdd",
-        "order": 18,
+        "order": 20,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -4856,7 +4856,7 @@
         "step": "0.1",
         "className": "",
         "x": 420,
-        "y": 2140,
+        "y": 2200,
         "wires": [
             [
                 "e8b24efb0f30288e"
@@ -4871,7 +4871,7 @@
         "label": "",
         "tooltip": "",
         "group": "7a3279eea439bcdd",
-        "order": 20,
+        "order": 22,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -4883,7 +4883,7 @@
         "step": "100",
         "className": "",
         "x": 440,
-        "y": 2180,
+        "y": 2240,
         "wires": [
             [
                 "29f576be9e292232"
@@ -4898,7 +4898,7 @@
         "label": "",
         "tooltip": "",
         "group": "7a3279eea439bcdd",
-        "order": 14,
+        "order": 16,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -4909,7 +4909,7 @@
         "className": "",
         "topicType": "msg",
         "x": 460,
-        "y": 2060,
+        "y": 2120,
         "wires": [
             [
                 "78e256083f59f66f"
@@ -4921,7 +4921,7 @@
         "type": "ui_text",
         "z": "e43a27722b508115",
         "group": "7a3279eea439bcdd",
-        "order": 17,
+        "order": 19,
         "width": 3,
         "height": 1,
         "name": "rotor_acc_label",
@@ -4930,7 +4930,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 2140,
+        "y": 2200,
         "wires": []
     },
     {
@@ -4938,7 +4938,7 @@
         "type": "ui_text",
         "z": "e43a27722b508115",
         "group": "7a3279eea439bcdd",
-        "order": 19,
+        "order": 21,
         "width": 3,
         "height": 1,
         "name": "rotor_accramp_label",
@@ -4947,7 +4947,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 800,
-        "y": 2180,
+        "y": 2240,
         "wires": []
     },
     {
@@ -4955,7 +4955,7 @@
         "type": "ui_text",
         "z": "e43a27722b508115",
         "group": "7a3279eea439bcdd",
-        "order": 15,
+        "order": 17,
         "width": 3,
         "height": 1,
         "name": "rotor_delay_label",
@@ -4964,7 +4964,7 @@
         "layout": "row-left",
         "className": "",
         "x": 790,
-        "y": 2100,
+        "y": 2160,
         "wires": []
     },
     {
@@ -4972,7 +4972,7 @@
         "type": "ui_text",
         "z": "e43a27722b508115",
         "group": "7a3279eea439bcdd",
-        "order": 13,
+        "order": 15,
         "width": 3,
         "height": 1,
         "name": "rotor_steps_rotation_label",
@@ -4981,7 +4981,7 @@
         "layout": "row-left",
         "className": "",
         "x": 810,
-        "y": 2060,
+        "y": 2120,
         "wires": []
     },
     {
@@ -4998,7 +4998,7 @@
         "layout": "row-center",
         "className": "",
         "x": 90,
-        "y": 2300,
+        "y": 2360,
         "wires": []
     },
     {
@@ -5021,7 +5021,7 @@
         "step": "0.1",
         "className": "",
         "x": 410,
-        "y": 2380,
+        "y": 2440,
         "wires": [
             [
                 "af88b9da72917d62"
@@ -5048,7 +5048,7 @@
         "step": "1",
         "className": "",
         "x": 430,
-        "y": 2420,
+        "y": 2480,
         "wires": [
             [
                 "b1b4678827d3a6dd"
@@ -5074,7 +5074,7 @@
         "className": "",
         "topicType": "msg",
         "x": 450,
-        "y": 2300,
+        "y": 2360,
         "wires": [
             [
                 "eef89545ec0f6aa8"
@@ -5095,7 +5095,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 2420,
+        "y": 2480,
         "wires": []
     },
     {
@@ -5112,7 +5112,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 810,
-        "y": 2300,
+        "y": 2360,
         "wires": []
     },
     {
@@ -5129,7 +5129,7 @@
         "layout": "row-left",
         "className": "",
         "x": 770,
-        "y": 2380,
+        "y": 2440,
         "wires": []
     },
     {
@@ -5146,7 +5146,7 @@
         "layout": "row-left",
         "className": "",
         "x": 780,
-        "y": 2340,
+        "y": 2400,
         "wires": []
     },
     {
@@ -5157,7 +5157,7 @@
         "label": "",
         "tooltip": "",
         "group": "7a3279eea439bcdd",
-        "order": 22,
+        "order": 24,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -5169,7 +5169,7 @@
         "step": "1",
         "className": "",
         "x": 430,
-        "y": 2220,
+        "y": 2280,
         "wires": [
             [
                 "c4b5a38c5c1df3d2"
@@ -5181,7 +5181,7 @@
         "type": "ui_text",
         "z": "e43a27722b508115",
         "group": "7a3279eea439bcdd",
-        "order": 21,
+        "order": 23,
         "width": 3,
         "height": 1,
         "name": "rotor_angle_label",
@@ -5190,7 +5190,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 790,
-        "y": 2220,
+        "y": 2280,
         "wires": []
     },
     {
@@ -5213,7 +5213,7 @@
         "step": "1",
         "className": "",
         "x": 420,
-        "y": 2460,
+        "y": 2520,
         "wires": [
             [
                 "0f3367983bb8e159"
@@ -5234,7 +5234,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 780,
-        "y": 2460,
+        "y": 2520,
         "wires": []
     },
     {
@@ -5274,7 +5274,7 @@
         "step": "1",
         "className": "",
         "x": 410,
-        "y": 2500,
+        "y": 2560,
         "wires": [
             [
                 "c9d2e31514def4fc"
@@ -5289,7 +5289,7 @@
         "label": "",
         "tooltip": "",
         "group": "7a3279eea439bcdd",
-        "order": 24,
+        "order": 26,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -5301,7 +5301,7 @@
         "step": "1",
         "className": "",
         "x": 420,
-        "y": 2260,
+        "y": 2320,
         "wires": [
             [
                 "523717b0f218a5fd"
@@ -5322,7 +5322,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 770,
-        "y": 2500,
+        "y": 2560,
         "wires": []
     },
     {
@@ -5330,7 +5330,7 @@
         "type": "ui_text",
         "z": "e43a27722b508115",
         "group": "7a3279eea439bcdd",
-        "order": 23,
+        "order": 25,
         "width": 3,
         "height": 1,
         "name": "rotor_dir_label",
@@ -5339,7 +5339,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 780,
-        "y": 2260,
+        "y": 2320,
         "wires": []
     },
     {
@@ -5391,7 +5391,7 @@
         "step": "0.02",
         "className": "",
         "x": 450,
-        "y": 2600,
+        "y": 2660,
         "wires": [
             [
                 "5c752757090c49d2"
@@ -5418,7 +5418,7 @@
         "step": "0.1",
         "className": "",
         "x": 420,
-        "y": 2640,
+        "y": 2700,
         "wires": [
             [
                 "a1769f0277834f6d"
@@ -5445,7 +5445,7 @@
         "step": "0.1",
         "className": "",
         "x": 420,
-        "y": 2760,
+        "y": 2820,
         "wires": [
             [
                 "1a8b0ba21b4f3005",
@@ -5473,7 +5473,7 @@
         "step": "0.1",
         "className": "",
         "x": 420,
-        "y": 2800,
+        "y": 2860,
         "wires": [
             [
                 "dc8fc962ff7d594b",
@@ -5501,7 +5501,7 @@
         "step": "1",
         "className": "",
         "x": 410,
-        "y": 2840,
+        "y": 2900,
         "wires": [
             [
                 "00e7836ccb3c4d0c"
@@ -5522,7 +5522,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2600,
+        "y": 2660,
         "wires": []
     },
     {
@@ -5539,7 +5539,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 740,
-        "y": 2640,
+        "y": 2700,
         "wires": []
     },
     {
@@ -5556,7 +5556,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2760,
+        "y": 2820,
         "wires": []
     },
     {
@@ -5573,7 +5573,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2800,
+        "y": 2860,
         "wires": []
     },
     {
@@ -5590,7 +5590,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 740,
-        "y": 2840,
+        "y": 2900,
         "wires": []
     },
     {
@@ -5612,7 +5612,7 @@
         "className": "",
         "topicType": "msg",
         "x": 390,
-        "y": 3000,
+        "y": 3060,
         "wires": [
             [
                 "885bc559fafec5f2"
@@ -5633,7 +5633,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 730,
-        "y": 3000,
+        "y": 3060,
         "wires": []
     },
     {
@@ -5655,7 +5655,7 @@
         "className": "",
         "topicType": "msg",
         "x": 390,
-        "y": 3040,
+        "y": 3100,
         "wires": [
             [
                 "f70321c96bf81360"
@@ -5676,7 +5676,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 730,
-        "y": 3040,
+        "y": 3100,
         "wires": []
     },
     {
@@ -5698,7 +5698,7 @@
         "className": "",
         "topicType": "msg",
         "x": 390,
-        "y": 3080,
+        "y": 3140,
         "wires": [
             [
                 "95e1603bbd06a69d"
@@ -5719,7 +5719,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 730,
-        "y": 3080,
+        "y": 3140,
         "wires": []
     },
     {
@@ -5741,7 +5741,7 @@
         "className": "",
         "topicType": "msg",
         "x": 400,
-        "y": 3120,
+        "y": 3180,
         "wires": [
             [
                 "a8f92ea6bf394640"
@@ -5762,7 +5762,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 740,
-        "y": 3120,
+        "y": 3180,
         "wires": []
     },
     {
@@ -5784,7 +5784,7 @@
         "className": "",
         "topicType": "msg",
         "x": 400,
-        "y": 3160,
+        "y": 3220,
         "wires": [
             [
                 "06397bb46b3bb541"
@@ -5805,7 +5805,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 740,
-        "y": 3160,
+        "y": 3220,
         "wires": []
     },
     {
@@ -5827,7 +5827,7 @@
         "className": "",
         "topicType": "msg",
         "x": 400,
-        "y": 3200,
+        "y": 3260,
         "wires": [
             [
                 "687dcdc1ede11700"
@@ -5848,7 +5848,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 740,
-        "y": 3200,
+        "y": 3260,
         "wires": []
     },
     {
@@ -5870,7 +5870,7 @@
         "className": "",
         "topicType": "msg",
         "x": 390,
-        "y": 3240,
+        "y": 3300,
         "wires": [
             [
                 "e220740c0d38ccb0"
@@ -5891,7 +5891,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 730,
-        "y": 3240,
+        "y": 3300,
         "wires": []
     },
     {
@@ -5913,7 +5913,7 @@
         "className": "",
         "topicType": "msg",
         "x": 390,
-        "y": 3280,
+        "y": 3340,
         "wires": [
             [
                 "79d7e5a705ab813a"
@@ -5934,7 +5934,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 730,
-        "y": 3280,
+        "y": 3340,
         "wires": []
     },
     {
@@ -5956,7 +5956,7 @@
         "className": "",
         "topicType": "msg",
         "x": 400,
-        "y": 3320,
+        "y": 3380,
         "wires": [
             [
                 "12d20f2274bcc511"
@@ -5977,7 +5977,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 740,
-        "y": 3320,
+        "y": 3380,
         "wires": []
     },
     {
@@ -6038,7 +6038,7 @@
         "step": "90",
         "className": "",
         "x": 410,
-        "y": 2880,
+        "y": 2940,
         "wires": [
             [
                 "3019576de193d9d6"
@@ -6059,7 +6059,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 750,
-        "y": 2880,
+        "y": 2940,
         "wires": []
     },
     {
@@ -6074,7 +6074,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2060,
+        "y": 2120,
         "wires": [
             [
                 "dfdebe10dbf0e198"
@@ -6093,7 +6093,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2060,
+        "y": 2120,
         "wires": [
             []
         ]
@@ -6110,7 +6110,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2180,
+        "y": 2240,
         "wires": [
             [
                 "9a56c087d941f1da"
@@ -6129,7 +6129,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2180,
+        "y": 2240,
         "wires": [
             []
         ]
@@ -6146,7 +6146,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2220,
+        "y": 2280,
         "wires": [
             [
                 "0dfc86d90258f9bb"
@@ -6165,7 +6165,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2220,
+        "y": 2280,
         "wires": [
             []
         ]
@@ -6182,7 +6182,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2260,
+        "y": 2320,
         "wires": [
             [
                 "1361134e9847f003"
@@ -6201,7 +6201,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2260,
+        "y": 2320,
         "wires": [
             []
         ]
@@ -6218,7 +6218,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2100,
+        "y": 2160,
         "wires": [
             [
                 "b03e8b51187e88eb"
@@ -6237,7 +6237,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2100,
+        "y": 2160,
         "wires": [
             []
         ]
@@ -6254,7 +6254,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2140,
+        "y": 2200,
         "wires": [
             [
                 "543e1690693acbeb"
@@ -6273,7 +6273,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2140,
+        "y": 2200,
         "wires": [
             []
         ]
@@ -6290,7 +6290,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2300,
+        "y": 2360,
         "wires": [
             [
                 "c6642c7470d3820c"
@@ -6309,7 +6309,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2420,
+        "y": 2480,
         "wires": [
             [
                 "721b9680a3fa460e"
@@ -6328,7 +6328,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2460,
+        "y": 2520,
         "wires": [
             [
                 "1610895f430b9aca"
@@ -6347,7 +6347,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2500,
+        "y": 2560,
         "wires": [
             [
                 "277037c4716d85bf"
@@ -6366,7 +6366,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2340,
+        "y": 2400,
         "wires": [
             [
                 "6aae9d4fddf08cc0"
@@ -6385,7 +6385,7 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 2380,
+        "y": 2440,
         "wires": [
             [
                 "10687d331a732790"
@@ -6404,7 +6404,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2300,
+        "y": 2360,
         "wires": [
             []
         ]
@@ -6421,7 +6421,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2420,
+        "y": 2480,
         "wires": [
             []
         ]
@@ -6438,7 +6438,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2460,
+        "y": 2520,
         "wires": [
             []
         ]
@@ -6455,7 +6455,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2500,
+        "y": 2560,
         "wires": [
             []
         ]
@@ -6472,7 +6472,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2340,
+        "y": 2400,
         "wires": [
             []
         ]
@@ -6489,7 +6489,7 @@
         "finalize": "",
         "libs": [],
         "x": 630,
-        "y": 2380,
+        "y": 2440,
         "wires": [
             []
         ]
@@ -6506,7 +6506,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 2600,
+        "y": 2660,
         "wires": [
             [
                 "2522f888dc58972f"
@@ -6525,7 +6525,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2600,
+        "y": 2660,
         "wires": [
             []
         ]
@@ -6542,7 +6542,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 2640,
+        "y": 2700,
         "wires": [
             [
                 "30e8df3d616512d8"
@@ -6561,7 +6561,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2640,
+        "y": 2700,
         "wires": [
             []
         ]
@@ -6578,7 +6578,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 2760,
+        "y": 2820,
         "wires": [
             [
                 "d855d926df89d65b"
@@ -6597,7 +6597,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2760,
+        "y": 2820,
         "wires": [
             []
         ]
@@ -6614,7 +6614,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 2800,
+        "y": 2860,
         "wires": [
             [
                 "7617517dc8ba2859"
@@ -6633,7 +6633,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2800,
+        "y": 2860,
         "wires": [
             []
         ]
@@ -6650,7 +6650,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 2840,
+        "y": 2900,
         "wires": [
             [
                 "cbaa23c34e10fae1"
@@ -6669,7 +6669,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2840,
+        "y": 2900,
         "wires": [
             []
         ]
@@ -6686,7 +6686,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 2880,
+        "y": 2940,
         "wires": [
             [
                 "f455fb39039617ae"
@@ -6705,7 +6705,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2880,
+        "y": 2940,
         "wires": [
             []
         ]
@@ -6722,7 +6722,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3000,
+        "y": 3060,
         "wires": [
             [
                 "e89f61dbe6a6cffe"
@@ -6741,7 +6741,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3000,
+        "y": 3060,
         "wires": [
             []
         ]
@@ -6758,7 +6758,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3320,
+        "y": 3380,
         "wires": [
             [
                 "eef25405472acfee"
@@ -6777,7 +6777,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3320,
+        "y": 3380,
         "wires": [
             []
         ]
@@ -6794,7 +6794,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3040,
+        "y": 3100,
         "wires": [
             [
                 "70014da0b6ab6698"
@@ -6813,7 +6813,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3040,
+        "y": 3100,
         "wires": [
             []
         ]
@@ -6830,7 +6830,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3080,
+        "y": 3140,
         "wires": [
             [
                 "2544963852c6881a"
@@ -6849,7 +6849,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3080,
+        "y": 3140,
         "wires": [
             []
         ]
@@ -6866,7 +6866,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3120,
+        "y": 3180,
         "wires": [
             [
                 "a1394401246eb735"
@@ -6885,7 +6885,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3120,
+        "y": 3180,
         "wires": [
             []
         ]
@@ -6902,7 +6902,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3160,
+        "y": 3220,
         "wires": [
             [
                 "f15ca4518b5f223e"
@@ -6921,7 +6921,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3160,
+        "y": 3220,
         "wires": [
             []
         ]
@@ -6938,7 +6938,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3200,
+        "y": 3260,
         "wires": [
             [
                 "49900bb9047dd965"
@@ -6957,7 +6957,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3200,
+        "y": 3260,
         "wires": [
             []
         ]
@@ -6974,7 +6974,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3240,
+        "y": 3300,
         "wires": [
             [
                 "5a90224dc998b417"
@@ -6993,7 +6993,7 @@
         "finalize": "",
         "libs": [],
         "x": 270,
-        "y": 3280,
+        "y": 3340,
         "wires": [
             [
                 "d2364ab09627fe94"
@@ -7012,7 +7012,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3240,
+        "y": 3300,
         "wires": [
             []
         ]
@@ -7029,7 +7029,7 @@
         "finalize": "",
         "libs": [],
         "x": 590,
-        "y": 3280,
+        "y": 3340,
         "wires": [
             []
         ]
@@ -7471,7 +7471,7 @@
             "960912e90ba5b5bc"
         ],
         "x": 155,
-        "y": 2540,
+        "y": 2600,
         "wires": [
             [
                 "43fe948b3e7234e2",
@@ -7494,7 +7494,7 @@
             "50eeb3e362f9027f"
         ],
         "x": 135,
-        "y": 3000,
+        "y": 3060,
         "wires": [
             [
                 "77bb7dc529d63a7e",
@@ -7649,7 +7649,7 @@
         "func": "from OpenScan import camera\n\ncamera(\"/v1/camera/picam2_contrast?contrast=\" + str(msg['payload']))",
         "outputs": 1,
         "x": 660,
-        "y": 2720,
+        "y": 2780,
         "wires": [
             []
         ]
@@ -7662,7 +7662,7 @@
         "func": "from OpenScan import camera\n\ncamera(\"/v1/camera/picam2_saturation?saturation=\" + str(msg['payload']))",
         "outputs": 1,
         "x": 660,
-        "y": 2680,
+        "y": 2740,
         "wires": [
             []
         ]
@@ -7687,7 +7687,7 @@
         "step": "0.02",
         "className": "",
         "x": 440,
-        "y": 2560,
+        "y": 2620,
         "wires": [
             [
                 "e612073aded01a8f"
@@ -7708,7 +7708,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 760,
-        "y": 2560,
+        "y": 2620,
         "wires": []
     },
     {
@@ -7723,7 +7723,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 2560,
+        "y": 2620,
         "wires": [
             [
                 "81bd4381cd029958"
@@ -7742,7 +7742,7 @@
         "finalize": "",
         "libs": [],
         "x": 620,
-        "y": 2560,
+        "y": 2620,
         "wires": [
             []
         ]
@@ -8098,7 +8098,7 @@
         "label": "",
         "tooltip": "",
         "group": "7a3279eea439bcdd",
-        "order": 12,
+        "order": 14,
         "width": 3,
         "height": 1,
         "passthru": false,
@@ -8116,23 +8116,6 @@
                 "85ad07b8f973bbe2"
             ]
         ]
-    },
-    {
-        "id": "69516440e3997111",
-        "type": "ui_text",
-        "z": "e43a27722b508115",
-        "group": "7a3279eea439bcdd",
-        "order": 11,
-        "width": 3,
-        "height": 1,
-        "name": "rotor_endstop_angle_label",
-        "label": "Endstop angle",
-        "format": "",
-        "layout": "row-left",
-        "className": "",
-        "x": 820,
-        "y": 2020,
-        "wires": []
     },
     {
         "id": "85ad07b8f973bbe2",
@@ -8174,7 +8157,7 @@
         "id": "253feafa5a2f8b1d",
         "type": "ui_switch",
         "z": "e43a27722b508115",
-        "name": "rotor_enable_endstop",
+        "name": "rotor_endstop_enable",
         "label": "",
         "tooltip": "",
         "group": "7a3279eea439bcdd",
@@ -8210,7 +8193,7 @@
         "type": "function",
         "z": "e43a27722b508115",
         "name": "loadB",
-        "func": "var file = 'rotor_enable_endstop'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar data = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
+        "func": "var file = 'rotor_endstop_enable'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nvar data = fs.readFileSync(filepath+file, 'utf8');\nif(data === '1' || data === 'True' || data === 'true'){\n    data = true;\n}\nelse{\n    data = false;\n}\nmsg.payload = data;\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8229,7 +8212,7 @@
         "type": "function",
         "z": "e43a27722b508115",
         "name": "write",
-        "func": "var file = 'rotor_enable_endstop'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "func": "var file = 'rotor_endstop_enable'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -8249,7 +8232,7 @@
         "order": 9,
         "width": 3,
         "height": 1,
-        "name": "rotor_enable_endstop_label",
+        "name": "rotor_endstop_enable_label",
         "label": "Enable Endstop",
         "format": "",
         "layout": "row-left",
@@ -8273,8 +8256,10 @@
         "y": 1980,
         "wires": [
             [
+                "f036424d79645761",
+                "c7a41014cbbff864",
                 "69516440e3997111",
-                "f036424d79645761"
+                "e9a307a44d9f29f1"
             ]
         ]
     },
@@ -8929,6 +8914,110 @@
                 "d9d7acf381c002cf"
             ]
         ]
+    },
+    {
+        "id": "c7a41014cbbff864",
+        "type": "function",
+        "z": "e43a27722b508115",
+        "name": "loadI",
+        "func": "var file = 'rotor_endstop_pushed'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = parseInt(data);\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 2060,
+        "wires": [
+            [
+                "5712cdb7d571f18c"
+            ]
+        ]
+    },
+    {
+        "id": "5712cdb7d571f18c",
+        "type": "ui_switch",
+        "z": "e43a27722b508115",
+        "name": "rotor_endstop_pushed",
+        "label": "",
+        "tooltip": "",
+        "group": "7a3279eea439bcdd",
+        "order": 12,
+        "width": 3,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 460,
+        "y": 2060,
+        "wires": [
+            [
+                "168334311f605afd"
+            ]
+        ]
+    },
+    {
+        "id": "168334311f605afd",
+        "type": "function",
+        "z": "e43a27722b508115",
+        "name": "write",
+        "func": "var file = 'rotor_endstop_pushed'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 2060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "69516440e3997111",
+        "type": "ui_text",
+        "z": "e43a27722b508115",
+        "group": "7a3279eea439bcdd",
+        "order": 13,
+        "width": 3,
+        "height": 1,
+        "name": "rotor_endstop_angle_label",
+        "label": "Endstop angle",
+        "format": "",
+        "layout": "row-left",
+        "className": "",
+        "x": 820,
+        "y": 2020,
+        "wires": []
+    },
+    {
+        "id": "e9a307a44d9f29f1",
+        "type": "ui_text",
+        "z": "e43a27722b508115",
+        "group": "7a3279eea439bcdd",
+        "order": 11,
+        "width": 3,
+        "height": 1,
+        "name": "rotor_endstop_pushed_label",
+        "label": "Endstop reverse",
+        "format": "",
+        "layout": "row-left",
+        "className": "",
+        "x": 820,
+        "y": 2060,
+        "wires": []
     },
     {
         "id": "4c7fa5b5b27b83a5",
