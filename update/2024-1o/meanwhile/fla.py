@@ -522,8 +522,7 @@ class MotorRun(Resource):
     @motor_ns.doc(params={
         'motor': 'Motor name (rotor, tt, extra)',
         'angle': 'Angle to rotate (integer)',
-        'ES_enable': 'Enable endstop (optional, boolean)',
-        'ES_start_state': 'Endstop start state (optional, boolean)'
+        'endstop': 'Enable endstop (optional, boolean)'
     })
     @motor_ns.response(400, 'Bad Request')
     def get(self):
