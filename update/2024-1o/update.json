@@ -3,7 +3,7 @@
         "1": {
             "src": "stable/OpenScan.py",
             "dst": "/usr/lib/python3/dist-packages/OpenScan.py",
-            "filesize": 10396
+            "filesize": 10524
         },
         "2": {
             "src": "stable/OpenScanStatistics.py",
@@ -28,7 +28,7 @@
         "6": {
             "src": "stable/flows.json",
             "dst": "/home/pi/OpenScan/settings/.node-red/flows.json",
-            "filesize": 342710
+            "filesize": 355845
         },
         "7": {
             "src": "stable/settings.js",
