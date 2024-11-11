@@ -366,26 +366,6 @@
         "className": ""
     },
     {
-        "id": "700f47327133ab68",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "729f9ea6e3513c9b",
-        "order": 6,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "ebf828f29201a53b",
-        "type": "ui_spacer",
-        "z": "829d803b6033a693",
-        "name": "spacer",
-        "group": "729f9ea6e3513c9b",
-        "order": 8,
-        "width": 1,
-        "height": 1
-    },
-    {
         "id": "3b4961c4e72ff58a",
         "type": "ui_spacer",
         "z": "017bd4e4a428bee5",
@@ -436,9 +416,29 @@
         "collapse": false
     },
     {
-        "id": "b73c392ffd8ca3f2",
+        "id": "c178a6075244d901",
         "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
+        "z": "1613373abaf77a2c",
+        "name": "spacer",
+        "group": "729f9ea6e3513c9b",
+        "order": 6,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "f8d7cbc04f8cbcba",
+        "type": "ui_spacer",
+        "z": "1613373abaf77a2c",
+        "name": "spacer",
+        "group": "729f9ea6e3513c9b",
+        "order": 8,
+        "width": 1,
+        "height": 1
+    },
+    {
+        "id": "bed9a462261844dc",
+        "type": "ui_spacer",
+        "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "90223f7ddc082321",
         "order": 14,
@@ -446,9 +446,9 @@
         "height": 1
     },
     {
-        "id": "89fe04171cd2f35b",
+        "id": "42acb237087cf7f1",
         "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
+        "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "90223f7ddc082321",
         "order": 15,
@@ -456,9 +456,9 @@
         "height": 1
     },
     {
-        "id": "80c9c0059de08f02",
+        "id": "dc9e2987583f2cbb",
         "type": "ui_spacer",
-        "z": "017bd4e4a428bee5",
+        "z": "1613373abaf77a2c",
         "name": "spacer",
         "group": "90223f7ddc082321",
         "order": 16,
@@ -717,7 +717,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "write",
-        "func": "var file = 'status_cloud'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\ncontent = 'ready'\n\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
+        "func": "var file = 'status_cloud'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\n\ncontent = 'ready'\n\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });\n  \n",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -825,7 +825,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "CREATE FACTORY DEFAULT",
-        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n}}\nreturn msg",
+        "func": "msg = { \n'overwrite':msg.overwrite,\n'settings':\n    {\n    'advanced_settings':false,\n    'cameras':{\n        'imx519':[4656,3496],\n        'imx219':[3280,2464],\n        'imx477':[4056,3040],\n        'ov5647':[2592,1944],\n        'imx378':[3840,2880],\n        'ov9271':[1280,800],\n        'imx290a':[1920,1080],\n        'imx290b':[1920,1080],\n    },\n    'cam_AFmode':true,\n    'cam_STmode':true,\n    'cam_stacksize':2,\n    'cam_awbg_blue':0,\n    'cam_awbg_red':0,\n    'cam_contrast':1,\n    'cam_cropx':0,\n    'cam_cropy':0,\n    'cam_delay_after':0,\n    'cam_delay_before':0,\n    'camera':'',\n    'cam_gain':1,\n    'cam_jpeg_quality':95,\n    'cam_rotation':0,\n    'cam_saturation':1,\n    'cam_shutter':50000,\n    'cam_timeout':800,\n    'hostname':'openscan',\n    'model':'',\n    'osc_credit':'',\n    'osc_limit_filesize':'',\n    'osc_limit_photos':'',\n    'osc_splitsize':200000000,\n    'pin_endstop1':24,\n    'pin_endstop2':25,\n    'pin_external':10,\n    'pin_ringlight1':17,\n    'pin_ringlight2':27,\n    'pin_rotor_dir':5,\n    'pin_rotor_enable':23,\n    'pin_rotor_step':6,\n    'pin_tt_dir':9,\n    'pin_tt_enable':22,\n    'pin_tt_step':11,\n    'rotor_acc':1,\n    'rotor_accramp':2000,\n    'rotor_angle':10,\n    'rotor_anglemax':60,\n    'rotor_anglemin':-20,\n    'rotor_anglestart':0,\n    'rotor_delay':0.0001,\n    'rotor_dir':1,\n    'rotor_stepsperrotation':48000,\n    'routine_photocount':50,\n    'routine_projectname':'default',\n    'smb':true,\n    'ssh':true,\n    'status_cloud':'ready',\n    'status_internal_cam':'--READY--',\n    'status_uploadprogress':'',\n    'terms':false,\n    'token':'',\n    'tt_acc':1,\n    'tt_accramp':200,\n    'tt_angle':10,\n    'tt_delay':0.0001,\n    'tt_dir':1,\n    'tt_stepsperrotation':3200,\n    'cam_focus':2838,\n    'cam_focus1':0,\n    'cam_focus2':0,\n    'uploadprogress':'',\n    'update_type':'beta',\n    'update_auto':true,\n    'downscale_threshold':1000,\n    'turntable_mode':false,\n    'timeout_ringlight':300,\n    'diskspace_threshold':4000,\n    'updateable':false,\n    'cam_focuspeak':false,\n    'cam_histogram':false,\n    'routine_secondpass':true,\n    'cam_output_resolution':20000000,\n    'cam_preview_resolution':2000000,\n    'cam_output_downscale':false,\n}}\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1023,7 +1023,7 @@
         "type": "function",
         "z": "829d803b6033a693",
         "name": "FIRMWARE VERSION",
-        "func": "msg.firmware = '2022-08-02'\nreturn msg",
+        "func": "msg.firmware = '2024-11-11'\nreturn msg",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1069,21 +1069,21 @@
         ]
     },
     {
-        "id": "06d33bb8951ce668",
+        "id": "c5e5e75ed45efbaa",
         "type": "ui_template",
         "z": "829d803b6033a693",
-        "group": "",
+        "group": "7aaf184330605300",
         "name": "donate",
         "order": 2,
         "width": "0",
         "height": "0",
-        "format": "\n<script id=\"titleScript\" type=\"text/javascript\">\n\n$(function() {\n    if($('.md-toolbar-tools').length != 0){\n        load();\n    }else setTimeout(load, 500)\n});\n\nfunction load(){\n    $('#bmac').remove();\n    var toolbar = $('.md-toolbar-tools');\n    \n    var div = $('<div/>');\n    var p = $('<div/ id=\"bmac\">');\n    \n    div.append(p);\n    div[0].style.margin = '0px 0px 0px auto';\n    toolbar.append(div);\n\n\n    p.append('<a class=\"md-button\" target=\"_blank\" href=\"https://www.patreon.com/bePatron?u=51974655\"><U>DONATE</U></a>');\n    p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" href=\"http://openscan:1312/shutdown\"><i class=\"fa fa-power-off\" ></i></a>')\n    p.append('   ')\n    p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" href=\"http://openscan:1312/reboot\"><i class=\"fa fa-repeat\" ></i></a>')\n\n}\n\n</script>\n",
+        "format": "<script id=\"titleScript\" type=\"text/javascript\">\n$(function() {\n    if ($('.md-toolbar-tools').length != 0) {\n        load();\n    } else {\n        setTimeout(load, 500);\n    }\n});\n\nfunction load() {\n    $('#bmac').remove();\n    var toolbar = $('.md-toolbar-tools');\n    var div = $('<div/>');\n    var p = $('<div/>', { id: 'bmac' });\n\n    // Append elements\n    div.append(p);\n    div[0].style.margin = '0px 0px 0px auto';\n    toolbar.append(div);\n\n    // Version display and buttons\n    p.append('<small id=\"version\"></small>');\n    p.append(' ');\n    p.append('<a class=\"md-button\" target=\"_blank\" href=\"https://www.patreon.com/bePatron?u=51974655\"><u>DONATE</u></a>');\n    p.append('<a class=\"md-button2\" style=\"margin:0 5 0 5!important;\" onclick=\"shutdown()\"><i class=\"fa fa-power-off\"></i></a>');\n    p.append('   ');\n    p.append('<a class=\"md-button2\" style=\"margin:10 0 10 0!important;\" onclick=\"reboot()\"><i class=\"fa fa-repeat\"></i></a>');\n}\n\nfunction shutdown() {\n    if (confirm(\"Are you sure you want to shut down the system?\")) {\n        // Get the current hostname from the browser\n        const baseUrl = window.location.protocol + '//' + window.location.hostname + ':1312';\n        fetch(`${baseUrl}/shutdown`, {\n            method: 'GET',\n        })\n        .then(data => {\n            alert(\"Shutdown initiated. The system will power off shortly.\");\n        });\n    }\n}\n\nfunction reboot() {\n    if (confirm(\"Are you sure you want to reboot the system?\")) {\n        // Get the current hostname from the browser\n        const baseUrl = window.location.protocol + '//' + window.location.hostname + ':1312';\n        fetch(`${baseUrl}/reboot`, {\n            method: 'GET',\n        })\n        .then(data => {\n            alert(\"Reboot initiated. The system will restart shortly.\");\n        });\n    }\n}\n</script>\n",
         "storeOutMessages": false,
         "fwdInMessages": false,
         "resendOnRefresh": false,
         "templateScope": "global",
         "className": "",
-        "x": 450,
+        "x": 430,
         "y": 40,
         "wires": [
             []
@@ -1384,33 +1384,6 @@
         ]
     },
     {
-        "id": "aebad788761dce4a",
-        "type": "ui_slider",
-        "z": "1613373abaf77a2c",
-        "name": "routine_photocount",
-        "label": "",
-        "tooltip": "",
-        "group": "7aaf184330605300",
-        "order": 14,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "outs": "end",
-        "topic": "",
-        "topicType": "str",
-        "min": "10",
-        "max": "300",
-        "step": "10",
-        "className": "",
-        "x": 350,
-        "y": 540,
-        "wires": [
-            [
-                "ce28a0b5bfb0d5a1"
-            ]
-        ]
-    },
-    {
         "id": "107a030938cbfea9",
         "type": "function",
         "z": "1613373abaf77a2c",
@@ -1425,7 +1398,7 @@
         "y": 540,
         "wires": [
             [
-                "aebad788761dce4a"
+                "cb6ebdabaaf7d0da"
             ]
         ]
     },
@@ -1461,34 +1434,7 @@
         "y": 580,
         "wires": [
             [
-                "470b10726d298834"
-            ]
-        ]
-    },
-    {
-        "id": "470b10726d298834",
-        "type": "ui_slider",
-        "z": "1613373abaf77a2c",
-        "name": "shutter ",
-        "label": " ",
-        "tooltip": "",
-        "group": "7aaf184330605300",
-        "order": 16,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "outs": "end",
-        "topic": "",
-        "topicType": "str",
-        "min": "1",
-        "max": "700",
-        "step": "1",
-        "className": "",
-        "x": 310,
-        "y": 580,
-        "wires": [
-            [
-                "44c3947a9b92d32d"
+                "c8a3fde5206ce1ae"
             ]
         ]
     },
@@ -1510,94 +1456,6 @@
         ]
     },
     {
-        "id": "069bcf58b1fe44cd",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 13,
-        "width": 3,
-        "height": 1,
-        "name": "photocount",
-        "label": "Photos",
-        "format": "",
-        "layout": "row-left",
-        "className": "",
-        "x": 670,
-        "y": 540,
-        "wires": []
-    },
-    {
-        "id": "8dc7df1de59cb03a",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 15,
-        "width": 3,
-        "height": 1,
-        "name": "shutter",
-        "label": "Shutter (ms)",
-        "format": "",
-        "layout": "row-left",
-        "className": "",
-        "x": 650,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "cc69dba8d54a29dd",
-        "type": "ui_slider",
-        "z": "1613373abaf77a2c",
-        "name": "Crop X",
-        "label": " ",
-        "tooltip": "",
-        "group": "7aaf184330605300",
-        "order": 18,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "outs": "end",
-        "topic": "",
-        "topicType": "str",
-        "min": "0",
-        "max": "99",
-        "step": "1",
-        "className": "",
-        "x": 320,
-        "y": 620,
-        "wires": [
-            [
-                "c2b2ab5524271123"
-            ]
-        ]
-    },
-    {
-        "id": "e3a90602605fb9e9",
-        "type": "ui_slider",
-        "z": "1613373abaf77a2c",
-        "name": "Crop Y",
-        "label": " ",
-        "tooltip": "",
-        "group": "7aaf184330605300",
-        "order": 20,
-        "width": 3,
-        "height": 1,
-        "passthru": false,
-        "outs": "end",
-        "topic": "",
-        "topicType": "str",
-        "min": "0",
-        "max": "99",
-        "step": "1",
-        "className": "",
-        "x": 310,
-        "y": 660,
-        "wires": [
-            [
-                "26f17a7f406df73c"
-            ]
-        ]
-    },
-    {
         "id": "9c6b48b7b4cc4e1a",
         "type": "function",
         "z": "1613373abaf77a2c",
@@ -1612,7 +1470,7 @@
         "y": 620,
         "wires": [
             [
-                "cc69dba8d54a29dd"
+                "9daea4bd57f7a00e"
             ]
         ]
     },
@@ -1631,7 +1489,7 @@
         "y": 660,
         "wires": [
             [
-                "e3a90602605fb9e9"
+                "87be854db758a9a6"
             ]
         ]
     },
@@ -1668,40 +1526,6 @@
         "wires": [
             []
         ]
-    },
-    {
-        "id": "fecf5cff888bb570",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 17,
-        "width": 3,
-        "height": 1,
-        "name": "cropx",
-        "label": "{{msg.crop1}}",
-        "format": "",
-        "layout": "row-left",
-        "className": "",
-        "x": 690,
-        "y": 620,
-        "wires": []
-    },
-    {
-        "id": "0ee4950bd21498bd",
-        "type": "ui_text",
-        "z": "1613373abaf77a2c",
-        "group": "7aaf184330605300",
-        "order": 19,
-        "width": 3,
-        "height": 1,
-        "name": "cropy",
-        "label": "{{msg.crop2}}",
-        "format": "",
-        "layout": "row-left",
-        "className": "",
-        "x": 690,
-        "y": 660,
-        "wires": []
     },
     {
         "id": "ebbf11b55d758806",
@@ -1830,7 +1654,7 @@
         "z": "1613373abaf77a2c",
         "name": "start ",
         "group": "7aaf184330605300",
-        "order": 21,
+        "order": 17,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -1860,7 +1684,7 @@
         "z": "1613373abaf77a2c",
         "name": "stop",
         "group": "7aaf184330605300",
-        "order": 23,
+        "order": 19,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -2162,9 +1986,9 @@
         "type": "python3-function",
         "z": "1613373abaf77a2c",
         "name": "Take Preview Shot",
-        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nsleep(0.5)\n\n\nstatus = load_str('status_internal_cam')\ncam=load_str('camera')\n\n\nif msg['flag'] == False and not 'Routine' in status:\n    return msg\n\nif cam == 'external':\n    return\n\nmsg['payload']=\"/tmp/preview.jpg?ts=\"+str(int(time()*10))\n\nif cam == 'gphoto' and status == 'no camera found':\n    if camera('/gphoto_init') == 200:\n        save('status_internal_cam','--READY--')\n\nif status!=\"--READY--\":\n    return msg\n\nmsg['cropx'] = load_int('cam_cropx')\nmsg['cropy'] = load_int('cam_cropy')\nmsg['rotation'] = load_int('cam_rotation')\nmsg['filepath_in'] = 'tmp/tmp.jpg'\nmsg['filepath_out'] = 'tmp/preview.jpg'\nmsg['filepath'] = 'tmp/tmp.jpg'\nmsg['preview'] = True\n\nif cam == 'gphoto':\n    if camera('/gphoto_test', msg) != 200:\n        save('status_internal_cam','no camera found')\n        return msg\n    camera('/gphoto_preview', msg)\n\nif cam in ('usb_webcam', 'imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n    take_photo('tmp/tmp.jpg')\n\ncamera('/crop',msg)\n\nreturn msg\n",
+        "func": "from time import time, sleep\nfrom OpenScan import load_str, load_bool, take_photo, camera, load_int,save\nsleep(0.1)\n\n\nstatus = load_str('status_internal_cam')\ncam=load_str('camera')\n\n\nif msg['flag'] == False and not 'Routine' in status:\n    return msg\n\nif cam == 'external':\n    return\n\nmsg['payload']=\"/tmp/preview.jpg?ts=\"+str(int(time()*10))\n\nif cam == 'gphoto' and status == 'no camera found':\n    if camera('/gphoto_init') == 200:\n        save('status_internal_cam','--READY--')\n\nif status!=\"--READY--\":\n    return msg\n\nmsg['cropx'] = load_int('cam_cropx')\nmsg['cropy'] = load_int('cam_cropy')\nmsg['rotation'] = load_int('cam_rotation')\nmsg['filepath_in'] = 'tmp/tmp.jpg'\nmsg['filepath_out'] = 'tmp/preview.jpg'\nmsg['filepath'] = 'tmp/tmp.jpg'\nmsg['preview'] = True\n\nif cam == 'gphoto':\n    if camera('/gphoto_test', msg) != 200:\n        save('status_internal_cam','no camera found')\n        return msg\n    camera('/gphoto_preview', msg)\n\nif cam in ('usb_webcam', 'imx219','ov5647','imx477','imx290a','imx290b','imx378','ov9281','imx519'):\n    take_photo('tmp/tmp.jpg')\n\ncamera('/crop',msg)\n\nreturn msg\n",
         "outputs": 1,
-        "x": 410,
+        "x": 430,
         "y": 1220,
         "wires": [
             [
@@ -3038,7 +2862,7 @@
         "name": "gphoto",
         "func": "\nfrom OpenScan import camera, save, load_str\n\nif load_str('camera') == 'gphoto':\n    if camera('/gphoto_init') == 200:\n        if camera('/gphoto_test') == 200:\n            save('status_internal_cam','--READY--')\n            return msg\nif load_str('camera') == 'external':\n    save('status_internal_cam','--READY--')",
         "outputs": 1,
-        "x": 490,
+        "x": 470,
         "y": 100,
         "wires": [
             []
@@ -3351,7 +3175,7 @@
         "z": "1613373abaf77a2c",
         "name": "pause",
         "group": "7aaf184330605300",
-        "order": 22,
+        "order": 18,
         "width": 2,
         "height": 1,
         "passthru": false,
@@ -3387,19 +3211,94 @@
         ]
     },
     {
-        "id": "44c598049cd533fd",
-        "type": "link in",
+        "id": "c8a3fde5206ce1ae",
+        "type": "ui_template",
         "z": "1613373abaf77a2c",
-        "name": "crop",
-        "links": [
-            "f358de1e64b491bb"
-        ],
-        "x": 595,
-        "y": 640,
+        "group": "7aaf184330605300",
+        "name": "shutter",
+        "order": 13,
+        "width": 6,
+        "height": 1,
+        "format": "<div\n  style=\"overflow:hidden; position: absolute; top: 0; left: 4px; width: 98%; height: 100%;transform: translateY(-35%);\">\n  <md-card>\n    <style>\n      .slider-container {\n        transform: translateY(-20%);\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        overflow: hidden;\n        margin: 0 0;\n      }\n\n      .slider-container::-webkit-scrollbar-thumb {\n        background-color: transparent;\n      }\n\n      .slider-container::-webkit-scrollbar-track {\n        background-color: transparent;\n      }\n\n      .top-row {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        position: relative;\n        vertical-align: text-top;\n        z-index: 1;\n        top: -35%;\n      }\n\n      .slider-label {\n        text-align: left;\n      }\n\n      .value-input {\n        width: 20%;\n        text-align: middle;\n        transform: translateY(12%) !important;\n      }\n\n      .value-input input::-webkit-inner-spin-button,\n      .value-input input::-webkit-outer-spin-button {\n        -webkit-appearance: none;\n        margin: 0;\n      }\n\n      .value-input input {\n        -moz-appearance: textfield;\n      }\n\n      .slider-row {\n        position: relative;\n        left: 5% !important;\n        width: 70% !important;\n        top: -100% !important;\n        transform: translateY(-120%) !important;\n        z-index: 1;\n      }\n    </style>\n    <div class=\"slider-container\">\n      <div class=\"top-row\">\n        <div class=\"slider-label\">\n          <span>{{sliderName}}</span>\n        </div>\n        <div class=\"value-input\" style=\"text-align: center;\">\n          <md-input-container>\n            <input aria-label=\"value\" type=\"number\" ng-model=\"sliderValue\" ng-change=\"validateAndUpdateValue(sliderValue)\">\n          </md-input-container>\n        </div>\n      </div>\n      <div class=\"slider-row\">\n        <md-slider flex min=\"{{minValue}}\" max=\"{{maxValue}}\" ng-model=\"sliderValue\"          ng-change=\"updateSliderValue(sliderValue)\" aria-label=\"slider\" step=\"{{stepValue}}\">\n        </md-slider>\n      </div>\n    </div>\n</div>\n<script>\n  (function(scope) {\n        scope.sliderValue = 0;\n        scope.minValue = 0.1;\n        scope.maxValue = 300;\n        scope.stepValue = 0.1;\n        scope.sliderName =\"Shutterspeed (ms)\";\n\n        scope.updateSliderValue = function(value) {\n          scope.send({payload: value});\n        };\n\n        scope.validateAndUpdateValue = function(value) {\n          if (value < scope.minValue) {\n            scope.sliderValue = scope.minValue;\n          } else if (value > scope.maxValue) {\n            scope.sliderValue = scope.maxValue;\n          } else {\n            scope.sliderValue = value;\n          }\n          scope.updateSliderValue(scope.sliderValue);\n        };\n\n        scope.$watch('msg', function(msg) {\n          if (msg && msg.hasOwnProperty('payload')) {\n            scope.sliderValue = msg.payload;\n          }\n        });\n    })(scope);\n</script>\n</md-card>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 310,
+        "y": 580,
         "wires": [
             [
-                "fecf5cff888bb570",
-                "0ee4950bd21498bd"
+                "44c3947a9b92d32d"
+            ]
+        ]
+    },
+    {
+        "id": "87be854db758a9a6",
+        "type": "ui_template",
+        "z": "1613373abaf77a2c",
+        "group": "7aaf184330605300",
+        "name": "Cropy",
+        "order": 16,
+        "width": 6,
+        "height": 1,
+        "format": "<div\n  style=\"overflow:hidden; position: absolute; top: 0; left: 4px; width: 98%; height: 100%;transform: translateY(-35%);\">\n  <md-card>\n    <style>\n      .slider-container {\n        transform: translateY(-20%);\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        overflow: hidden;\n        margin: 0 0;\n      }\n\n      .slider-container::-webkit-scrollbar-thumb {\n        background-color: transparent;\n      }\n\n      .slider-container::-webkit-scrollbar-track {\n        background-color: transparent;\n      }\n\n      .top-row {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        position: relative;\n        vertical-align: text-top;\n        z-index: 1;\n        top: -35%;\n      }\n\n      .slider-label {\n        text-align: left;\n      }\n\n      .value-input {\n        width: 20%;\n        text-align: middle;\n        transform: translateY(12%) !important;\n      }\n\n      .value-input input::-webkit-inner-spin-button,\n      .value-input input::-webkit-outer-spin-button {\n        -webkit-appearance: none;\n        margin: 0;\n      }\n\n      .value-input input {\n        -moz-appearance: textfield;\n      }\n\n      .slider-row {\n        position: relative;\n        left: 5% !important;\n        width: 70% !important;\n        top: -100% !important;\n        transform: translateY(-120%) !important;\n        z-index: 1;\n      }\n    </style>\n    <div class=\"slider-container\">\n      <div class=\"top-row\">\n        <div class=\"slider-label\">\n          <span>{{sliderName}}</span>\n        </div>\n        <div class=\"value-input\" style=\"text-align: center;\">\n          <md-input-container>\n            <input aria-label=\"value\" type=\"number\" ng-model=\"sliderValue\" ng-change=\"validateAndUpdateValue(sliderValue)\">\n          </md-input-container>\n        </div>\n      </div>\n      <div class=\"slider-row\">\n        <md-slider flex min=\"{{minValue}}\" max=\"{{maxValue}}\" ng-model=\"sliderValue\"\n          ng-change=\"updateSliderValue(sliderValue)\" aria-label=\"slider\" step=\"{{stepValue}}\">\n        </md-slider>\n      </div>\n    </div>\n</div>\n<script>\n  (function(scope) {\n        scope.sliderValue = 0;\n        scope.minValue = 0;\n        scope.maxValue = 100;\n        scope.stepValue = 1;\n        scope.sliderName = \"Crop Y (%)\";\n\n        scope.updateSliderValue = function(value) {\n          scope.send({payload: value});\n        };\n\n        scope.validateAndUpdateValue = function(value) {\n          if (value < scope.minValue) {\n            scope.sliderValue = scope.minValue;\n          } else if (value > scope.maxValue) {\n            scope.sliderValue = scope.maxValue;\n          } else {\n            scope.sliderValue = value;\n          }\n          scope.updateSliderValue(scope.sliderValue);\n        };\n\n        scope.$watch('msg', function(msg) {\n          if (msg && msg.hasOwnProperty('payload')) {\n            scope.sliderValue = msg.payload;\n          }\n        });\n    })(scope);\n</script>\n</md-card>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 310,
+        "y": 660,
+        "wires": [
+            [
+                "26f17a7f406df73c"
+            ]
+        ]
+    },
+    {
+        "id": "9daea4bd57f7a00e",
+        "type": "ui_template",
+        "z": "1613373abaf77a2c",
+        "group": "7aaf184330605300",
+        "name": "Cropx",
+        "order": 15,
+        "width": 6,
+        "height": 1,
+        "format": "<div\n  style=\"overflow:hidden; position: absolute; top: 0; left: 4px; width: 98%; height: 100%;transform: translateY(-35%);\">\n  <md-card>\n    <style>\n      .slider-container {\n        transform: translateY(-20%);\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        overflow: hidden;\n        margin: 0 0;\n      }\n\n      .slider-container::-webkit-scrollbar-thumb {\n        background-color: transparent;\n      }\n\n      .slider-container::-webkit-scrollbar-track {\n        background-color: transparent;\n      }\n\n      .top-row {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        position: relative;\n        vertical-align: text-top;\n        z-index: 1;\n        top: -35%;\n      }\n\n      .slider-label {\n        text-align: left;\n      }\n\n      .value-input {\n        width: 20%;\n        text-align: middle;\n        transform: translateY(12%) !important;\n      }\n\n      .value-input input::-webkit-inner-spin-button,\n      .value-input input::-webkit-outer-spin-button {\n        -webkit-appearance: none;\n        margin: 0;\n      }\n\n      .value-input input {\n        -moz-appearance: textfield;\n      }\n\n      .slider-row {\n        position: relative;\n        left: 5% !important;\n        width: 70% !important;\n        top: -100% !important;\n        transform: translateY(-120%) !important;\n        z-index: 1;\n      }\n    </style>\n    <div class=\"slider-container\">\n      <div class=\"top-row\">\n        <div class=\"slider-label\">\n          <span>{{sliderName}}</span>\n        </div>\n        <div class=\"value-input\" style=\"text-align: center;\">\n          <md-input-container>\n            <input aria-label=\"value\" type=\"number\" ng-model=\"sliderValue\" ng-change=\"validateAndUpdateValue(sliderValue)\">\n          </md-input-container>\n        </div>\n      </div>\n      <div class=\"slider-row\">\n        <md-slider flex min=\"{{minValue}}\" max=\"{{maxValue}}\" ng-model=\"sliderValue\"          ng-change=\"updateSliderValue(sliderValue)\" aria-label=\"slider\" step=\"{{stepValue}}\">\n        </md-slider>\n      </div>\n    </div>\n</div>\n<script>\n  (function(scope) {\n        scope.sliderValue = 0;\n        scope.minValue = 0;\n        scope.maxValue = 100;\n        scope.stepValue = 1;\n        scope.sliderName = \"Crop x (%)\";\n\n        scope.updateSliderValue = function(value) {\n          scope.send({payload: value});\n        };\n\n        scope.validateAndUpdateValue = function(value) {\n          if (value < scope.minValue) {\n            scope.sliderValue = scope.minValue;\n          } else if (value > scope.maxValue) {\n            scope.sliderValue = scope.maxValue;\n          } else {\n            scope.sliderValue = value;\n          }\n          scope.updateSliderValue(scope.sliderValue);\n        };\n\n        scope.$watch('msg', function(msg) {\n          if (msg && msg.hasOwnProperty('payload')) {\n            scope.sliderValue = msg.payload;\n          }\n        });\n    })(scope);\n</script>\n</md-card>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 310,
+        "y": 620,
+        "wires": [
+            [
+                "c2b2ab5524271123"
+            ]
+        ]
+    },
+    {
+        "id": "cb6ebdabaaf7d0da",
+        "type": "ui_template",
+        "z": "1613373abaf77a2c",
+        "group": "7aaf184330605300",
+        "name": "Photos",
+        "order": 14,
+        "width": 6,
+        "height": 1,
+        "format": "<div\n  style=\"overflow:hidden; position: absolute; top: 0; left: 4px; width: 98%; height: 100%;transform: translateY(-35%);\">\n  <md-card>\n    <style>\n      .slider-container {\n        transform: translateY(-20%);\n        display: flex;\n        flex-direction: column;\n        width: 100%;\n        overflow: hidden;\n        margin: 0 0;\n      }\n\n      .slider-container::-webkit-scrollbar-thumb {\n        background-color: transparent;\n      }\n\n      .slider-container::-webkit-scrollbar-track {\n        background-color: transparent;\n      }\n\n      .top-row {\n        display: flex;\n        justify-content: space-between;\n        align-items: center;\n        position: relative;\n        vertical-align: text-top;\n        z-index: 1;\n        top: -35%;\n      }\n\n      .slider-label {\n        text-align: left;\n      }\n\n      .value-input {\n        width: 20%;\n        text-align: middle;\n        transform: translateY(12%) !important;\n      }\n\n      .value-input input::-webkit-inner-spin-button,\n      .value-input input::-webkit-outer-spin-button {\n        -webkit-appearance: none;\n        margin: 0;\n      }\n\n      .value-input input {\n        -moz-appearance: textfield;\n      }\n\n      .slider-row {\n        position: relative;\n        left: 5% !important;\n        width: 70% !important;\n        top: -100% !important;\n        transform: translateY(-120%) !important;\n        z-index: 1;\n      }\n    </style>\n    <div class=\"slider-container\">\n      <div class=\"top-row\">\n        <div class=\"slider-label\">\n          <span>{{sliderName}}</span>\n        </div>\n        <div class=\"value-input\" style=\"text-align: center;\">\n          <md-input-container>\n            <input aria-label=\"value\" type=\"number\" ng-model=\"sliderValue\" ng-change=\"validateAndUpdateValue(sliderValue)\">\n          </md-input-container>\n        </div>\n      </div>\n      <div class=\"slider-row\">\n        <md-slider flex min=\"{{minValue}}\" max=\"{{maxValue}}\" ng-model=\"sliderValue\"          ng-change=\"updateSliderValue(sliderValue)\" aria-label=\"slider\" step=\"{{stepValue}}\">\n        </md-slider>\n      </div>\n    </div>\n</div>\n<script>\n  (function(scope) {\n        scope.sliderValue = 0;\n        scope.minValue = 10;\n        scope.maxValue = 400;\n        scope.stepValue = 10;\n        scope.sliderName =\"Photos\";\n\n        scope.updateSliderValue = function(value) {\n          scope.send({payload: value});\n        };\n\n        scope.validateAndUpdateValue = function(value) {\n          if (value < scope.minValue) {\n            scope.sliderValue = scope.minValue;\n          } else if (value > scope.maxValue) {\n            scope.sliderValue = scope.maxValue;\n          } else {\n            scope.sliderValue = value;\n          }\n          scope.updateSliderValue(scope.sliderValue);\n        };\n\n        scope.$watch('msg', function(msg) {\n          if (msg && msg.hasOwnProperty('payload')) {\n            scope.sliderValue = msg.payload;\n          }\n        });\n    })(scope);\n</script>\n</md-card>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 320,
+        "y": 540,
+        "wires": [
+            [
+                "ce28a0b5bfb0d5a1"
             ]
         ]
     },
@@ -3535,7 +3434,7 @@
         "format": "{{msg.status}}",
         "layout": "row-spread",
         "className": "",
-        "x": 250,
+        "x": 270,
         "y": 60,
         "wires": []
     },
@@ -3544,8 +3443,8 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "upload",
-        "func": "import os\nfrom OpenScan import OpenScanCloud, load_str, load_int, save\nfrom subprocess import getoutput\n\nbasedir = '/home/pi/OpenScan/'\n\nif load_str(\"feedback_terms\")==\"False\":\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic'] = 'OpenScanCloud - Terms of Use'\n    return None,msg\n\nmsg = msg['payload']\n\ndef upload(filelist, ulinks):\n    pid = getoutput('pidof curl')\n    if pid != \"\":\n        os.system('kill ' + pid)\n\n    i = 0\n    for file in filelist:\n        link = ulinks[i]\n        save('status_cloud', 'uploading ' + str(i+1) + '/' + str(len(filelist)))\n        cmd = 'curl -# -X POST ' + link + ' --header Content-Type:application/octet-stream --data-binary @\"' + file + '\" 2>&1 | tee /home/pi/OpenScan/settings/status_uploadprogress'\n        i = i+1\n        os.system(cmd)\n\n########\nif not os.path.isfile(basedir + 'settings/token'):\n    msg['flag'] = True\n    save('status_cloud', 'please enter token first')\n    return msg\nwith open(basedir + 'settings/token', 'r') as file:\n    token = file.read().strip('\\n')\n\n########\nr = OpenScanCloud('getTokenInfo', {'token':token})\n\nif r.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    save('status_cloud', 'invalid/missing token')\n    return None,msg\nelif r.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nmsg1 = r.json()\n\n########\nif msg['Photos'] > msg1['limit_photos'] or msg['Size_full'] > msg1['limit_filesize']:\n    msg['flag'] = True\n    save('status_cloud', 'limit(s) exceeded')\n    return msg\n\n########\ntemp =  OpenScanCloud('getProjectInfo', {'token':token, 'project':msg['Set']})\nif temp.status_code not in (200,401):\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nif temp.status_code != 401:\n    temp = temp.json()\n    if 'status' in temp:\n        if temp['status'] != 'created':\n            save('status_cloud','already exists')\n            with open(basedir + 'scans/' + msg['Set'][:-4] + '/status', 'w') as file:\n                file.write(temp['status'])\n            return msg\n#####\n\nmsg2={}\nmsg2['token'] = token\nmsg2['parts'] = 1\nmsg['partslist']=[]\n\n#######\nsize_to_split = load_int('osc_splitsize')\n\nif msg['Size_full'] > size_to_split:\n    tempdir = basedir + 'tmp/split/'\n    if os.path.isdir(tempdir):\n        os.system('rm -r ' + tempdir)\n    os.mkdir(tempdir)\n    save('status_cloud', 'zipping files, please wait ...')\n    cmd = 'split -b ' + str(size_to_split) + ' ' + basedir + 'scans/' + msg['Set'] + ' ' + tempdir + msg['Set']\n    os.system(cmd)\n    save('status_cloud', 'zip done')\n    list = os.listdir(tempdir)\n    for l in list:\n        msg['partslist'].append(tempdir + l)\n        msg['partslist'].sort()\n    msg2['parts']=len(msg['partslist'])\nelse:\n    msg['partslist'] = [basedir + 'scans/' +msg['Set']]\n\n#######\nmsg2['photos'] = msg['Photos']\nmsg2['filesize'] = msg['Size_full']\nmsg2['project'] = msg['Set']\n\nr = OpenScanCloud('createProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nmsg1 = r.json()\n\nif not os.path.isdir(basedir+ 'scans/' + msg['Set'][:-4]):\n    os.mkdir(basedir+ 'scans/' + msg['Set'][:-4])\nwith open(basedir+ 'scans/' + msg['Set'][:-4]+'/status', 'w+') as file:\n    file.write('prepared')\n\nsave('status_cloud', 'uploading')\nupload(msg['partslist'], msg1['ulink'])\n\nr = OpenScanCloud('startProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Upload failed'\n    msg['payload'] = 'please try again'\n    save('status_cloud', 'upload failed')\n    return None,msg\n\nsave('status_cloud', 'uploaded')\n\nsave('status_cloud', 'project started')\n\ntry:\n    os.system('rm -r ' + tempdir)\nexcept:\n    pass\n\nreturn msg",
-        "outputs": 2,
+        "func": "import os\nfrom OpenScan import OpenScanCloud, load_str, load_int, save\nfrom subprocess import getoutput\n\nbasedir = '/home/pi/OpenScan/'\n\nif load_str(\"feedback_terms\")==\"False\":\n    msg['payload']=\"Please read and agree to the Terms of Use (See Settings Menu) before you can use the OpenScanCloud\"\n    msg['topic'] = 'OpenScanCloud - Terms of Use'\n    return None,msg\n\nmsg = msg['payload']\n\ndef upload(filelist, ulinks):\n    pid = getoutput('pidof curl')\n    if pid != \"\":\n        os.system('kill ' + pid)\n\n    i = 0\n    for file in filelist:\n        link = ulinks[i]\n        save('status_cloud', 'uploading ' + str(i+1) + '/' + str(len(filelist)))\n        cmd = 'curl -# -X POST ' + link + ' --header Content-Type:application/octet-stream --data-binary @\"' + file + '\" 2>&1 | tee /home/pi/OpenScan/settings/status_uploadprogress'\n        i = i+1\n        os.system(cmd)\n\n########\nif not os.path.isfile(basedir + 'settings/token'):\n    msg['flag'] = True\n    save('status_cloud', 'please enter token first')\n    return msg\nwith open(basedir + 'settings/token', 'r') as file:\n    token = file.read().strip('\\n')\n\n########\nr = OpenScanCloud('getTokenInfo', {'token':token})\n\nif r.status_code == 400:\n    msg['topic'] = 'Invalid Token'\n    msg['payload'] = 'Please enter a valid token (settings --> OpenScanCloud)'\n    save('status_cloud', 'invalid/missing token')\n    return None,msg\nelif r.status_code == 200:\n    pass\nelse:\n    msg['topic'] = 'Connection Error'\n    msg['payload'] = 'Not able to establish a connection to OpenScanCloud.'\n    return None,msg\n\nmsg1 = r.json()\n\n########\nif msg['Photos'] > msg1['limit_photos'] or msg['Size_full'] > msg1['limit_filesize']:\n    msg['flag'] = True\n    save('status_cloud', 'limit(s) exceeded')\n    return msg\n\n########\ntemp =  OpenScanCloud('getProjectInfo', {'token':token, 'project':msg['Set']})\nif temp.status_code not in (200,401):\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nif temp.status_code != 401:\n    temp = temp.json()\n    if 'status' in temp:\n        if temp['status'] != 'created':\n            with open(basedir + 'scans/' + msg['Set'][:-4] + '/status', 'w') as file:\n                file.write(temp['status'])\n            msg['topic'] = \"Project already exists\"\n            msg['payload'] = \"Do you want to re-upload the files?\"\n            return None,None,msg\n#####\n\nmsg2={}\nmsg2['token'] = token\nmsg2['parts'] = 1\nmsg['partslist']=[]\n\n#######\nsize_to_split = load_int('osc_splitsize')\n\nif msg['Size_full'] > size_to_split:\n    tempdir = basedir + 'tmp/split/'\n    if os.path.isdir(tempdir):\n        os.system('rm -r ' + tempdir)\n    os.mkdir(tempdir)\n    save('status_cloud', 'zipping files, please wait ...')\n    cmd = 'split -b ' + str(size_to_split) + ' ' + basedir + 'scans/' + msg['Set'] + ' ' + tempdir + msg['Set']\n    os.system(cmd)\n    save('status_cloud', 'zip done')\n    list = os.listdir(tempdir)\n    for l in list:\n        msg['partslist'].append(tempdir + l)\n        msg['partslist'].sort()\n    msg2['parts']=len(msg['partslist'])\nelse:\n    msg['partslist'] = [basedir + 'scans/' +msg['Set']]\n\n#######\nmsg2['photos'] = msg['Photos']\nmsg2['filesize'] = msg['Size_full']\nmsg2['project'] = msg['Set']\n\nr = OpenScanCloud('createProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Connection to OpenScanCloud failed'\n    msg['payload'] = 'Please check your internet connection'\n    return None,msg\n\nmsg1 = r.json()\n\nif not os.path.isdir(basedir+ 'scans/' + msg['Set'][:-4]):\n    os.mkdir(basedir+ 'scans/' + msg['Set'][:-4])\nwith open(basedir+ 'scans/' + msg['Set'][:-4]+'/status', 'w+') as file:\n    file.write('prepared')\n\nsave('status_cloud', 'uploading')\nupload(msg['partslist'], msg1['ulink'])\n\nr = OpenScanCloud('startProject', msg2)\nif r.status_code != 200:\n    msg['topic'] = 'Upload failed'\n    msg['payload'] = 'please try again'\n    save('status_cloud', 'upload failed')\n    return None,msg\n\nsave('status_cloud', 'uploaded')\n\nsave('status_cloud', 'project started')\n\ntry:\n    os.system('rm -r ' + tempdir)\nexcept:\n    pass\n\nreturn msg",
+        "outputs": 3,
         "x": 530,
         "y": 460,
         "wires": [
@@ -3555,6 +3454,9 @@
             [
                 "3d16b3789632784d",
                 "9a132ab1.b21658"
+            ],
+            [
+                "c1708277f79e61de"
             ]
         ]
     },
@@ -3623,7 +3525,7 @@
         "to": "",
         "reg": false,
         "x": 780,
-        "y": 460,
+        "y": 440,
         "wires": [
             [
                 "8689e938.dd9e38"
@@ -3673,7 +3575,7 @@
         "to": "",
         "reg": false,
         "x": 420,
-        "y": 500,
+        "y": 520,
         "wires": [
             [
                 "f20f2dbc.0f123"
@@ -3752,8 +3654,8 @@
             "b33d604c.5f1a6",
             "149e2e46b9623a2d"
         ],
-        "x": 515,
-        "y": 500,
+        "x": 525,
+        "y": 520,
         "wires": []
     },
     {
@@ -3768,7 +3670,7 @@
             "149e2e46b9623a2d"
         ],
         "x": 875,
-        "y": 460,
+        "y": 440,
         "wires": []
     },
     {
@@ -3838,7 +3740,7 @@
             "92c98e6ce7cd25f9"
         ],
         "x": 235,
-        "y": 500,
+        "y": 580,
         "wires": []
     },
     {
@@ -3956,7 +3858,7 @@
         "topic": "",
         "name": "Terms",
         "x": 770,
-        "y": 500,
+        "y": 480,
         "wires": [
             []
         ]
@@ -3987,7 +3889,7 @@
         "type": "python3-function",
         "z": "4981d84ef1a366d1",
         "name": "del",
-        "func": "import os\nimport shutil\n\ndir=\"/home/pi/OpenScan/scans/\"\n\nif msg['payload']==\"No\":\n    return\n\nfor i in os.listdir(dir):\n    if os.path.isdir(dir + i):\n        shutil.rmtree(dir + i)\n    else:\n        os.remove(dir + i)\n\nreturn msg",
+        "func": "import os\nimport shutil\n\ndir=\"/home/pi/OpenScan/scans/\"\n\nif msg['payload']==\"No\":\n    return\n\nfor i in os.listdir(dir):\n    if os.path.isdir(dir + i):\n        shutil.rmtree(dir + i)\n    else:\n        os.remove(dir + i)\n\nos.mkdir(dir + \"preview\")\n\nreturn msg",
         "outputs": 1,
         "x": 690,
         "y": 340,
@@ -4217,7 +4119,7 @@
         "templateScope": "local",
         "className": "",
         "x": 280,
-        "y": 540,
+        "y": 620,
         "wires": [
             [
                 "51bfd0fb7b1d292e"
@@ -4236,7 +4138,7 @@
         "finalize": "",
         "libs": [],
         "x": 280,
-        "y": 580,
+        "y": 660,
         "wires": [
             [
                 "1493398979a63775"
@@ -4255,7 +4157,7 @@
         "finalize": "",
         "libs": [],
         "x": 420,
-        "y": 540,
+        "y": 620,
         "wires": [
             []
         ]
@@ -4268,7 +4170,7 @@
         "func": "from os.path import getsize\nfrom shutil import copy\nfrom os import rename, remove\nimport zipfile as z\nfrom OpenScan import save\n\nfrom time import sleep\n\nif msg['payload'] != 'OK':\n    return\n\nbasepath = '/home/pi/OpenScan/scans/'\ntmp1 = basepath + msg['set1']\ntmp2 = basepath + msg['set2']\n\nif getsize(tmp1) > getsize(tmp2):\n    set1 = tmp1\n    set2 = tmp2\nelse:\n    set1 = tmp2\n    set2 = tmp1\n\nzips = [set1, set2]\n\nwith z.ZipFile(set1, 'a') as z1:\n    z2 = z.ZipFile(set2, 'r')\n    i = 0\n    for n in z2.namelist():\n        i += 1\n        n2 = n\n        save('status_cloud','writing ' + str(i) + '/' + str(len(z2.namelist())))\n        while 'X'+n in z1.namelist():\n            n = 'X' + n\n        z1.writestr('X'+n, z2.open(n2).read())\nsave('status_cloud','ready')\n\nos.rename(set1, set1[:-4] + 'X.zip')\nos.remove(set2)\n\nreturn msg",
         "outputs": 1,
         "x": 560,
-        "y": 580,
+        "y": 660,
         "wires": [
             [
                 "ed35109311335099"
@@ -4286,7 +4188,7 @@
             "2f4c0f98.dee2"
         ],
         "x": 655,
-        "y": 580,
+        "y": 660,
         "wires": []
     },
     {
@@ -4305,7 +4207,7 @@
         "topic": "",
         "name": "Combine",
         "x": 420,
-        "y": 580,
+        "y": 660,
         "wires": [
             [
                 "da325be8e74179be"
@@ -4334,7 +4236,7 @@
             "ada1b6f7cccc9344"
         ],
         "x": 175,
-        "y": 580,
+        "y": 660,
         "wires": [
             [
                 "189c1eed09624a7b"
@@ -4491,6 +4393,44 @@
         "y": 120,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "c1708277f79e61de",
+        "type": "ui_toast",
+        "z": "4981d84ef1a366d1",
+        "position": "dialog",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 1,
+        "ok": "Yes",
+        "cancel": "No",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "resetProject?",
+        "x": 790,
+        "y": 520,
+        "wires": [
+            [
+                "98a45dd77f31c8b4"
+            ]
+        ]
+    },
+    {
+        "id": "98a45dd77f31c8b4",
+        "type": "python3-function",
+        "z": "4981d84ef1a366d1",
+        "name": "resetProject",
+        "func": "from OpenScan import OpenScanCloud\n\nif msg['payload'] == \"No\":\n    return\n\nwith open('/home/pi/OpenScan/settings/token', 'r') as file:\n    token = file.read().strip('\\n')\n\nOpenScanCloud('resetProject', {'token':token, 'project':msg['Set']})\nreturn msg",
+        "outputs": 1,
+        "x": 950,
+        "y": 520,
+        "wires": [
+            [
+                "f6bd1a04.470838"
+            ]
         ]
     },
     {
@@ -10326,7 +10266,7 @@
         "func": "import json\nimport requests\nfrom OpenScan import load_str\n\nif not msg['payload']:\n    msg['status'] = '--READY--'\n    return msg\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_temp = updatepath + 'update_temp.json'\nupdatepath_old = updatepath + 'update.json'\n\nr = requests.get(url + 'update.json')\n\nif r.status_code != 200:\n    msg['status'] = 'no internet connection'\n    return msg\n\nwith open(updatepath_temp, 'wb+') as file:\n    file.write(r.content)\nwith open(updatepath_temp, 'r') as file:\n    msg = json.load(file)\n\nmsg['status'] = 'checking updates'\n\nreturn msg, msg",
         "outputs": 2,
         "x": 350,
-        "y": 240,
+        "y": 200,
         "wires": [
             [
                 "1bbe2d769f42c313"
@@ -10361,7 +10301,7 @@
         "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str\n\nscope = load_str('update_type')\nmsg['scope'] = scope\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\nupdatepath_old = updatepath + 'update.json'\n\ncounter = 0\nfor i in msg[scope]:\n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    if os.path.isfile(temp):\n        filesize = os.path.getsize(temp)\n        msg[scope][i]['filesize2'] = filesize\n        if filesize == msg[scope][i]['filesize']:\n            msg[scope][i]['update'] = False\n            continue\n    msg[scope][i]['update'] = True\n\n    counter += 1\n\nif counter == 0:\n    msg['status'] = 'No new update available'\nelse:\n    msg['status'] = 'New update available'\n    msg['topic'] = msg['status']\n    msg['payload'] = 'Install & reboot now?'\n\nmsg['counter'] = counter\n\nreturn msg\n",
         "outputs": 1,
         "x": 510,
-        "y": 260,
+        "y": 220,
         "wires": [
             [
                 "1bbe2d769f42c313",
@@ -10381,102 +10321,10 @@
         "y": 140,
         "wires": [
             [
-                "ec30638407332e43",
                 "38cbf7965d1c1834",
                 "49f1ecb29a3f84f4"
             ]
         ]
-    },
-    {
-        "id": "ec30638407332e43",
-        "type": "function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "loadS",
-        "func": "var file = 'update_type'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst data = fs.readFileSync(filepath+file, 'utf8');\nmsg.payload = String(data.replace(/(\\r\\n|\\n|\\r)/gm,\"\"));\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 170,
-        "y": 180,
-        "wires": [
-            [
-                "2852023f3aa8db10"
-            ]
-        ]
-    },
-    {
-        "id": "2852023f3aa8db10",
-        "type": "ui_dropdown",
-        "z": "c8e7ecb5849edb9a",
-        "name": "",
-        "label": "",
-        "tooltip": "",
-        "place": "Select option",
-        "group": "ddbd496e.93a288",
-        "order": 5,
-        "width": 2,
-        "height": 1,
-        "passthru": false,
-        "multiple": false,
-        "options": [
-            {
-                "label": "stable",
-                "value": "main",
-                "type": "str"
-            },
-            {
-                "label": "beta",
-                "value": "beta",
-                "type": "str"
-            }
-        ],
-        "payload": "",
-        "topic": "topic",
-        "topicType": "msg",
-        "className": "",
-        "x": 300,
-        "y": 180,
-        "wires": [
-            [
-                "1e10b387ee30c486"
-            ]
-        ]
-    },
-    {
-        "id": "1e10b387ee30c486",
-        "type": "function",
-        "z": "c8e7ecb5849edb9a",
-        "name": "write",
-        "func": "var file = 'update_type'\nlet fs = global.get('fs');\nvar filepath = '/home/pi/OpenScan/settings/';\nconst content = String(msg.payload)\nfs.writeFile(filepath + file, content, err => {\n  if (err) {\n    return\n  }\n  });",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 430,
-        "y": 180,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "274129c51b0b87ef",
-        "type": "ui_text",
-        "z": "c8e7ecb5849edb9a",
-        "group": "ddbd496e.93a288",
-        "order": 4,
-        "width": 4,
-        "height": 1,
-        "name": "",
-        "label": "Updatetype: ",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 570,
-        "y": 180,
-        "wires": []
     },
     {
         "id": "51cd8c8643e6b46a",
@@ -10564,7 +10412,7 @@
         "topic": "",
         "name": "",
         "x": 670,
-        "y": 260,
+        "y": 220,
         "wires": [
             [
                 "2de63e8e3ae5fb0c",
@@ -10600,7 +10448,7 @@
             "cbd0afc4aa7b302a"
         ],
         "x": 625,
-        "y": 220,
+        "y": 180,
         "wires": []
     },
     {
@@ -10624,7 +10472,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 140,
-        "y": 260,
+        "y": 220,
         "wires": [
             [
                 "b0629875a30ae1d7"
@@ -10639,7 +10487,7 @@
         "func": "import json\nimport requests\nimport shutil\nfrom OpenScan import load_str, save\n\n\nscope = msg['scope']\n\nupdatepath = '/home/pi/OpenScan/updates/'\nurl = 'https://raw.githubusercontent.com/OpenScanEu/OpenScan2/main/update/'\n\nif msg['payload'] != 'YES':\n    return\n\ncounter = 0\n\nfor i in msg[scope]:\n    if msg[scope][i]['update'] == False:\n        continue\n    \n    filepath = msg[scope][i]['dst']\n    temp = updatepath + os.path.basename(filepath)\n    \n    r = requests.get(url + msg[scope][i]['src'])\n    if r.status_code != 200:\n        msg['status'] = 'downloading ' + msg[scope][i]['src'] + ' failed'\n        return msg\n    with open(temp, 'wb+') as file:\n        file.write(r.content)\n    shutil.copy(temp, msg[scope][i]['dst'])\n    \n    if msg[scope][i]['dst'] == '/boot/config.txt':\n        save('camera','')\n    \n    counter += 1\n\nmsg['status'] = 'Installed ' + str(counter) + ' of ' + str(msg['counter']) + ' - restarting ...'\n\nif counter == msg['counter']:\n    updatepath_temp = updatepath + 'update_temp.json'\n    updatepath_old = updatepath + 'update.json'\n    shutil.move(updatepath_temp, updatepath_old)\n\nreturn msg\n",
         "outputs": 1,
         "x": 840,
-        "y": 260,
+        "y": 220,
         "wires": [
             [
                 "42061b28cff81f99",
@@ -10659,7 +10507,7 @@
         "finalize": "",
         "libs": [],
         "x": 810,
-        "y": 220,
+        "y": 180,
         "wires": [
             [
                 "42061b28cff81f99"
@@ -10676,7 +10524,7 @@
             "cbd0afc4aa7b302a"
         ],
         "x": 955,
-        "y": 220,
+        "y": 180,
         "wires": []
     },
     {
@@ -10691,7 +10539,7 @@
         "finalize": "",
         "libs": [],
         "x": 170,
-        "y": 220,
+        "y": 180,
         "wires": [
             [
                 "b0629875a30ae1d7"
@@ -10708,7 +10556,7 @@
             "9bb0adbd716ce347"
         ],
         "x": 955,
-        "y": 260,
+        "y": 220,
         "wires": []
     },
     {
@@ -10720,7 +10568,7 @@
             "960912e90ba5b5bc"
         ],
         "x": 55,
-        "y": 400,
+        "y": 360,
         "wires": [
             [
                 "2bb5fe78e09fec8a"
@@ -10735,7 +10583,7 @@
         "func": "\nfrom subprocess import getoutput\nimport os\n\nmsg['os'] = getoutput(\"cat /etc/os-release | grep -i 'PRETTY_NAME'\")[13:-1]\nmsg['device'] = getoutput(\"cat /proc/device-tree/model\")\nmsg['flask'] = getoutput(\"systemctl status flask |grep -i 'Active:'\").split(' ')[6]\nmsg['osdate'] = getoutput(\"vcgencmd version\").split('\\n')[0]\nmsg['temp'] = getoutput(\"vcgencmd measure_temp\").split('=')[1]\ncpu_total = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $2}'\")\ncpu_used = getoutput(\"free -m | head -n2 | tail -n1 |awk '{print $3}'\")\nswap_total = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $2}'\")\nswap_used = getoutput(\"free -m | head -n3 | tail -n1 |awk '{print $3}'\")\ndiskspace_used = getoutput(\"df -h / | tail -n1 |awk '{print $3}'\")\ndiskspace_total = getoutput(\"df -h / | tail -n1 |awk '{print $2}'\")\n\nmsg['cpu'] = cpu_used + '/' + cpu_total + 'MB'\nmsg['swap'] = swap_used + '/' + swap_total + 'MB'\nmsg['diskspace'] =diskspace_used + '/' + diskspace_total\n\nif msg['flask'] == 'inactive':\n    os.system('systemctl restart flask')\n\nreturn msg",
         "outputs": 1,
         "x": 170,
-        "y": 400,
+        "y": 360,
         "wires": [
             [
                 "dbc77052ac950624",
@@ -10764,7 +10612,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 450,
-        "y": 440,
+        "y": 400,
         "wires": []
     },
     {
@@ -10781,7 +10629,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 450,
-        "y": 480,
+        "y": 440,
         "wires": []
     },
     {
@@ -10798,7 +10646,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 460,
-        "y": 400,
+        "y": 360,
         "wires": []
     },
     {
@@ -10888,7 +10736,7 @@
             "1e7457ea9c2c5e09"
         ],
         "x": 205,
-        "y": 300,
+        "y": 260,
         "wires": [
             [
                 "b0629875a30ae1d7"
@@ -10913,7 +10761,7 @@
         "allowrate": false,
         "outputs": 1,
         "x": 180,
-        "y": 440,
+        "y": 400,
         "wires": [
             [
                 "2bb5fe78e09fec8a"
@@ -10934,7 +10782,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 450,
-        "y": 520,
+        "y": 480,
         "wires": []
     },
     {
@@ -10951,7 +10799,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 470,
-        "y": 560,
+        "y": 520,
         "wires": []
     },
     {
@@ -10968,7 +10816,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 480,
-        "y": 600,
+        "y": 560,
         "wires": []
     },
     {
@@ -10985,7 +10833,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 480,
-        "y": 640,
+        "y": 600,
         "wires": []
     },
     {
@@ -11002,7 +10850,7 @@
         "layout": "row-spread",
         "className": "",
         "x": 470,
-        "y": 680,
+        "y": 640,
         "wires": []
     },
     {
@@ -11082,7 +10930,7 @@
         "topic": "topic",
         "topicType": "msg",
         "x": 170,
-        "y": 340,
+        "y": 300,
         "wires": [
             [
                 "5242607a723cc628"
@@ -11097,7 +10945,7 @@
         "func": "import requests\n\ntempfile = '/home/pi/OpenScan/tmp/changelog'\n\nurl = 'https://raw.githubusercontent.com/OpenScan-org/OpenScan-Doc/main/docs/changelog.md'\nr = requests.get(url, allow_redirects=False)\n\nwith open(tempfile,'wb') as file:\n    file.write(r.content)\n    \nwith open(tempfile, 'r') as file:\n    text = file.read()\n    \ntext = text.replace('\\n','<br>').replace('*', '&emsp; - ')\nmsg['payload'] = text\n\nreturn msg",
         "outputs": 1,
         "x": 390,
-        "y": 340,
+        "y": 300,
         "wires": [
             [
                 "573722197b15bf84"
@@ -11120,7 +10968,7 @@
         "topic": "",
         "name": "",
         "x": 570,
-        "y": 340,
+        "y": 300,
         "wires": [
             []
         ]

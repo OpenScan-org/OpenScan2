@@ -3,7 +3,7 @@ from PIL import Image
 import gphoto2 as gp
 from time import sleep, time
 import shutil
-from OpenScan import load_int, load_float, load_bool, ringlight
+from OpenScan import load_int, load_str, load_float, load_bool, ringlight
 import RPi.GPIO as GPIO
 from math import sqrt
 import os 
@@ -16,31 +16,32 @@ app = Flask(__name__)
 basedir = '/home/pi/OpenScan/'
 timer = time()
 
+
 ###################################################################################################################
 @app.route('/shutdown', methods=['get'])
 def shutdown():
-    delay = 0.1
-    ringlight(2,False)
-
-    for i in range (5):
-        ringlight(1,True)
+    delay = 0.2
+    ringlight(2, False)
+    for i in range(5):
+        ringlight(1, True)
         sleep(delay)
-        ringlight(1,False)
+        ringlight(1, False)
         sleep(delay)
     os.system('shutdown -h now')
+    return "Shutting down...", 200
 ###################################################################################################################
 @app.route('/reboot', methods=['get'])
 def reboot():
-    delay = 0.1
-    ringlight(2,False)
+    delay = 0.2
+    ringlight(2, False)
 
-    for i in range (5):
-        ringlight(1,True)
+    for i in range(5):
+        ringlight(1, True)
         sleep(delay)
-        ringlight(1,False)
+        ringlight(1, False)
         sleep(delay)
-
     os.system('reboot -h')
+    return "Rebooting...", 200
 ###################################################################################################################
 @app.route('/ping', methods=['get'])
 def ping():
