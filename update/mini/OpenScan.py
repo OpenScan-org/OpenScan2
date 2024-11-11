@@ -132,14 +132,19 @@ def take_photo(file):
     AF = load_bool('cam_AFmode')
     camera = load_str('camera')
 
-
-    if camera == 'imx519' and AF == True:
-        autofocus = ' --autofocus '
+    if camera == 'imx519':
+        if AF == True:
+            autofocus = ' --autofocus-mode auto '
+        else:
+            autofocus = ' --autofocus-mode manual '
     else:
         autofocus = ''
 
-    cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus + ' >/dev/null 2>&1'
-#    cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' -t ' + timeout  +' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' + str(quality) + autofocus
+    if camera  == "usb_webcam":
+        cmd = 'fswebcam -i 0 -r "1280x720" -F 5 --no-banner --jpeg 95 --save ' + filepath2
+    else:
+        cmd = 'libcamera-still -n --denoise off --sharpness 0 -o ' + filepath2 + ' --shutter ' + shutter + ' --saturation ' + saturation + ' --contrast ' + contrast + ' --awbgains '+awbg_red + "," + awbg_blue + ' --gain ' + gain + ' -q ' +str(quality) + autofocus + ' >/dev/null 2>&1'
+    
     system(cmd)
     return cmd
 
