@@ -150,9 +150,12 @@ class Focuser:
                 self.hasFocus = True
                 self.opts[Focuser.OPT_FOCUS]["MIN_VALUE"] = ctrl['minimum']
                 self.opts[Focuser.OPT_FOCUS]["MAX_VALUE"] = ctrl['maximum']
-                self.opts[Focuser.OPT_FOCUS]["DEF_VALUE"] = ctrl['default']
+                if hasattr(ctrl,'default'):
+                    self.opts[Focuser.OPT_FOCUS]["DEF_VALUE"] = ctrl['default']
+                if hasattr(ctrl,'default_value'):
+                    self.opts[Focuser.OPT_FOCUS]["DEF_VALUE"] = ctrl['default_value']
                 self.focus_value = get_ctrl(self.fd, Focuser.FOCUS_ID)
-
+        
         if not self.hasFocus:
             raise RuntimeError("Device {} has no focus_absolute control.".format(self.dev))
 
@@ -199,4 +202,4 @@ class Focuser:
     def __del__(self):
         self.fd.close()
 
-pass
+pass 
